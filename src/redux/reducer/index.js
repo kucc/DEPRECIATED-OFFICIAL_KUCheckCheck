@@ -1,0 +1,9 @@
+// reducer를 전역으로 뿌려줌
+
+import { combineReducers } from "redux";
+import user from "./user_reducer";
+const rootReducer = combineReducers({
+  user,
+});
+
+export default rootReducer;
