@@ -4,14 +4,13 @@ import "firebase/database";
 import "firebase/storage";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyDkWZ7pDdNMKZqtOFIYgVBz6rhGM2Aw_-A",
-  authDomain: "kucheckcheck-9f084.firebaseapp.com",
-  projectId: "kucheckcheck-9f084",
-  storageBucket: "kucheckcheck-9f084.appspot.com",
-  messagingSenderId: "781497328972",
-  appId: "1:781497328972:web:a292c93ca7243cf68a1be9",
-  databaseURL:
-    "https://kucheckcheck-9f084-default-rtdb.asia-southeast1.firebasedatabase.app",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGEING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
 };
 
 // Initialize Firebase
