@@ -30,9 +30,9 @@ function PMainBottomContainer() {
   }, []);
 
   const renderSession = (sessions) => {
-    sessions.length > 0 &&
+    sessions &&
       sessions.map((session) => {
-        return <SessionContainer session={session} />;
+        console.log(session);
       });
   };
 
@@ -120,7 +120,10 @@ function PMainBottomContainer() {
             </Button>
           </S.MainSessRig>
         </S.MainBottomBtnCont>
-        {renderSession(sessionContainerArray)}
+        {sessionContainerArray &&
+          sessionContainerArray.map((session) => {
+            return <SessionContainer key={session.id} session={session} />;
+          })}
       </S.MainBottomWrapper>
     </>
   );

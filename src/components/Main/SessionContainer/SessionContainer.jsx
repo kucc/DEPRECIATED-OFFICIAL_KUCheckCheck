@@ -2,29 +2,60 @@ import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
 
-export default function SessionContainer(props) {
+function SessionContainer({ session }) {
   const history = useHistory();
+  console.log(session);
+  const imageRender = () => {
+    console.log(session.language);
+    if (session.language === "javascript") {
+      return (
+        <img
+          style={{ borderRadius: "50%", width: "60px" }}
+          src="./img/icon/Javascript.png"
+        />
+      );
+    } else if (session.language === "python") {
+      return (
+        <img
+          style={{ borderRadius: "50%", width: "60px" }}
+          src="./img/icon/Python.png"
+        />
+      );
+    } else if (session.language === "react") {
+      return (
+        <img
+          style={{ borderRadius: "50%", width: "60px" }}
+          src="./img/icon/React.png"
+        />
+      );
+    } else if (session.language === "c") {
+      return (
+        <img
+          style={{ borderRadius: "50%", width: "60px" }}
+          src="./img/icon/C.png"
+        />
+      );
+    }
+  };
+
   return (
     <>
       <S.SessionContainer
       //onClick={() => history.push(`/detail/${category}/${id}`)}
       >
-        <S.SessionImg>
-          {/* 이사이에 이미지 <img > 로 받아온 이미지 나중에 집어넣을 예정 */}
-        </S.SessionImg>
+        <S.SessionImg>{imageRender()}</S.SessionImg>
         <S.SessionExplainWrapper>
           <S.SessionText>
             <S.SessionTitle>
-              <p>{props.couseName}</p>
+              <p>{session.courseName}</p>
             </S.SessionTitle>
             <S.SessionExplain>
-              <p>{props.courseLeader} 세션장</p>
+              <p>{session.courseLeader} 세션장</p>
             </S.SessionExplain>
           </S.SessionText>
           <S.SessionLevel>
-            <p>
-              난이도:{props.difficulty} /{props.requireTime}학점
-            </p>
+            <div>난이도:{session.difficulty} /</div>
+            <span>{session.requireTime}학점</span>
           </S.SessionLevel>
           {/* {props.check ? (
             <S.SessionFavorite>수강중</S.SessionFavorite>
@@ -36,3 +67,5 @@ export default function SessionContainer(props) {
     </>
   );
 }
+
+export default SessionContainer;
