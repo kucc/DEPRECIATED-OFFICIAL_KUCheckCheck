@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import { RecoilRoot } from "recoil";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
@@ -30,27 +29,25 @@ function App() {
 
   return (
     <>
-      <RecoilRoot>
-        <GlobalStyle />
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/mypage/edit" component={MypageEdit} />
-          <Route path="/mypage" component={Mypage} />
-          <Route
-            path="/detail/:category/:id/attendance/edit"
-            component={SessionAttendEdit}
-          />
-          <Route
-            path="/detail/:category/:id/attendance"
-            exact
-            component={SessionAttend}
-          />
-          <Route path="/detail/:category/:id/" exact component={SessionMain} />
-          <Route path="/rules" component={Rules} />
-          <Route path="/" exact component={Main} />
-        </Switch>
-      </RecoilRoot>
+      <GlobalStyle />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/mypage/edit" component={MypageEdit} />
+        <Route path="/mypage" component={Mypage} />
+        <Route
+          path="/detail/:category/:id/attendance/edit"
+          component={SessionAttendEdit}
+        />
+        <Route
+          path="/detail/:category/:id/attendance"
+          exact
+          component={SessionAttend}
+        />
+        <Route path="/detail/:category/:id/" exact component={SessionMain} />
+        <Route path="/rules" component={Rules} />
+        <Route path="/" exact component={Main} />
+      </Switch>
     </>
   );
 }
