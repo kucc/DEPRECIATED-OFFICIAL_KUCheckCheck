@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 ReactDOM.render(
   <BrowserRouter>
-    `{" "}
+    {" "}
     <Provider
       store={createStoreWithMiddleware(
         Reducer,

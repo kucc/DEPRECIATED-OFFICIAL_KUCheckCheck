@@ -13,6 +13,7 @@ import SessionMain from "./pages/SessionMain";
 import { authService } from "./firebase";
 import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
+import "antd/dist/antd.css";
 
 function App() {
   const dispatch = useDispatch();

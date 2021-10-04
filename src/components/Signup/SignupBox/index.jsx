@@ -1,8 +1,6 @@
 import React from "react";
 import { loginApi, signupApi } from "../../../utils/auth";
 import { useDispatch } from "react-redux";
-// import { useRecoilState } from "recoil";
-// import { userState } from "../../../recoil/userState";
 import PSignupBox from "./PSignupBox";
 import { useHistory } from "react-router";
 import { authService, databaseService } from "../../../firebase";
