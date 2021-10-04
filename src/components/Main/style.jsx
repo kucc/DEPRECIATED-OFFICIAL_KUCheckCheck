@@ -7,7 +7,7 @@ export const SearchContainer = styled.div`
 `;
 export const SearchBar = styled.input`
   min-width: 28em;
-  height: 3em;
+  height: 3.5em;
   border-radius: 29px;
   background-color: #f5f5f5;
   border: none;
@@ -27,29 +27,44 @@ export const SearchBtn = styled.div`
     rgb(0 0 0 / 30%) 0px 8px 16px -8px;
   cursor: pointer;
   & > svg {
-    font-size: 1.8em;
+    font-size: 2em;
     color: white;
     font-weight: 900;
   }
 `;
 export const MainTopWrapper = styled.div`
-  min-height: 15em;
-  padding: 4em 6em;
+  min-height: 18em;
+  padding: 7em 18em 0em;
+  height: 30em;
   border-bottom-right-radius: 67px;
   border-bottom-left-radius: 67px;
   box-shadow: 0 11px 10px 2px lightgrey;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
-export const MainTitle = styled.div`
+
+export const MainTitle1 = styled.div`
   & > p {
-    font-size: 3.4em;
+    font-size: 4em;
     font-weight: 700;
+    font-family: NexonBo;
+    color: #C32020;
+  }
+`;
+export const MainTitle2 = styled.div`
+  margin: -90px 0px 15px;
+  & > p {
+    font-size: 4em;
+    font-weight: 700;
+    font-family: NexonBo;
   }
 `;
 export const MainExplain = styled.div`
-  margin-top: 2px;
+  margin: -60px 0px 15px;
   & > p {
-    font-size: 18px;
-    letter-spacing: 1.2px;
+    font-size: 17px;
+    word-spacing: 1.2px;
+    font-family: NexonRe;
   }
 `;
 
