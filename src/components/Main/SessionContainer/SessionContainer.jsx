@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import * as S from "../style";
 
 export default function SessionContainer(props) {
-const history = useHistory();
+  const history = useHistory();
   return (
     <>
       <S.SessionContainer
@@ -35,5 +35,4 @@ const history = useHistory();
       </S.SessionContainer>
     </>
   );
-}
 }
