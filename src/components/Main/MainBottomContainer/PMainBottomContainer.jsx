@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { Button, Dropdown, Menu } from "antd";
+import React, { useEffect, useState } from "react";
+import { storeService } from "../../../firebase";
 // import { useRecoilState } from "recoil";
 // import { userState } from "../../../recoil/userState";
 import SessionContainer from "../SessionContainer";
@@ -7,42 +9,103 @@ import * as S from "../style";
 function PMainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
   // const [search, setSearch] = useState(useRecoilState(userState).category);
+  const [courseSelect, setcourseSelect] = useState(0);
+
+  useEffect(() => {
+    storeService
+      .collection("sessions")
+      .doc("5gSyaG8owjPTSojoC1Ss")
+      .get()
+      .then((result) => {
+        console.log(result.data());
+      });
+  }, []);
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          21-1 학기
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          20-2 학기
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          20-1 학기
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <>
       <S.MainBottomWrapper>
         <S.MainBottomBtnCont>
           <S.MainSessDuration>
-            <p>21-2학기</p>
+            <Dropdown overlay={menu} placement="bottomLeft">
+              <Button
+                type="danger"
+                style={{ width: "100%", height: "40px", borderRadius: "25px" }}
+              >
+                21-2 학기
+              </Button>
+            </Dropdown>
           </S.MainSessDuration>
           <S.MainSessTab>
-            <S.MainSessItem>
-              <p
-              // onClick={() => setSearch("total")}
-              >
-                전체
-              </p>
+            <S.MainSessItem onClick={() => setcourseSelect(1)}>
+              {courseSelect == 1 ? (
+                <S.MainSessItemOnClick>전체</S.MainSessItemOnClick>
+              ) : (
+                <S.MainSessItemOffClick>전체</S.MainSessItemOffClick>
+              )}
+              <S.MainVerticalLine />
             </S.MainSessItem>
-            <S.MainSessItem>
-              <p
-              // onClick={() => setSearch("session")}
-              >
-                {" "}
-                세션
-              </p>
+            <S.MainSessItem onClick={() => setcourseSelect(2)}>
+              {courseSelect == 2 ? (
+                <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
+              ) : (
+                <S.MainSessItemOffClick>세션</S.MainSessItemOffClick>
+              )}
+              <S.MainVerticalLine />
             </S.MainSessItem>
-            <S.MainSessItem>
-              <p
-              // onClick={() => setSearch("studies")}
-              >
-                스터디
-              </p>
+            <S.MainSessItem onClick={() => setcourseSelect(3)}>
+              {courseSelect == 3 ? (
+                <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
+              ) : (
+                <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
+              )}
             </S.MainSessItem>
           </S.MainSessTab>
           <S.MainSessRig>
-            <p>등록</p>
+            <Button
+              style={{
+                width: "100%",
+                height: "40px",
+                borderRadius: "25px",
+                boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
+              }}
+            >
+              등록하기
+            </Button>
           </S.MainSessRig>
         </S.MainBottomBtnCont>
-        <SessionContainer />
+        {/* <SessionContainer /> */}
       </S.MainBottomWrapper>
     </>
   );
