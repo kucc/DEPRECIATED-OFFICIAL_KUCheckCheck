@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import { RecoilRoot } from "recoil";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
