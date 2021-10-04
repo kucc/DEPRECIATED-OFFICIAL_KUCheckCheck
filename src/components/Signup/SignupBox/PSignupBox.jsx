@@ -22,6 +22,11 @@ function PSignupBox({ signupHandler }) {
       [name]: value,
     });
   };
+  const handleClick = async (e) => {
+    e.preventDefault();
+    await signupHandler(email, password, name, link, comment);
+  };
+
   return (
     <div style={{ backgroundColor: "rgb(245, 245, 245)", marginTop: "0px" }}>
       <S.SignupBox>
@@ -39,7 +44,7 @@ function PSignupBox({ signupHandler }) {
             </p>
           </S.SignupTopContExplain>
         </S.SignupTopCont>
-        <S.SignupBottomCont>
+        <S.SignupBottomCont onSubmit={handleClick}>
           <div>
             <S.SignupBottomContText>이메일</S.SignupBottomContText>
             <S.SignupInput
@@ -97,15 +102,9 @@ function PSignupBox({ signupHandler }) {
               onChange={onChange}
             />
           </div>
-          <Button
-            onClick={async (e) => {
-              e.preventDefault();
-              await signupHandler(email, password, name, link, comment);
-            }}
-            type="danger"
-            style={{ borderRadius: "13px" }}
-          >
+          <Button type="danger" htmlType="submit" style={{ borderRadius: "13px" }}>
             JOIN
+            {/* <button type="submit"></button> */}
           </Button>
         </S.SignupBottomCont>
       </S.SignupBox>

@@ -23,7 +23,7 @@ export const SignupTopContTitle = styled.div`
 export const SignupTopContExplain = styled.div`
   text-align: center;
 `;
-export const SignupBottomCont = styled.div`
+export const SignupBottomCont = styled.form`
   display: grid;
   gap: 25px;
   margin-left: 15%;
