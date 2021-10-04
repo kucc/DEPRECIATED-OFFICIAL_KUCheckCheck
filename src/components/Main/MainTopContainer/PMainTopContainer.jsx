@@ -1,4 +1,3 @@
-import { Col } from "antd";
 import React from "react";
 import MainSearch from "../MainSearch";
 import * as S from "../style";
@@ -19,7 +18,7 @@ function PMainTopContainer() {
           </p>
         </S.MainTitle2>
         <S.MainExplain>
-          <p>고려대학교 중앙 컴퓨터 동아리 세션관리시스템</p>
+          <p>고려대학교 중앙 컴퓨터 동아리 세션 관리시스템</p>
         </S.MainExplain>
         <MainSearch />
         </div>
