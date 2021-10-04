@@ -10,16 +10,31 @@ function PMainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
   // const [search, setSearch] = useState(useRecoilState(userState).category);
   const [courseSelect, setcourseSelect] = useState(0);
+  const [sessionContainerArray, setsessionContainerArray] = useState([]);
 
   useEffect(() => {
     storeService
       .collection("sessions")
-      .doc("5gSyaG8owjPTSojoC1Ss")
       .get()
-      .then((result) => {
-        console.log(result.data());
+      .then((querySnapshot) => {
+        let sessionArray = [];
+        querySnapshot.forEach((doc) => {
+          const sessionsData = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          sessionArray.push(sessionsData);
+        });
+        setsessionContainerArray(sessionArray);
       });
   }, []);
+
+  const renderSession = (sessions) => {
+    sessions.length > 0 &&
+      sessions.map((session) => {
+        return <SessionContainer session={session} />;
+      });
+  };
 
   const menu = (
     <Menu>
@@ -105,7 +120,7 @@ function PMainBottomContainer() {
             </Button>
           </S.MainSessRig>
         </S.MainBottomBtnCont>
-        {/* <SessionContainer /> */}
+        {renderSession(sessionContainerArray)}
       </S.MainBottomWrapper>
     </>
   );
