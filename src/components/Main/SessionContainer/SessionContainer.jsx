@@ -2,37 +2,45 @@ import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
 
-function SessionContainer({ session }) {
+function SessionContainer({ course }) {
   const history = useHistory();
   const imageRender = () => {
-    if (session.language === "javascript") {
+    if (course.language === "javascript") {
       return (
         <img
           style={{ borderRadius: "50%", width: "60px" }}
           src="./img/icon/Javascript.png"
         />
       );
-    } else if (session.language === "python") {
+    } else if (course.language === "python") {
       return (
         <img
           style={{ borderRadius: "50%", width: "60px" }}
           src="./img/icon/Python.png"
         />
       );
-    } else if (session.language === "react") {
+    } else if (course.language === "react") {
       return (
         <img
           style={{ borderRadius: "50%", width: "60px" }}
           src="./img/icon/React.png"
         />
       );
-    } else if (session.language === "c") {
+    } else if (course.language === "c") {
       return (
         <img
           style={{ borderRadius: "50%", width: "60px" }}
           src="./img/icon/C.png"
         />
       );
+    }
+  };
+
+  const renderCourseLeader = () => {
+    if (course.type === 1) {
+      return <p>{course.courseLeader} 세션장</p>;
+    } else if (course.type === 2) {
+      return <p>{course.courseLeader} 스터디장</p>;
     }
   };
 
@@ -45,15 +53,17 @@ function SessionContainer({ session }) {
         <S.SessionExplainWrapper>
           <S.SessionText>
             <S.SessionTitle>
-              <p>{session.courseName}</p>
+              <p>{course.courseName}</p>
             </S.SessionTitle>
-            <S.SessionExplain>
-              <p>{session.courseLeader} 세션장</p>
-            </S.SessionExplain>
+            <S.SessionExplain>{renderCourseLeader()}</S.SessionExplain>
           </S.SessionText>
           <S.SessionLevel>
-            <div>난이도:{session.difficulty} /</div>
-            <div>{session.requireTime}학점</div>
+            <div
+              style={{ display: "flex", placeContent: "center", gap: "3px" }}
+            >
+              <div>난이도: {course.difficulty} /</div>
+              <div style={{ fontWeight: "bold" }}>{course.requireTime}학점</div>
+            </div>
           </S.SessionLevel>
           {/* {props.check ? (
             <S.SessionFavorite>수강중</S.SessionFavorite>

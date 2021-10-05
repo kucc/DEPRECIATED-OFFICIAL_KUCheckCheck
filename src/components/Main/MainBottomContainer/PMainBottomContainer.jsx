@@ -31,6 +31,7 @@ function PMainBottomContainer() {
     setsearchResults(searchResults);
   }, [searchTerm]);
 
+  // course toggle 기능
   const matchCourseSelect = (num) => {
     const regex = new RegExp(searchTerm, "gi");
     const searchResults = courseContainerArray.reduce((acc, course) => {
@@ -165,10 +166,10 @@ function PMainBottomContainer() {
         </S.MainBottomBtnCont>
         {searchTerm || courseSelect !== 0
           ? searchResults.map((course) => {
-              return <SessionContainer key={course.id} session={course} />;
+              return <SessionContainer key={course.id} course={course} />;
             })
           : courseContainerArray.map((course) => {
-              return <SessionContainer key={course.id} session={course} />;
+              return <SessionContainer key={course.id} course={course} />;
             })}
       </S.MainBottomWrapper>
     </>

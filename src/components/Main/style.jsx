@@ -55,7 +55,7 @@ export const MainTitle1 = styled.div`
     font-size: 4em;
     font-weight: 700;
     font-family: NexonBo;
-    color: #C32020;
+    color: #c32020;
   }
 `;
 export const MainTitle2 = styled.div`
@@ -122,7 +122,7 @@ export const MainSessDuration = styled.div``;
 export const MainSessItem = styled.div`
   margin-left: 15px;
   display: flex;
-  gap: 20px;
+  gap: 3px;
 `;
 export const MainSessTab = styled.div`
   margin-left: 50px;
