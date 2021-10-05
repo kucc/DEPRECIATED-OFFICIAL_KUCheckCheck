@@ -4,7 +4,7 @@ import { MainTopContainer, MainBottomContainer } from "../../components/Main";
 
 function Main() {
   return (
-    <div style={{ backgroundColor: "rgb(245, 245, 245)" }}>
+    <div style={{ backgroundColor: "rgb(245, 245, 245)", height: "100vh" }}>
       <NavBar />
       <MainTopContainer />
       <MainBottomContainer />

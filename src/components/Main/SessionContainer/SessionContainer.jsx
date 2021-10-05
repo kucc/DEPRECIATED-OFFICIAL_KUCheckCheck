@@ -4,9 +4,7 @@ import * as S from "../style";
 
 function SessionContainer({ session }) {
   const history = useHistory();
-  console.log(session);
   const imageRender = () => {
-    console.log(session.language);
     if (session.language === "javascript") {
       return (
         <img
@@ -55,7 +53,7 @@ function SessionContainer({ session }) {
           </S.SessionText>
           <S.SessionLevel>
             <div>난이도:{session.difficulty} /</div>
-            <span>{session.requireTime}학점</span>
+            <div>{session.requireTime}학점</div>
           </S.SessionLevel>
           {/* {props.check ? (
             <S.SessionFavorite>수강중</S.SessionFavorite>
