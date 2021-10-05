@@ -120,7 +120,13 @@ function PMainBottomContainer() {
             <Dropdown overlay={menu} placement="bottomLeft">
               <Button
                 type="danger"
-                style={{ width: "100%", height: "40px", borderRadius: "25px" }}
+                style={{
+                  width: "100%",
+                  height: "40px",
+                  borderRadius: "25px",
+                  backgroundColor: "#c32020",
+                  borderColor: "#c32020",
+                }}
               >
                 21-2 학기
               </Button>
