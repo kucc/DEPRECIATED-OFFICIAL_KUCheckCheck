@@ -77,7 +77,7 @@ export const MainExplain = styled.div`
 
 export const SessionContainer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 120px;
   border-radius: 20px;
   box-shadow: rgb(50 50 93 / 15%) 0px 13px 27px -5px,
     rgb(0 0 0 / 10%) 0px 8px 16px -8px;
@@ -97,13 +97,18 @@ export const SessionExplainWrapper = styled.div`
 `;
 export const SessionText = styled.div`
   padding-left: 20px;
-  padding-top: 20px;
+  padding-top: 30px;
 `;
 export const SessionTitle = styled.div`
-  font-size: 20px;
-  font-weight: bold;
+  & > p {
+    font-family: "NexonBo";
+    font-size: 20px;
+  }
 `;
 export const SessionExplain = styled.div`
+  & > p {
+    font-family: "NexonRe";
+  }
   font-size: 13.3px;
   margin-top: -10px;
 `;
