@@ -10,10 +10,12 @@ import Rules from "./pages/Rules";
 import SessionAttendEdit from "./pages/SessionAttendEdit";
 import SessionAttend from "./pages/SessionAttend";
 import SessionMain from "./pages/SessionMain";
+import SessionNew from "./pages/SessionNew";
 import { authService } from "./firebase";
 import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +50,7 @@ function App() {
         <Route path="/detail/:category/:id/" exact component={SessionMain} />
         <Route path="/rules" component={Rules} />
         <Route path="/" exact component={Main} />
+        <Route path="/session-new" exact component={SessionNew} />
       </Switch>
     </>
   );
