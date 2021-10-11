@@ -57,7 +57,7 @@ function UserMyPageCard() {
               <FiPaperclip color="white" />
             </StyledIconContainer>
             <a
-              href={replace(firebaseUser.link)}
+              href={firebaseUser.link}
               style={{ marginLeft: "10px", marginTop: "4px" }}
             >
               {firebaseUser.link}

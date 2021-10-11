@@ -1,7 +1,8 @@
 import React from "react";
 import * as S from "./style";
 import NavBar from "../../Common/NavBar";
-import allContent from "../rulesContent.json"
+import allContent from "../rulesContent.json";
+import "./PRules.css";
 
 
 
