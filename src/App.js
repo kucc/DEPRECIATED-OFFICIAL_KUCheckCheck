@@ -17,11 +17,16 @@ import "antd/dist/antd.css";
 import "./App.css";
 
 function App() {
+  let history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    var link = document.location.pathname;
     authService.onAuthStateChanged((user) => {
       if (user) {
+        if (link === "/login" || link === "/signup") {
+          history.push("/");
+        }
         dispatch(setUser(user));
       } else {
         dispatch(clearUser());
