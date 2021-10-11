@@ -1,5 +1,5 @@
 import React from "react";
-import { databaseService, storeService } from "../../../firebase";
+import { databaseService, firestoreService } from "../../../firebase";
 import PSessionNewBox from "./PSessionNewBox";
 
 export default function LoginBox() {
@@ -13,7 +13,7 @@ export default function LoginBox() {
       requireTime,
       courseType,
     } = sessionInfo;
-    await storeService
+    await firestoreService
       .collection("courses")
       .add({
         courseType,

@@ -1,7 +1,7 @@
 import { Button, Dropdown, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { storeService } from "../../../firebase";
+import { firestoreService } from "../../../firebase";
 import SessionContainer from "../SessionContainer/SessionContainer";
 import * as S from "../style";
 
@@ -63,7 +63,7 @@ function PMainBottomContainer() {
 
   //세션 불러오기
   useEffect(() => {
-    storeService
+    firestoreService
       .collection("sessions")
       .get()
       .then((querySnapshot) => {
