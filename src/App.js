@@ -16,13 +16,19 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
+import Userpage from "./pages/Userpage";
 
 function App() {
+  let history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    var link = document.location.pathname;
     authService.onAuthStateChanged((user) => {
       if (user) {
+        if (link === "/login" || link === "/signup") {
+          history.push("/");
+        }
         dispatch(setUser(user));
       } else {
         dispatch(clearUser());
@@ -38,6 +44,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
         <Route path="/mypage" component={Mypage} />
+        <Route path="/userpage/:id" component={Userpage} />
         <Route
           path="/detail/:category/:id/attendance/edit"
           component={SessionAttendEdit}
@@ -63,6 +70,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
     /* box-sizing: border-box; */
-    font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+    font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
 `;

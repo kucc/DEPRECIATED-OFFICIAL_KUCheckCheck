@@ -8,6 +8,7 @@ import { authService } from "../../firebase";
 
 export default function NavBar() {
   const user = useSelector((state) => state.user);
+  const history = useHistory();
   const logout = async () => {
     try {
       authService.signOut();
@@ -15,6 +16,14 @@ export default function NavBar() {
       window.location.replace("/");
     } catch (e) {
       console.log(e.response.data.error.msg);
+      alert(e.response.data.error.msg);
+    }
+  };
+  const myPage = async () => {
+    try {
+      // mypage 주소 뒤에 uid를 넣어줘야 하나??
+      history.push(`/mypage`);
+    } catch (e) {
       alert(e.response.data.error.msg);
     }
   };
@@ -36,10 +45,11 @@ export default function NavBar() {
       </S.NavBarLogoContainer>
       <S.NavBarMenuContainer>
         {user.isLogin === true ? (
-          <S.NavBarAuth onClick={logout}>
-            <p>{user.currentUser.displayName} 님 안녕하세요</p>
-            <p>로그아웃</p>
-          </S.NavBarAuth>
+          <S.NavBarAuthOn>
+            <p>HELLO {user.currentUser.displayName}!</p>
+            <div onClick={myPage}>MY</div>
+            <div onClick={logout}>로그아웃</div>
+          </S.NavBarAuthOn>
         ) : (
           <S.NavBarAuth>
             <Link to="/login">

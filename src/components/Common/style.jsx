@@ -23,10 +23,29 @@ export const NavBarAuth = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  font-family: "NexonBo";
   & > a {
     text-decoration: none;
     color: black;
     font-weight: 500;
+  }
+`;
+export const NavBarAuthOn = styled.div`
+  min-width: 172px;
+  margin-right: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 700;
+  font-size: 15px;
+  & > p {
+    margin-bottom: 0px;
+    font-family: "NexonBo";
+  }
+  & > div {
+    font-size: 12px;
+    font-family: "NexonBo";
   }
 `;
 export const NavBarAuthCont = styled.div`
