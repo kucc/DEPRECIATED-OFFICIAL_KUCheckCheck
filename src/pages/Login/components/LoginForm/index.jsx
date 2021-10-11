@@ -30,7 +30,19 @@ function LoginForm() {
       await authService.signInWithEmailAndPassword(email, password);
       history.push("/");
     } catch (error) {
-      alert(error.message);
+      const { code, message } = error;
+      switch (code) {
+        case "auth/user-not-found":
+          alert("가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.");
+          history.push("/signup");
+          break;
+        case "auth/wrong-password":
+          alert("잘못된 비밀번호입니다.");
+          break;
+        default:
+          alert(message);
+          break;
+      }
     } finally {
       setIsSubmitted(false);
     }
