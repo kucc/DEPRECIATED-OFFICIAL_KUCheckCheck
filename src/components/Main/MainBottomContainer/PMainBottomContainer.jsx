@@ -64,7 +64,7 @@ function PMainBottomContainer() {
   //세션 불러오기
   useEffect(() => {
     firestoreService
-      .collection("sessions")
+      .collection("courses")
       .get()
       .then((querySnapshot) => {
         let courseArray = [];

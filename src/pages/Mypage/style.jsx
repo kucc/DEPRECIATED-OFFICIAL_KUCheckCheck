@@ -1,0 +1,57 @@
+import styled from "styled-components";
+
+export const StyledBackground = styled.div`
+  background-color: rgb(245, 245, 245);
+`;
+
+export const StyledNavBarContainer = styled.div`
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0 11px 10px 2px lightgrey;
+`;
+
+export const StyledMainContainer = styled.div`
+  margin-top: 30px;
+  margin-left: 14.21%;
+  margin-right: 14.21%;
+`;
+
+export const StyledCardContainer = styled.div`
+  background-color: white;
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  box-shadow: rgb(50 50 93 / 30%) 0px 13px 27px -5px,
+    rgb(0 0 0 / 20%) 0px 8px 16px -8px;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding: 70px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+`;
+
+export const StyledPictureContainer = styled.div`
+  border-right: 1px solid #b6b6b6ea;
+  height: 50px;
+`;
+
+export const StyledDetailContainer = styled.div`
+  margin-left: 40px;
+  display: grid;
+  grid-template-rows: 1fr 0.7fr 3fr 1fr;
+`;
+
+export const StyledDetailCommentBox = styled.div`
+  background-color: #f5f5f5;
+  border-radius: 24px;
+  padding: 23px;
+`;
+
+export const StyledIconContainer = styled.div`
+  background-color: black;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+`;

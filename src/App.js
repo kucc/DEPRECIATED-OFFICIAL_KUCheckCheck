@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
+import Userpage from "./pages/Userpage";
 
 function App() {
   let history = useHistory();
@@ -43,6 +44,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
         <Route path="/mypage" component={Mypage} />
+        <Route path="/userpage/:id" component={Userpage} />
         <Route
           path="/detail/:category/:id/attendance/edit"
           component={SessionAttendEdit}
