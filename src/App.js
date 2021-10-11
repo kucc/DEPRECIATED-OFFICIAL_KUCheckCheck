@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
 import Mypage from "./pages/Mypage";
 import MypageEdit from "./pages/MypageEdit";
@@ -10,6 +10,7 @@ import Rules from "./pages/Rules";
 import SessionAttendEdit from "./pages/SessionAttendEdit";
 import SessionAttend from "./pages/SessionAttend";
 import SessionMain from "./pages/SessionMain";
+import SessionNew from "./pages/SessionNew";
 import { authService } from "./firebase";
 import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
@@ -39,7 +40,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
         <Route path="/mypage" component={Mypage} />
         <Route
@@ -54,6 +55,7 @@ function App() {
         <Route path="/detail/:category/:id/" exact component={SessionMain} />
         <Route path="/rules" component={Rules} />
         <Route path="/" exact component={Main} />
+        <Route path="/session-new" exact component={SessionNew} />
       </Switch>
     </>
   );

@@ -1,6 +1,11 @@
 import React from "react";
+import { SessionNewBox } from "../../components/SessionNew";
 
 function SessionNew() {
-  return <>이건 세션뉴ㄴ</>;
+  return (
+    <>
+      <SessionNewBox />
+    </>
+  );
 }
 export default SessionNew;
