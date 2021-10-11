@@ -1,0 +1,13 @@
+.PRules .ant-collapse-arrow {
+  color: white;
+}
+
+.PRules .ant-collapse-arrow svg {
+  margin-right: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.PRules .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  color: white;
+}
