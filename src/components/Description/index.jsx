@@ -1,14 +1,14 @@
 import React from "react";
 import { Typography } from "antd";
+import { DescriptionForm, DescriptionLogo } from "./style";
 
 const { Title, Text } = Typography;
 
 function Description() {
   return (
-    <div style={{ textAlign: "center", placeItems: "center" }}>
-      <img
+    <DescriptionForm>
+      <DescriptionLogo
         alt="KUCC Icon"
-        style={{ width: "120px" }}
         src={"./img/KUCCicon.png"}
       />
       <Title>
@@ -21,7 +21,7 @@ function Description() {
         <br />
         세션/스터디 관리 시스템
       </Text>
-    </div>
+    </DescriptionForm>
   );
 }
 
