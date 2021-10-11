@@ -3,6 +3,7 @@ import LoginForm from "./components/LoginForm";
 import Description from "../../components/Description";
 import { StyledRow, StyledCol, Wrapper } from "./style";
 import { useHistory } from "react-router";
+import DefaultLogo from "../../components/DefaultLogo";
 
 function Login() {
   const history = useHistory();
@@ -23,6 +24,7 @@ function Login() {
           >
             JOIN
           </a>
+          <DefaultLogo width="80px" />
         </Wrapper>
       </StyledCol>
     </StyledRow>
