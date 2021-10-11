@@ -115,6 +115,7 @@ function PMainBottomContainer() {
                 borderRadius: "25px",
                 boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
               }}
+              href="/session-new"
             >
               등록하기
             </Button>
