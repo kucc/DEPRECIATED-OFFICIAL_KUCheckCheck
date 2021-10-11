@@ -68,6 +68,7 @@ function PMainBottomContainer() {
       .get()
       .then((querySnapshot) => {
         let courseArray = [];
+        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           const coursesData = {
             id: doc.id,

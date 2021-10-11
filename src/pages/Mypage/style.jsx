@@ -24,15 +24,16 @@ export const StyledCardContainer = styled.div`
   box-shadow: rgb(50 50 93 / 30%) 0px 13px 27px -5px,
     rgb(0 0 0 / 20%) 0px 8px 16px -8px;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 1px 5fr;
   padding: 70px;
   margin-top: 5px;
   margin-bottom: 20px;
 `;
 
 export const StyledPictureContainer = styled.div`
-  border-right: 1px solid #b6b6b6ea;
   height: 50px;
+  font-size: 170px;
+  margin-top: -70px;
 `;
 
 export const StyledDetailContainer = styled.div`
@@ -49,8 +50,8 @@ export const StyledDetailCommentBox = styled.div`
 
 export const StyledIconContainer = styled.div`
   background-color: black;
-  width: 20px;
-  height: 20px;
+  width: 27px;
+  height: 27px;
   display: grid;
   place-items: center;
   border-radius: 50%;
