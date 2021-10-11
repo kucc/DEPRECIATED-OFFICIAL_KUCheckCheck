@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
 import Mypage from "./pages/Mypage";
 import MypageEdit from "./pages/MypageEdit";
@@ -35,7 +35,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
         <Route path="/mypage" component={Mypage} />
         <Route
