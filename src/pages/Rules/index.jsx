@@ -1,6 +1,12 @@
 import React from "react";
+import {RulesContainer} from "../../components/Rules"
 
 function Rules() {
-  return <>이건 룰스</>;
+  return(
+    <>
+      <RulesContainer />
+    </>
+  );
 }
+
 export default Rules;
