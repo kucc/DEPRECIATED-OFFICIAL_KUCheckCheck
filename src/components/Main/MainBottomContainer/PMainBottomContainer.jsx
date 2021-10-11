@@ -13,14 +13,14 @@ function PMainBottomContainer() {
   const [searchResults, setsearchResults] = useState([]);
 
   const searchTerm = useSelector((state) => state.search.searchTerm);
-
   // 검색 기능
   useEffect(() => {
     const regex = new RegExp(searchTerm, "gi");
     const searchResults = courseContainerArray.reduce((acc, course) => {
       if (
         (course.courseName && course.courseName.match(regex)) ||
-        course.courseLeader.match(regex) ||
+        // courseLeader 정보가 없어서 주석처리 해둠. 원래 있어야할 기능.
+        // course.courseLeader.match(regex) ||
         course.language.match(regex)
       ) {
         acc.push(course);
@@ -35,11 +35,12 @@ function PMainBottomContainer() {
   const matchCourseSelect = (num) => {
     const regex = new RegExp(searchTerm, "gi");
     const searchResults = courseContainerArray.reduce((acc, course) => {
-      if (course.type && course.type === num) {
+      if (course.courseType && course.courseType === num) {
         if (searchTerm) {
           if (
             course.courseName.match(regex) ||
-            course.courseLeader.match(regex) ||
+            // courseLeader 정보가 없어서 주석처리 해둠. 원래 있어야할 기능.
+            // course.courseLeader.match(regex) ||
             course.language.match(regex)
           ) {
             acc.push(course);
@@ -68,7 +69,6 @@ function PMainBottomContainer() {
       .get()
       .then((querySnapshot) => {
         let courseArray = [];
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           const coursesData = {
             id: doc.id,

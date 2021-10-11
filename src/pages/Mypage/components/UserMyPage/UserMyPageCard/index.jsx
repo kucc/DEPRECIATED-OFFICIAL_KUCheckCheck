@@ -27,6 +27,12 @@ function UserMyPageCard() {
     }
   }, [user]);
 
+  // 링크 특수문자 사라짐 현상 해결 함수
+  function replace(url) {
+    url = url.replace(/&/g, "%26").replace(/\+/g, "%2B");
+    console.log(url);
+    return url;
+  }
   return (
     <StyledCardContainer>
       <StyledPictureContainer>{firebaseUser.emoji}</StyledPictureContainer>
@@ -38,7 +44,7 @@ function UserMyPageCard() {
         }}
       ></div>
       <StyledDetailContainer>
-        <div style={{ fontSize: "32px", fontWeight: "bold" }}>
+        <div style={{ fontSize: "32px", fontFamily: "NexonBo" }}>
           {user && user.displayName}
         </div>
         <div>{firebaseUser.comment}</div>
@@ -51,7 +57,7 @@ function UserMyPageCard() {
               <FiPaperclip color="white" />
             </StyledIconContainer>
             <a
-              href={`https://${firebaseUser.link}`}
+              href={replace(firebaseUser.link)}
               style={{ marginLeft: "10px", marginTop: "4px" }}
             >
               {firebaseUser.link}

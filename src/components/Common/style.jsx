@@ -41,9 +41,11 @@ export const NavBarAuthOn = styled.div`
   font-size: 15px;
   & > p {
     margin-bottom: 0px;
+    font-family: "NexonBo";
   }
   & > div {
     font-size: 12px;
+    font-family: "NexonBo";
   }
 `;
 export const NavBarAuthCont = styled.div`

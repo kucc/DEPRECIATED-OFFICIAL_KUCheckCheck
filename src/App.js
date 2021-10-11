@@ -70,6 +70,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
     /* box-sizing: border-box; */
-    font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+    font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
 `;
