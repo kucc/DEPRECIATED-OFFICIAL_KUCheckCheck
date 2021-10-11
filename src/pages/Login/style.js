@@ -14,4 +14,7 @@ export const StyledCol = styled(Col)`
 
 export const Wrapper = styled.div`
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
