@@ -16,13 +16,20 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
+import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
+    const path = document.location.pathname;
     authService.onAuthStateChanged((user) => {
       if (user) {
+        if (path === "/login" || path === "/signup") {
+          alert(ALREADY_LOGGED_IN);
+          history.push("/");
+        }
         dispatch(setUser(user));
       } else {
         dispatch(clearUser());
