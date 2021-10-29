@@ -4,7 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
-import Mypage from "./pages/Mypage";
+import Mypage from "./pages/Userpage";
 import MypageEdit from "./pages/MypageEdit";
 import Rules from "./pages/Rules";
 import SessionAttendEdit from "./pages/SessionAttendEdit";
@@ -43,7 +43,6 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
-        <Route path="/mypage" component={Mypage} />
         <Route path="/userpage/:id" component={Userpage} />
         <Route
           path="/detail/:category/:id/attendance/edit"

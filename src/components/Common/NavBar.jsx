@@ -15,14 +15,13 @@ export default function NavBar() {
       window.alert("로그아웃이 되었습니다!");
       window.location.replace("/");
     } catch (e) {
-      console.log(e.response.data.error.msg);
       alert(e.response.data.error.msg);
     }
   };
   const myPage = async () => {
     try {
       // mypage 주소 뒤에 uid를 넣어줘야 하나??
-      history.push(`/mypage`);
+      history.push(`/userpage/${user.currentUser.uid}`);
     } catch (e) {
       alert(e.response.data.error.msg);
     }
@@ -31,7 +30,6 @@ export default function NavBar() {
     window.location.replace(
       "http://taskagile.site/oauth2/authorization/google"
     );
-    console.log(e);
   };
   return (
     <S.NavBarContainer>
@@ -47,8 +45,8 @@ export default function NavBar() {
         {user.isLogin === true ? (
           <S.NavBarAuthOn>
             <p>HELLO {user.currentUser.displayName}!</p>
-            <div onClick={myPage}>MY</div>
-            <div onClick={logout}>로그아웃</div>
+            <S.myPageButton onClick={myPage}>MY</S.myPageButton>
+            <S.logOutButton onClick={logout}>로그아웃</S.logOutButton>
           </S.NavBarAuthOn>
         ) : (
           <S.NavBarAuth>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../../../firebase";
 import { FiPaperclip } from "react-icons/fi";
+import { HiOutlineMail } from "react-icons/hi";
 import {
   StyledCardContainer,
   StyledDetailCommentBox,
@@ -10,22 +11,19 @@ import {
   StyledPictureContainer,
 } from "../../../style";
 
-function UserMyPageCard() {
-  const user = useSelector((state) => state.user.currentUser);
+function UserPageCard() {
+  const userId = document.location.href.split("/")[4];
   const [firebaseUser, setfirebaseUser] = useState("");
   //유저 정보 불러오기
   useEffect(() => {
-    if (user) {
-      firestoreService
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((querySnapshot) => {
-          console.log(querySnapshot.data());
-          setfirebaseUser(querySnapshot.data());
-        });
-    }
-  }, [user]);
+    firestoreService
+      .collection("users")
+      .doc(userId)
+      .get()
+      .then((querySnapshot) => {
+        setfirebaseUser(querySnapshot.data());
+      });
+  }, []);
 
   // 링크 특수문자 사라짐 현상 해결 함수
   function replace(url) {
@@ -33,6 +31,7 @@ function UserMyPageCard() {
     console.log(url);
     return url;
   }
+
   return (
     <StyledCardContainer>
       <StyledPictureContainer>{firebaseUser.emoji}</StyledPictureContainer>
@@ -45,7 +44,7 @@ function UserMyPageCard() {
       ></div>
       <StyledDetailContainer>
         <div style={{ fontSize: "32px", fontFamily: "NexonBo" }}>
-          {user && user.displayName}
+          {firebaseUser.name}
         </div>
         <div>{firebaseUser.comment}</div>
         <StyledDetailCommentBox>
@@ -65,7 +64,7 @@ function UserMyPageCard() {
           </div>{" "}
           <div style={{ display: "flex", gap: "5px", marginTop: "20px" }}>
             <StyledIconContainer>
-              <FiPaperclip color="white" />
+              <HiOutlineMail color="white" />
             </StyledIconContainer>
             <div style={{ marginLeft: "10px", marginTop: "4px" }}>
               {firebaseUser.email}
@@ -77,4 +76,4 @@ function UserMyPageCard() {
   );
 }
 
-export default UserMyPageCard;
+export default UserPageCard;

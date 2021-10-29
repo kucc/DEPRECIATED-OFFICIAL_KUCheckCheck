@@ -27,7 +27,6 @@ function PMainBottomContainer() {
       }
       return acc;
     }, []);
-    console.log(searchResults);
     setsearchResults(searchResults);
   }, [searchTerm]);
 
@@ -165,6 +164,8 @@ function PMainBottomContainer() {
                 height: "40px",
                 borderRadius: "25px",
                 boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
+                display: "grid",
+                placeItems: "center",
               }}
               href="/session-new"
             >

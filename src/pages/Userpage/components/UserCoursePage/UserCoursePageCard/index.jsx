@@ -4,19 +4,18 @@ import SessionContainer from "../../../../../components/Main/SessionContainer/Se
 import { firestoreService } from "../../../../../firebase";
 
 function UserCoursePageCard() {
-  const user = useSelector((state) => state.user.currentUser);
+  const userId = document.location.href.split("/")[4];
+
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   useEffect(() => {
-    if (user) {
-      firestoreService
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((querySnapshot) => {
-          setcourseContainerArray(querySnapshot.data().courseHistory);
-        });
-    }
-  }, [user]);
+    firestoreService
+      .collection("users")
+      .doc(userId)
+      .get()
+      .then((querySnapshot) => {
+        setcourseContainerArray(querySnapshot.data().courseHistory);
+      });
+  }, []);
 
   // console.log(courseContainerArray);
 
