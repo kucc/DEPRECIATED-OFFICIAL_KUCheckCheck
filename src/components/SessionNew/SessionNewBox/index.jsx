@@ -1,5 +1,5 @@
 import React from "react";
-import { databaseService, firestoreService } from "../../../firebase";
+import { firestoreService } from "../../../firebase";
 import PSessionNewBox from "./PSessionNewBox";
 
 export default function LoginBox() {
@@ -12,6 +12,11 @@ export default function LoginBox() {
       difficulty,
       requireTime,
       courseType,
+      courseDate,
+      coursePlace,
+      courseNotice,
+      courseMember,
+      courseCurriculum,
     } = sessionInfo;
     await firestoreService
       .collection("courses")
@@ -23,6 +28,11 @@ export default function LoginBox() {
         courseName,
         courseInfo,
         courseGoal,
+        courseDate,
+        coursePlace,
+        courseNotice,
+        courseMember,
+        courseCurriculum,
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);

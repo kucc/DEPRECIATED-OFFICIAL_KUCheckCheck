@@ -4,7 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
-import Mypage from "./pages/Mypage";
+import Mypage from "./pages/Userpage";
 import MypageEdit from "./pages/MypageEdit";
 import Rules from "./pages/Rules";
 import SessionAttendEdit from "./pages/SessionAttendEdit";
@@ -16,9 +16,11 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
+import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 
 function App() {
+  let history = useHistory();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -44,7 +46,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/mypage/edit" component={MypageEdit} />
-        <Route path="/mypage" component={Mypage} />
+        <Route path="/userpage/:id" component={Userpage} />
         <Route
           path="/detail/:category/:id/attendance/edit"
           component={SessionAttendEdit}
@@ -70,6 +72,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
     /* box-sizing: border-box; */
-    font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+    font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
 `;
