@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import SessionContainer from "../../../../../components/Main/SessionContainer/SessionContainer";
+import CourseContainer from "../../../../../components/Main/CourseContainer/CourseContainer";
 import { firestoreService } from "../../../../../firebase";
 
 function UserCoursePageCard() {
@@ -24,7 +24,7 @@ function UserCoursePageCard() {
       {courseContainerArray &&
         courseContainerArray.map((course) => {
           // console.log(course.id);
-          return <SessionContainer key={course.id} course={course} />;
+          return <CourseContainer key={course.id} course={course} />;
         })}
     </div>
   );

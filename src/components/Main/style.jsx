@@ -160,7 +160,7 @@ export const MainSessRig = styled.div`
   }
 `;
 
-export const SessionApplication = styled(Button)`
+export const SessionApplicationOn = styled(Button)`
   margin-top: 25px;
   margin-right: 25px;
   margin-bottom: 20px;
@@ -169,6 +169,31 @@ export const SessionApplication = styled(Button)`
   display: grid;
   place-items: center;
   background-color: #c32020;
+  font-size: 16px;
+`;
+
+export const SessionApplicationOff = styled(Button)`
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background-color: #656565;
+  font-size: 16px;
+`;
+
+export const SessionApplicationMy = styled.button`
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background-color: #212121;
+  color: white;
   font-size: 16px;
 `;
 

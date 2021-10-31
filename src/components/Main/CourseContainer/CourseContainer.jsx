@@ -2,8 +2,9 @@ import { Button } from "antd";
 import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
+import CourseApplication from "./CourseApplication";
 
-function SessionContainer({ course }) {
+function CourseContainer({ course }) {
   const history = useHistory();
   const imageRender = () => {
     if (course.language === "javascript") {
@@ -72,7 +73,11 @@ function SessionContainer({ course }) {
               </div>
             </div>
           </S.SessionLevel>
-          <S.SessionApplication type="danger">신청하기</S.SessionApplication>
+          <CourseApplication
+            maxMemberNum={course.maxMemberNum}
+            courseMember={course.courseMember}
+            courseId={course.id}
+          />
           {/* {props.check ? (
             <S.SessionFavorite>수강중</S.SessionFavorite>
           ) : (
@@ -84,4 +89,4 @@ function SessionContainer({ course }) {
   );
 }
 
-export default SessionContainer;
+export default CourseContainer;
