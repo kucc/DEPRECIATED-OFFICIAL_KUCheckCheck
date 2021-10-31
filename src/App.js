@@ -33,6 +33,9 @@ function App() {
   }, []);
 
   return (
+    // TODO
+    // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
+    // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
     <>
       <GlobalStyle />
       <Switch>
