@@ -1,6 +1,6 @@
 import React from "react";
 import SignUpForm from "./components/SignUpForm";
-import Description from "./components/Description";
+import Description from "../../components/Description";
 import { StyledRow, StyledCol, Wrapper } from "./style";
 
 function SignUp() {
