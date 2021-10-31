@@ -14,7 +14,6 @@ import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 
 function App() {
-  let history = useHistory();
   const dispatch = useDispatch();
   const history = useHistory();
 
