@@ -11,7 +11,9 @@ function InputBoxWithLabel({
 }) {
   return (
     <Wrapper>
-      <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
+      {labelTitle && (
+        <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
+      )}
       <StyledInput
         name={inputName}
         type={inputType}
