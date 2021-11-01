@@ -24,7 +24,13 @@ function UserCoursePageCard() {
       {courseContainerArray &&
         courseContainerArray.map((course) => {
           // console.log(course.id);
-          return <CourseContainer key={course.id} course={course} />;
+          return (
+            <CourseContainer
+              key={course.id}
+              course={course}
+              CourseApplicationState={false}
+            />
+          );
         })}
     </div>
   );

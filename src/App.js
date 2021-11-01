@@ -4,7 +4,6 @@ import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
-import Mypage from "./pages/Userpage";
 import MypageEdit from "./pages/MypageEdit";
 import Rules from "./pages/Rules";
 import SessionAttendEdit from "./pages/SessionAttendEdit";
@@ -20,7 +19,6 @@ import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 
 function App() {
-  let history = useHistory();
   const dispatch = useDispatch();
   const history = useHistory();
 
