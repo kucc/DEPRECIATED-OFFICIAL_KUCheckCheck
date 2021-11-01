@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import * as S from "../style";
 import CourseApplication from "./CourseApplication";
 
-function CourseContainer({ course }) {
+function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
   const imageRender = () => {
     if (course.language === "javascript") {
@@ -52,7 +52,14 @@ function CourseContainer({ course }) {
       //onClick={() => history.push(`/detail/${category}/${id}`)}
       >
         <S.SessionImg>{imageRender()}</S.SessionImg>
-        <S.SessionExplainWrapper>
+        <S.SessionExplainWrapper
+          style={{
+            display: "grid",
+            gridTemplateColumns: CourseApplicationState
+              ? "auto 250px 180px"
+              : "auto 250px",
+          }}
+        >
           <S.SessionText>
             <S.SessionTitle>
               <div>{course.courseName}</div>
@@ -73,16 +80,13 @@ function CourseContainer({ course }) {
               </div>
             </div>
           </S.SessionLevel>
-          <CourseApplication
-            maxMemberNum={course.maxMemberNum}
-            courseMember={course.courseMember}
-            courseId={course.id}
-          />
-          {/* {props.check ? (
-            <S.SessionFavorite>수강중</S.SessionFavorite>
-          ) : (
-            <S.SessionFavorite>신청하기</S.SessionFavorite>
-          )} */}
+          {CourseApplicationState && (
+            <CourseApplication
+              maxMemberNum={course.maxMemberNum}
+              courseMember={course.courseMember}
+              courseId={course.id}
+            />
+          )}
         </S.SessionExplainWrapper>
       </S.SessionContainer>
     </>

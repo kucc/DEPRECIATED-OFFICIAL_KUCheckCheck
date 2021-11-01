@@ -176,10 +176,22 @@ function PMainBottomContainer() {
         </S.MainBottomBtnCont>
         {searchTerm || courseSelect !== 0
           ? searchResults.map((course) => {
-              return <CourseContainer key={course.id} course={course} />;
+              return (
+                <CourseContainer
+                  key={course.id}
+                  course={course}
+                  CourseApplicationState={true}
+                />
+              );
             })
           : courseContainerArray.map((course) => {
-              return <CourseContainer key={course.id} course={course} />;
+              return (
+                <CourseContainer
+                  key={course.id}
+                  course={course}
+                  CourseApplicationState={true}
+                />
+              );
             })}
       </S.MainBottomWrapper>
     </>
