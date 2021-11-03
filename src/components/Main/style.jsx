@@ -202,6 +202,22 @@ export const SessionApplicationMy = styled.button`
   transition: background-color 1.5s; */
 `;
 
+export const SessionApplicationLock = styled.button`
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f3f3f;
+  color: white;
+  font-size: 14px;
+  gap: 7px;
+  cursor: not-allowed;
+`;
+
 export const SessionLevel = styled.div`
   margin-top: 25px;
   margin-right: 25px;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import * as S from "../style";
+import { AiFillLock } from "react-icons/ai";
 
 function CourseApplication({ maxMemberNum, courseMember, courseId }) {
   const user = useSelector((state) => state.user);
@@ -16,7 +17,6 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
       .doc(courseId)
       .onSnapshot((doc) => {
         if (courseMember) {
-          // 버튼 누르면 수강중 버튼으로 바뀌어야 할지? 아니면 숫자가 하나 올라야할지?
           setcourseMemberArr(doc.data().courseMember);
         }
       });
@@ -62,7 +62,29 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
   };
 
   const renderApplcationButton = () => {
-    if (courseMemberArr && courseMemberArr.indexOf(user.currentUser.uid) >= 0) {
+    // Please Log In
+    if (!user.currentUser) {
+      return (
+        <S.SessionApplicationLock>
+          <AiFillLock style={{ fontSize: "22px" }} />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
+            <div>로그인 후</div>
+            <div>확인해주세요.</div>
+          </div>
+        </S.SessionApplicationLock>
+      );
+    }
+    // 수강 중
+    else if (
+      courseMemberArr &&
+      courseMemberArr.indexOf(user.currentUser.uid) >= 0
+    ) {
       return (
         <S.SessionApplicationMy>
           수강 중{" "}
@@ -71,7 +93,9 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
           </div>
         </S.SessionApplicationMy>
       );
-    } else if (!courseMemberArr || courseMemberArr.length < maxMemberNum) {
+    }
+    // 신청하기
+    else if (!courseMemberArr || courseMemberArr.length < maxMemberNum) {
       return (
         <S.SessionApplicationOn type="danger" onClick={applicationHandler}>
           신청하기
@@ -80,7 +104,9 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
           </div>
         </S.SessionApplicationOn>
       );
-    } else if (courseMemberArr.length >= maxMemberNum) {
+    }
+    // 가득 참
+    else if (courseMemberArr.length >= maxMemberNum) {
       return (
         <S.SessionApplicationOff>
           가득 참{" "}
