@@ -2,8 +2,9 @@ import { Button } from "antd";
 import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
+import CourseApplication from "./CourseApplication";
 
-function SessionContainer({ course }) {
+function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
   const imageRender = () => {
     if (course.language === "javascript") {
@@ -51,7 +52,14 @@ function SessionContainer({ course }) {
       //onClick={() => history.push(`/detail/${category}/${id}`)}
       >
         <S.SessionImg>{imageRender()}</S.SessionImg>
-        <S.SessionExplainWrapper>
+        <S.SessionExplainWrapper
+          style={{
+            display: "grid",
+            gridTemplateColumns: CourseApplicationState
+              ? "auto 250px 180px"
+              : "auto 250px",
+          }}
+        >
           <S.SessionText>
             <S.SessionTitle>
               <div>{course.courseName}</div>
@@ -72,16 +80,17 @@ function SessionContainer({ course }) {
               </div>
             </div>
           </S.SessionLevel>
-          <S.SessionApplication type="danger">신청하기</S.SessionApplication>
-          {/* {props.check ? (
-            <S.SessionFavorite>수강중</S.SessionFavorite>
-          ) : (
-            <S.SessionFavorite>신청하기</S.SessionFavorite>
-          )} */}
+          {CourseApplicationState && (
+            <CourseApplication
+              maxMemberNum={course.maxMemberNum}
+              courseMember={course.courseMember}
+              courseId={course.id}
+            />
+          )}
         </S.SessionExplainWrapper>
       </S.SessionContainer>
     </>
   );
 }
 
-export default SessionContainer;
+export default CourseContainer;

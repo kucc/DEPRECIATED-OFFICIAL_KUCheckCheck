@@ -101,10 +101,7 @@ export const SessionImg = styled.div`
   margin-left: 15%;
 `;
 
-export const SessionExplainWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto 250px 180px;
-`;
+export const SessionExplainWrapper = styled.div``;
 
 export const SessionText = styled.div`
   padding-left: 20px;
@@ -160,7 +157,7 @@ export const MainSessRig = styled.div`
   }
 `;
 
-export const SessionApplication = styled(Button)`
+export const SessionApplicationOn = styled(Button)`
   margin-top: 25px;
   margin-right: 25px;
   margin-bottom: 20px;
@@ -170,6 +167,39 @@ export const SessionApplication = styled(Button)`
   place-items: center;
   background-color: #c32020;
   font-size: 16px;
+  /* -webkit-transition: background-color 1.5s;
+  transition: background-color 1.5s; */
+`;
+
+export const SessionApplicationOff = styled.button`
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background-color: #656565;
+  color: white;
+  font-size: 16px;
+  cursor: not-allowed;
+  /* -webkit-transition: background-color 1.5s;
+  transition: background-color 1.5s; */
+`;
+
+export const SessionApplicationMy = styled.button`
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background-color: #212121;
+  color: white;
+  font-size: 16px;
+  /* -webkit-transition: background-color 1.5s;
+  transition: background-color 1.5s; */
 `;
 
 export const SessionLevel = styled.div`
