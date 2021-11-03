@@ -6,6 +6,9 @@ import { Link, useHistory } from "react-router-dom";
 import * as S from "./style";
 import { authService } from "../../firebase";
 
+// TODO
+// NavBar 컴포넌트를 src/components 하위 항목으로 이동
+// 불필요한 함수 삭제 및 스타일 분리
 export default function NavBar() {
   const user = useSelector((state) => state.user);
   const history = useHistory();
