@@ -9,6 +9,7 @@ import {
   PASSWORD_DOSE_NOT_MATCH,
 } from "../../../../constants/ERROR_MESSAGE";
 import { authService, firestoreService } from "../../../../firebase";
+import RandomEmoji from "../../../../components/RandomEmoji/RandomEmoji";
 
 function SignUpForm() {
   const [inputs, setInputs] = useState({
@@ -48,13 +49,20 @@ function SignUpForm() {
         throw new Error(CAN_NOT_CREATE_USER_IN_FIREBASE);
 
       const userData = {
+        email,
         name,
         comment,
         link,
         role: "준회원",
+        emoji: RandomEmoji(),
+        courseHistory: [],
+        detailComment: "",
       };
 
-      await firestoreService.collection("users").add(userData);
+      await firestoreService
+        .collection("users")
+        .doc(createdUser.user.uid)
+        .set(userData);
       alert("회원 가입을 완료하였습니다!");
       history.push("/");
     } catch (error) {
