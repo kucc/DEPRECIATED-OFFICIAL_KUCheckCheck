@@ -1,29 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { firestoreService } from "../../../firebase";
+import CourseAttendanceCard from "./CourseAttendanceCard";
 import CourseAttendanceTop from "./CourseAttendanceTop";
 
 function CourseAttendace() {
-  // prop으로 courseID 불러오기
-  // 2fQb80nV3z3JsMzPu8uW 라고 가정
+  const courseId = document.location.href.split("/")[5];
+  const [userData, setuserData] = useState([]);
   useEffect(() => {
-    // firestoreService
-    //   .collection("courses")
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     let noticesArray = [];
-    //     querySnapshot.forEach((doc) => {
-    //       noticesArray.push(doc.data());
-    //     });
-    //     setNotices(noticesArray);
-    //   });
+    const courseId = document.location.href.split("/")[5];
+    firestoreService
+      .collection("courses")
+      .doc(courseId)
+      .get()
+      .then((querySnapshot) => {
+        setuserData(querySnapshot.data().attendance);
+      });
   }, []);
 
   return (
     <div>
       코스 출석!
       <CourseAttendanceTop />
-      {/* map 함수로 render하기
-      <CourseAttendanceCard /> */}
+      {userData &&
+        userData.map((userData, key) => {
+          return (
+            <CourseAttendanceCard
+              key={key}
+              userData={userData}
+              courseId={courseId}
+            />
+          );
+        })}
     </div>
   );
 }
