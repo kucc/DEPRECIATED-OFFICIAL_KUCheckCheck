@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
 import Rules from "./pages/Rules";
+import SessionNew from "./pages/SessionNew";
 import { authService } from "./firebase";
 import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
@@ -43,6 +44,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/userpage/:id" component={Userpage} />
         <Route path="/rules" component={Rules} />
+        <Route path="/session-new" exact component={SessionNew} />
         <Route path="/" exact component={Main} />
       </Switch>
     </>
