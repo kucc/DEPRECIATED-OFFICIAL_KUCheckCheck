@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
@@ -49,7 +48,7 @@ function CourseContainer({ course, CourseApplicationState }) {
   return (
     <>
       <S.SessionContainer
-      //onClick={() => history.push(`/detail/${category}/${id}`)}
+        onClick={() => history.push(`/course/session/${course.id}`)}
       >
         <S.SessionImg>{imageRender()}</S.SessionImg>
         <S.SessionExplainWrapper

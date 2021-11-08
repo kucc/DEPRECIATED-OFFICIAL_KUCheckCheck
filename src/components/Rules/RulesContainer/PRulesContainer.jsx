@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import NavBar from "../../Common/NavBar";
 import { Button } from "antd";
-import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 
 function PRulesContainer() {
-  const user = useSelector((state) => state.user);
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
     firestoreService
