@@ -9,15 +9,16 @@ import {
   FORM_IS_NOT_FULL,
 } from "../../../constants/ERROR_MESSAGE";
 import {
+  StyledBackground,
   StyledBlackButton,
   StyledBottomContainer,
   StyledInputBox,
   StyledInputNumber,
+  StyledNavBarContainer,
   StyledText,
   StyledTextArea,
   StyledTopContainer,
 } from "../style";
-import { StyledBackground } from "../../../pages/Userpage/style";
 
 function PSessionNewBox({ enrollHandler }) {
   //하나의 객체로..?
@@ -90,7 +91,9 @@ function PSessionNewBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <NavBar />
+      <StyledNavBarContainer>
+        <NavBar />
+      </StyledNavBarContainer>
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 
@@ -142,6 +145,7 @@ function PSessionNewBox({ enrollHandler }) {
                     height: "70px",
                     borderRadius: "50%",
                     marginRight: "20px",
+                    objectFit: "contain",
                   }}
                   src={`./img/icon/${selectedImg}.png`}
                 />

@@ -2,7 +2,15 @@ import { Button, InputNumber } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import styled from "styled-components";
 
-export const SessionNewBackground = styled.div`
+export const StyledNavBarContainer = styled.div`
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0 11px 10px 2px lightgrey;
+  background-color: white;
+  z-index: 1;
+`;
+
+export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
 `;
 
@@ -10,6 +18,7 @@ export const StyledTopContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 15%;
+  margin-top: 20px;
 `;
 export const StyledBottomContainer = styled.div`
   display: grid;

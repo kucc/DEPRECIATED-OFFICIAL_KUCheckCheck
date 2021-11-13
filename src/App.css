@@ -1,14 +1,14 @@
 @font-face {
-    font-family: "NexonBo";
-    src: url("./font/NEXONLv1GothicBold.ttf");
+  font-family: "NexonBo";
+  src: url("./font/NEXONLv1GothicBold.ttf");
 }
 
 @font-face {
-    font-family: "NexonRe";
-    src: url("./font/NEXONLv1GothicRegular.ttf");
+  font-family: "NexonRe";
+  src: url("./font/NEXONLv1GothicRegular.ttf");
 }
 
 @font-face {
-    font-family: "NexonLi";
-    src: url("./font/NEXONLv1GothicLight.ttf");
+  font-family: "NexonLi";
+  src: url("./font/NEXONLv1GothicLight.ttf");
 }

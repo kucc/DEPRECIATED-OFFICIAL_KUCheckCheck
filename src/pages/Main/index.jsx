@@ -5,7 +5,9 @@ import { MainTopContainer, MainBottomContainer } from "../../components/Main";
 function Main() {
   return (
     <div style={{ backgroundColor: "rgb(245, 245, 245)" }}>
-      <NavBar />
+      <div style={{ backgroundColor: "white" }}>
+        <NavBar />
+      </div>
       <MainTopContainer />
       <MainBottomContainer />
     </div>
