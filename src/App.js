@@ -62,6 +62,7 @@ export default App;
 
 const GlobalStyle = createGlobalStyle`
   * {
+    /* background-color: rgb(245, 245, 245); */
     padding: 0px;
     margin: 0px;
     /* box-sizing: border-box; */

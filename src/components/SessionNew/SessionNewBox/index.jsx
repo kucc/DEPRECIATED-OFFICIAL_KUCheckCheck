@@ -1,8 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { SUCCESS_APPLICATION } from "../../../constants/ERROR_MESSAGE";
 import { firestoreService } from "../../../firebase";
 import PSessionNewBox from "./PSessionNewBox";
 
 export default function LoginBox() {
+  // 이게 왜 Login Box지 ??
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+
   const enrollHandler = async (sessionInfo) => {
     const {
       courseName,
@@ -31,14 +38,32 @@ export default function LoginBox() {
         courseDate,
         coursePlace,
         courseNotice,
-        courseMember,
         courseCurriculum,
+        maxMemberNum: Number(courseMember),
+        courseMember: [user.currentUser.uid],
+        courseLeader: user.currentUser.displayName,
+        courseAttendance: [
+          {
+            id: user.currentUser.uid,
+            attendance: [
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+            ],
+          },
+        ],
       })
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+        alert(SUCCESS_APPLICATION);
+        history.push("/");
       })
       .catch((error) => {
-        console.error("Error adding document: ", error);
+        alert("Error adding document: ", error);
       });
   };
 
