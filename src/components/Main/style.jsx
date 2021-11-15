@@ -106,6 +106,7 @@ export const SessionExplainWrapper = styled.div``;
 export const SessionText = styled.div`
   padding-left: 20px;
   padding-top: 30px;
+  cursor: pointer;
 `;
 
 export const SessionTitle = styled.div`
@@ -198,8 +199,12 @@ export const SessionApplicationMy = styled.button`
   background-color: #212121;
   color: white;
   font-size: 16px;
-  /* -webkit-transition: background-color 1.5s;
-  transition: background-color 1.5s; */
+  cursor: pointer;
+  &:hover {
+    background-color: #393838;
+  }
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 `;
 
 export const SessionApplicationLock = styled.button`
@@ -226,6 +231,7 @@ export const SessionLevel = styled.div`
   background-color: rgb(245, 245, 245);
   text-align: center;
   border-radius: 30px;
+  cursor: pointer;
 `;
 
 export const MainSessItemOnClick = styled.div`

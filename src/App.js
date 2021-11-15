@@ -13,6 +13,8 @@ import "antd/dist/antd.css";
 import "./App.css";
 import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
+import CourseAttendace from "./pages/Course/CourseAttendance";
+import CoursePage from "./pages/Course";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +46,11 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/userpage/:id" component={Userpage} />
         <Route path="/rules" component={Rules} />
+        <Route exact path="/course/session/:id" component={CoursePage} />
+        <Route
+          path="/course/session/:id/attendance"
+          component={CourseAttendace}
+        />
         <Route path="/session-new" exact component={SessionNew} />
         <Route path="/" exact component={Main} />
       </Switch>
@@ -55,6 +62,7 @@ export default App;
 
 const GlobalStyle = createGlobalStyle`
   * {
+    /* background-color: rgb(245, 245, 245); */
     padding: 0px;
     margin: 0px;
     /* box-sizing: border-box; */

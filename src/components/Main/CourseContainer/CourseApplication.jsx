@@ -3,22 +3,38 @@ import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import * as S from "../style";
 import { AiFillLock } from "react-icons/ai";
+import Modal from "antd/lib/modal/Modal";
 
 function CourseApplication({ maxMemberNum, courseMember, courseId }) {
   const user = useSelector((state) => state.user);
   const [Loading, setLoading] = useState(false);
   const [courseMemberArr, setcourseMemberArr] = useState([]);
+  const [courseAttendanceArr, setcourseAttendanceArr] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    // courseMember에서 해당 member를 제거, courseAttendance에서 해당 member를 제거
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     setcourseMemberArr(courseMember);
+
     // 이벤트 리스너
     firestoreService
       .collection("courses")
       .doc(courseId)
       .onSnapshot((doc) => {
-        if (courseMember) {
-          setcourseMemberArr(doc.data().courseMember);
-        }
+        setcourseMemberArr(doc.data().courseMember);
+        setcourseAttendanceArr(doc.data().courseAttendance);
       });
   }, []);
 
@@ -34,17 +50,29 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
           courseMember.indexOf(user.currentUser.uid) < 0
         ) {
           // 새로운 배열을 생성
-          let newCourseMember = [];
-          if (courseMemberArr) {
-            newCourseMember = [user.currentUser.uid, ...courseMember];
-          } else {
-            newCourseMember = [user.currentUser.uid];
-          }
+          const newCourseMember = [...courseMember, user.currentUser.uid];
+          const newCourseAttendance = [
+            ...courseAttendanceArr,
+            {
+              id: user.currentUser.uid,
+              attendance: [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+              ],
+            },
+          ];
           firestoreService
             .collection("courses")
             .doc(courseId)
             .update({
               courseMember: newCourseMember,
+              courseAttendance: newCourseAttendance,
             })
             .then(() => {
               // UI 변경
@@ -86,7 +114,7 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
       courseMemberArr.indexOf(user.currentUser.uid) >= 0
     ) {
       return (
-        <S.SessionApplicationMy>
+        <S.SessionApplicationMy onClick={showModal}>
           수강 중{" "}
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -109,7 +137,7 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
     else if (courseMemberArr.length >= maxMemberNum) {
       return (
         <S.SessionApplicationOff>
-          가득 참{" "}
+          인원 마감{" "}
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
@@ -117,7 +145,19 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
       );
     }
   };
-  return <>{renderApplcationButton()}</>;
+  return (
+    <>
+      {renderApplcationButton()}{" "}
+      <Modal
+        title="취소하기"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>정말로 신청한 과목을 취소할까요?</p>
+      </Modal>
+    </>
+  );
 }
 
 export default CourseApplication;

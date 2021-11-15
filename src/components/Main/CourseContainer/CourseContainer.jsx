@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import { useHistory } from "react-router";
 import * as S from "../style";
@@ -7,35 +6,12 @@ import CourseApplication from "./CourseApplication";
 function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
   const imageRender = () => {
-    if (course.language === "javascript") {
-      return (
-        <img
-          style={{ borderRadius: "50%", width: "60px" }}
-          src="/img/icon/Javascript.png"
-        />
-      );
-    } else if (course.language === "python") {
-      return (
-        <img
-          style={{ borderRadius: "50%", width: "60px" }}
-          src="/img/icon/Python.png"
-        />
-      );
-    } else if (course.language === "react") {
-      return (
-        <img
-          style={{ borderRadius: "50%", width: "60px" }}
-          src="/img/icon/React.png"
-        />
-      );
-    } else if (course.language === "c") {
-      return (
-        <img
-          style={{ borderRadius: "50%", width: "60px" }}
-          src="/img/icon/C.png"
-        />
-      );
-    }
+    return (
+      <img
+        style={{ borderRadius: "50%", width: "60px" }}
+        src={`/img/icon/${course.language}.png`}
+      />
+    );
   };
 
   const renderCourseLeader = () => {
@@ -48,9 +24,7 @@ function CourseContainer({ course, CourseApplicationState }) {
 
   return (
     <>
-      <S.SessionContainer
-      //onClick={() => history.push(`/detail/${category}/${id}`)}
-      >
+      <S.SessionContainer>
         <S.SessionImg>{imageRender()}</S.SessionImg>
         <S.SessionExplainWrapper
           style={{
@@ -60,13 +34,17 @@ function CourseContainer({ course, CourseApplicationState }) {
               : "auto 250px",
           }}
         >
-          <S.SessionText>
+          <S.SessionText
+            onClick={() => history.push(`/course/session/${course.id}`)}
+          >
             <S.SessionTitle>
               <div>{course.courseName}</div>
             </S.SessionTitle>
             <S.SessionExplain>{renderCourseLeader()}</S.SessionExplain>
           </S.SessionText>
-          <S.SessionLevel>
+          <S.SessionLevel
+            onClick={() => history.push(`/course/session/${course.id}`)}
+          >
             <div
               style={{ display: "flex", placeContent: "center", gap: "3px" }}
             >
