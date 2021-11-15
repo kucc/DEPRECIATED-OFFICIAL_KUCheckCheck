@@ -1,6 +1,7 @@
 import React from "react";
 
-function CourseAttendanceCard() {
+function CourseAttendanceCard({ userData, courseId }) {
+  console.log(userData, courseId);
   return <div></div>;
 }
 
