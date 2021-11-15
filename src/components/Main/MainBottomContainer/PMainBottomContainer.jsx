@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import CourseContainer from "../CourseContainer/CourseContainer";
-import SessionContainer from "../CourseContainer/CourseContainer";
 import * as S from "../style";
 
 function PMainBottomContainer() {
@@ -12,6 +11,7 @@ function PMainBottomContainer() {
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   const [searchResults, setsearchResults] = useState([]);
+  const user = useSelector((state) => state.user);
 
   const searchTerm = useSelector((state) => state.search.searchTerm);
   // 검색 기능
@@ -159,19 +159,21 @@ function PMainBottomContainer() {
             </S.MainSessItem>
           </S.MainSessTab>
           <S.MainSessRig>
-            <Button
-              style={{
-                width: "100%",
-                height: "40px",
-                borderRadius: "25px",
-                boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
-                display: "grid",
-                placeItems: "center",
-              }}
-              href="/session-new"
-            >
-              등록하기
-            </Button>
+            {user.currentUser && (
+              <Button
+                style={{
+                  width: "100%",
+                  height: "40px",
+                  borderRadius: "25px",
+                  boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
+                  display: "grid",
+                  placeItems: "center",
+                }}
+                href="/session-new"
+              >
+                등록하기
+              </Button>
+            )}
           </S.MainSessRig>
         </S.MainBottomBtnCont>
         {searchTerm || courseSelect !== 0

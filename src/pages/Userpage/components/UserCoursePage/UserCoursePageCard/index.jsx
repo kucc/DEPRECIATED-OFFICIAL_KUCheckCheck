@@ -1,5 +1,5 @@
+import { Empty } from "antd";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import CourseContainer from "../../../../../components/Main/CourseContainer/CourseContainer";
 import { firestoreService } from "../../../../../firebase";
 
@@ -17,13 +17,12 @@ function UserCoursePageCard() {
       });
   }, []);
 
-  // console.log(courseContainerArray);
+  console.log(courseContainerArray);
 
   return (
     <div>
-      {courseContainerArray &&
+      {courseContainerArray.length > 0 ? (
         courseContainerArray.map((course) => {
-          // console.log(course.id);
           return (
             <CourseContainer
               key={course.id}
@@ -31,7 +30,10 @@ function UserCoursePageCard() {
               CourseApplicationState={false}
             />
           );
-        })}
+        })
+      ) : (
+        <Empty />
+      )}
     </div>
   );
 }

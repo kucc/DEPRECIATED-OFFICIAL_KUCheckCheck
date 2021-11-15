@@ -20,7 +20,8 @@ function PMainTopContainer() {
         </div>
         <div>
           <img
-            style={{ width: "450px", marginTop: "-40px" }}
+            // marginTop : '24px'
+            style={{ width: "450px", marginTop: "0px" }}
             src={"./img/KUCCicon.png"}
           />
         </div>

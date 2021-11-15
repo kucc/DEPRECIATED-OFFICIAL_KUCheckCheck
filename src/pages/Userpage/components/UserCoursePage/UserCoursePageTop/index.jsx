@@ -13,7 +13,7 @@ function UserMyPageTop() {
           marginTop: "50px",
         }}
       >
-        {/* 이름 수정.. */}내 세션/스터디
+        {/* 이름 수정.. */}지난 세션/스터디
       </div>
     </div>
   );
