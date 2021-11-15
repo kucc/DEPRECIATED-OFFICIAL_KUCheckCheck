@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SUCCESS_APPLICATION } from "../../../constants/ERROR_MESSAGE";
 import { firestoreService } from "../../../firebase";
 import PSessionNewBox from "./PSessionNewBox";
 
-export default function LoginBox() {
+export default function SessionNewBox() {
   // 이게 왜 Login Box지 ??
   const history = useHistory();
   const user = useSelector((state) => state.user);
+  const [currentSemester, setcurrentSemester] = useState("");
+
+  useEffect(() => {
+    firestoreService
+      .collection("common")
+      .doc("commonInfo")
+      .get()
+      .then((doc) => {
+        setcurrentSemester(doc.data().currentSemester);
+      });
+  }, []);
 
   const enrollHandler = async (sessionInfo) => {
     const {
@@ -25,6 +36,7 @@ export default function LoginBox() {
       courseMember,
       courseCurriculum,
     } = sessionInfo;
+
     await firestoreService
       .collection("courses")
       .add({
@@ -57,6 +69,7 @@ export default function LoginBox() {
             ],
           },
         ],
+        semester: currentSemester,
       })
       .then((docRef) => {
         alert(SUCCESS_APPLICATION);
