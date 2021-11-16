@@ -7,7 +7,6 @@ import * as S from "../style";
 
 function PMainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
-  // const [search, setSearch] = useState(useRecoilState(userState).category);
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   const [filterResults, setfilterResults] = useState([]);
@@ -20,9 +19,9 @@ function PMainBottomContainer() {
     const regex = new RegExp(searchTerm, "gi");
     const searchResults = courseContainerArray.reduce((acc, course) => {
       if (
-        (course.courseName && course.courseName.match(regex)) ||
+        course.courseName.match(regex) ||
         // courseLeader 정보가 없어서 주석처리 해둠. 원래 있어야할 기능.
-        // course.courseLeader.match(regex) ||
+        course.courseLeader.match(regex) ||
         course.language.match(regex)
       ) {
         acc.push(course);

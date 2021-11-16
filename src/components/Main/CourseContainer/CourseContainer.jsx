@@ -63,6 +63,7 @@ function CourseContainer({ course, CourseApplicationState }) {
               maxMemberNum={course.maxMemberNum}
               courseMember={course.courseMember}
               courseId={course.id}
+              courseSemetser={course.semester}
             />
           )}
         </S.SessionExplainWrapper>

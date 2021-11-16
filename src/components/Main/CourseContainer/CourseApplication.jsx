@@ -4,12 +4,23 @@ import { firestoreService } from "../../../firebase";
 import * as S from "../style";
 import { AiFillLock, AiOutlineClose } from "react-icons/ai";
 import Modal from "antd/lib/modal/Modal";
+import {
+  ALREADY_APPLIED_COURSE,
+  NOT_ENROLLMENT_TERM,
+  SUCCESS_APPLIED_COURSE,
+} from "../../../constants/ERROR_MESSAGE";
 
-function CourseApplication({ maxMemberNum, courseMember, courseId }) {
+function CourseApplication({
+  maxMemberNum,
+  courseMember,
+  courseId,
+  courseSemetser,
+}) {
   const user = useSelector((state) => state.user);
   const [Loading, setLoading] = useState(false);
   const [courseMemberArr, setcourseMemberArr] = useState([]);
   const [courseAttendanceArr, setcourseAttendanceArr] = useState([]);
+  const [currentSemester, setcurrentSemester] = useState("");
   const [enrollmentTerm, setenrollmentTerm] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [today, settoday] = useState("");
@@ -50,10 +61,12 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
         newenrollmentTerm.push(doc.data().enrollmentTerm[0].toDate());
         newenrollmentTerm.push(doc.data().enrollmentTerm[1].toDate());
         setenrollmentTerm(newenrollmentTerm);
+        // 현재 학기 등록
+        setcurrentSemester(doc.data().currentSemester);
       });
   }, []);
 
-  const applicationHandler = () => {
+  const applicationHandler = async () => {
     // loading이 false라면
     if (!Loading) {
       setLoading(true);
@@ -63,51 +76,52 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
         if (courseMember.length < maxMemberNum) {
           // 현재 유저가 CourseMember에 없을 때
           if (courseMember.indexOf(user.currentUser.uid) < 0) {
-            // 새로운 배열을 생성
-            const newCourseMember = [...courseMember, user.currentUser.uid];
-            const newCourseAttendance = [
-              ...courseAttendanceArr,
-              {
-                id: user.currentUser.uid,
-                attendance: [
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ],
-              },
-            ];
-            firestoreService
-              .collection("courses")
-              .doc(courseId)
-              .update({
-                courseMember: newCourseMember,
-                courseAttendance: newCourseAttendance,
-              })
-              .then(() => {
-                // UI 변경
-                alert("신청이 완료되었습니다.");
-              })
-              .catch((error) => {
-                alert("error", error);
-              });
+            try {
+              // 새로운 배열을 생성
+              const newCourseMember = [...courseMember, user.currentUser.uid];
+              const newCourseAttendance = [
+                ...courseAttendanceArr,
+                {
+                  id: user.currentUser.uid,
+                  attendance: [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                  ],
+                },
+              ];
+              await firestoreService
+                .collection("courses")
+                .doc(courseId)
+                .update({
+                  courseMember: newCourseMember,
+                  courseAttendance: newCourseAttendance,
+                });
+              alert(SUCCESS_APPLIED_COURSE);
+            } catch (error) {
+              alert("error", error);
+            } finally {
+              setLoading(false);
+            }
           } else {
-            alert("이미 신청한 과목입니다.");
+            alert(ALREADY_APPLIED_COURSE);
+            setLoading(false);
           }
         }
       } else {
-        alert("신청 기간이 아닙니다.");
+        alert(NOT_ENROLLMENT_TERM);
+        setLoading(false);
       }
-      setLoading(false);
     }
   };
 
   const renderApplcationButton = () => {
-    // Please Log In
+    // 로그인된 유저가 아닐 경우
     if (!user.currentUser) {
       return (
         <S.SessionApplicationLock>
@@ -125,13 +139,14 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
         </S.SessionApplicationLock>
       );
     }
-    // 수강 신청 기간가 아닐경우
+    // 수강 신청 기간가 아닐경우 ( 등록 기간이 아니거나 현재 학기와 맞지 않을 경우 )
     else if (
       !(
         enrollmentTerm &&
         enrollmentTerm[0] <= today &&
         today <= enrollmentTerm[1]
-      )
+      ) ||
+      courseSemetser !== currentSemester
     ) {
       return (
         <S.SessionApplicationLock>
@@ -166,7 +181,11 @@ function CourseApplication({ maxMemberNum, courseMember, courseId }) {
     // 신청하기
     else if (!courseMemberArr || courseMemberArr.length < maxMemberNum) {
       return (
-        <S.SessionApplicationOn type="danger" onClick={applicationHandler}>
+        <S.SessionApplicationOn
+          type="danger"
+          onClick={applicationHandler}
+          loading={Loading}
+        >
           신청하기
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
