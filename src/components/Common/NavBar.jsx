@@ -23,17 +23,12 @@ export default function NavBar() {
   };
   const myPage = async () => {
     try {
-      // mypage 주소 뒤에 uid를 넣어줘야 하나??
       history.push(`/userpage/${user.currentUser.uid}`);
     } catch (e) {
       alert(e.response.data.error.msg);
     }
   };
-  const google = async (e) => {
-    window.location.replace(
-      "http://taskagile.site/oauth2/authorization/google"
-    );
-  };
+
   return (
     <S.NavBarContainer>
       <S.NavBarLogoContainer>

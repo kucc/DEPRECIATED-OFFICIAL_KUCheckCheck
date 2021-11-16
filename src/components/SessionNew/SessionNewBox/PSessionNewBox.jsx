@@ -25,11 +25,11 @@ function PSessionNewBox({ enrollHandler }) {
   const [courseName, setcourseName] = useState("");
   const [courseInfo, setcourseInfo] = useState("");
   const [courseGoal, setcourseGoal] = useState("");
-  const [language, setlanguage] = useState("Javascript");
+  const [language, setlanguage] = useState("C");
   const [difficulty, setdifficulty] = useState("");
   const [requireTime, setrequireTime] = useState("");
   const [courseType, setcourseType] = useState("");
-  const [selectedImg, setselectedImg] = useState("Javascript");
+  const [selectedImg, setselectedImg] = useState("C");
   const [courseDate, setcourseDate] = useState("");
   const [coursePlace, setcoursePlace] = useState("");
   const [courseNotice, setcourseNotice] = useState("");
@@ -152,7 +152,7 @@ function PSessionNewBox({ enrollHandler }) {
 
                 <Select
                   style={{ width: "calc(100% - 150px)", marginRight: "50px" }}
-                  defaultValue="Javascript"
+                  defaultValue="C"
                   onChange={handleLanguage}
                 >
                   <Option value="C">C</Option>

@@ -48,6 +48,7 @@ function UserPageTop({ onChangeFunc }) {
         emoji: userEmoji,
       })
       .then(() => {
+        // 교체해야 함!
         console.log("Document successfully updated!");
         onChangeFunc(Date());
       })
@@ -80,8 +81,11 @@ function UserPageTop({ onChangeFunc }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div style={{ fontSize: "20px", fontWeight: "700", marginLeft: "20px" }}>
-        {/* 이름 수정.. */}
-        유저 페이지
+        {user.currentUser && userId === user.currentUser.uid ? (
+          <>마이 페이지</>
+        ) : (
+          <>{userName} 님의 정보</>
+        )}
       </div>
       {/* 대상 유저와 현재 유저와 같으면, 수정하기 on */}
       {user.currentUser && userId === user.currentUser.uid && (

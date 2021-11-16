@@ -1,4 +1,4 @@
-import { Button, Dropdown, Menu } from "antd";
+import { Button, Dropdown, Empty, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
@@ -14,40 +14,137 @@ function PMainBottomContainer() {
   const [pastSemester, setpastSemester] = useState([]);
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
-  // 검색 기능
+  const searchCategory = useSelector((state) => state.search.category);
+  const searchLanguage = useSelector((state) => state.search.language);
+
+  // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
-    const regex = new RegExp(searchTerm, "gi");
-    const searchResults = courseContainerArray.reduce((acc, course) => {
+    // course의 id만을 가지는 배열을 복사
+    const courseContainerArrayId = courseContainerArray.reduce(
+      (acc, course) => {
+        acc.push(course.id);
+        return acc;
+      },
+      []
+    );
+
+    let searchTermResults = [...courseContainerArrayId];
+    let searchCategoryResults = [...courseContainerArrayId];
+    let searchLanguageResults = [...courseContainerArrayId];
+    let courseToggleResults = [...courseContainerArrayId];
+
+    // 1. 검색에 의한 filter
+    if (searchTerm) {
+      const regex = new RegExp(searchTerm, "gi");
+      searchTermResults = courseContainerArray.reduce((acc, course) => {
+        if (
+          // courseName 검색
+          course.courseName.match(regex) ||
+          // courseLeader 검색
+          course.courseLeader.match(regex) ||
+          // courseLanguage 검색
+          course.language.match(regex)
+        ) {
+          acc.push(course.id);
+        }
+        return acc;
+      }, []);
+    }
+    // 2-1. Category에 의한 filter
+    if (searchCategory) {
+      searchCategoryResults = courseContainerArray.reduce((acc, course) => {
+        if (searchCategory === "Web") {
+          if (
+            ["Database", "Html", "Javascript", "Node", "React"].includes(
+              course.language
+            )
+          ) {
+            acc.push(course.id);
+          }
+        } else if (searchCategory === "App") {
+          // Java도 포함??
+          if (
+            ["Java", "Kotlin", "ReactNative", "Swift"].includes(course.language)
+          ) {
+            acc.push(course);
+          }
+        } else if (searchCategory === "알고리즘") {
+          if (course.language === "Algorithm") {
+            acc.push(course.id);
+          }
+        } else if (searchCategory === "머신러닝") {
+          if (course.language === "MachineLearning") {
+            acc.push(course.id);
+          }
+        }
+        return acc;
+      }, []);
+    }
+    // 2-2. Language에 의한 filter
+    if (searchLanguage) {
+      searchLanguageResults = courseContainerArray.reduce((acc, course) => {
+        if (searchLanguage === "C") {
+          if (course.language === "C") {
+            acc.push(course.id);
+          }
+        } else if (searchLanguage === "Python") {
+          // Java도 포함??
+          if (course.language === "Python") {
+            acc.push(course.id);
+          }
+        } else if (searchLanguage === "Javascript") {
+          if (course.language === "Javascript") {
+            acc.push(course.id);
+          }
+        } else if (searchLanguage === "Java") {
+          if (course.language === "Java") {
+            acc.push(course.id);
+          }
+        }
+        return acc;
+      }, []);
+    }
+    // 3. 세션/스터디/프로젝트 분류
+    if (courseSelect) {
+      // Type 1. 세션
+      if (courseSelect === 1) {
+        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+          if (course.courseType && course.courseType === 1) {
+            acc.push(course.id);
+          }
+          return acc;
+        }, []);
+        // Type 2. 스터디
+      } else if (courseSelect === 2) {
+        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+          if (course.courseType && course.courseType === 2) {
+            acc.push(course.id);
+          }
+          return acc;
+        }, []);
+      }
+    }
+    // 4가지의 배열 중 겹치는 course만 filter 함.
+    const filteredResults = courseContainerArray.reduce((acc, course) => {
       if (
-        course.courseName.match(regex) ||
-        // courseLeader 정보가 없어서 주석처리 해둠. 원래 있어야할 기능.
-        course.courseLeader.match(regex) ||
-        course.language.match(regex)
+        searchTermResults.indexOf(course.id) > -1 &&
+        searchCategoryResults.indexOf(course.id) > -1 &&
+        searchLanguageResults.indexOf(course.id) > -1 &&
+        courseToggleResults.indexOf(course.id) > -1
       ) {
         acc.push(course);
       }
       return acc;
     }, []);
-    setfilterResults(searchResults);
-  }, [searchTerm, courseContainerArray]);
-
-  // course toggle 기능
-  const matchCourseSelect = (num) => {
-    const regex = new RegExp(searchTerm, "gi");
-    const matchResults = courseContainerArray.reduce((acc, course) => {
-      if (course.courseType && course.courseType === num) {
-        if (searchTerm) {
-          if (course.courseName.match(regex) || course.language.match(regex)) {
-            acc.push(course);
-          }
-        } else {
-          acc.push(course);
-        }
-      }
-      return acc;
-    }, []);
-    setfilterResults(matchResults);
-  };
+    // filterResult에 넣어줌.
+    setfilterResults(filteredResults);
+  }, [
+    searchTerm,
+    searchCategory,
+    searchLanguage,
+    courseSelect,
+    courseContainerArray,
+  ]);
 
   // 학기 선택 기능
   useEffect(() => {
@@ -68,14 +165,6 @@ function PMainBottomContainer() {
         setcourseContainerArray(courseArray);
       });
   }, [currentSemester]);
-
-  useEffect(() => {
-    if (courseSelect === 1) {
-      matchCourseSelect(1);
-    } else if (courseSelect === 2) {
-      matchCourseSelect(2);
-    }
-  }, [courseSelect, courseContainerArray]);
 
   //세션 불러오기
   useEffect(() => {
@@ -122,6 +211,38 @@ function PMainBottomContainer() {
         })}
     </Menu>
   );
+
+  const renderCourse = () => {
+    if (searchTerm || courseSelect !== 0 || searchCategory || searchLanguage) {
+      if (filterResults.length === 0) {
+        return <Empty style={{ marginTop: "50px" }} />;
+      } else {
+        return filterResults.map((course) => {
+          return (
+            <CourseContainer
+              key={course.id}
+              course={course}
+              CourseApplicationState={true}
+            />
+          );
+        });
+      }
+    } else {
+      if (courseContainerArray.length === 0) {
+        return <Empty style={{ marginTop: "50px" }} />;
+      } else {
+        return courseContainerArray.map((course) => {
+          return (
+            <CourseContainer
+              key={course.id}
+              course={course}
+              CourseApplicationState={true}
+            />
+          );
+        });
+      }
+    }
+  };
 
   return (
     <>
@@ -186,25 +307,7 @@ function PMainBottomContainer() {
             )}
           </S.MainSessRig>
         </S.MainBottomBtnCont>
-        {searchTerm || courseSelect !== 0
-          ? filterResults.map((course) => {
-              return (
-                <CourseContainer
-                  key={course.id}
-                  course={course}
-                  CourseApplicationState={true}
-                />
-              );
-            })
-          : courseContainerArray.map((course) => {
-              return (
-                <CourseContainer
-                  key={course.id}
-                  course={course}
-                  CourseApplicationState={true}
-                />
-              );
-            })}
+        {renderCourse()}
       </S.MainBottomWrapper>
     </>
   );

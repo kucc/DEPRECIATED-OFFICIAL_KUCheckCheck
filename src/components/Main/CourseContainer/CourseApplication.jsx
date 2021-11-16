@@ -38,6 +38,11 @@ function CourseApplication({
     setIsModalVisible(false);
   };
 
+  // const [hoverState, sethoverState] = useState(false);
+  // const handleMouseHover = () => {
+  //   sethoverState(!hoverState);
+  // };
+
   useEffect(() => {
     setcourseMemberArr(courseMember);
     settoday(new Date());
@@ -170,8 +175,13 @@ function CourseApplication({
       courseMemberArr.indexOf(user.currentUser.uid) >= 0
     ) {
       return (
-        <S.SessionApplicationMy onClick={showModal}>
-          수강 중{" "}
+        <S.SessionApplicationMy
+          // onMouseEnter={handleMouseHover}
+          // onMouseLeave={handleMouseHover}
+          onClick={showModal}
+        >
+          {/* {hoverState ? "수강 취소" : "수강 중"} */}
+          수강 중
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
