@@ -10,27 +10,79 @@ import {
   SUCCESS_APPLIED_COURSE,
 } from "../../../constants/ERROR_MESSAGE";
 
-function CourseApplication({
-  maxMemberNum,
-  courseMember,
-  courseId,
-  courseSemetser,
-}) {
-  const user = useSelector((state) => state.user);
+function CourseApplication({ course, courseId }) {
+  const { maxMemberNum, semester } = course;
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [Loading, setLoading] = useState(false);
   const [courseMemberArr, setcourseMemberArr] = useState([]);
   const [courseAttendanceArr, setcourseAttendanceArr] = useState([]);
   const [currentSemester, setcurrentSemester] = useState("");
   const [enrollmentTerm, setenrollmentTerm] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [hoverState, sethoverState] = useState(false);
   const [today, settoday] = useState("");
 
   const showModal = () => {
-    setIsModalVisible(true);
+    // 세션 취소하기 modal
+    if (currentUser.uid === course.courseLeader.id) {
+      alert("세션장은 취소할 수 없습니다!");
+    } else {
+      setIsModalVisible(true);
+    }
   };
 
-  const handleOk = () => {
-    // courseMember에서 해당 member를 제거, courseAttendance에서 해당 member를 제거
+  const handleOk = async () => {
+    // courseMember에서 해당 member를 제거
+    let courseMember = [];
+    await firestoreService
+      .collection("courses")
+      .doc(courseId)
+      .get()
+      .then((querySnapshot) => {
+        courseMember = querySnapshot.data().courseMember;
+      });
+    const newcourseMember = courseMember.filter(
+      (element) => element !== currentUser.uid
+    );
+
+    // courseAttendance에서 해당 member를 제거
+    let courseAttendance = [];
+    await firestoreService
+      .collection("courses")
+      .doc(courseId)
+      .get()
+      .then((querySnapshot) => {
+        courseAttendance = querySnapshot.data().courseAttendance;
+      });
+    const newcourseAttendance = courseAttendance.filter(
+      (element) => element.id !== currentUser.uid
+    );
+
+    // userHistory에서 해당 course를 제거
+    let courseHistory = [];
+    await firestoreService
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((querySnapshot) => {
+        courseHistory = querySnapshot.data().courseHistory;
+      });
+    const newcourseHistory = courseHistory.filter(
+      (element) => element.id !== courseId
+    );
+
+    setcourseMemberArr(newcourseMember);
+    // firebase update
+
+    await firestoreService.collection("courses").doc(courseId).update({
+      courseMember: newcourseMember,
+      courseAttendance: newcourseAttendance,
+    });
+
+    await firestoreService.collection("users").doc(currentUser.uid).update({
+      courseHistory: newcourseHistory,
+    });
+
     setIsModalVisible(false);
   };
 
@@ -38,13 +90,15 @@ function CourseApplication({
     setIsModalVisible(false);
   };
 
-  // const [hoverState, sethoverState] = useState(false);
-  // const handleMouseHover = () => {
-  //   sethoverState(!hoverState);
-  // };
+  const handleMouseHover = () => {
+    // hover하면 수강 취소로 text 바꾸기
+    setTimeout(() => {
+      sethoverState(!hoverState);
+    }, 100);
+  };
 
   useEffect(() => {
-    setcourseMemberArr(courseMember);
+    setcourseMemberArr(course.courseMember);
     settoday(new Date());
     // 이벤트 리스너
     firestoreService
@@ -78,16 +132,16 @@ function CourseApplication({
       // 신청 기간이 맞다면
       if (enrollmentTerm[0] <= today && today <= enrollmentTerm[1]) {
         // CourseMemver의 수가 Max보다 작을 때
-        if (courseMember.length < maxMemberNum) {
+        if (courseMemberArr.length < maxMemberNum) {
           // 현재 유저가 CourseMember에 없을 때
-          if (courseMember.indexOf(user.currentUser.uid) < 0) {
+          if (courseMemberArr.indexOf(currentUser.uid) < 0) {
             try {
-              // 새로운 배열을 생성
-              const newCourseMember = [...courseMember, user.currentUser.uid];
+              // 새로운 course Member을 생성
+              const newCourseMember = [...courseMemberArr, currentUser.uid];
               const newCourseAttendance = [
                 ...courseAttendanceArr,
                 {
-                  id: user.currentUser.uid,
+                  id: currentUser.uid,
                   attendance: [
                     false,
                     false,
@@ -100,6 +154,7 @@ function CourseApplication({
                   ],
                 },
               ];
+              // course에 유저 정보를 등록
               await firestoreService
                 .collection("courses")
                 .doc(courseId)
@@ -107,6 +162,39 @@ function CourseApplication({
                   courseMember: newCourseMember,
                   courseAttendance: newCourseAttendance,
                 });
+
+              // 새로운 course History 배열을 생성
+              let newCourseHistory = [];
+              await firestoreService
+                .collection("users")
+                .doc(currentUser.uid)
+                .get()
+                .then((querySnapshot) => {
+                  newCourseHistory = querySnapshot.data().courseHistory;
+                });
+
+              // 유저 history에 course를 등록
+              // memory 절약을 위해 userpage에서 render하는데 필요한 정보만 course에 담음
+              await firestoreService
+                .collection("users")
+                .doc(currentUser.uid)
+                .update({
+                  courseHistory: [
+                    ...newCourseHistory,
+                    {
+                      courseType: course.courseType,
+                      language: course.language,
+                      difficulty: course.difficulty,
+                      requireTime: course.requireTime,
+                      courseName: course.courseName,
+                      courseInfo: course.courseInfo,
+                      courseLeader: course.courseLeader,
+                      semester: course.semester,
+                      id: courseId,
+                    },
+                  ],
+                });
+
               alert(SUCCESS_APPLIED_COURSE);
             } catch (error) {
               alert("error", error);
@@ -127,7 +215,7 @@ function CourseApplication({
 
   const renderApplcationButton = () => {
     // 로그인된 유저가 아닐 경우
-    if (!user.currentUser) {
+    if (!currentUser) {
       return (
         <S.SessionApplicationLock>
           <AiFillLock style={{ fontSize: "22px" }} />
@@ -151,7 +239,7 @@ function CourseApplication({
         enrollmentTerm[0] <= today &&
         today <= enrollmentTerm[1]
       ) ||
-      courseSemetser !== currentSemester
+      semester !== currentSemester
     ) {
       return (
         <S.SessionApplicationLock>
@@ -170,18 +258,14 @@ function CourseApplication({
       );
     }
     // 수강 중
-    else if (
-      courseMemberArr &&
-      courseMemberArr.indexOf(user.currentUser.uid) >= 0
-    ) {
+    else if (courseMemberArr && courseMemberArr.indexOf(currentUser.uid) >= 0) {
       return (
         <S.SessionApplicationMy
-          // onMouseEnter={handleMouseHover}
-          // onMouseLeave={handleMouseHover}
+          onMouseEnter={handleMouseHover}
+          onMouseLeave={handleMouseHover}
           onClick={showModal}
         >
-          {/* {hoverState ? "수강 취소" : "수강 중"} */}
-          수강 중
+          {hoverState ? "수강 취소" : "수강 중"}
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
@@ -217,7 +301,7 @@ function CourseApplication({
   };
   return (
     <>
-      {renderApplcationButton()}{" "}
+      {renderApplcationButton()} {/* Enter로 Modal 확인버튼 클릭? */}
       <Modal
         title="취소하기"
         visible={isModalVisible}

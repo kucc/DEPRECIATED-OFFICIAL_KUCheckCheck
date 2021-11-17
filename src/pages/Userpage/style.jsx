@@ -1,3 +1,4 @@
+import TimelineItem from "antd/lib/timeline/TimelineItem";
 import styled from "styled-components";
 
 export const StyledBackground = styled.div`
@@ -56,4 +57,11 @@ export const StyledIconContainer = styled.div`
   display: grid;
   place-items: center;
   border-radius: 50%;
+`;
+
+export const StyledTimelineItem = styled(TimelineItem)`
+  .ant-timeline-item-content {
+    margin-top: -70px;
+    margin-bottom: 70px;
+  }
 `;

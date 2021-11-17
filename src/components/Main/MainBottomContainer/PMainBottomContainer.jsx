@@ -1,4 +1,4 @@
-import { Button, Dropdown, Empty, Menu } from "antd";
+import { Button, Dropdown, Empty, Menu, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
@@ -41,7 +41,7 @@ function PMainBottomContainer() {
           // courseName 검색
           course.courseName.match(regex) ||
           // courseLeader 검색
-          course.courseLeader.match(regex) ||
+          course.courseLeader.name.match(regex) ||
           // courseLanguage 검색
           course.language.match(regex)
         ) {
@@ -66,7 +66,7 @@ function PMainBottomContainer() {
           if (
             ["Java", "Kotlin", "ReactNative", "Swift"].includes(course.language)
           ) {
-            acc.push(course);
+            acc.push(course.id);
           }
         } else if (searchCategory === "알고리즘") {
           if (course.language === "Algorithm") {
@@ -88,7 +88,6 @@ function PMainBottomContainer() {
             acc.push(course.id);
           }
         } else if (searchLanguage === "Python") {
-          // Java도 포함??
           if (course.language === "Python") {
             acc.push(course.id);
           }
@@ -118,6 +117,13 @@ function PMainBottomContainer() {
       } else if (courseSelect === 2) {
         courseToggleResults = courseContainerArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 2) {
+            acc.push(course.id);
+          }
+          return acc;
+        }, []);
+      } else if (courseSelect === 3) {
+        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+          if (course.courseType && course.courseType === 3) {
             acc.push(course.id);
           }
           return acc;
@@ -229,7 +235,7 @@ function PMainBottomContainer() {
       }
     } else {
       if (courseContainerArray.length === 0) {
-        return <Empty style={{ marginTop: "50px" }} />;
+        return <Skeleton />;
       } else {
         return courseContainerArray.map((course) => {
           return (
@@ -286,6 +292,14 @@ function PMainBottomContainer() {
                 <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
               ) : (
                 <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
+              )}
+              <S.MainVerticalLine />
+            </S.MainSessItem>
+            <S.MainSessItem onClick={() => setcourseSelect(3)}>
+              {courseSelect === 3 ? (
+                <S.MainSessItemOnClick>프로젝트</S.MainSessItemOnClick>
+              ) : (
+                <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
               )}
             </S.MainSessItem>
           </S.MainSessTab>
