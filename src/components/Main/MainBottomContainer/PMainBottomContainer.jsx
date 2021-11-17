@@ -10,9 +10,10 @@ function PMainBottomContainer() {
   // const [search, setSearch] = useState(useRecoilState(userState).category);
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseContainerArray, setcourseContainerArray] = useState([]);
-  const [searchResults, setsearchResults] = useState([]);
+  const [filterResults, setfilterResults] = useState([]);
+  const [currentSemester, setcurrentSemester] = useState("");
+  const [pastSemester, setpastSemester] = useState([]);
   const user = useSelector((state) => state.user);
-
   const searchTerm = useSelector((state) => state.search.searchTerm);
   // 검색 기능
   useEffect(() => {
@@ -28,21 +29,16 @@ function PMainBottomContainer() {
       }
       return acc;
     }, []);
-    setsearchResults(searchResults);
-  }, [searchTerm]);
+    setfilterResults(searchResults);
+  }, [searchTerm, courseContainerArray]);
 
   // course toggle 기능
   const matchCourseSelect = (num) => {
     const regex = new RegExp(searchTerm, "gi");
-    const searchResults = courseContainerArray.reduce((acc, course) => {
+    const matchResults = courseContainerArray.reduce((acc, course) => {
       if (course.courseType && course.courseType === num) {
         if (searchTerm) {
-          if (
-            course.courseName.match(regex) ||
-            // courseLeader 정보가 없어서 주석처리 해둠. 원래 있어야할 기능.
-            // course.courseLeader.match(regex) ||
-            course.language.match(regex)
-          ) {
+          if (course.courseName.match(regex) || course.language.match(regex)) {
             acc.push(course);
           }
         } else {
@@ -51,18 +47,10 @@ function PMainBottomContainer() {
       }
       return acc;
     }, []);
-    setsearchResults(searchResults);
+    setfilterResults(matchResults);
   };
 
-  useEffect(() => {
-    if (courseSelect === 1) {
-      matchCourseSelect(1);
-    } else if (courseSelect === 2) {
-      matchCourseSelect(2);
-    }
-  }, [courseSelect, searchTerm]);
-
-  //세션 불러오기
+  // 학기 선택 기능
   useEffect(() => {
     firestoreService
       .collection("courses")
@@ -70,11 +58,51 @@ function PMainBottomContainer() {
       .then((querySnapshot) => {
         let courseArray = [];
         querySnapshot.forEach((doc) => {
-          const coursesData = {
-            id: doc.id,
-            ...doc.data(),
-          };
-          courseArray.push(coursesData);
+          if (doc.data().semester === currentSemester) {
+            const coursesData = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            courseArray.push(coursesData);
+          }
+        });
+        setcourseContainerArray(courseArray);
+      });
+  }, [currentSemester]);
+
+  useEffect(() => {
+    if (courseSelect === 1) {
+      matchCourseSelect(1);
+    } else if (courseSelect === 2) {
+      matchCourseSelect(2);
+    }
+  }, [courseSelect, courseContainerArray]);
+
+  //세션 불러오기
+  useEffect(() => {
+    firestoreService
+      .collection("common")
+      .doc("commonInfo")
+      .get()
+      .then((doc) => {
+        setcurrentSemester(doc.data().currentSemester);
+        // 배열을 역순으로 저장해줌
+        setpastSemester(doc.data().pastSemester.reverse());
+      });
+
+    firestoreService
+      .collection("courses")
+      .get()
+      .then((querySnapshot) => {
+        let courseArray = [];
+        querySnapshot.forEach((doc) => {
+          if (doc.data().semester === currentSemester) {
+            const coursesData = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            courseArray.push(coursesData);
+          }
         });
         setcourseContainerArray(courseArray);
       });
@@ -83,33 +111,16 @@ function PMainBottomContainer() {
   const menu = (
     // 학기를 클릭했을 때 해야할 일
     <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          21-1 학기
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          20-2 학기
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          20-1 학기
-        </a>
-      </Menu.Item>
+      {pastSemester &&
+        pastSemester.map((semester, key) => {
+          return (
+            <Menu.Item key={key}>
+              <a onClick={() => setcurrentSemester(semester)}>
+                {semester} 학기
+              </a>
+            </Menu.Item>
+          );
+        })}
     </Menu>
   );
 
@@ -129,13 +140,13 @@ function PMainBottomContainer() {
                   borderColor: "#c32020",
                 }}
               >
-                21-2 학기
+                {currentSemester} 학기
               </Button>
             </Dropdown>
           </S.MainSessDuration>
           <S.MainSessTab>
             <S.MainSessItem onClick={() => setcourseSelect(0)}>
-              {courseSelect == 0 ? (
+              {courseSelect === 0 ? (
                 <S.MainSessItemOnClick>전체</S.MainSessItemOnClick>
               ) : (
                 <S.MainSessItemOffClick>전체</S.MainSessItemOffClick>
@@ -143,7 +154,7 @@ function PMainBottomContainer() {
               <S.MainVerticalLine />
             </S.MainSessItem>
             <S.MainSessItem onClick={() => setcourseSelect(1)}>
-              {courseSelect == 1 ? (
+              {courseSelect === 1 ? (
                 <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
               ) : (
                 <S.MainSessItemOffClick>세션</S.MainSessItemOffClick>
@@ -151,7 +162,7 @@ function PMainBottomContainer() {
               <S.MainVerticalLine />
             </S.MainSessItem>
             <S.MainSessItem onClick={() => setcourseSelect(2)}>
-              {courseSelect == 2 ? (
+              {courseSelect === 2 ? (
                 <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
               ) : (
                 <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
@@ -177,7 +188,7 @@ function PMainBottomContainer() {
           </S.MainSessRig>
         </S.MainBottomBtnCont>
         {searchTerm || courseSelect !== 0
-          ? searchResults.map((course) => {
+          ? filterResults.map((course) => {
               return (
                 <CourseContainer
                   key={course.id}

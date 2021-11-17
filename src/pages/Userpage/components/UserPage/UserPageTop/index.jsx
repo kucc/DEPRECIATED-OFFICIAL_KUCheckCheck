@@ -1,6 +1,7 @@
 import { Button, Modal, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import RandomEmoji from "../../../../../components/RandomEmoji/RandomEmoji";
 import { firestoreService } from "../../../../../firebase";
 
 function UserPageTop({ onChangeFunc }) {
@@ -10,6 +11,7 @@ function UserPageTop({ onChangeFunc }) {
   const [userLink, setuserLink] = useState("");
   const [userComment, setuserComment] = useState("");
   const [userDetailComment, setuserDetailComment] = useState("");
+  const [userEmoji, setuserEmoji] = useState("");
   const [firebaseUser, setfirebaseUser] = useState("");
   const userId = document.location.href.split("/")[4];
   const user = useSelector((state) => state.user);
@@ -20,13 +22,12 @@ function UserPageTop({ onChangeFunc }) {
       .doc(userId)
       .get()
       .then((querySnapshot) => {
-        console.log(querySnapshot.data());
-
         setfirebaseUser(querySnapshot.data());
         setuserName(querySnapshot.data().name);
         setuserLink(querySnapshot.data().link);
         setuserComment(querySnapshot.data().comment);
         setuserDetailComment(querySnapshot.data().detailComment);
+        setuserEmoji(querySnapshot.data().emoji);
       });
   }, []);
 
@@ -44,6 +45,7 @@ function UserPageTop({ onChangeFunc }) {
         link: userLink,
         comment: userComment,
         detailComment: userDetailComment,
+        emoji: userEmoji,
       })
       .then(() => {
         console.log("Document successfully updated!");
@@ -56,6 +58,10 @@ function UserPageTop({ onChangeFunc }) {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const userEmojiHandler = () => {
+    setuserEmoji(RandomEmoji());
   };
 
   const onChangeName = (event) => {
@@ -78,7 +84,7 @@ function UserPageTop({ onChangeFunc }) {
         유저 페이지
       </div>
       {/* 대상 유저와 현재 유저와 같으면, 수정하기 on */}
-      {user.currentUser && userId == user.currentUser.uid && (
+      {user.currentUser && userId === user.currentUser.uid && (
         <Button
           style={{
             width: "120px",
@@ -97,6 +103,13 @@ function UserPageTop({ onChangeFunc }) {
         onOk={handleOk}
         onCancel={handleCancel}
       >
+        <div>이모티콘 수정 (클릭시 랜덤으로 바뀝니다!)</div>
+        <div
+          style={{ fontSize: "80px", cursor: "pointer" }}
+          onClick={userEmojiHandler}
+        >
+          {userEmoji}
+        </div>
         <div>이름 수정</div>
         <TextArea
           maxLength={50}

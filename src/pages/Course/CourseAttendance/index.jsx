@@ -13,7 +13,7 @@ function CourseAttendace() {
       .doc(courseId)
       .get()
       .then((querySnapshot) => {
-        setuserData(querySnapshot.data().attendance);
+        setuserData(querySnapshot.data().courseAttendance);
       });
   }, []);
 
