@@ -1,15 +1,45 @@
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { setSearch } from "../../../redux/actions/search_action";
+import {
+  setCategory,
+  setLanguage,
+  setSearch,
+} from "../../../redux/actions/search_action";
 import * as S from "../style";
-import { StyledToggle } from "./style";
+import { StyledTag } from "./style";
 
 function PMainSearch() {
-  const [searchTerm, setsearchTerm] = useState("");
+  const [selectedCategory, setselectedCategory] = useState("");
+  const [selectedLanguage, setselectedLanguage] = useState("");
+
   const dispatch = useDispatch();
-  const handleSearchTerm = (e) => {
+
+  const changeSearch = (e) => {
     dispatch(setSearch(e.target.value));
+  };
+
+  const categoryData = ["Web", "App", "알고리즘", "머신러닝"];
+  const languageData = ["C", "Python", "Javascript", "Java"];
+
+  const handleCategory = (tag) => {
+    if (tag === selectedCategory) {
+      setselectedCategory("");
+      dispatch(setCategory(""));
+    } else {
+      setselectedCategory(tag);
+      dispatch(setCategory(tag));
+    }
+  };
+
+  const handleLanguage = (tag) => {
+    if (tag === selectedLanguage) {
+      setselectedLanguage("");
+      dispatch(setLanguage(""));
+    } else {
+      setselectedLanguage(tag);
+      dispatch(setLanguage(tag));
+    }
   };
 
   return (
@@ -19,22 +49,29 @@ function PMainSearch() {
           <BiSearch />
         </S.SearchBtn>
         <S.SearchBar
-          onChange={handleSearchTerm}
+          onChange={changeSearch}
           placeholder="세션/스터디명 ex) 바닐라 자바스크립트 세션"
         />
       </S.SearchContainer>
-      <div style={{ display: "flex", marginTop: "25px" }}>
-        <StyledToggle># Web</StyledToggle>
-        <StyledToggle># App</StyledToggle>
-        <StyledToggle># 알고리즘</StyledToggle>
-        <StyledToggle># 머신러닝</StyledToggle>
-      </div>
-      <div style={{ display: "flex", marginTop: "10px" }}>
-        <StyledToggle># C</StyledToggle>
-        <StyledToggle># Python</StyledToggle>
-        <StyledToggle># Javascript</StyledToggle>
-        <StyledToggle># Java</StyledToggle>
-      </div>
+      {categoryData.map((tag) => (
+        <StyledTag
+          key={tag}
+          checked={selectedCategory === tag}
+          onClick={() => handleCategory(tag)}
+        >
+          # {tag}
+        </StyledTag>
+      ))}
+      <br />
+      {languageData.map((tag) => (
+        <StyledTag
+          key={tag}
+          checked={selectedLanguage === tag}
+          onClick={() => handleLanguage(tag)}
+        >
+          # {tag}
+        </StyledTag>
+      ))}
       {/* 프론트 백엔드?? */}
     </>
   );

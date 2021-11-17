@@ -1,7 +1,8 @@
-import { Empty } from "antd";
+import { Empty, Timeline } from "antd";
 import React, { useEffect, useState } from "react";
 import CourseContainer from "../../../../../components/Main/CourseContainer/CourseContainer";
 import { firestoreService } from "../../../../../firebase";
+import { StyledTimelineItem } from "../../../style";
 
 function UserCoursePageCard() {
   const userId = document.location.href.split("/")[4];
@@ -13,27 +14,34 @@ function UserCoursePageCard() {
       .doc(userId)
       .get()
       .then((querySnapshot) => {
-        setcourseContainerArray(querySnapshot.data().courseHistory);
+        setcourseContainerArray(querySnapshot.data().courseHistory.reverse());
       });
   }, []);
 
-  console.log(courseContainerArray);
-
   return (
-    <div>
-      {courseContainerArray.length > 0 ? (
-        courseContainerArray.map((course) => {
-          return (
-            <CourseContainer
-              key={course.id}
-              course={course}
-              CourseApplicationState={false}
-            />
-          );
-        })
-      ) : (
-        <Empty />
-      )}
+    <div style={{ marginTop: "80px" }}>
+      <Timeline>
+        {courseContainerArray.length > 0 ? (
+          courseContainerArray.map((course) => {
+            return (
+              <div
+                style={{ display: "grid", gridTemplateColumns: "50px auto" }}
+              >
+                <div style={{ marginTop: "-3px" }}>{course.semester}</div>
+                <StyledTimelineItem>
+                  <CourseContainer
+                    key={course.id}
+                    course={course}
+                    CourseApplicationState={false}
+                  />
+                </StyledTimelineItem>
+              </div>
+            );
+          })
+        ) : (
+          <Empty />
+        )}
+      </Timeline>
     </div>
   );
 }

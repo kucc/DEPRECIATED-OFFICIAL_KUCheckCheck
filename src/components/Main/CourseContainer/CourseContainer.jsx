@@ -16,9 +16,11 @@ function CourseContainer({ course, CourseApplicationState }) {
 
   const renderCourseLeader = () => {
     if (course.courseType === 1) {
-      return <p>{course.courseLeader} 세션장</p>;
+      return <p>{course.courseLeader.name} 세션장</p>;
     } else if (course.courseType === 2) {
-      return <p>{course.courseLeader} 스터디장</p>;
+      return <p>{course.courseLeader.name} 스터디장</p>;
+    } else if (course.courseType === 3) {
+      return <p>{course.courseLeader.name} 프로젝트장</p>;
     }
   };
 
@@ -59,11 +61,7 @@ function CourseContainer({ course, CourseApplicationState }) {
             </div>
           </S.SessionLevel>
           {CourseApplicationState && (
-            <CourseApplication
-              maxMemberNum={course.maxMemberNum}
-              courseMember={course.courseMember}
-              courseId={course.id}
-            />
+            <CourseApplication courseId={course.id} course={course} />
           )}
         </S.SessionExplainWrapper>
       </S.SessionContainer>

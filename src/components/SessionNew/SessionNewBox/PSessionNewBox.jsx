@@ -25,27 +25,16 @@ function PSessionNewBox({ enrollHandler }) {
   const [courseName, setcourseName] = useState("");
   const [courseInfo, setcourseInfo] = useState("");
   const [courseGoal, setcourseGoal] = useState("");
-  const [language, setlanguage] = useState("Javascript");
+  const [language, setlanguage] = useState("C");
   const [difficulty, setdifficulty] = useState("");
   const [requireTime, setrequireTime] = useState("");
   const [courseType, setcourseType] = useState("");
-  const [selectedImg, setselectedImg] = useState("Javascript");
+  const [selectedImg, setselectedImg] = useState("C");
   const [courseDate, setcourseDate] = useState("");
   const [coursePlace, setcoursePlace] = useState("");
   const [courseNotice, setcourseNotice] = useState("");
   const [courseMember, setcourseMember] = useState("");
   const [courseCurriculum, setcourseCurriculum] = useState({});
-
-  // < How..? >
-  // 폰트
-
-  // < 등록 후 추가해야하는 정보 >
-  // 코스 리더
-  // 출첵담당자
-  // 코스멤버
-  // 출석
-
-  const { TextArea } = Input;
 
   const onChangeTitle = (event) => {
     setcourseName(event.target.value);
@@ -62,8 +51,6 @@ function PSessionNewBox({ enrollHandler }) {
   const handleLanguage = (value) => {
     setselectedImg(value);
     setlanguage(value);
-    console.log(value);
-    console.log(language);
   };
 
   const handledifficult = (value) => {
@@ -97,7 +84,6 @@ function PSessionNewBox({ enrollHandler }) {
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 
-        {/* 이거 일단 앞에 쓴거 가져다 쓴건데, antD로? 그리고 세션 스터디 통합할거면 없어도 될 듯? */}
         <S.MainSessTab style={{ marginBottom: "17px" }}>
           <S.MainSessItem onClick={() => setcourseType(1)}>
             {courseType === 1 ? (
@@ -112,6 +98,14 @@ function PSessionNewBox({ enrollHandler }) {
               <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
             ) : (
               <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
+            )}
+            <S.MainVerticalLine />
+          </S.MainSessItem>
+          <S.MainSessItem onClick={() => setcourseType(3)}>
+            {courseType === 3 ? (
+              <S.MainSessItemOnClick>프로젝트</S.MainSessItemOnClick>
+            ) : (
+              <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
             )}
           </S.MainSessItem>
         </S.MainSessTab>
@@ -152,7 +146,7 @@ function PSessionNewBox({ enrollHandler }) {
 
                 <Select
                   style={{ width: "calc(100% - 150px)", marginRight: "50px" }}
-                  defaultValue="Javascript"
+                  defaultValue="C"
                   onChange={handleLanguage}
                 >
                   <Option value="C">C</Option>

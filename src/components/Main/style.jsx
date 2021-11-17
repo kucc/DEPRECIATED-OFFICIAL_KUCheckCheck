@@ -150,7 +150,7 @@ export const MainSessItem = styled.div`
 export const MainSessTab = styled.div`
   margin-left: 50px;
   display: grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px 100px;
 `;
 
 export const MainSessRig = styled.div`
