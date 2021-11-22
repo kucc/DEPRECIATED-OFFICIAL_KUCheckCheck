@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../../components/Common/NavBar";
+import Footer from "../../components/Footer";
 import { MainTopContainer, MainBottomContainer } from "../../components/Main";
 
 function Main() {
@@ -10,6 +11,7 @@ function Main() {
       </div>
       <MainTopContainer />
       <MainBottomContainer />
+      <Footer />
     </div>
   );
 }

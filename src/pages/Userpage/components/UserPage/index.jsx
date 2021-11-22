@@ -5,7 +5,6 @@ import UserPageTop from "./UserPageTop";
 function UserPage() {
   const [changeState, setchangeState] = useState("");
   const handleChange = (data) => {
-    console.log(data);
     setchangeState(data);
   };
   return (
