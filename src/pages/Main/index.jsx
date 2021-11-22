@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { MainTopContainer, MainBottomContainer } from "../../components/Main";
+import MainBottomContainer from "./MainBottomContainer";
+import MainTopContainer from "./MainTopContainer";
 
 function Main() {
   return (

@@ -1,6 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router";
-import * as S from "../style";
+import {
+  StyledCourseContainer,
+  StyledCourseExplain,
+  StyledCourseExplainWrapper,
+  StyledCourseImg,
+  StyledCourseLevel,
+  StyledCourseText,
+  StyledCourseTitle,
+} from "./style";
 import CourseApplication from "./CourseApplication";
 
 function CourseContainer({ course, CourseApplicationState }) {
@@ -26,9 +34,9 @@ function CourseContainer({ course, CourseApplicationState }) {
 
   return (
     <>
-      <S.SessionContainer>
-        <S.SessionImg>{imageRender()}</S.SessionImg>
-        <S.SessionExplainWrapper
+      <StyledCourseContainer>
+        <StyledCourseImg>{imageRender()}</StyledCourseImg>
+        <StyledCourseExplainWrapper
           style={{
             display: "grid",
             gridTemplateColumns: CourseApplicationState
@@ -36,15 +44,15 @@ function CourseContainer({ course, CourseApplicationState }) {
               : "auto 250px",
           }}
         >
-          <S.SessionText
+          <StyledCourseText
             onClick={() => history.push(`/course/session/${course.id}`)}
           >
-            <S.SessionTitle>
+            <StyledCourseTitle>
               <div>{course.courseName}</div>
-            </S.SessionTitle>
-            <S.SessionExplain>{renderCourseLeader()}</S.SessionExplain>
-          </S.SessionText>
-          <S.SessionLevel
+            </StyledCourseTitle>
+            <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
+          </StyledCourseText>
+          <StyledCourseLevel
             onClick={() => history.push(`/course/session/${course.id}`)}
           >
             <div
@@ -59,12 +67,12 @@ function CourseContainer({ course, CourseApplicationState }) {
                 {course.requireTime}학점
               </div>
             </div>
-          </S.SessionLevel>
+          </StyledCourseLevel>
           {CourseApplicationState && (
             <CourseApplication courseId={course.id} course={course} />
           )}
-        </S.SessionExplainWrapper>
-      </S.SessionContainer>
+        </StyledCourseExplainWrapper>
+      </StyledCourseContainer>
     </>
   );
 }

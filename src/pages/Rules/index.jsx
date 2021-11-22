@@ -1,12 +1,11 @@
 import React from "react";
-import {RulesContainer} from "../../components/Rules"
+import RulesContainer from "./RulesContainer/RulesContainer";
 
 function Rules() {
-  return(
+  return (
     <>
       <RulesContainer />
     </>
   );
 }
-
 export default Rules;

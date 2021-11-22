@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SUCCESS_APPLICATION } from "../../../constants/ERROR_MESSAGE";
 import { firestoreService } from "../../../firebase";
-import PSessionNewBox from "./PSessionNewBox";
+import PCourseNewBox from "./PSessionNewBox";
 
-export default function SessionNewBox() {
+export default function CourseNewBox() {
   const history = useHistory();
   const currentUser = useSelector((state) => state.user.currentUser);
   const [currentSemester, setcurrentSemester] = useState("");
@@ -128,7 +128,7 @@ export default function SessionNewBox() {
 
   return (
     <>
-      <PSessionNewBox enrollHandler={enrollHandler} />
+      <PCourseNewBox enrollHandler={enrollHandler} />
     </>
   );
 }

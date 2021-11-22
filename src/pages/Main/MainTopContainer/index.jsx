@@ -2,7 +2,7 @@ import React from "react";
 import MainSearch from "../MainSearch";
 import * as S from "../style";
 
-function PMainTopContainer() {
+function MainTopContainer() {
   return (
     <>
       <S.MainTopWrapper>
@@ -29,4 +29,4 @@ function PMainTopContainer() {
     </>
   );
 }
-export default PMainTopContainer;
+export default MainTopContainer;

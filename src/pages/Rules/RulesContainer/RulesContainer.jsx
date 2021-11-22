@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./style";
+import * as S from "../style";
 import { firestoreService } from "../../../firebase";
-import {
-  StyledBackground,
-  StyledNavBarContainer,
-} from "../../../pages/Userpage/style";
-import NavBar from "../../NavBar/NavBar";
+import NavBar from "../../../components/NavBar/NavBar";
 
-function PRulesContainer() {
+function RulesContainer() {
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
     firestoreService
@@ -23,10 +19,10 @@ function PRulesContainer() {
   }, []);
 
   return (
-    <StyledBackground>
-      <StyledNavBarContainer>
+    <S.StyledBackground>
+      <S.StyledNavBarContainer>
         <NavBar />
-      </StyledNavBarContainer>
+      </S.StyledNavBarContainer>
       <S.SRulesBox>
         <div
           style={{
@@ -54,8 +50,8 @@ function PRulesContainer() {
             ))}
         </S.SCollapse>
       </S.SRulesBox>
-    </StyledBackground>
+    </S.StyledBackground>
   );
 }
 
-export default PRulesContainer;
+export default RulesContainer;

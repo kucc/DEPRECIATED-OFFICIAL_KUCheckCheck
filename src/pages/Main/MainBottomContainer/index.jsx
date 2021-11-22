@@ -2,10 +2,10 @@ import { Button, Dropdown, Empty, Menu, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
-import CourseContainer from "../CourseContainer/CourseContainer";
+import CourseContainer from "../../../components/CourseContainer/CourseContainer";
 import * as S from "../style";
 
-function PMainBottomContainer() {
+function MainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseContainerArray, setcourseContainerArray] = useState([]);
@@ -314,7 +314,7 @@ function PMainBottomContainer() {
                   display: "grid",
                   placeItems: "center",
                 }}
-                href="/session-new"
+                href="/course-new"
               >
                 등록하기
               </Button>
@@ -326,4 +326,4 @@ function PMainBottomContainer() {
     </>
   );
 }
-export default PMainBottomContainer;
+export default MainBottomContainer;
