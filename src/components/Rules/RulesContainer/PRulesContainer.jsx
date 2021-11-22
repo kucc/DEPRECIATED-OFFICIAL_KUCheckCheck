@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
-import NavBar from "../../Common/NavBar";
 import { firestoreService } from "../../../firebase";
 import {
   StyledBackground,
   StyledNavBarContainer,
 } from "../../../pages/Userpage/style";
+import NavBar from "../../NavBar/NavBar";
 
 function PRulesContainer() {
   const [Notices, setNotices] = useState([]);
@@ -32,8 +32,8 @@ function PRulesContainer() {
           style={{
             display: "grid",
             gridTemplateColumns: "auto 150px",
-            marginLeft: "18.24%",
-            marginRight: "14.24%",
+            paddingLeft: "18.24%",
+            paddingRight: "14.24%",
             marginTop: "30px",
           }}
         >
@@ -45,7 +45,7 @@ function PRulesContainer() {
             공지사항
           </div>
         </div>
-        <S.SCollapse defaultActiveKey={["1"]} expandIconPosition="right">
+        <S.SCollapse defaultActiveKey={["0"]} expandIconPosition="right">
           {Notices &&
             Notices.map((item, key) => (
               <S.SPanel header={item.title} key={key}>

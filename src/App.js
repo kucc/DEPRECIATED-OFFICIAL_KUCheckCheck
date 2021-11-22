@@ -15,6 +15,7 @@ import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 import CourseAttendace from "./pages/Course/CourseAttendance";
 import CoursePage from "./pages/Course";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
         <Route path="/session-new" exact component={SessionNew} />
         <Route path="/" exact component={Main} />
       </Switch>
+      <Footer />
     </>
   );
 }

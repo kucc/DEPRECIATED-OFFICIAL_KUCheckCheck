@@ -8,8 +8,10 @@ export const SRulesBox = styled.div`
 `;
 
 export const SCollapse = styled(Collapse)`
-  height: 100vh;
   border: none;
+  &.ant-collapse {
+    background-color: rgb(245, 245, 245);
+  }
   .ant-collapse-item {
     border-radius: 24px;
     background-color: black;

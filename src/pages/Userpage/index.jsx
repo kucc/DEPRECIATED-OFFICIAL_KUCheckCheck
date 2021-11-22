@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../components/Common/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import UserCoursePage from "./components/UserCoursePage";
 import UserPage from "./components/UserPage";
 import {

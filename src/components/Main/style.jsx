@@ -132,6 +132,7 @@ export const MainBottomWrapper = styled.div`
   margin-top: 100px;
   margin-left: 14.21%;
   margin-right: 14.21%;
+  padding-bottom: 30px;
 `;
 
 export const MainBottomBtnCont = styled.div`
