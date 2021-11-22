@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { firestoreService } from "../../../../../firebase";
 import { FiPaperclip } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";

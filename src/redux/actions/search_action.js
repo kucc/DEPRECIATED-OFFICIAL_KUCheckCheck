@@ -1,4 +1,4 @@
-import { SET_CATEGORY, SET_LANGUAGE, SET_SEARCH } from "./types";
+import { SET_CATEGORY, SET_SEARCH } from "./types";
 
 export function setSearch(searchTerm) {
   return {
@@ -11,12 +11,5 @@ export function setCategory(category) {
   return {
     type: SET_CATEGORY,
     payload: category,
-  };
-}
-
-export function setLanguage(language) {
-  return {
-    type: SET_LANGUAGE,
-    payload: language,
   };
 }

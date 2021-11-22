@@ -49,11 +49,10 @@ function UserPageTop({ onChangeFunc }) {
       })
       .then(() => {
         // 교체해야 함!
-        console.log("Document successfully updated!");
         onChangeFunc(Date());
       })
       .catch((error) => {
-        console.error("Error updating document: ", error);
+        alert("Error updating document: ", error);
       });
   };
 
