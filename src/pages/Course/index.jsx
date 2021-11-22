@@ -2,6 +2,7 @@ import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import NavBar from "../../components/NavBar/NavBar";
 import { firestoreService } from "../../firebase";
 
 function CoursePage() {
@@ -10,6 +11,7 @@ function CoursePage() {
   useEffect(() => {}, []);
   return (
     <div>
+      <NavBar />
       <Button onClick={() => history.push(`${location.pathname}/attendance`)}>
         {" "}
         출결관리{" "}

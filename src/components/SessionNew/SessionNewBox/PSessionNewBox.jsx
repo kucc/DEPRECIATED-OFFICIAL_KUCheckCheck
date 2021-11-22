@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Button, Input, InputNumber, Select } from "antd";
+import { Button, Select } from "antd";
 import "antd/dist/antd.css";
 import * as S from "../../Main/style";
-import NavBar from "../../Common/NavBar";
 import { Option } from "antd/lib/mentions";
 import {
   CHECK_TOP_SESSION_OR_STUDY,
@@ -19,6 +18,7 @@ import {
   StyledTextArea,
   StyledTopContainer,
 } from "../style";
+import NavBar from "../../NavBar/NavBar";
 
 function PSessionNewBox({ enrollHandler }) {
   //하나의 객체로..?

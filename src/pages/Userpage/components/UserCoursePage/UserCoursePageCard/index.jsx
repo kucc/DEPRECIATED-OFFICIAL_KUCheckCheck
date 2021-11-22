@@ -22,10 +22,11 @@ function UserCoursePageCard() {
     <div style={{ marginTop: "80px" }}>
       <Timeline>
         {courseContainerArray.length > 0 ? (
-          courseContainerArray.map((course) => {
+          courseContainerArray.map((course, key) => {
             return (
               <div
                 style={{ display: "grid", gridTemplateColumns: "50px auto" }}
+                key={key}
               >
                 <div style={{ marginTop: "-3px" }}>{course.semester}</div>
                 <StyledTimelineItem>

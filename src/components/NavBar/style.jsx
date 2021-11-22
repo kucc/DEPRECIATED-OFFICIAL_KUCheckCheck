@@ -5,6 +5,7 @@ export const NavBarContainer = styled.div`
   justify-content: space-between;
   height: 60px;
 `;
+
 export const NavBarLogoContainer = styled.div`
   width: 183px;
   display: flex;

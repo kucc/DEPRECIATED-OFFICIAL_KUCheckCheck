@@ -56,12 +56,12 @@ function UserPageCard() {
               <FiPaperclip color="white" />
             </StyledIconContainer>
             <a
-              href={firebaseUser.link}
+              href={firebaseUser && firebaseUser.link}
               style={{ marginLeft: "10px", marginTop: "4px" }}
             >
-              {firebaseUser.link}
+              {firebaseUser && firebaseUser.link}
             </a>
-          </div>{" "}
+          </div>
           <div style={{ display: "flex", gap: "5px", marginTop: "20px" }}>
             <StyledIconContainer>
               <HiOutlineMail color="white" />
