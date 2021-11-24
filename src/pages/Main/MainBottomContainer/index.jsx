@@ -16,6 +16,11 @@ function MainBottomContainer() {
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
 
+  // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
+  const escapeRegExp = (searchTerm) => {
+    return searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
+
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
     // course의 id만을 가지는 배열을 복사
@@ -33,7 +38,7 @@ function MainBottomContainer() {
 
     // 1. 검색에 의한 filter
     if (searchTerm) {
-      const regex = new RegExp(searchTerm, "gi");
+      const regex = new RegExp(escapeRegExp(searchTerm), "gi");
       searchTermResults = courseContainerArray.reduce((acc, course) => {
         if (
           // courseName 검색
@@ -41,7 +46,7 @@ function MainBottomContainer() {
           // courseLeader 검색
           course.courseLeader.name.match(regex) ||
           // courseLanguage 검색
-          course.language.match(regex)
+          course.language.find((element) => element.match(regex))
         ) {
           acc.push(course.id);
         }

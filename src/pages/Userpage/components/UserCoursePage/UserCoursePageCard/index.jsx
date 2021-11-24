@@ -14,7 +14,9 @@ function UserCoursePageCard() {
       .doc(userId)
       .get()
       .then((querySnapshot) => {
-        setcourseContainerArray(querySnapshot.data().courseHistory.reverse());
+        if (querySnapshot.data().courseHistory) {
+          setcourseContainerArray(querySnapshot.data().courseHistory.reverse());
+        }
       });
   }, []);
 
