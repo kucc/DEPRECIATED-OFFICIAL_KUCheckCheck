@@ -54,49 +54,50 @@ function MainBottomContainer() {
         switch (searchCategory) {
           case "Web":
             if (
-              ["Database", "Html", "Javascript", "Node", "React"].includes(
-                course.language
-              )
+              // 두 배열의 공통된 부분을 찾음
+              ["Database", "Html", "Javascript", "Node", "React"].filter((x) =>
+                course.language.includes(x)
+              ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
           case "App":
             if (
-              ["Java", "Kotlin", "ReactNative", "Swift"].includes(
-                course.language
-              )
+              ["Java", "Kotlin", "ReactNative", "Swift"].filter((x) =>
+                course.language.includes(x)
+              ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
           case "알고리즘":
-            if (course.language === "Algorithm") {
+            if (course.language.includes("Algorithm")) {
               acc.push(course.id);
             }
             break;
           case "머신러닝":
-            if (course.language === "MachineLearning") {
+            if (course.language.includes("MachineLearning")) {
               acc.push(course.id);
             }
             break;
           case "C":
-            if (course.language === "C") {
+            if (course.language.includes("C")) {
               acc.push(course.id);
             }
             break;
           case "Python":
-            if (course.language === "Python") {
+            if (course.language.includes("Python")) {
               acc.push(course.id);
             }
             break;
           case "Javascript":
-            if (course.language === "Javascript") {
+            if (course.language.includes("Javascript")) {
               acc.push(course.id);
             }
             break;
           case "Java":
-            if (course.language === "Java") {
+            if (course.language.includes("Java")) {
               acc.push(course.id);
             }
             break;

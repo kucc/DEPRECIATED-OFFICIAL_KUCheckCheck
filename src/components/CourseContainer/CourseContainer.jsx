@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import {
   StyledCourseContainer,
   StyledCourseExplain,
   StyledCourseExplainWrapper,
-  StyledCourseImg,
+  StyledCourseImgContainer,
   StyledCourseLevel,
   StyledCourseText,
   StyledCourseTitle,
@@ -13,14 +13,33 @@ import CourseApplication from "./CourseApplication";
 
 function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
-  const imageRender = () => {
-    return (
-      <img
-        style={{ borderRadius: "50%", width: "60px" }}
-        src={`/img/icon/${course.language}.png`}
-      />
-    );
-  };
+  const [onImageHover, setonImageHover] = useState(false);
+
+  const renderCouresImage = () =>
+    // 이미지 최대 3개까지 표시
+    // styled component의 prop에 key를 넣으면 인식을 못하여
+    // 불가피하게 jsx의 style 사용
+    course.language.slice(0, 3).map((image, key) => {
+      return (
+        <img
+          onMouseEnter={() => setonImageHover(true)}
+          onMouseLeave={() => setonImageHover(false)}
+          style={{
+            position: "absolute",
+            backgroundColor: "white",
+            borderRadius: "50%",
+            width: "60px",
+            zIndex: 3 - key,
+            left: onImageHover ? 45 + key * 60 : 45 + key * 20,
+            cursor: "pointer",
+            transition: "all .27s ease",
+          }}
+          key={key}
+          src={`/img/icon/${image}.png`}
+          onClick={() => history.push(`/course/session/${course.id}`)}
+        />
+      );
+    });
 
   const renderCourseLeader = () => {
     if (course.courseType === 1) {
@@ -35,7 +54,9 @@ function CourseContainer({ course, CourseApplicationState }) {
   return (
     <>
       <StyledCourseContainer>
-        <StyledCourseImg>{imageRender()}</StyledCourseImg>
+        <StyledCourseImgContainer>
+          {renderCouresImage()}
+        </StyledCourseImgContainer>
         <StyledCourseExplainWrapper
           style={{
             display: "grid",
