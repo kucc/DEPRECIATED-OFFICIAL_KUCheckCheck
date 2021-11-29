@@ -1,7 +1,8 @@
-// TODO
-// 이모지 변수 const로 변경 및 함수 위치 이동
+export default function () {
+  return emojis[Math.floor(Math.random() * emojis.length)];
+}
 
-var emojis = [
+const emojis = [
   "🧕",
   "👮‍♀️",
   "👮",
@@ -127,7 +128,3 @@ var emojis = [
   "🙍",
   "🙍‍♂️",
 ];
-
-export default function () {
-  return emojis[Math.floor(Math.random() * emojis.length)];
-}

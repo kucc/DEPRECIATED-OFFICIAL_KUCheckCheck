@@ -1,6 +1,6 @@
 import { Empty, Timeline } from "antd";
 import React, { useEffect, useState } from "react";
-import CourseContainer from "../../../../../components/Main/CourseContainer/CourseContainer";
+import CourseContainer from "../../../../../components/CourseContainer/CourseContainer";
 import { firestoreService } from "../../../../../firebase";
 import { StyledTimelineItem } from "../../../style";
 

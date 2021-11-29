@@ -9,7 +9,7 @@ import {
 import * as S from "../style";
 import { StyledTag } from "./style";
 
-function PMainSearch() {
+function MainSearch() {
   const [selectedCategory, setselectedCategory] = useState("");
   const [selectedLanguage, setselectedLanguage] = useState("");
 
@@ -76,4 +76,4 @@ function PMainSearch() {
     </>
   );
 }
-export default PMainSearch;
+export default MainSearch;

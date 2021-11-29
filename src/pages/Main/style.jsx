@@ -83,51 +83,6 @@ export const MainExplain = styled.div`
   }
 `;
 
-export const SessionContainer = styled.div`
-  width: 100%;
-  height: 120px;
-  border-radius: 20px;
-  box-shadow: rgb(50 50 93 / 15%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 10%) 0px 8px 16px -8px;
-  display: grid;
-  grid-template-columns: 150px auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  background-color: white;
-`;
-
-export const SessionImg = styled.div`
-  display: grid;
-  place-items: center;
-  margin-left: 15%;
-`;
-
-export const SessionExplainWrapper = styled.div``;
-
-export const SessionText = styled.div`
-  padding-left: 20px;
-  padding-top: 30px;
-  cursor: pointer;
-`;
-
-export const SessionTitle = styled.div`
-  & > div {
-    font-family: "NexonBo";
-    font-size: 26px;
-    margin-bottom: 5px;
-  }
-`;
-
-export const SessionExplain = styled.div`
-  & > p {
-    font-family: "NexonRe";
-  }
-  font-size: 13.3px;
-  margin-top: -10px;
-`;
-
-export const SessionFavorite = styled.div``;
-
 export const MainBottomWrapper = styled.div`
   margin-top: 100px;
   margin-left: 14.21%;
@@ -158,82 +113,6 @@ export const MainSessRig = styled.div`
   a.ant-btn {
     padding-top: 5px !important;
   }
-`;
-
-export const SessionApplicationOn = styled(Button)`
-  margin-top: 25px;
-  margin-right: 25px;
-  margin-bottom: 20px;
-  border-radius: 30px;
-  height: 64px;
-  display: grid;
-  place-items: center;
-  background-color: #c32020;
-  font-size: 16px;
-  /* -webkit-transition: background-color 1.5s;
-  transition: background-color 1.5s; */
-`;
-
-export const SessionApplicationOff = styled.button`
-  margin-top: 25px;
-  margin-right: 25px;
-  margin-bottom: 20px;
-  border-radius: 30px;
-  height: 64px;
-  display: grid;
-  place-items: center;
-  background-color: #656565;
-  color: white;
-  font-size: 16px;
-  cursor: not-allowed;
-  /* -webkit-transition: background-color 1.5s;
-  transition: background-color 1.5s; */
-`;
-
-export const SessionApplicationMy = styled.button`
-  margin-top: 25px;
-  margin-right: 25px;
-  margin-bottom: 20px;
-  border-radius: 30px;
-  height: 64px;
-  display: grid;
-  place-items: center;
-  background-color: #212121;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  &:hover {
-    background-color: #393838;
-  }
-  -webkit-transition: background-color 0.5s;
-  transition: background-color 0.5s;
-`;
-
-export const SessionApplicationLock = styled.button`
-  margin-top: 25px;
-  margin-right: 25px;
-  margin-bottom: 20px;
-  border-radius: 30px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #3f3f3f;
-  color: white;
-  font-size: 14px;
-  gap: 7px;
-  cursor: not-allowed;
-`;
-
-export const SessionLevel = styled.div`
-  margin-top: 25px;
-  margin-right: 25px;
-  padding-top: 25px;
-  height: 64px;
-  background-color: rgb(245, 245, 245);
-  text-align: center;
-  border-radius: 30px;
-  cursor: pointer;
 `;
 
 export const MainSessItemOnClick = styled.div`

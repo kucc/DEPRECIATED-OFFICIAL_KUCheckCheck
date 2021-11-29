@@ -18,9 +18,9 @@ import {
   StyledTextArea,
   StyledTopContainer,
 } from "../style";
-import NavBar from "../../NavBar/NavBar";
+import NavBar from "../../../components/NavBar/NavBar";
 
-function PSessionNewBox({ enrollHandler }) {
+function PCourseNewBox({ enrollHandler }) {
   //하나의 객체로..?
   const [courseName, setcourseName] = useState("");
   const [courseInfo, setcourseInfo] = useState("");
@@ -459,4 +459,4 @@ function PSessionNewBox({ enrollHandler }) {
     </StyledBackground>
   );
 }
-export default PSessionNewBox;
+export default PCourseNewBox;

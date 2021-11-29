@@ -4,8 +4,6 @@ import { createGlobalStyle } from "styled-components";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
-import Rules from "./pages/Rules";
-import SessionNew from "./pages/SessionNew";
 import { authService } from "./firebase";
 import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
@@ -16,6 +14,8 @@ import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 import CourseAttendace from "./pages/Course/CourseAttendance";
 import CoursePage from "./pages/Course";
 import Footer from "./components/Footer";
+import Rules from "./pages/Rules";
+import CourseNew from "./pages/CourseNew";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ function App() {
           path="/course/session/:id/attendance"
           component={CourseAttendace}
         />
-        <Route path="/session-new" exact component={SessionNew} />
+        <Route path="/course-new" exact component={CourseNew} />
         <Route path="/" exact component={Main} />
       </Switch>
       <Footer />

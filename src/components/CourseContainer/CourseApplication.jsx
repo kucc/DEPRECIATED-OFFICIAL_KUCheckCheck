@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { firestoreService } from "../../../firebase";
-import * as S from "../style";
+import { firestoreService } from "../../firebase";
 import { AiFillLock, AiOutlineClose } from "react-icons/ai";
 import Modal from "antd/lib/modal/Modal";
 import {
   ALREADY_APPLIED_COURSE,
   NOT_ENROLLMENT_TERM,
   SUCCESS_APPLIED_COURSE,
-} from "../../../constants/ERROR_MESSAGE";
+} from "../../constants/ERROR_MESSAGE";
+import {
+  StyledCourseApplyOn,
+  StyledCourseApplyOff,
+  StyledCourseApplyMy,
+  StyledCourseApplyLock,
+} from "./style";
 
 function CourseApplication({ course, courseId }) {
   const { maxMemberNum, semester } = course;
@@ -217,7 +222,7 @@ function CourseApplication({ course, courseId }) {
     // 로그인된 유저가 아닐 경우
     if (!currentUser) {
       return (
-        <S.SessionApplicationLock>
+        <StyledCourseApplyLock>
           <AiFillLock style={{ fontSize: "22px" }} />
           <div
             style={{
@@ -229,7 +234,7 @@ function CourseApplication({ course, courseId }) {
             <div>로그인 후</div>
             <div>확인해주세요.</div>
           </div>
-        </S.SessionApplicationLock>
+        </StyledCourseApplyLock>
       );
     }
     // 수강 신청 기간가 아닐경우 ( 등록 기간이 아니거나 현재 학기와 맞지 않을 경우 )
@@ -242,7 +247,7 @@ function CourseApplication({ course, courseId }) {
       semester !== currentSemester
     ) {
       return (
-        <S.SessionApplicationLock>
+        <StyledCourseApplyLock>
           <AiOutlineClose style={{ fontSize: "22px" }} />
           <div
             style={{
@@ -254,13 +259,13 @@ function CourseApplication({ course, courseId }) {
             <div>수강 신청</div>
             <div>기간이 아닙니다.</div>
           </div>
-        </S.SessionApplicationLock>
+        </StyledCourseApplyLock>
       );
     }
     // 수강 중
     else if (courseMemberArr && courseMemberArr.indexOf(currentUser.uid) >= 0) {
       return (
-        <S.SessionApplicationMy
+        <StyledCourseApplyMy
           onMouseEnter={handleMouseHover}
           onMouseLeave={handleMouseHover}
           onClick={showModal}
@@ -269,13 +274,13 @@ function CourseApplication({ course, courseId }) {
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
-        </S.SessionApplicationMy>
+        </StyledCourseApplyMy>
       );
     }
     // 신청하기
     else if (!courseMemberArr || courseMemberArr.length < maxMemberNum) {
       return (
-        <S.SessionApplicationOn
+        <StyledCourseApplyOn
           type="danger"
           onClick={applicationHandler}
           loading={Loading}
@@ -284,18 +289,18 @@ function CourseApplication({ course, courseId }) {
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
-        </S.SessionApplicationOn>
+        </StyledCourseApplyOn>
       );
     }
     // 가득 참
     else if (courseMemberArr.length >= maxMemberNum) {
       return (
-        <S.SessionApplicationOff>
+        <StyledCourseApplyOff>
           인원 마감{" "}
           <div style={{ fontSize: "14px" }}>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </div>
-        </S.SessionApplicationOff>
+        </StyledCourseApplyOff>
       );
     }
   };
