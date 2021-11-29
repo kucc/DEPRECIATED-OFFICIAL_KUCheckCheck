@@ -20,25 +20,42 @@ function CourseContainer({ course, CourseApplicationState }) {
     // styled component의 prop에 key를 넣으면 인식을 못하여
     // 불가피하게 jsx의 style 사용
     course.language.slice(0, 3).map((image, key) => {
-      return (
-        <img
-          onMouseEnter={() => setonImageHover(true)}
-          onMouseLeave={() => setonImageHover(false)}
-          style={{
-            position: "absolute",
-            backgroundColor: "white",
-            borderRadius: "50%",
-            width: "60px",
-            zIndex: 3 - key,
-            left: onImageHover ? 45 + key * 60 : 45 + key * 20,
-            cursor: "pointer",
-            transition: "all .27s ease",
-          }}
-          key={key}
-          src={`/img/icon/${image}.png`}
-          onClick={() => history.push(`/course/session/${course.id}`)}
-        />
-      );
+      // 첫 번째 이미지를 hover 했을 때 이미지가 펼쳐짐.
+      if (key === 0) {
+        return (
+          <img
+            onMouseEnter={() => setonImageHover(true)}
+            onMouseLeave={() => setonImageHover(false)}
+            style={{
+              position: "absolute",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              width: "60px",
+              zIndex: 3,
+              cursor: "pointer",
+            }}
+            key={key}
+            src={`/img/icon/${image}.png`}
+            onClick={() => history.push(`/course/session/${course.id}`)}
+          />
+        );
+      } else {
+        return (
+          <img
+            style={{
+              position: "absolute",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              width: "60px",
+              zIndex: 3 - key,
+              left: onImageHover ? 45 + key * 70 : 45 + key * 20,
+              transition: "all .2s ease",
+            }}
+            key={key}
+            src={`/img/icon/${image}.png`}
+          />
+        );
+      }
     });
 
   const renderCourseLeader = () => {
