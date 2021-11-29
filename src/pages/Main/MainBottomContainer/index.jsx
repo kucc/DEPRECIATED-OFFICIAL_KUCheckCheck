@@ -15,7 +15,6 @@ function MainBottomContainer() {
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
-  const searchLanguage = useSelector((state) => state.search.language);
 
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
@@ -30,7 +29,6 @@ function MainBottomContainer() {
 
     let searchTermResults = [...courseContainerArrayId];
     let searchCategoryResults = [...courseContainerArrayId];
-    let searchLanguageResults = [...courseContainerArrayId];
     let courseToggleResults = [...courseContainerArrayId];
 
     // 1. 검색에 의한 filter
@@ -50,55 +48,58 @@ function MainBottomContainer() {
         return acc;
       }, []);
     }
-    // 2-1. Category에 의한 filter
+    // 2. Category에 의한 filter
     if (searchCategory) {
       searchCategoryResults = courseContainerArray.reduce((acc, course) => {
-        if (searchCategory === "Web") {
-          if (
-            ["Database", "Html", "Javascript", "Node", "React"].includes(
-              course.language
-            )
-          ) {
-            acc.push(course.id);
-          }
-        } else if (searchCategory === "App") {
-          // Java도 포함??
-          if (
-            ["Java", "Kotlin", "ReactNative", "Swift"].includes(course.language)
-          ) {
-            acc.push(course.id);
-          }
-        } else if (searchCategory === "알고리즘") {
-          if (course.language === "Algorithm") {
-            acc.push(course.id);
-          }
-        } else if (searchCategory === "머신러닝") {
-          if (course.language === "MachineLearning") {
-            acc.push(course.id);
-          }
-        }
-        return acc;
-      }, []);
-    }
-    // 2-2. Language에 의한 filter
-    if (searchLanguage) {
-      searchLanguageResults = courseContainerArray.reduce((acc, course) => {
-        if (searchLanguage === "C") {
-          if (course.language === "C") {
-            acc.push(course.id);
-          }
-        } else if (searchLanguage === "Python") {
-          if (course.language === "Python") {
-            acc.push(course.id);
-          }
-        } else if (searchLanguage === "Javascript") {
-          if (course.language === "Javascript") {
-            acc.push(course.id);
-          }
-        } else if (searchLanguage === "Java") {
-          if (course.language === "Java") {
-            acc.push(course.id);
-          }
+        switch (searchCategory) {
+          case "Web":
+            if (
+              ["Database", "Html", "Javascript", "Node", "React"].includes(
+                course.language
+              )
+            ) {
+              acc.push(course.id);
+            }
+            break;
+          case "App":
+            if (
+              ["Java", "Kotlin", "ReactNative", "Swift"].includes(
+                course.language
+              )
+            ) {
+              acc.push(course.id);
+            }
+            break;
+          case "알고리즘":
+            if (course.language === "Algorithm") {
+              acc.push(course.id);
+            }
+            break;
+          case "머신러닝":
+            if (course.language === "MachineLearning") {
+              acc.push(course.id);
+            }
+            break;
+          case "C":
+            if (course.language === "C") {
+              acc.push(course.id);
+            }
+            break;
+          case "Python":
+            if (course.language === "Python") {
+              acc.push(course.id);
+            }
+            break;
+          case "Javascript":
+            if (course.language === "Javascript") {
+              acc.push(course.id);
+            }
+            break;
+          case "Java":
+            if (course.language === "Java") {
+              acc.push(course.id);
+            }
+            break;
         }
         return acc;
       }, []);
@@ -135,7 +136,6 @@ function MainBottomContainer() {
       if (
         searchTermResults.indexOf(course.id) > -1 &&
         searchCategoryResults.indexOf(course.id) > -1 &&
-        searchLanguageResults.indexOf(course.id) > -1 &&
         courseToggleResults.indexOf(course.id) > -1
       ) {
         acc.push(course);
@@ -144,13 +144,7 @@ function MainBottomContainer() {
     }, []);
     // filterResult에 넣어줌.
     setfilterResults(filteredResults);
-  }, [
-    searchTerm,
-    searchCategory,
-    searchLanguage,
-    courseSelect,
-    courseContainerArray,
-  ]);
+  }, [searchTerm, searchCategory, courseSelect, courseContainerArray]);
 
   // 학기 선택 기능
   useEffect(() => {
@@ -219,7 +213,7 @@ function MainBottomContainer() {
   );
 
   const renderCourse = () => {
-    if (searchTerm || courseSelect !== 0 || searchCategory || searchLanguage) {
+    if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filterResults.length === 0) {
         return <Empty style={{ marginTop: "50px" }} />;
       } else {
