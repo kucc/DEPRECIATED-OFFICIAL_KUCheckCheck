@@ -4,7 +4,7 @@ import "react-table-drag-select/style.css";
 import { StyledTableContainer } from "./style";
 import { firestoreService } from "../../firebase";
 
-const selectedData = [
+const selectedDefault = [
   [false, false, false, false, false, false, false, false],
   [false, false, false, false, false, false, false, false],
   [false, false, false, false, false, false, false, false],
@@ -38,7 +38,7 @@ const selectedData = [
 
 function TimeTable({ editable, selectedData, cellData }) {
   const [cells, setcells] = useState();
-  const [selected, setselected] = useState(selectedData);
+  const [selected, setselected] = useState(selectedDefault);
 
   useEffect(() => {
     firestoreService
@@ -47,7 +47,7 @@ function TimeTable({ editable, selectedData, cellData }) {
       .get()
       .then((doc) => {
         setcells(doc.data());
-        cellData(doc.data());
+        cellData && cellData(doc.data());
       });
   }, []);
 
@@ -88,7 +88,7 @@ function TimeTable({ editable, selectedData, cellData }) {
           value={selected}
           onChange={(selected) => {
             setselected(selected);
-            selectedData(selected);
+            selectedData && selectedData(selected);
           }}
         >
           <tr style={{ fontFamily: "NexonBo", fontSize: "18px" }}>
