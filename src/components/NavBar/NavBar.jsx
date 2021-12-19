@@ -33,10 +33,13 @@ export default function NavBar() {
     <S.NavBarContainer>
       <S.NavBarLogoContainer>
         <Link to="/">
-          <p>kucc</p>
+          <img style={{ width: "90px" }} src="/img/logo/type-1-2.png" />
         </Link>
         <Link to="/rules">
-          <p>공지사항</p>
+          <S.NavBarTextContainer>공지사항</S.NavBarTextContainer>
+        </Link>
+        <Link to="/timetable">
+          <S.NavBarTextContainer>시간표</S.NavBarTextContainer>
         </Link>
       </S.NavBarLogoContainer>
       <S.NavBarMenuContainer>

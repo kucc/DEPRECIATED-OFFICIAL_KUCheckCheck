@@ -235,7 +235,7 @@ function MainBottomContainer() {
       }
     } else {
       if (courseContainerArray.length === 0) {
-        return <Skeleton />;
+        return <Empty />;
       } else {
         return courseContainerArray.map((course) => {
           return (

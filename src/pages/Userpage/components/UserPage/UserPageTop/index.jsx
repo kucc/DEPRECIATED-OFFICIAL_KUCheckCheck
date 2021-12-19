@@ -113,7 +113,7 @@ function UserPageTop({ onChangeFunc }) {
         >
           {userEmoji}
         </div>
-        <div>이름 수정</div>
+        {/* <div>이름 수정</div>
         <TextArea
           maxLength={50}
           onChange={onChangeName}
@@ -121,7 +121,7 @@ function UserPageTop({ onChangeFunc }) {
           autoSize={{ minRows: 1 }}
           style={{ width: "100%", marginBottom: "20px" }}
           defaultValue={firebaseUser.name}
-        />
+        /> */}
         <div>링크 수정 (https://까지 넣어주세요!)</div>
         <TextArea
           maxLength={50}

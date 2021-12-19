@@ -63,7 +63,8 @@ function MainSearch() {
         style={{
           display: "grid",
           gridTemplateColumns: "120px auto",
-          marginTop: "20px",
+          marginTop: "30px",
+          marginLeft: "-10px",
         }}
       >
         <div

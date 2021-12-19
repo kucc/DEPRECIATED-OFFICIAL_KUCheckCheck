@@ -4,23 +4,25 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 60px;
+  padding-left: 14.24%;
+  padding-right: 14.24%;
 `;
 
 export const NavBarLogoContainer = styled.div`
-  width: 183px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 140px 100px 100px;
   align-items: center;
-  margin-left: 4em;
-  justify-content: space-evenly;
-  & > a:nth-child(2) {
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-  }
+  margin-top: -10px;
+`;
+export const NavBarTextContainer = styled.div`
+  margin-top: -11.5px;
+  color: black;
+  font-size: 15px;
+  font-family: "NexonBo";
+  font-weight: 700;
 `;
 export const NavBarAuth = styled.div`
   min-width: 172px;
-  margin-right: 4em;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -28,12 +30,10 @@ export const NavBarAuth = styled.div`
   & > a {
     text-decoration: none;
     color: black;
-    font-weight: 500;
   }
 `;
 export const NavBarAuthOn = styled.div`
   min-width: 172px;
-  margin-right: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@ export const NavBarAuthOn = styled.div`
     font-family: "NexonBo";
   }
   & > div {
-    font-size: 12px;
+    /* font-size: 12px; */
     font-family: "NexonBo";
   }
 `;
