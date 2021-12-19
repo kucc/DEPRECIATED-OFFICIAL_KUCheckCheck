@@ -1,7 +1,13 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import TimeTable from "../../components/TimeTable/TimeTable";
-import { StyledBackground, StyledNavBarContainer } from "./style";
+import {
+  StyledBackground,
+  StyledNavBarContainer,
+  StyledTimeTableBackground,
+  StyledTimeTableBox,
+  StyledTimeTableText,
+} from "./style";
 
 function TimeTablePage() {
   return (
@@ -9,7 +15,12 @@ function TimeTablePage() {
       <StyledNavBarContainer>
         <NavBar />
       </StyledNavBarContainer>
-      <TimeTable editable={false} />;
+      <StyledTimeTableBox>
+        <StyledTimeTableText>시간표</StyledTimeTableText>
+        <StyledTimeTableBackground>
+          <TimeTable editable={false} />
+        </StyledTimeTableBackground>
+      </StyledTimeTableBox>
     </StyledBackground>
   );
 }

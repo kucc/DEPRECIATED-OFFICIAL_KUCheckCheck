@@ -1,9 +1,10 @@
-import { Button, Dropdown, Empty, Menu, Skeleton } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import CourseContainer from "../../../components/CourseContainer/CourseContainer";
 import * as S from "../style";
+import EmptyBox from "../../../components/EmptyBox";
 
 function MainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
@@ -221,7 +222,7 @@ function MainBottomContainer() {
   const renderCourse = () => {
     if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filterResults.length === 0) {
-        return <Empty style={{ marginTop: "50px" }} />;
+        return <EmptyBox />;
       } else {
         return filterResults.map((course) => {
           return (
@@ -235,7 +236,7 @@ function MainBottomContainer() {
       }
     } else {
       if (courseContainerArray.length === 0) {
-        return <Empty />;
+        return <EmptyBox />;
       } else {
         return courseContainerArray.map((course) => {
           return (

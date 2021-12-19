@@ -10,3 +10,23 @@ export const StyledNavBarContainer = styled.div`
   box-shadow: 0 11px 10px 2px lightgrey;
   background-color: white;
 `;
+
+export const StyledTimeTableBox = styled.div`
+  display: grid;
+  grid-template-rows: 100px auto;
+`;
+
+export const StyledTimeTableBackground = styled.div`
+  background-color: white;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 40px;
+  padding-bottom: 50px;
+`;
+
+export const StyledTimeTableText = styled.div`
+  margin-left: 20%;
+  font-family: "NexonBo";
+  margin-top: 50px;
+  font-size: 26px;
+`;
