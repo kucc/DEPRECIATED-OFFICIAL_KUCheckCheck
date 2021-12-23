@@ -8,4 +8,8 @@ export const StyledTableContainer = styled.div`
     line-height: 2rem;
     border: 7px solid rgba(0, 0, 0, 0);
   }
+
+  .table-drag-select td.cell-selected {
+    background-color: ${(props) => props.selectedColor || "#A9A9A9"};
+  }
 `;

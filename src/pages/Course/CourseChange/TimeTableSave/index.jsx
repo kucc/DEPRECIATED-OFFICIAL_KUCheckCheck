@@ -83,6 +83,7 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
                 zIndex: "0",
               }}
               onClick={() => setselectedColor(color)}
+              key={key}
             />
           );
         })}
@@ -91,6 +92,7 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
         editable="true"
         selectedData={(selectedData) => setselectedData(selectedData)}
         cellData={(cellData) => setcellData(cellData)}
+        selectedColor={selectedColor}
       />
       <Button onClick={handleSubmit}>저장하기</Button>
     </div>

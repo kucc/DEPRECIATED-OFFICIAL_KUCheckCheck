@@ -36,7 +36,7 @@ const selectedDefault = [
   [false, false, false, false, false, false, false, false],
 ];
 
-function TimeTable({ editable, selectedData, cellData }) {
+function TimeTable({ editable, selectedData, cellData, selectedColor }) {
   const [cells, setcells] = useState();
   const [selected, setselected] = useState(selectedDefault);
 
@@ -82,7 +82,7 @@ function TimeTable({ editable, selectedData, cellData }) {
   };
 
   return (
-    <StyledTableContainer>
+    <StyledTableContainer selectedColor={selectedColor}>
       {cells && (
         <TableDragSelect
           value={selected}
