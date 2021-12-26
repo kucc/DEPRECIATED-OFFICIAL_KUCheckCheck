@@ -12,4 +12,7 @@ export const StyledTableContainer = styled.div`
   .table-drag-select td.cell-selected {
     background-color: ${(props) => props.selectedColor || "#A9A9A9"};
   }
+  .table-drag-select td.cell-being-selected {
+    background-color: #3f83d5 !important;
+  }
 `;
