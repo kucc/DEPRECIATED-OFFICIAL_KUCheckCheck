@@ -86,7 +86,11 @@ function CourseContainer({ course, CourseApplicationState }) {
             onClick={() => history.push(`/course/session/${course.id}`)}
           >
             <StyledCourseTitle>
-              <div>{course.courseName}</div>
+              <div>
+                {course.courseName.length < 18
+                  ? course.courseName
+                  : course.courseName.slice(0, 18) + "..."}
+              </div>
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>

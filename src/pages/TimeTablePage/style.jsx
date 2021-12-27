@@ -18,8 +18,8 @@ export const StyledTimeTableBox = styled.div`
 
 export const StyledTimeTableBackground = styled.div`
   background-color: white;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 14.24%;
+  margin-right: 14.24%;
   border-radius: 40px;
   padding-bottom: 50px;
 `;

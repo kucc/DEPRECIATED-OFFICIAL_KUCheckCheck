@@ -4,6 +4,7 @@ import MainBottomContainer from "./MainBottomContainer";
 import MainTopContainer from "./MainTopContainer";
 
 function Main() {
+  console.log("hello");
   return (
     <div style={{ backgroundColor: "rgb(245, 245, 245)" }}>
       <div style={{ backgroundColor: "white" }}>

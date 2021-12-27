@@ -7,4 +7,5 @@ export const DescriptionForm = styled.div`
 
 export const DescriptionLogo = styled.img`
   width: 120px;
+  cursor: pointer;
 `;

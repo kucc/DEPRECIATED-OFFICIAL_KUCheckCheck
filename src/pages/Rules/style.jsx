@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 export const SRulesBox = styled.div`
   display: grid;
-  grid-template-rows: 50px auto;
-  grid-gap: 40px;
+  grid-template-rows: 100px auto;
 `;
 
 export const SCollapse = styled(Collapse)`

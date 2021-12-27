@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-// import { useRecoilValue } from "recoil";
-// import { userState } from "../../recoil/userState";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import * as S from "./style";
 import { authService } from "../../firebase";
+import DefaultLogo from "../DefaultLogo";
 
 // TODO
 // NavBar 컴포넌트를 src/components 하위 항목으로 이동
@@ -33,7 +32,7 @@ export default function NavBar() {
     <S.NavBarContainer>
       <S.NavBarLogoContainer>
         <Link to="/">
-          <img style={{ width: "90px" }} src="/img/logo/type-1-2.png" />
+          <DefaultLogo width="90px" height="90px" />
         </Link>
         <Link to="/rules">
           <S.NavBarTextContainer>공지사항</S.NavBarTextContainer>

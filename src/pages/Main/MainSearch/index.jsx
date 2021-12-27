@@ -32,6 +32,8 @@ function MainSearch() {
       newArray.push(category);
     }
     setrandomCategory(newArray);
+    dispatch(setSearch(""));
+    dispatch(setCategory(""));
   }, []);
 
   const changeSearch = (e) => {
