@@ -46,7 +46,7 @@ export const SearchBtn = styled.div`
 
 export const MainTopWrapper = styled.div`
   min-height: 18em;
-  padding: 3em 18em 0em;
+  padding: 5em 21em 2em;
   height: 30em;
   border-bottom-right-radius: 67px;
   border-bottom-left-radius: 67px;

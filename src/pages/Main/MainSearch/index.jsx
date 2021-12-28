@@ -32,6 +32,8 @@ function MainSearch() {
       newArray.push(category);
     }
     setrandomCategory(newArray);
+    dispatch(setSearch(""));
+    dispatch(setCategory(""));
   }, []);
 
   const changeSearch = (e) => {
@@ -64,6 +66,8 @@ function MainSearch() {
           display: "grid",
           gridTemplateColumns: "120px auto",
           marginTop: "20px",
+          marginLeft: "-10px",
+          alignItems: "start",
         }}
       >
         <div
@@ -72,6 +76,7 @@ function MainSearch() {
             alignItems: "center",
             fontSize: "16px",
             fontFamily: "NexonBo",
+            marginTop: "10px",
           }}
         >
           <StyledIconContainer>

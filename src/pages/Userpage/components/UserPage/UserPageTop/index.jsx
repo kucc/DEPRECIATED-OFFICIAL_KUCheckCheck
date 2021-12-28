@@ -78,8 +78,15 @@ function UserPageTop({ onChangeFunc }) {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div style={{ fontSize: "20px", fontWeight: "700", marginLeft: "20px" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginTop: "50px",
+        marginLeft: "5%",
+      }}
+    >
+      <div style={{ fontSize: "26px", fontFamily: "NexonBo" }}>
         {user.currentUser && userId === user.currentUser.uid ? (
           <>마이 페이지</>
         ) : (
@@ -113,7 +120,7 @@ function UserPageTop({ onChangeFunc }) {
         >
           {userEmoji}
         </div>
-        <div>이름 수정</div>
+        {/* <div>이름 수정</div>
         <TextArea
           maxLength={50}
           onChange={onChangeName}
@@ -121,7 +128,7 @@ function UserPageTop({ onChangeFunc }) {
           autoSize={{ minRows: 1 }}
           style={{ width: "100%", marginBottom: "20px" }}
           defaultValue={firebaseUser.name}
-        />
+        /> */}
         <div>링크 수정 (https://까지 넣어주세요!)</div>
         <TextArea
           maxLength={50}

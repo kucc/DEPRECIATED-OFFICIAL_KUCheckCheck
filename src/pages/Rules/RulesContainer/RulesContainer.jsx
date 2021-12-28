@@ -26,20 +26,13 @@ function RulesContainer() {
       <S.SRulesBox>
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "auto 150px",
-            paddingLeft: "18.24%",
-            paddingRight: "14.24%",
-            marginTop: "30px",
+            fontSize: "26px",
+            marginLeft: "5%",
+            fontFamily: "NexonBo",
+            marginTop: "50px",
           }}
         >
-          <div
-            style={{
-              fontSize: "23px",
-            }}
-          >
-            공지사항
-          </div>
+          공지사항
         </div>
         <S.SCollapse defaultActiveKey={["0"]} expandIconPosition="right">
           {Notices &&

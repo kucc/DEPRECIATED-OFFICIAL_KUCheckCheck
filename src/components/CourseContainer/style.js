@@ -14,10 +14,11 @@ export const StyledCourseContainer = styled.div`
   background-color: white;
 `;
 
-export const StyledCourseImg = styled.div`
-  display: grid;
-  place-items: center;
-  margin-left: 15%;
+export const StyledCourseImgContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledCourseExplainWrapper = styled.div``;

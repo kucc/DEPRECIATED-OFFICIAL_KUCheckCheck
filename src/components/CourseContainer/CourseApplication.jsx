@@ -14,6 +14,7 @@ import {
   StyledCourseApplyMy,
   StyledCourseApplyLock,
 } from "./style";
+import { message } from "antd";
 
 function CourseApplication({ course, courseId }) {
   const { maxMemberNum, semester } = course;
@@ -134,6 +135,7 @@ function CourseApplication({ course, courseId }) {
     // loading이 false라면
     if (!Loading) {
       setLoading(true);
+      const loadingMessage = message.loading("신청 중입니다.");
       // 신청 기간이 맞다면
       if (enrollmentTerm[0] <= today && today <= enrollmentTerm[1]) {
         // CourseMemver의 수가 Max보다 작을 때
@@ -200,6 +202,11 @@ function CourseApplication({ course, courseId }) {
                   ],
                 });
 
+              loadingMessage();
+              message.success({
+                content: "신청이 완료되었습니다!",
+                style: {},
+              });
               alert(SUCCESS_APPLIED_COURSE);
             } catch (error) {
               alert("error", error);

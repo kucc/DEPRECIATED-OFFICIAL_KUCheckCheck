@@ -11,6 +11,7 @@ export const StyledTag = styled(CheckableTag)`
   user-select: none;
   height: 30px;
   margin-left: 10px;
+  margin-top: 10px;
   background-color: #f5f5f5;
   border-radius: 10px;
   border: none;

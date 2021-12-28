@@ -10,6 +10,7 @@ export const StyledCol = styled(Col)`
   background-color: white;
   height: 100vh;
   min-width: 600px;
+  border-radius: 25px;
 `;
 
 export const Wrapper = styled.div`

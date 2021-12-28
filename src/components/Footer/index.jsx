@@ -59,12 +59,12 @@ export default function Footer() {
           </StyledFooterLink>
         </StyledFooterBox>
         <StyledFooterDesc style={{ marginLeft: "200px", marginTop: "-7px" }}>
-          Korea University Computer Club(고려대학교 중앙 컴퓨터 동아리)
+          Korea University Computer Club (고려대학교 중앙 컴퓨터 동아리)
         </StyledFooterDesc>
       </>
       <StyledFooterBox>
         <StyledFooterTitle>Contact</StyledFooterTitle>
-        <StyledFooterDesc>jjs01hwang@gmail.com(이희준)</StyledFooterDesc>
+        <StyledFooterDesc>jjs01hwang@gmail.com (이희준)</StyledFooterDesc>
       </StyledFooterBox>
       <StyledFooterImgBox>
         <StyledFooterImg onClick={onImgClick} src="img/logo/type-1-3.png" />

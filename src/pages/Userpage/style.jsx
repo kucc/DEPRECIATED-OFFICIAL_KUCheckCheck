@@ -13,7 +13,6 @@ export const StyledNavBarContainer = styled.div`
 `;
 
 export const StyledMainContainer = styled.div`
-  margin-top: 30px;
   margin-left: 14.21%;
   margin-right: 14.21%;
 `;

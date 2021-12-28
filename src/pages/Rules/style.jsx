@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 export const SRulesBox = styled.div`
   display: grid;
-  grid-template-rows: 50px auto;
-  grid-gap: 40px;
+  grid-template-rows: 100px auto;
+  margin-left: 14.24%;
+  margin-right: 14.24%;
 `;
 
 export const SCollapse = styled(Collapse)`
@@ -15,8 +16,6 @@ export const SCollapse = styled(Collapse)`
   .ant-collapse-item {
     border-radius: 24px;
     background-color: black;
-    margin-left: 14.24%;
-    margin-right: 14.24%;
     margin-bottom: 50px;
     box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px,
       rgb(0 0 0 / 30%) 0px 8px 16px -8px;

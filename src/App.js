@@ -16,6 +16,8 @@ import CoursePage from "./pages/Course";
 import Footer from "./components/Footer";
 import Rules from "./pages/Rules";
 import CourseNew from "./pages/CourseNew";
+import TimeTablePage from "./pages/TimeTablePage";
+import CourseChange from "./pages/Course/CourseChange";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,11 +49,13 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/userpage/:id" component={Userpage} />
         <Route path="/rules" component={Rules} />
+        <Route path="/timetable" component={TimeTablePage} />
         <Route exact path="/course/session/:id" component={CoursePage} />
         <Route
           path="/course/session/:id/attendance"
           component={CourseAttendace}
         />
+        <Route path="/course/session/:id/change" component={CourseChange} />
         <Route path="/course-new" exact component={CourseNew} />
         <Route path="/" exact component={Main} />
       </Switch>

@@ -21,7 +21,7 @@ function MainTopContainer() {
         <div>
           <img
             // marginTop : '24px'
-            style={{ width: "450px", marginTop: "0px" }}
+            style={{ width: "450px", marginTop: "0px", marginLeft: "40px" }}
             src={"./img/KUCCicon.png"}
           />
         </div>

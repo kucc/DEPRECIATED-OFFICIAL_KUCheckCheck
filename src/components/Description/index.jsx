@@ -1,15 +1,18 @@
 import React from "react";
 import { Typography } from "antd";
 import { DescriptionForm, DescriptionLogo } from "./style";
+import { useHistory } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
 function Description() {
+  const history = useHistory();
   return (
     <DescriptionForm>
       <DescriptionLogo
         alt="KUCC Icon"
         src={"./img/KUCCicon.png"}
+        onClick={() => history.push("/")}
       />
       <Title>
         KUCC

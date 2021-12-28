@@ -1,9 +1,10 @@
-import { Button, Dropdown, Empty, Menu, Skeleton } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import CourseContainer from "../../../components/CourseContainer/CourseContainer";
 import * as S from "../style";
+import EmptyBox from "../../../components/EmptyBox";
 
 function MainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
@@ -15,6 +16,11 @@ function MainBottomContainer() {
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
+
+  // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
+  const escapeRegExp = (searchTerm) => {
+    return searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
 
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
@@ -33,7 +39,7 @@ function MainBottomContainer() {
 
     // 1. 검색에 의한 filter
     if (searchTerm) {
-      const regex = new RegExp(searchTerm, "gi");
+      const regex = new RegExp(escapeRegExp(searchTerm), "gi");
       searchTermResults = courseContainerArray.reduce((acc, course) => {
         if (
           // courseName 검색
@@ -41,7 +47,7 @@ function MainBottomContainer() {
           // courseLeader 검색
           course.courseLeader.name.match(regex) ||
           // courseLanguage 검색
-          course.language.match(regex)
+          course.language.find((element) => element.match(regex))
         ) {
           acc.push(course.id);
         }
@@ -54,49 +60,50 @@ function MainBottomContainer() {
         switch (searchCategory) {
           case "Web":
             if (
-              ["Database", "Html", "Javascript", "Node", "React"].includes(
-                course.language
-              )
+              // 두 배열의 공통된 부분을 찾음
+              ["Database", "Html", "Javascript", "Node", "React"].filter((x) =>
+                course.language.includes(x)
+              ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
           case "App":
             if (
-              ["Java", "Kotlin", "ReactNative", "Swift"].includes(
-                course.language
-              )
+              ["Java", "Kotlin", "ReactNative", "Swift"].filter((x) =>
+                course.language.includes(x)
+              ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
           case "알고리즘":
-            if (course.language === "Algorithm") {
+            if (course.language.includes("Algorithm")) {
               acc.push(course.id);
             }
             break;
           case "머신러닝":
-            if (course.language === "MachineLearning") {
+            if (course.language.includes("MachineLearning")) {
               acc.push(course.id);
             }
             break;
           case "C":
-            if (course.language === "C") {
+            if (course.language.includes("C")) {
               acc.push(course.id);
             }
             break;
           case "Python":
-            if (course.language === "Python") {
+            if (course.language.includes("Python")) {
               acc.push(course.id);
             }
             break;
           case "Javascript":
-            if (course.language === "Javascript") {
+            if (course.language.includes("Javascript")) {
               acc.push(course.id);
             }
             break;
           case "Java":
-            if (course.language === "Java") {
+            if (course.language.includes("Java")) {
               acc.push(course.id);
             }
             break;
@@ -215,7 +222,7 @@ function MainBottomContainer() {
   const renderCourse = () => {
     if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filterResults.length === 0) {
-        return <Empty style={{ marginTop: "50px" }} />;
+        return <EmptyBox />;
       } else {
         return filterResults.map((course) => {
           return (
@@ -229,7 +236,7 @@ function MainBottomContainer() {
       }
     } else {
       if (courseContainerArray.length === 0) {
-        return <Skeleton />;
+        return <EmptyBox />;
       } else {
         return courseContainerArray.map((course) => {
           return (
