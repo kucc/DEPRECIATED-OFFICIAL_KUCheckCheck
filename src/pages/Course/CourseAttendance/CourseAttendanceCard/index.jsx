@@ -17,16 +17,17 @@ function CourseAttendanceCard({
   userData,
   courseId,
   isEditPage,
+  indexKey,
   seteditedAttendance,
   editedAttendance,
 }) {
   //console.log(userData, courseId);
   const [userName, setuserName] = useState();
   const [userEmoji, setuserEmoji] = useState();
-  const [courseAttendance, setcourseAttendance] = useState();
-  const [test, settest] = useState([]);
+  const [courseAttendanceData, setCourseAttendanceData] = useState();
 
   const word = { no: "결석", yes: "출석", late: "지각" };
+  let attendanceInfo = [];
 
   useEffect(() => {
     let userRef = firestoreService.collection("users").doc(userData.id);
@@ -41,24 +42,50 @@ function CourseAttendanceCard({
     let courseRef = firestoreService.collection("courses").doc(courseId);
     courseRef.get().then((doc) => {
       if (doc.exists) {
-        console.log("data : ", doc.data().courseAttendance);
-
-        doc.data().courseAttendance.map((courseUser) => {
-          if (courseUser.id == userData.id) {
-            setcourseAttendance(courseUser.attendance);
-          }
-        });
+        setCourseAttendanceData(doc.data().courseAttendance[indexKey]);
+        // doc.data().courseAttendance.map((courseUser) => {
+        //   if (courseUser.id == userData.id) {
+        //     setcourseAttendance(courseUser.attendance);
+        //     attendanceInfo = courseUser.attendance;
+        //   }
+        // });
       }
     });
   }, []);
 
   const handleSelected = (value, key) => {
-    const reqArray = [userData.id, value, key.key];
-    //const reqopbject = {};
+    console.log(value, key);
+    let stateNum = 0;
+    let newCourseAttendanceData = courseAttendanceData;
+    let newArray = courseAttendanceData.attendance;
+    if (value === "출석") {
+      stateNum = 0;
+    } else if (value === "결석") {
+      stateNum = 1;
+    } else if (value === "지각") {
+      stateNum = 2;
+    }
+    newArray[key.key[2]] = stateNum;
+    newCourseAttendanceData.attendance = newArray;
+    setCourseAttendanceData(newCourseAttendanceData);
+    editedAttendance(newCourseAttendanceData);
+    // newArray[]
+    //const reqArray = [userData.id, value, key.key];
+    // const reqopbject = {};
     // reqopbject[value] = [userData.id, value, key.key];
     // seteditedAttendance([...editedAttendance, reqopbject]);
-    seteditedAttendance([...editedAttendance, reqArray]);
-    console.log("유저아이디 : ", userData.id);
+    //seteditedAttendance([...editedAttendance, reqArray]);
+    // attendanceInfo[value] = console.log("유저아이디 : ", userData.id);
+  };
+
+  const setDefaultValue = (state) => {
+    if (state === 0) {
+      return word.yes;
+    } else if (state === 1) {
+      return word.no;
+    } else if (state === 2) {
+      return word.late;
+    }
   };
 
   return (
@@ -69,8 +96,8 @@ function CourseAttendanceCard({
           <p>{userName}</p>
         </StyledBox>
         <StyledAttendanceBox>
-          {courseAttendance &&
-            courseAttendance.map((state, index) => {
+          {courseAttendanceData &&
+            courseAttendanceData.attendance.map((state, index) => {
               //[0,1,2]
               if (isEditPage == "false") {
                 //출석 관리 페이지에서 들어올때
@@ -82,60 +109,23 @@ function CourseAttendanceCard({
                   return <StyledLate>{word.late}</StyledLate>;
               } else {
                 //출석편집에서 들어올때.
-                if (state === 0)
-                  return (
-                    <Select
-                      defaultValue={word.yes}
-                      style={{ width: 100 }}
-                      onChange={handleSelected}
-                    >
-                      <Option key={"0"} value={index}>
-                        {word.yes}
-                      </Option>
-                      <Option key={"1"} value={index}>
-                        {word.no}
-                      </Option>
-                      <Option key={"2"} value={index}>
-                        {word.late}
-                      </Option>
-                    </Select>
-                  );
-                else if (state === 1)
-                  return (
-                    <Select
-                      defaultValue={word.no}
-                      style={{ width: 100 }}
-                      onChange={handleSelected}
-                    >
-                      <Option key={"0"} value={index}>
-                        {word.yes}
-                      </Option>
-                      <Option key={"1"} value={index}>
-                        {word.no}
-                      </Option>
-                      <Option key={"2"} value={index}>
-                        {word.late}
-                      </Option>
-                    </Select>
-                  );
-                else if (state === 2)
-                  return (
-                    <Select
-                      defaultValue={word.late}
-                      style={{ width: 100 }}
-                      onChange={handleSelected}
-                    >
-                      <Option key={"0"} value={index}>
-                        {word.yes}
-                      </Option>
-                      <Option key={"1"} value={index}>
-                        {word.no}
-                      </Option>
-                      <Option key={"2"} value={index}>
-                        {word.late}
-                      </Option>
-                    </Select>
-                  );
+                return (
+                  <Select
+                    defaultValue={setDefaultValue(state)}
+                    style={{ width: 100 }}
+                    onChange={handleSelected}
+                  >
+                    <Option key={`0_${index}`} value={word.yes}>
+                      {word.yes}
+                    </Option>
+                    <Option key={`1_${index}`} value={word.no}>
+                      {word.no}
+                    </Option>
+                    <Option key={`2_${index}`} value={word.late}>
+                      {word.late}
+                    </Option>
+                  </Select>
+                );
               }
             })}
         </StyledAttendanceBox>

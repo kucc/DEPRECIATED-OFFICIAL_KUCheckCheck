@@ -6,6 +6,7 @@ import CourseAttendanceTop from "./CourseAttendanceTop";
 function CourseAttendace() {
   const courseId = document.location.href.split("/")[5];
   const [userData, setuserData] = useState([]);
+  const [courseName, setCourseName] = useState("");
   useEffect(() => {
     const courseId = document.location.href.split("/")[5];
     firestoreService
@@ -13,7 +14,8 @@ function CourseAttendace() {
       .doc(courseId)
       .get()
       .then((querySnapshot) => {
-        console.log(querySnapshot.data().courseAttendance);
+        console.log(querySnapshot.data().courseName);
+        setCourseName(querySnapshot.data().courseName);
         setuserData(querySnapshot.data().courseAttendance);
       });
   }, []);
@@ -21,13 +23,18 @@ function CourseAttendace() {
   return (
     <div>
       {userData && (
-        <CourseAttendanceTop userData={userData} courseId={courseId} />
+        <CourseAttendanceTop
+          courseName={courseName}
+          userData={userData}
+          courseId={courseId}
+        />
       )}
       {userData &&
         userData.map((userData, key) => {
           return (
             <CourseAttendanceCard
               key={key}
+              indexKey={key}
               userData={userData}
               courseId={courseId}
               isEditPage={"false"}

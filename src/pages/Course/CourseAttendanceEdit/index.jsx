@@ -42,12 +42,7 @@ function CourseAttendanceEdit() {
     let courseRef = firestoreService.collection("courses").doc(courseId);
     courseRef.get().then((doc) => {
       if (doc.exists) {
-        console.log("data : ", doc.data().courseAttendance);
-        doc.data().courseAttendance.map((courseUser) => {
-          if (courseUser.id == userData.id) {
-            setcourseAttendance(courseUser.attendance);
-          }
-        });
+        setcourseAttendance(doc.data().courseAttendance);
       }
     });
 
@@ -57,37 +52,23 @@ function CourseAttendanceEdit() {
       });
   }, []);
 
-  console.log("userdata : ", userData);
-  console.log("courseId : ", courseId);
-
   const handleClick = async () => {
     let courseRef = firestoreService.collection("courses").doc(courseId);
-    editedAttendance.map((editValue) => {
-      console.log("now data", editValue);
-      // let index = editValue[1];
-      courseRef.get().then((doc) => {
-        if (doc.exists) {
-          doc.data().courseAttendance.map((user) => {
-            if (user.id == editValue[0]) {
-              // courseRef.update({
-              //   courseAttendance: {
-              //     user: {
-              //       attendance: {
-
-              //     }}}
-              //   })
-              console.log(user);
-              user.attendance[editValue[1]] = editValue[2];
-              console.log("그래 바로 이거야", user.attendance);
-            }
-          });
-        }
-      });
-    });
-    //history.go(-1);
+    courseRef.update({ courseAttendance: courseAttendance });
+    history.go(-1);
   };
 
-  console.log("업데이트할 데이터:", editedAttendance);
+  const onEditedAttendance = (data) => {
+    let newcourseAttendance = courseAttendance;
+    courseAttendance.map((course, key) => {
+      if (course.id === data.id) {
+        newcourseAttendance[key] = data;
+      }
+    });
+    setcourseAttendance(newcourseAttendance);
+  };
+
+  // console.log("업데이트할 데이터:", editedAttendance);
 
   return (
     <div>
@@ -107,14 +88,16 @@ function CourseAttendanceEdit() {
       </div>
 
       {userData &&
-        userData.map((userData) => {
+        userData.map((userData, key) => {
           return (
             <CourseAttendanceCard
               userData={userData}
               courseId={courseId}
               isEditPage={"true"}
+              key={key}
+              indexKey={key}
               seteditedAttendance={seteditedAttendance}
-              editedAttendance={editedAttendance}
+              editedAttendance={(data) => onEditedAttendance(data)}
             />
           );
         })}
