@@ -65,8 +65,9 @@ function MainSearch() {
         style={{
           display: "grid",
           gridTemplateColumns: "120px auto",
-          marginTop: "30px",
+          marginTop: "20px",
           marginLeft: "-10px",
+          alignItems: "start",
         }}
       >
         <div
@@ -75,6 +76,7 @@ function MainSearch() {
             alignItems: "center",
             fontSize: "16px",
             fontFamily: "NexonBo",
+            marginTop: "10px",
           }}
         >
           <StyledIconContainer>

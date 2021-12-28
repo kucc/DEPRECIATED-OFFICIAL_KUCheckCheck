@@ -8,7 +8,7 @@ function UserPage() {
     setchangeState(data);
   };
   return (
-    <div>
+    <div style={{ display: "grid", gridTemplateRows: "100px auto" }}>
       <UserPageTop onChangeFunc={handleChange} />
       <UserPageCard key={changeState} />
     </div>

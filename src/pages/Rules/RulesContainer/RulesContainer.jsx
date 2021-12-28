@@ -27,7 +27,7 @@ function RulesContainer() {
         <div
           style={{
             fontSize: "26px",
-            marginLeft: "20%",
+            marginLeft: "5%",
             fontFamily: "NexonBo",
             marginTop: "50px",
           }}
