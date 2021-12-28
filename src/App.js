@@ -12,6 +12,7 @@ import "./App.css";
 import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 import CourseAttendace from "./pages/Course/CourseAttendance";
+import CourseAttendaceEdit from "./pages/Course/CourseAttendanceEdit";
 import CoursePage from "./pages/Course";
 import Footer from "./components/Footer";
 import Rules from "./pages/Rules";
@@ -52,8 +53,14 @@ function App() {
         <Route path="/timetable" component={TimeTablePage} />
         <Route exact path="/course/session/:id" component={CoursePage} />
         <Route
+          exact
           path="/course/session/:id/attendance"
           component={CourseAttendace}
+        />
+        <Route
+          exact
+          path="/course/session/:id/attendance/edit"
+          component={CourseAttendaceEdit}
         />
         <Route path="/course/session/:id/change" component={CourseChange} />
         <Route path="/course-new" exact component={CourseNew} />

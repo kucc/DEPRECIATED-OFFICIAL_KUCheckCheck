@@ -13,14 +13,16 @@ function CourseAttendace() {
       .doc(courseId)
       .get()
       .then((querySnapshot) => {
+        console.log(querySnapshot.data().courseAttendance);
         setuserData(querySnapshot.data().courseAttendance);
       });
   }, []);
 
   return (
     <div>
-      코스 출석!
-      <CourseAttendanceTop />
+      {userData && (
+        <CourseAttendanceTop userData={userData} courseId={courseId} />
+      )}
       {userData &&
         userData.map((userData, key) => {
           return (
@@ -28,6 +30,7 @@ function CourseAttendace() {
               key={key}
               userData={userData}
               courseId={courseId}
+              isEditPage={"false"}
             />
           );
         })}
