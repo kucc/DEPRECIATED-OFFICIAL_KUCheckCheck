@@ -2,6 +2,7 @@ import { Button } from "antd";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import Curriculum from "./components/Curriculum";
 
 function CoursePage() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function CoursePage() {
       <Button onClick={() => history.push(`${location.pathname}/change`)}>
         정보 수정
       </Button>
+      <Curriculum />
     </div>
   );
 }
