@@ -79,9 +79,7 @@ function PCourseNewBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <StyledNavBarContainer>
-        <NavBar />
-      </StyledNavBarContainer>
+      <NavBar />
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 

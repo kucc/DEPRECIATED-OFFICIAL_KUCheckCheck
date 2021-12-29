@@ -1,44 +1,21 @@
-import { COMPLETIONSTATEMENT_TYPES } from "@babel/types";
-import { Button, Select } from "antd";
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router";
-import NavBar from "../../../components/NavBar/NavBar";
+import { useLocation } from "react-router";
 import { firestoreService } from "../../../firebase";
 import CourseAttendanceCard from "../CourseAttendance/CourseAttendanceCard";
-import {
-  StyledAttendanceBox,
-  StyledBox,
-  StyledContainer,
-  StyledEmogi,
-  StyledAbsence,
-  StyledAttendance,
-  StyledLate,
-} from "../CourseAttendance/CourseAttendanceCard/style";
+
+import CourseAttendanceTop from "../CourseAttendance/CourseAttendanceTop";
 
 function CourseAttendanceEdit() {
-  const [userName, setuserName] = useState([]);
-  const [userEmoji, setuserEmoji] = useState([]);
   const [courseAttendance, setcourseAttendance] = useState();
   const [courseUser, setcourseUser] = useState([]);
-  const [editedAttendance, seteditedAttendance] = useState([]);
   const location = useLocation();
-  const history = useHistory();
-
-  const word = { no: "결석", yes: "출석", late: "지각" };
 
   const userData = location.state.userData ? location.state.userData : "";
   const courseId = location.state.courseId ? location.state.courseId : "";
+  const courseName = location.state.courseName ? location.state.courseName : "";
 
   useEffect(() => {
-    let userRef = firestoreService.collection("users").doc(userData.id);
-    userRef.get().then((doc) => {
-      if (doc.exists) {
-        setuserName([...userName, doc.data().name]);
-        setuserEmoji([...userName, doc.data().emoji]);
-      }
-    });
-
     let courseRef = firestoreService.collection("courses").doc(courseId);
     courseRef.get().then((doc) => {
       if (doc.exists) {
@@ -51,12 +28,6 @@ function CourseAttendanceEdit() {
         setcourseUser([...courseUser, user]);
       });
   }, []);
-
-  const handleClick = async () => {
-    let courseRef = firestoreService.collection("courses").doc(courseId);
-    courseRef.update({ courseAttendance: courseAttendance });
-    history.go(-1);
-  };
 
   const onEditedAttendance = (data) => {
     let newcourseAttendance = courseAttendance;
@@ -71,21 +42,16 @@ function CourseAttendanceEdit() {
   // console.log("업데이트할 데이터:", editedAttendance);
 
   return (
-    <div>
-      <NavBar />
-      <div
-        style={{
-          display: "flex",
-          backgroundColor: "rgb(245, 245, 245)",
-          padding: "30px",
-        }}
-      >
-        <div>출결관리 </div>
-        <Button type="danger" onClick={handleClick}>
-          {" "}
-          수정완료{" "}
-        </Button>
-      </div>
+    <>
+      {userData && (
+        <CourseAttendanceTop
+          courseName={courseName}
+          userData={userData}
+          courseId={courseId}
+          isEditMode={true}
+          courseAttendance={courseAttendance}
+        />
+      )}
 
       {userData &&
         userData.map((userData, key) => {
@@ -96,12 +62,11 @@ function CourseAttendanceEdit() {
               isEditPage={"true"}
               key={key}
               indexKey={key}
-              seteditedAttendance={seteditedAttendance}
               editedAttendance={(data) => onEditedAttendance(data)}
             />
           );
         })}
-    </div>
+    </>
   );
 }
 

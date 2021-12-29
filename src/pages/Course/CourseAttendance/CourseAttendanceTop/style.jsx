@@ -2,7 +2,6 @@ import { Button } from "antd";
 import styled from "styled-components";
 
 export const StyledTopBox = styled.div`
-  padding-top: 30px;
   padding-left: 14.24%;
   padding-right: 14.24%;
   display: flex;
@@ -15,7 +14,18 @@ export const StyledLeftBox = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledTextBox = styled.div``;
+export const StyledTextBox = styled.div`
+  margin: 2.7%;
+  font-size: 14px;
+`;
+export const StyledWeekBox = styled.div`
+  display: flex;
+  padding-left: calc(19% + 160px);
+  padding-right: calc(19% + 20px);
+  width: 100%;
+  justify-content: center;
+  height: 50px;
+`;
 
 export const StyledBackButton = styled(Button)`
   width: 50px;

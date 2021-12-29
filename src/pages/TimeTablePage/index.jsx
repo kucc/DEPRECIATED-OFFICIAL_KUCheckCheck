@@ -12,9 +12,7 @@ import {
 function TimeTablePage() {
   return (
     <StyledBackground>
-      <StyledNavBarContainer>
-        <NavBar />
-      </StyledNavBarContainer>
+      <NavBar />
       <StyledTimeTableBox>
         <StyledTimeTableText>시간표</StyledTimeTableText>
         <StyledTimeTableBackground>

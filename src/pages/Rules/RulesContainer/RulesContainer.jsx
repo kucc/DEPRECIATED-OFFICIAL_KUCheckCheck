@@ -20,9 +20,7 @@ function RulesContainer() {
 
   return (
     <S.StyledBackground>
-      <S.StyledNavBarContainer>
-        <NavBar />
-      </S.StyledNavBarContainer>
+      <NavBar />
       <S.SRulesBox>
         <div
           style={{

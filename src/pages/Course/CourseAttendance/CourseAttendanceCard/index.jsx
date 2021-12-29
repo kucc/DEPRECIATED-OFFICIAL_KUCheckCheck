@@ -18,16 +18,13 @@ function CourseAttendanceCard({
   courseId,
   isEditPage,
   indexKey,
-  seteditedAttendance,
   editedAttendance,
 }) {
-  //console.log(userData, courseId);
   const [userName, setuserName] = useState();
   const [userEmoji, setuserEmoji] = useState();
   const [courseAttendanceData, setCourseAttendanceData] = useState();
 
   const word = { no: "결석", yes: "출석", late: "지각" };
-  let attendanceInfo = [];
 
   useEffect(() => {
     let userRef = firestoreService.collection("users").doc(userData.id);
@@ -35,7 +32,6 @@ function CourseAttendanceCard({
       if (doc.exists) {
         setuserName(doc.data().name);
         setuserEmoji(doc.data().emoji);
-        // console.log("data : ", doc.data());
       }
     });
 
@@ -43,12 +39,6 @@ function CourseAttendanceCard({
     courseRef.get().then((doc) => {
       if (doc.exists) {
         setCourseAttendanceData(doc.data().courseAttendance[indexKey]);
-        // doc.data().courseAttendance.map((courseUser) => {
-        //   if (courseUser.id == userData.id) {
-        //     setcourseAttendance(courseUser.attendance);
-        //     attendanceInfo = courseUser.attendance;
-        //   }
-        // });
       }
     });
   }, []);
@@ -69,13 +59,6 @@ function CourseAttendanceCard({
     newCourseAttendanceData.attendance = newArray;
     setCourseAttendanceData(newCourseAttendanceData);
     editedAttendance(newCourseAttendanceData);
-    // newArray[]
-    //const reqArray = [userData.id, value, key.key];
-    // const reqopbject = {};
-    // reqopbject[value] = [userData.id, value, key.key];
-    // seteditedAttendance([...editedAttendance, reqopbject]);
-    //seteditedAttendance([...editedAttendance, reqArray]);
-    // attendanceInfo[value] = console.log("유저아이디 : ", userData.id);
   };
 
   const setDefaultValue = (state) => {

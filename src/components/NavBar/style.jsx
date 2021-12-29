@@ -1,18 +1,37 @@
 import styled from "styled-components";
 
-export const NavBarContainer = styled.div`
+export const NavBarBackground = styled.div`
+  background-color: rgb(245, 245, 245);
+`;
+
+export const NavBarShadowContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding-left: 14.24%;
   padding-right: 14.24%;
   margin-top: -12px;
   height: 90px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0 11px 10px 2px lightgrey;
+  background-color: white;
+`;
+
+export const NavBarNonShadowContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-left: 14.24%;
+  padding-right: 14.24%;
+  margin-top: -12px;
+  height: 90px;
+  background-color: white;
 `;
 
 export const NavBarLogoContainer = styled.div`
   display: grid;
   grid-template-columns: 140px 100px 100px;
   align-items: center;
+  z-index: 0;
 `;
 export const NavBarTextContainer = styled.div`
   cursor: pointer;

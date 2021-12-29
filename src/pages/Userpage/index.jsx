@@ -11,9 +11,7 @@ import {
 function Userpage() {
   return (
     <StyledBackground>
-      <StyledNavBarContainer>
-        <NavBar />
-      </StyledNavBarContainer>
+      <NavBar />
       <StyledMainContainer>
         <UserPage />
         <UserCoursePage />

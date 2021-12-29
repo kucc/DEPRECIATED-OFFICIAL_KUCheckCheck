@@ -8,7 +8,7 @@ import DefaultLogo from "../DefaultLogo";
 // TODO
 // NavBar 컴포넌트를 src/components 하위 항목으로 이동
 // 불필요한 함수 삭제 및 스타일 분리
-export default function NavBar() {
+const NavBar = ({ isMain = false }) => {
   const user = useSelector((state) => state.user);
   const history = useHistory();
   const [onHovered, setOnHovered] = useState("");
@@ -31,8 +31,8 @@ export default function NavBar() {
     }
   };
 
-  return (
-    <S.NavBarContainer>
+  const renderNavBar = () => (
+    <>
       <S.NavBarLogoContainer>
         <Link to="/">
           <DefaultLogo width="90px" height="90px" />
@@ -106,6 +106,22 @@ export default function NavBar() {
           </S.NavBarAuth>
         )}
       </S.NavBarMenuContainer>
-    </S.NavBarContainer>
+    </>
   );
-}
+
+  return (
+    <>
+      {isMain ? (
+        <S.NavBarNonShadowContainer>
+          {renderNavBar()}
+        </S.NavBarNonShadowContainer>
+      ) : (
+        <S.NavBarBackground>
+          <S.NavBarShadowContainer>{renderNavBar()}</S.NavBarShadowContainer>
+        </S.NavBarBackground>
+      )}
+    </>
+  );
+};
+
+export default NavBar;

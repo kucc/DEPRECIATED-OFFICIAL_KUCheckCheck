@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import NavBar from "../../../components/NavBar/NavBar";
 import { firestoreService } from "../../../firebase";
+import { StyledBackground, StyledNavBarContainer } from "../../Rules/style";
 import CourseAttendanceCard from "./CourseAttendanceCard";
 import CourseAttendanceTop from "./CourseAttendanceTop";
 
@@ -14,19 +16,19 @@ function CourseAttendace() {
       .doc(courseId)
       .get()
       .then((querySnapshot) => {
-        console.log(querySnapshot.data().courseName);
         setCourseName(querySnapshot.data().courseName);
         setuserData(querySnapshot.data().courseAttendance);
       });
   }, []);
 
   return (
-    <div>
+    <>
       {userData && (
         <CourseAttendanceTop
           courseName={courseName}
           userData={userData}
           courseId={courseId}
+          isEditMode={false}
         />
       )}
       {userData &&
@@ -41,7 +43,7 @@ function CourseAttendace() {
             />
           );
         })}
-    </div>
+    </>
   );
 }
 
