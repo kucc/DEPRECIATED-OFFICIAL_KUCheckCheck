@@ -96,6 +96,7 @@ export const MainBottomWrapper = styled.div`
 export const MainBottomBtnCont = styled.div`
   display: grid;
   grid-template-columns: 11.25% auto 10.52%;
+  min-width: 1100px;
 `;
 
 export const MainSessDuration = styled.div``;

@@ -15,7 +15,6 @@ function EmptyBox() {
       >
         정보가 없습니다.
       </div>
-      {/* <Empty/> */}
     </StyledEmptyBox>
   );
 }

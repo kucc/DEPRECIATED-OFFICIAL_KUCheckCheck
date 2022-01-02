@@ -1,24 +1,14 @@
 import { Empty, Timeline } from "antd";
 import React, { useEffect, useState } from "react";
 import CourseContainer from "../../../../../components/CourseContainer/CourseContainer";
-import { firestoreService } from "../../../../../firebase";
 import { StyledTimelineItem } from "../../../style";
 
-function UserCoursePageCard() {
-  const userId = document.location.href.split("/")[4];
-
+function UserCoursePageCard({ userData }) {
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   useEffect(() => {
-    firestoreService
-      .collection("users")
-      .doc(userId)
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.data().courseHistory) {
-          setcourseContainerArray(querySnapshot.data().courseHistory.reverse());
-        }
-      });
-  }, []);
+    userData.courseHistory &&
+      setcourseContainerArray(userData.courseHistory.reverse());
+  }, [userData]);
 
   return (
     <div style={{ marginTop: "80px" }}>

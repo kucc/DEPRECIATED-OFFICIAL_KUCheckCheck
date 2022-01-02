@@ -9,7 +9,6 @@ import { firestoreService } from "../../firebase";
 function CoursePage() {
   const location = useLocation();
   const history = useHistory();
-  useEffect(() => {}, []);
   return (
     <div>
       <NavBar />

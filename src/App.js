@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
-import Userpage from "./pages/Userpage";
 import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
 import CourseAttendace from "./pages/Course/CourseAttendance";
 import CourseAttendaceEdit from "./pages/Course/CourseAttendanceEdit";
@@ -19,6 +18,9 @@ import Rules from "./pages/Rules";
 import CourseNew from "./pages/CourseNew";
 import TimeTablePage from "./pages/TimeTablePage";
 import CourseChange from "./pages/Course/CourseChange";
+import course from "./hoc/course";
+import userPage from "./hoc/userPage";
+import auth from "./hoc/auth";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,22 +50,35 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/userpage/:id" component={Userpage} />
+        <Route path="/userpage/:id" component={userPage()} />
         <Route path="/rules" component={Rules} />
         <Route path="/timetable" component={TimeTablePage} />
-        <Route exact path="/course/session/:id" component={CoursePage} />
+        {/* 
+          option : 0 => 모든 사람이 출입할 수 있음
+          option : 1 => 로그인된 사람만이 출입할 수 있음
+          option : 2 => 세션장만이 출입할 수 있음
+          option : 3 => 출석관리자만이 출입할 수 있음 
+        */}
+        <Route
+          exact
+          path="/course/session/:id"
+          component={course(CoursePage, 0)}
+        />
         <Route
           exact
           path="/course/session/:id/attendance"
-          component={CourseAttendace}
+          component={course(CourseAttendace, 1)}
         />
         <Route
           exact
           path="/course/session/:id/attendance/edit"
-          component={CourseAttendaceEdit}
+          component={course(CourseAttendaceEdit, 3)}
         />
-        <Route path="/course/session/:id/change" component={CourseChange} />
-        <Route path="/course-new" exact component={CourseNew} />
+        <Route
+          path="/course/session/:id/change"
+          component={course(CourseChange, 2)}
+        />
+        <Route path="/course-new" exact component={auth(CourseNew)} />
         <Route path="/" exact component={Main} />
       </Switch>
       <Footer />

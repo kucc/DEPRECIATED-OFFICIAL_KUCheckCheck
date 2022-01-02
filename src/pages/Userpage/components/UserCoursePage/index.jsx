@@ -2,11 +2,11 @@ import React from "react";
 import UserCoursePageCard from "./UserCoursePageCard";
 import UserCoursePageTop from "./UserCoursePageTop";
 
-function UserCoursePage() {
+function UserCoursePage({ userData }) {
   return (
     <div>
       <UserCoursePageTop />
-      <UserCoursePageCard />
+      <UserCoursePageCard userData={userData} />
     </div>
   );
 }

@@ -10,30 +10,27 @@ import {
   StyledPictureContainer,
 } from "../../../style";
 
-function UserPageCard() {
-  const userId = document.location.href.split("/")[4];
+function UserInfoCard({ userData }) {
   const [firebaseUser, setfirebaseUser] = useState("");
   //유저 정보 불러오기
   useEffect(() => {
-    firestoreService
-      .collection("users")
-      .doc(userId)
-      .get()
-      .then((querySnapshot) => {
-        setfirebaseUser(querySnapshot.data());
-      });
-  }, []);
-
-  // 링크 특수문자 사라짐 현상 해결 함수
-  function replace(url) {
-    url = url.replace(/&/g, "%26").replace(/\+/g, "%2B");
-    console.log(url);
-    return url;
-  }
+    async function loadUserData() {
+      if (userData) {
+        const data = await firestoreService
+          .collection("users")
+          .doc(userData.userId)
+          .get();
+        setfirebaseUser(data.data());
+      }
+    }
+    loadUserData();
+  }, [userData]);
 
   return (
     <StyledCardContainer>
-      <StyledPictureContainer>{firebaseUser.emoji}</StyledPictureContainer>
+      <StyledPictureContainer>
+        {firebaseUser && firebaseUser.emoji}
+      </StyledPictureContainer>
       <div
         style={{
           borderRight: "1.5px solid #b6b6b6a4",
@@ -43,11 +40,11 @@ function UserPageCard() {
       ></div>
       <StyledDetailContainer>
         <div style={{ fontSize: "32px", fontFamily: "NexonBo" }}>
-          {firebaseUser.name}
+          {firebaseUser && firebaseUser.name}
         </div>
-        <div>{firebaseUser.comment}</div>
+        <div>{firebaseUser && firebaseUser.comment}</div>
         <StyledDetailCommentBox>
-          {firebaseUser.detailComment}
+          {firebaseUser && firebaseUser.detailComment}
         </StyledDetailCommentBox>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
           <div style={{ display: "flex", gap: "5px", marginTop: "20px" }}>
@@ -66,7 +63,7 @@ function UserPageCard() {
               <HiOutlineMail color="white" />
             </StyledIconContainer>
             <div style={{ marginLeft: "10px", marginTop: "4px" }}>
-              {firebaseUser.email}
+              {firebaseUser && firebaseUser.email}
             </div>
           </div>
         </div>
@@ -75,4 +72,4 @@ function UserPageCard() {
   );
 }
 
-export default UserPageCard;
+export default UserInfoCard;

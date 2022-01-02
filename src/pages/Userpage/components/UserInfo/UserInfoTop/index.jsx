@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import RandomEmoji from "../../../../../components/RandomEmoji/RandomEmoji";
 import { firestoreService } from "../../../../../firebase";
 
-function UserPageTop({ onChangeFunc }) {
+function UserInfoTop({ onChangeFunc, userData }) {
   //세션 불러오기
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [userName, setuserName] = useState("");
@@ -12,48 +12,36 @@ function UserPageTop({ onChangeFunc }) {
   const [userComment, setuserComment] = useState("");
   const [userDetailComment, setuserDetailComment] = useState("");
   const [userEmoji, setuserEmoji] = useState("");
-  const [firebaseUser, setfirebaseUser] = useState("");
-  const userId = document.location.href.split("/")[4];
   const user = useSelector((state) => state.user);
+  const userId = userData.userId;
 
   useEffect(() => {
-    firestoreService
-      .collection("users")
-      .doc(userId)
-      .get()
-      .then((querySnapshot) => {
-        setfirebaseUser(querySnapshot.data());
-        setuserName(querySnapshot.data().name);
-        setuserLink(querySnapshot.data().link);
-        setuserComment(querySnapshot.data().comment);
-        setuserDetailComment(querySnapshot.data().detailComment);
-        setuserEmoji(querySnapshot.data().emoji);
-      });
-  }, []);
+    setuserName(userData.name);
+    setuserLink(userData.link);
+    setuserComment(userData.comment);
+    setuserDetailComment(userData.detailComment);
+    setuserEmoji(userData.emoji);
+  }, [userData]);
 
   const { TextArea } = Input;
 
   const showModal = () => {
     setIsModalVisible(true);
   };
-  const handleOk = () => {
+  const handleOk = async () => {
     setIsModalVisible(false);
-    const changedUserRef = firestoreService.collection("users").doc(userId);
-    changedUserRef
-      .update({
+    try {
+      await firestoreService.collection("users").doc(userId).update({
         name: userName,
         link: userLink,
         comment: userComment,
         detailComment: userDetailComment,
         emoji: userEmoji,
-      })
-      .then(() => {
-        // 교체해야 함!
-        onChangeFunc(Date());
-      })
-      .catch((error) => {
-        alert("Error updating document: ", error);
       });
+    } catch (error) {
+      alert("Error updating document: ", error);
+    }
+    onChangeFunc(Date());
   };
 
   const handleCancel = () => {
@@ -64,9 +52,6 @@ function UserPageTop({ onChangeFunc }) {
     setuserEmoji(RandomEmoji());
   };
 
-  const onChangeName = (event) => {
-    setuserName(event.target.value);
-  };
   const onChangeLink = (event) => {
     setuserLink(event.target.value);
   };
@@ -120,15 +105,6 @@ function UserPageTop({ onChangeFunc }) {
         >
           {userEmoji}
         </div>
-        {/* <div>이름 수정</div>
-        <TextArea
-          maxLength={50}
-          onChange={onChangeName}
-          placeholder="이름 수정"
-          autoSize={{ minRows: 1 }}
-          style={{ width: "100%", marginBottom: "20px" }}
-          defaultValue={firebaseUser.name}
-        /> */}
         <div>링크 수정 (https://까지 넣어주세요!)</div>
         <TextArea
           maxLength={50}
@@ -136,7 +112,7 @@ function UserPageTop({ onChangeFunc }) {
           placeholder="링크 수정"
           autoSize={{ minRows: 1 }}
           style={{ width: "100%", marginBottom: "20px" }}
-          defaultValue={firebaseUser.link}
+          defaultValue={userLink}
         />
         <div>코멘트 수정</div>
         <TextArea
@@ -145,7 +121,7 @@ function UserPageTop({ onChangeFunc }) {
           placeholder="코멘트 수정"
           autoSize={{ minRows: 1 }}
           style={{ width: "100%", marginBottom: "20px" }}
-          defaultValue={firebaseUser.comment}
+          defaultValue={userComment}
         />
         <div>세부코멘트 수정</div>
         <TextArea
@@ -154,11 +130,11 @@ function UserPageTop({ onChangeFunc }) {
           placeholder="세부코멘트 수정"
           autoSize={{ minRows: 1 }}
           style={{ width: "100%", marginBottom: "20px" }}
-          defaultValue={firebaseUser.detailComment}
+          defaultValue={userDetailComment}
         />
       </Modal>
     </div>
   );
 }
 
-export default UserPageTop;
+export default UserInfoTop;

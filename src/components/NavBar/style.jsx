@@ -36,7 +36,7 @@ export const NavBarLogoContainer = styled.div`
 export const NavBarTextContainer = styled.div`
   cursor: pointer;
   color: ${(props) =>
-    props.onHovered && props.onHovered !== props.text ? "gray" : "black"};
+    props.hoverState && props.hoverState !== props.text ? "gray" : "black"};
   font-size: 15px;
   font-family: "NexonBo";
   /* &:hover {
@@ -51,15 +51,14 @@ export const NavBarTextContainer = styled.div`
 `;
 export const NavBarAuth = styled.div`
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 90px 90px;
   place-items: center;
 `;
 export const NavBarAuthOn = styled.div`
   min-width: 172px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto 90px 90px;
   font-weight: 700;
   font-size: 15px;
   & > p {

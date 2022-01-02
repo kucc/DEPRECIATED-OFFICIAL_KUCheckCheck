@@ -1,22 +1,18 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import UserCoursePage from "./components/UserCoursePage";
-import UserPage from "./components/UserPage";
-import {
-  StyledBackground,
-  StyledMainContainer,
-  StyledNavBarContainer,
-} from "./style";
+import UserInfo from "./components/UserInfo";
+import { StyledBackground, StyledMainContainer } from "./style";
 
-function Userpage() {
+function UserPage({ userData }) {
   return (
     <StyledBackground>
       <NavBar />
       <StyledMainContainer>
-        <UserPage />
-        <UserCoursePage />
+        <UserInfo userData={userData} />
+        <UserCoursePage userData={userData} />
       </StyledMainContainer>
     </StyledBackground>
   );
 }
-export default Userpage;
+export default UserPage;

@@ -11,7 +11,7 @@ import DefaultLogo from "../DefaultLogo";
 const NavBar = ({ isMain = false }) => {
   const user = useSelector((state) => state.user);
   const history = useHistory();
-  const [onHovered, setOnHovered] = useState("");
+  const [hoverState, sethoverState] = useState("");
 
   const logout = async () => {
     try {
@@ -40,9 +40,9 @@ const NavBar = ({ isMain = false }) => {
         <Link to="/rules">
           <S.NavBarTextContainer
             text="공지사항"
-            onHovered={onHovered}
-            onMouseEnter={() => setOnHovered("공지사항")}
-            onMouseLeave={() => setOnHovered("")}
+            hoverState={hoverState}
+            onMouseEnter={() => sethoverState("공지사항")}
+            onMouseLeave={() => sethoverState("")}
           >
             공지사항
           </S.NavBarTextContainer>
@@ -50,9 +50,9 @@ const NavBar = ({ isMain = false }) => {
         <Link to="/timetable">
           <S.NavBarTextContainer
             text="시간표"
-            onHovered={onHovered}
-            onMouseEnter={() => setOnHovered("시간표")}
-            onMouseLeave={() => setOnHovered("")}
+            hoverState={hoverState}
+            onMouseEnter={() => sethoverState("시간표")}
+            onMouseLeave={() => sethoverState("")}
           >
             시간표
           </S.NavBarTextContainer>
@@ -64,18 +64,18 @@ const NavBar = ({ isMain = false }) => {
             <p>HELLO {user.currentUser.displayName}!</p>
             <S.NavBarTextContainer
               text="MY"
-              onHovered={onHovered}
-              onMouseEnter={() => setOnHovered("MY")}
-              onMouseLeave={() => setOnHovered("")}
+              hoverState={hoverState}
+              onMouseEnter={() => sethoverState("MY")}
+              onMouseLeave={() => sethoverState("")}
               onClick={myPage}
             >
               MY
             </S.NavBarTextContainer>
             <S.NavBarTextContainer
               text="로그아웃"
-              onHovered={onHovered}
-              onMouseEnter={() => setOnHovered("로그아웃")}
-              onMouseLeave={() => setOnHovered("")}
+              hoverState={hoverState}
+              onMouseEnter={() => sethoverState("로그아웃")}
+              onMouseLeave={() => sethoverState("")}
               onClick={logout}
             >
               로그아웃
@@ -86,9 +86,9 @@ const NavBar = ({ isMain = false }) => {
             <Link to="/login">
               <S.NavBarTextContainer
                 text="로그인"
-                onHovered={onHovered}
-                onMouseEnter={() => setOnHovered("로그인")}
-                onMouseLeave={() => setOnHovered("")}
+                hoverState={hoverState}
+                onMouseEnter={() => sethoverState("로그인")}
+                onMouseLeave={() => sethoverState("")}
               >
                 LOGIN
               </S.NavBarTextContainer>
@@ -96,9 +96,9 @@ const NavBar = ({ isMain = false }) => {
             <Link to="/signup">
               <S.NavBarTextContainer
                 text="회원가입"
-                onHovered={onHovered}
-                onMouseEnter={() => setOnHovered("회원가입")}
-                onMouseLeave={() => setOnHovered("")}
+                hoverState={hoverState}
+                onMouseEnter={() => sethoverState("회원가입")}
+                onMouseLeave={() => sethoverState("")}
               >
                 JOIN
               </S.NavBarTextContainer>

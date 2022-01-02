@@ -13,38 +13,26 @@ import {
 } from "./style";
 const { Option } = Select;
 
-function CourseAttendanceCard({
-  userData,
-  courseId,
-  isEditPage,
-  indexKey,
-  editedAttendance,
-}) {
+function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   const [userName, setuserName] = useState();
   const [userEmoji, setuserEmoji] = useState();
-  const [courseAttendanceData, setCourseAttendanceData] = useState();
+  const [courseAttendanceData, setCourseAttendanceData] = useState(userData);
 
   const word = { no: "결석", yes: "출석", late: "지각" };
 
   useEffect(() => {
-    let userRef = firestoreService.collection("users").doc(userData.id);
-    userRef.get().then((doc) => {
-      if (doc.exists) {
-        setuserName(doc.data().name);
-        setuserEmoji(doc.data().emoji);
-      }
-    });
-
-    let courseRef = firestoreService.collection("courses").doc(courseId);
-    courseRef.get().then((doc) => {
-      if (doc.exists) {
-        setCourseAttendanceData(doc.data().courseAttendance[indexKey]);
-      }
-    });
+    async function loadUserData() {
+      const userRef = await firestoreService
+        .collection("users")
+        .doc(userData.id)
+        .get();
+      setuserName(userRef.data().name);
+      setuserEmoji(userRef.data().emoji);
+    }
+    loadUserData();
   }, []);
 
   const handleSelected = (value, key) => {
-    console.log(value, key);
     let stateNum = 0;
     let newCourseAttendanceData = courseAttendanceData;
     let newArray = courseAttendanceData.attendance;
@@ -72,7 +60,7 @@ function CourseAttendanceCard({
   };
 
   return (
-    <div>
+    <>
       <StyledContainer>
         <StyledBox>
           <StyledEmogi>{userEmoji}</StyledEmogi>
@@ -82,18 +70,21 @@ function CourseAttendanceCard({
           {courseAttendanceData &&
             courseAttendanceData.attendance.map((state, index) => {
               //[0,1,2]
-              if (isEditPage == "false") {
+              if (isEditMode === false) {
                 //출석 관리 페이지에서 들어올때
                 if (state === 0)
-                  return <StyledAttendance>{word.yes}</StyledAttendance>;
+                  return (
+                    <StyledAttendance key={index}>{word.yes}</StyledAttendance>
+                  );
                 else if (state === 1)
-                  return <StyledAbsence>{word.no}</StyledAbsence>;
+                  return <StyledAbsence key={index}>{word.no}</StyledAbsence>;
                 else if (state === 2)
-                  return <StyledLate>{word.late}</StyledLate>;
+                  return <StyledLate key={index}>{word.late}</StyledLate>;
               } else {
                 //출석편집에서 들어올때.
                 return (
                   <Select
+                    key={index}
                     defaultValue={setDefaultValue(state)}
                     style={{ width: 100 }}
                     onChange={handleSelected}
@@ -113,7 +104,7 @@ function CourseAttendanceCard({
             })}
         </StyledAttendanceBox>
       </StyledContainer>
-    </div>
+    </>
   );
 }
 

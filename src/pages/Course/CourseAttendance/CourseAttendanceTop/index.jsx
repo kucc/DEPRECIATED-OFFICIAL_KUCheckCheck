@@ -4,41 +4,57 @@ import { useHistory, useLocation } from "react-router-dom";
 import NavBar from "../../../../components/NavBar/NavBar";
 import {
   StyledBackButton,
-  StyledBackground,
   StyledEditButton,
   StyledLeftBox,
-  StyledNavBarContainer,
   StyledTextBox,
   StyledTopBox,
   StyledWeekBox,
 } from "./style";
 import { AiOutlineLeft } from "react-icons/ai";
 import { firestoreService } from "../../../../firebase";
+import { useSelector } from "react-redux";
 
 function CourseAttendanceTop({
   courseName,
-  userData,
   courseId,
   isEditMode,
   courseAttendance,
+  courseCheckAdmin,
 }) {
+  const user = useSelector((state) => state.user.currentUser);
   const location = useLocation();
   const history = useHistory();
 
   const handleClick = async () => {
     if (isEditMode) {
-      let courseRef = firestoreService.collection("courses").doc(courseId);
-      await courseRef.update({ courseAttendance: courseAttendance });
-      history.go(-1);
+      // course 정보 update
+      await firestoreService
+        .collection("courses")
+        .doc(courseId)
+        .update({ courseAttendance: courseAttendance });
+      history.goBack();
     } else {
       history.push({
         pathname: `${location.pathname}/edit`,
-        state: {
-          userData: userData,
-          courseId: courseId,
-          courseName: courseName,
-        },
       });
+    }
+  };
+
+  const renderEditButton = () => {
+    // 출석 체크 담당자가 맞는지 확인
+    if (courseCheckAdmin && user && courseCheckAdmin.includes(user.uid)) {
+      return (
+        <StyledEditButton
+          // style={{
+          //   backgroundColor: isEditMode ? "#C32020" : "white",
+          //   color: isEditMode ? "white" : "black",
+          // }}
+          type={isEditMode ? "danger" : ""}
+          onClick={handleClick}
+        >
+          {isEditMode ? "수정완료" : "수정하기"}
+        </StyledEditButton>
+      );
     }
   };
 
@@ -72,16 +88,7 @@ function CourseAttendanceTop({
               </div>
               <div style={{ fontSize: "20px" }}>{courseName && courseName}</div>
             </div>
-            <StyledEditButton
-              // style={{
-              //   backgroundColor: isEditMode ? "#C32020" : "white",
-              //   color: isEditMode ? "white" : "black",
-              // }}
-              type={isEditMode ? "danger" : ""}
-              onClick={handleClick}
-            >
-              {isEditMode ? "수정완료" : "수정하기"}
-            </StyledEditButton>
+            {renderEditButton()}
           </StyledLeftBox>
         </StyledTopBox>
         <StyledWeekBox>
