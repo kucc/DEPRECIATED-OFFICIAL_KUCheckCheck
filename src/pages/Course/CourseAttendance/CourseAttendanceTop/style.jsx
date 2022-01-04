@@ -15,16 +15,18 @@ export const StyledLeftBox = styled.div`
 `;
 
 export const StyledTextBox = styled.div`
-  margin: 2.7%;
-  font-size: 14px;
+  margin-left: 2.7%;
+  margin-right: 2.7%;
+  font-size: 15px;
 `;
 export const StyledWeekBox = styled.div`
   display: flex;
-  padding-left: calc(19% + 160px);
-  padding-right: calc(19% + 20px);
+  padding-left: calc(14.24% + 190px);
+  padding-right: calc(14.24%);
   width: 100%;
   justify-content: center;
   height: 50px;
+  margin-top: 10px;
 `;
 
 export const StyledBackButton = styled(Button)`

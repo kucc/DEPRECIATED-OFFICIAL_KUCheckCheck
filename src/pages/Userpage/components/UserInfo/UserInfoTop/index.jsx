@@ -80,10 +80,11 @@ function UserInfoTop({ onChangeFunc, userData }) {
         )}
       </StyledUserInfoTopTitle>
       {/* 대상 유저와 현재 유저와 같으면, 수정하기 on */}
-      {user.currentUser && userId === user.currentUser}
-      <div style={{ width: "120px" }}>
-        <WhiteShadowButton onClick={showModal} text="수정하기" />
-      </div>
+      {user.currentUser && userId === user.currentUser.uid && (
+        <div style={{ width: "120px" }}>
+          <WhiteShadowButton onClick={showModal} text="수정하기" />
+        </div>
+      )}
       <Modal
         title="수정하기"
         visible={isModalVisible}

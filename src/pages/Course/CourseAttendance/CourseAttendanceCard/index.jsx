@@ -6,18 +6,19 @@ import {
   StyledAttendanceBox,
   StyledBox,
   StyledContainer,
-  StyledEmogi,
+  StyledEmoji,
   StyledAbsence,
   StyledAttendance,
   StyledLate,
 } from "./style";
+import { useHistory } from "react-router-dom";
 const { Option } = Select;
 
 function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   const [userName, setuserName] = useState();
   const [userEmoji, setuserEmoji] = useState();
   const [courseAttendanceData, setCourseAttendanceData] = useState(userData);
-
+  const history = useHistory();
   const word = { absent: "결석", attend: "출석", late: "지각" };
 
   useEffect(() => {
@@ -66,8 +67,8 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   return (
     <>
       <StyledContainer>
-        <StyledBox>
-          <StyledEmogi>{userEmoji}</StyledEmogi>
+        <StyledBox onClick={() => history.push(`/userpage/${userData.id}`)}>
+          <StyledEmoji>{userEmoji}</StyledEmoji>
           <p>{userName}</p>
         </StyledBox>
         <StyledAttendanceBox>

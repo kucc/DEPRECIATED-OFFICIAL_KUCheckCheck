@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
-  padding-top: 100px;
-  padding-left: 19%;
-  padding-right: 19%;
+  padding-left: 14.24%;
+  padding-right: 14.24%;
   background-color: rgb(245, 245, 245);
-  display: flex;
+  display: grid;
+  grid-template-columns: 130px auto;
+  padding-bottom: 40px;
   align-items: center;
-  justify-content: center;
 `;
 
 export const StyledBox = styled.div`
@@ -16,41 +16,45 @@ export const StyledBox = styled.div`
   text-align: center;
   font-family: "NexonRe";
   font-size: 10px;
-  width: 110px;
-  box-shadow: rgb(50 50 93 / 8%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 20%) 0px 8px 16px -8px;
+  width: 130px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(0, 0, 0, 0.187) 0px 4px 5px 1px;
+  cursor: pointer;
 `;
 
-export const StyledEmogi = styled.div`
-  font-size: 40px;
-  margin-bottom: -5px;
+export const StyledEmoji = styled.div`
+  font-size: 70px;
+  margin-bottom: -15px;
 `;
 
 export const StyledAttendanceBox = styled.div`
   background-color: white;
-  box-shadow: rgb(50 50 93 / 8%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 20%) 0px 8px 16px -8px;
-  margin-left: 30px;
-  padding: 20px;
-  width: 100%;
-  height: 50px;
-  border-radius: 20px;
+  box-shadow: inset rgba(0, 0, 0, 0.187) 0px 3px 1.5px;
+  margin-left: 60px;
+  height: 60px;
+  border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 15px;
 `;
 
 export const StyledAttendance = styled.div`
+  font-family: "NexonBo";
   color: black;
   margin: 3%;
 `;
 
 export const StyledAbsence = styled.div`
+  font-family: "NexonBo";
   color: red;
   margin: 3%;
 `;
 
 export const StyledLate = styled.div`
-  color: red;
+  font-family: "NexonBo";
+  color: #ff4d00;
   margin: 3%;
 `;
