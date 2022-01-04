@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from "react";
+import NavBar from "../../../components/NavBar/NavBar";
 import { firestoreService } from "../../../firebase";
+import { StyledBackground, StyledNavBarContainer } from "../../Rules/style";
 import CourseAttendanceCard from "./CourseAttendanceCard";
 import CourseAttendanceTop from "./CourseAttendanceTop";
 
-function CourseAttendace() {
-  const courseId = document.location.href.split("/")[5];
-  const [userData, setuserData] = useState([]);
-  useEffect(() => {
-    const courseId = document.location.href.split("/")[5];
-    firestoreService
-      .collection("courses")
-      .doc(courseId)
-      .get()
-      .then((querySnapshot) => {
-        setuserData(querySnapshot.data().courseAttendance);
-      });
-  }, []);
+function CourseAttendace({ courseData }) {
+  const courseName = courseData.courseName;
+  const userData = courseData.courseAttendance;
+  const courseId = courseData.courseId;
+  const courseCheckAdmin = courseData.courseCheckAdmin;
 
   return (
-    <div>
-      코스 출석!
-      <CourseAttendanceTop />
+    <>
+      <CourseAttendanceTop
+        courseName={courseName}
+        courseId={courseId}
+        isEditMode={false}
+        courseCheckAdmin={courseCheckAdmin}
+      />
       {userData &&
         userData.map((userData, key) => {
           return (
             <CourseAttendanceCard
               key={key}
               userData={userData}
-              courseId={courseId}
+              isEditMode={false}
             />
           );
         })}
-    </div>
+    </>
   );
 }
 

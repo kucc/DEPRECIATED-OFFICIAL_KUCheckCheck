@@ -19,7 +19,6 @@ import {
   StyledTopContainer,
 } from "../style";
 import NavBar from "../../../components/NavBar/NavBar";
-import TimeTable from "../../../components/TimeTable/TimeTable";
 
 function PCourseNewBox({ enrollHandler }) {
   //하나의 객체로..?
@@ -79,9 +78,7 @@ function PCourseNewBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <StyledNavBarContainer>
-        <NavBar />
-      </StyledNavBarContainer>
+      <NavBar />
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 

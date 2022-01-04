@@ -5,6 +5,8 @@ import { firestoreService } from "../../../firebase";
 import CourseContainer from "../../../components/CourseContainer/CourseContainer";
 import * as S from "../style";
 import EmptyBox from "../../../components/EmptyBox";
+import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
+import { useHistory } from "react-router-dom";
 
 function MainBottomContainer() {
   // Search를 redux에서 사용?? Database에서 사용??
@@ -16,6 +18,7 @@ function MainBottomContainer() {
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
+  const history = useHistory();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
   const escapeRegExp = (searchTerm) => {
@@ -306,19 +309,10 @@ function MainBottomContainer() {
           </S.MainSessTab>
           <S.MainSessRig>
             {user.currentUser && (
-              <Button
-                style={{
-                  width: "100%",
-                  height: "40px",
-                  borderRadius: "25px",
-                  boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
-                  display: "grid",
-                  placeItems: "center",
-                }}
-                href="/course-new"
-              >
-                등록하기
-              </Button>
+              <WhiteShadowButton
+                text="등록하기"
+                onClick={() => history.push("/course-new")}
+              />
             )}
           </S.MainSessRig>
         </S.MainBottomBtnCont>

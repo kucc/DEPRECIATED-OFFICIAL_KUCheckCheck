@@ -21,7 +21,7 @@ function Login() {
           >
             JOIN
           </a>
-          <DefaultLogo width="80px" height="80px" />
+          <DefaultLogo logoName="type-1-3" width="80px" height="80px" />
         </Wrapper>
       </StyledCol>
     </StyledRow>

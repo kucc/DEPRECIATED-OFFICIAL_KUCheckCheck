@@ -149,16 +149,7 @@ function CourseApplication({ course, courseId }) {
                 ...courseAttendanceArr,
                 {
                   id: currentUser.uid,
-                  attendance: [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                  ],
+                  attendance: [0, 0, 0, 0, 0, 0, 0, 0],
                 },
               ];
               // course에 유저 정보를 등록

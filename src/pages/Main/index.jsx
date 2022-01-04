@@ -1,18 +1,16 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
+import { StyledBackground } from "../Rules/style";
 import MainBottomContainer from "./MainBottomContainer";
 import MainTopContainer from "./MainTopContainer";
 
 function Main() {
-  console.log("hello");
   return (
-    <div style={{ backgroundColor: "rgb(245, 245, 245)" }}>
-      <div style={{ backgroundColor: "white" }}>
-        <NavBar />
-      </div>
+    <StyledBackground>
+      <NavBar isMain={true} />
       <MainTopContainer />
       <MainBottomContainer />
-    </div>
+    </StyledBackground>
   );
 }
 export default Main;

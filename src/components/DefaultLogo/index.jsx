@@ -1,12 +1,14 @@
 import React from "react";
 
-function DefaultLogo({ width, height }) {
+function DefaultLogo({ logoName, width, height, onClick, isPointer = false }) {
   return (
     <img
-      src="/img/logo/type-1-3.png"
+      onClick={onClick}
+      src={`/img/logo/${logoName}.png`}
       alt="default-logo"
       width={width || "49px"}
       height={height || "15px"}
+      style={{ cursor: isPointer ? "pointer" : "default" }}
     />
   );
 }

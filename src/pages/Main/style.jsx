@@ -1,5 +1,8 @@
-import { Button } from "antd";
 import styled from "styled-components";
+
+export const StyledBackground = styled.div`
+  background-color: rgb(245, 245, 245);
+`;
 
 export const SearchContainer = styled.div`
   margin-top: 2em;
@@ -93,6 +96,7 @@ export const MainBottomWrapper = styled.div`
 export const MainBottomBtnCont = styled.div`
   display: grid;
   grid-template-columns: 11.25% auto 10.52%;
+  min-width: 1100px;
 `;
 
 export const MainSessDuration = styled.div``;
