@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FullWidthButton from "../../../../components/FullWidthButton";
+import FullWidthButton from "../../../../components/Buttons/FullWidthButton";
 import { StyledForm } from "./style";
 import { Space } from "antd";
 import InputBox from "../InputBox";

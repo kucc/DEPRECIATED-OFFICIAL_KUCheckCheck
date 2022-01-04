@@ -19,7 +19,6 @@ import {
   StyledTopContainer,
 } from "../style";
 import NavBar from "../../../components/NavBar/NavBar";
-import TimeTable from "../../../components/TimeTable/TimeTable";
 
 function PCourseNewBox({ enrollHandler }) {
   //하나의 객체로..?

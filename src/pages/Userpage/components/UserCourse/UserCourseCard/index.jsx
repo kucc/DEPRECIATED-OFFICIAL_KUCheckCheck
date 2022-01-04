@@ -1,9 +1,15 @@
-import { Empty, Timeline } from "antd";
+import { Timeline } from "antd";
 import React, { useEffect, useState } from "react";
 import CourseContainer from "../../../../../components/CourseContainer/CourseContainer";
-import { StyledTimelineItem } from "../../../style";
+import EmptyBox from "../../../../../components/EmptyBox";
+import {
+  StyledCourseCardContainer,
+  StyledCourseItemContainer,
+  StyledCourseSemester,
+  StyledTimelineItem,
+} from "./style";
 
-function UserCoursePageCard({ userData }) {
+function UserCourseCard({ userData }) {
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   useEffect(() => {
     userData.courseHistory &&
@@ -11,16 +17,14 @@ function UserCoursePageCard({ userData }) {
   }, [userData]);
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <StyledCourseCardContainer>
       <Timeline>
         {courseContainerArray.length > 0 ? (
+          // courseHistory가 있으면 목록을 출력
           courseContainerArray.map((course, key) => {
             return (
-              <div
-                style={{ display: "grid", gridTemplateColumns: "50px auto" }}
-                key={key}
-              >
-                <div style={{ marginTop: "-3px" }}>{course.semester}</div>
+              <StyledCourseItemContainer key={key}>
+                <StyledCourseSemester>{course.semester}</StyledCourseSemester>
                 <StyledTimelineItem>
                   <CourseContainer
                     key={course.id}
@@ -28,15 +32,16 @@ function UserCoursePageCard({ userData }) {
                     CourseApplicationState={false}
                   />
                 </StyledTimelineItem>
-              </div>
+              </StyledCourseItemContainer>
             );
           })
         ) : (
-          <Empty />
+          // 없으면 Empty Box를 출력
+          <EmptyBox />
         )}
       </Timeline>
-    </div>
+    </StyledCourseCardContainer>
   );
 }
 
-export default UserCoursePageCard;
+export default UserCourseCard;

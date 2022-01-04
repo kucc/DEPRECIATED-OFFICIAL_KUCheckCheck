@@ -55,7 +55,7 @@ export default function (SpecificComponent, option) {
       }
       loadCourseData();
     }, []);
-
+    // 해당 Component로 courseData prop을 보내줌.
     return <SpecificComponent {...props} courseData={courseData} />;
   }
   return CourseCheck;

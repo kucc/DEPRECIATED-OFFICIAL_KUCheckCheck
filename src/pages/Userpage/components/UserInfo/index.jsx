@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import UserPageCard from "./UserInfoCard";
-import UserPageTop from "./UserInfoTop";
+import UserInfoTop from "./UserInfoTop";
+import UserInfoCard from "./UserInfoCard";
+import { StyledUserInfoContainer } from "./style";
 
 function UserInfo({ userData }) {
   const [changeState, setchangeState] = useState("");
@@ -9,10 +10,10 @@ function UserInfo({ userData }) {
   };
 
   return (
-    <div style={{ display: "grid", gridTemplateRows: "100px auto" }}>
-      <UserPageTop userData={userData} onChangeFunc={handleChange} />
-      <UserPageCard userData={userData} key={changeState} />
-    </div>
+    <StyledUserInfoContainer>
+      <UserInfoTop userData={userData} onChangeFunc={handleChange} />
+      <UserInfoCard userData={userData} key={changeState} />
+    </StyledUserInfoContainer>
   );
 }
 

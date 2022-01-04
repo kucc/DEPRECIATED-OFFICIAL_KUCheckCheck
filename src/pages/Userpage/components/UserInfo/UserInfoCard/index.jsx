@@ -3,18 +3,27 @@ import { firestoreService } from "../../../../../firebase";
 import { FiPaperclip } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import {
-  StyledCardContainer,
+  StyledInfoCardContainer,
   StyledDetailCommentBox,
-  StyledDetailContainer,
-  StyledIconContainer,
-  StyledPictureContainer,
-} from "../../../style";
+  StyledInfoCardEmoji,
+  StyledInfoCardContour,
+  StyledInfoDetailContainer,
+  StyledInfoDetailName,
+  StyledInfoDetailText,
+  StyledInfoIconContainer,
+  StyledInfoLink,
+  StyledInfoEmail,
+  StyledInfoBottomContainer,
+  StyledInfoBottom,
+} from "./style";
 
 function UserInfoCard({ userData }) {
   const [firebaseUser, setfirebaseUser] = useState("");
   //유저 정보 불러오기
   useEffect(() => {
     async function loadUserData() {
+      // key 값이 변함에 따라 값을 업데이트 해와야 하므로 다시 firebase 호출
+      // 다른 방법으로 Top 컴포넌트에서 변경된 값을 prop으로 가져와서 update 해주는 방법이 있음.
       if (userData) {
         const data = await firestoreService
           .collection("users")
@@ -27,48 +36,41 @@ function UserInfoCard({ userData }) {
   }, [userData]);
 
   return (
-    <StyledCardContainer>
-      <StyledPictureContainer>
+    <StyledInfoCardContainer>
+      <StyledInfoCardEmoji>
         {firebaseUser && firebaseUser.emoji}
-      </StyledPictureContainer>
-      <div
-        style={{
-          borderRight: "1.5px solid #b6b6b6a4",
-          height: "50px",
-          marginTop: "30px",
-        }}
-      ></div>
-      <StyledDetailContainer>
-        <div style={{ fontSize: "32px", fontFamily: "NexonBo" }}>
+      </StyledInfoCardEmoji>
+      <StyledInfoCardContour />
+      <StyledInfoDetailContainer>
+        <StyledInfoDetailName>
           {firebaseUser && firebaseUser.name}
-        </div>
-        <div>{firebaseUser && firebaseUser.comment}</div>
+        </StyledInfoDetailName>
+        <StyledInfoDetailText>
+          {firebaseUser && firebaseUser.comment}
+        </StyledInfoDetailText>
         <StyledDetailCommentBox>
           {firebaseUser && firebaseUser.detailComment}
         </StyledDetailCommentBox>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-          <div style={{ display: "flex", gap: "5px", marginTop: "20px" }}>
-            <StyledIconContainer>
+        <StyledInfoBottomContainer>
+          <StyledInfoBottom>
+            <StyledInfoIconContainer>
               <FiPaperclip color="white" />
-            </StyledIconContainer>
-            <a
-              href={firebaseUser && firebaseUser.link}
-              style={{ marginLeft: "10px", marginTop: "4px" }}
-            >
+            </StyledInfoIconContainer>
+            <StyledInfoLink href={firebaseUser && firebaseUser.link}>
               {firebaseUser && firebaseUser.link}
-            </a>
-          </div>
-          <div style={{ display: "flex", gap: "5px", marginTop: "20px" }}>
-            <StyledIconContainer>
+            </StyledInfoLink>
+          </StyledInfoBottom>
+          <StyledInfoBottom>
+            <StyledInfoIconContainer>
               <HiOutlineMail color="white" />
-            </StyledIconContainer>
-            <div style={{ marginLeft: "10px", marginTop: "4px" }}>
+            </StyledInfoIconContainer>
+            <StyledInfoEmail>
               {firebaseUser && firebaseUser.email}
-            </div>
-          </div>
-        </div>
-      </StyledDetailContainer>
-    </StyledCardContainer>
+            </StyledInfoEmail>
+          </StyledInfoBottom>
+        </StyledInfoBottomContainer>
+      </StyledInfoDetailContainer>
+    </StyledInfoCardContainer>
   );
 }
 

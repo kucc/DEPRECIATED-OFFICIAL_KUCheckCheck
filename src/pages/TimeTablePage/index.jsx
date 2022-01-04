@@ -3,7 +3,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import TimeTable from "../../components/TimeTable/TimeTable";
 import {
   StyledBackground,
-  StyledNavBarContainer,
   StyledTimeTableBackground,
   StyledTimeTableBox,
   StyledTimeTableText,
