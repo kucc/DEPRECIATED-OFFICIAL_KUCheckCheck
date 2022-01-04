@@ -35,7 +35,12 @@ const NavBar = ({ isMain = false }) => {
     <>
       <S.NavBarLogoContainer>
         <Link to="/">
-          <DefaultLogo width="90px" height="90px" />
+          <DefaultLogo
+            isPointer={true}
+            logoName="type-1-3"
+            width="90px"
+            height="90px"
+          />
         </Link>
         <Link to="/rules">
           <S.NavBarTextContainer

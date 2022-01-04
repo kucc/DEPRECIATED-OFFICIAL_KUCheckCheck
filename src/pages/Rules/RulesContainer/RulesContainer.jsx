@@ -1,47 +1,48 @@
 import React, { useEffect, useState } from "react";
-import * as S from "../style";
 import { firestoreService } from "../../../firebase";
 import NavBar from "../../../components/NavBar/NavBar";
+import {
+  StyledRulesBox,
+  StyledRulesCollapse,
+  StyledRulesTitle,
+  StyledBackground,
+  StyledRulesPanel,
+} from "../style";
 
 function RulesContainer() {
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
-    firestoreService
-      .collection("notices")
-      .get()
-      .then((querySnapshot) => {
-        let noticesArray = [];
-        querySnapshot.forEach((doc) => {
-          noticesArray.push(doc.data());
-        });
-        setNotices(noticesArray);
+    async function loadNoticesData() {
+      const noticesData = await firestoreService.collection("notices").get();
+      // 임시 배열에 Data를 push
+      let noticesArray = [];
+      noticesData.forEach((doc) => {
+        console.log(doc.data());
+        noticesArray.push(doc.data());
       });
+      setNotices(noticesArray);
+    }
+    loadNoticesData();
   }, []);
 
   return (
-    <S.StyledBackground>
+    <StyledBackground>
       <NavBar />
-      <S.SRulesBox>
-        <div
-          style={{
-            fontSize: "26px",
-            marginLeft: "5%",
-            fontFamily: "NexonBo",
-            marginTop: "50px",
-          }}
+      <StyledRulesBox>
+        <StyledRulesTitle>공지사항</StyledRulesTitle>
+        <StyledRulesCollapse
+          defaultActiveKey={["0"]}
+          expandIconPosition="right"
         >
-          공지사항
-        </div>
-        <S.SCollapse defaultActiveKey={["0"]} expandIconPosition="right">
           {Notices &&
             Notices.map((item, key) => (
-              <S.SPanel header={item.title} key={key}>
+              <StyledRulesPanel header={item.title} key={key}>
                 <p>{item.content}</p>
-              </S.SPanel>
+              </StyledRulesPanel>
             ))}
-        </S.SCollapse>
-      </S.SRulesBox>
-    </S.StyledBackground>
+        </StyledRulesCollapse>
+      </StyledRulesBox>
+    </StyledBackground>
   );
 }
 

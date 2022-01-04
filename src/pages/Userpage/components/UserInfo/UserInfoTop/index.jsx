@@ -1,6 +1,7 @@
 import { Button, Modal, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import WhiteShadowButton from "../../../../../components/Buttons/WhiteShadowButton";
 import RandomEmoji from "../../../../../components/RandomEmoji/RandomEmoji";
 import { firestoreService } from "../../../../../firebase";
 import {
@@ -79,19 +80,10 @@ function UserInfoTop({ onChangeFunc, userData }) {
         )}
       </StyledUserInfoTopTitle>
       {/* 대상 유저와 현재 유저와 같으면, 수정하기 on */}
-      {user.currentUser && userId === user.currentUser.uid && (
-        <Button
-          style={{
-            width: "120px",
-            height: "40px",
-            borderRadius: "18px",
-            boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
-          }}
-          onClick={showModal}
-        >
-          수정하기
-        </Button>
-      )}
+      {user.currentUser && userId === user.currentUser}
+      <div style={{ width: "120px" }}>
+        <WhiteShadowButton onClick={showModal} text="수정하기" />
+      </div>
       <Modal
         title="수정하기"
         visible={isModalVisible}

@@ -6,7 +6,6 @@ import {
   StyledFooterBox,
   StyledFooterContainer,
   StyledFooterDesc,
-  StyledFooterImg,
   StyledFooterImgBox,
   StyledFooterLink,
   StyledFooterTitle,
@@ -68,7 +67,14 @@ export default function Footer() {
         <StyledFooterDesc>jjs01hwang@gmail.com (이희준)</StyledFooterDesc>
       </StyledFooterBox>
       <StyledFooterImgBox>
-        <StyledFooterImg src="/img/logo/type-1-3.png" onClick={onImgClick} st />
+        <DefaultLogo
+          width={124}
+          height={124}
+          logoName="type-1-3"
+          style={{ pointer: "cursor" }}
+          isPointer={true}
+          onClick={onImgClick}
+        />
         Copyright ⓒ KUCC All Rights Reserved
       </StyledFooterImgBox>
     </StyledFooterContainer>

@@ -13,6 +13,7 @@ import {
 import { AiOutlineLeft } from "react-icons/ai";
 import { firestoreService } from "../../../../firebase";
 import { useSelector } from "react-redux";
+import WhiteShadowButton from "../../../../components/Buttons/WhiteShadowButton";
 
 function CourseAttendanceTop({
   courseName,
@@ -44,15 +45,12 @@ function CourseAttendanceTop({
     // 출석 체크 담당자가 맞는지 확인
     if (courseCheckAdmin && user && courseCheckAdmin.includes(user.uid)) {
       return (
-        <StyledEditButton
-          // style={{
-          //   backgroundColor: isEditMode ? "#C32020" : "white",
-          //   color: isEditMode ? "white" : "black",
-          // }}
-          type={isEditMode ? "danger" : ""}
-          onClick={handleClick}
-        >
-          {isEditMode ? "수정완료" : "수정하기"}
+        <StyledEditButton>
+          <WhiteShadowButton
+            type={isEditMode ? "danger" : ""}
+            text={isEditMode ? "수정완료" : "수정하기"}
+            onClick={handleClick}
+          />
         </StyledEditButton>
       );
     }

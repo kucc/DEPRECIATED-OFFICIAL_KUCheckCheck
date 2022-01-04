@@ -36,11 +36,6 @@ export const StyledBackButton = styled(Button)`
   place-items: center;
 `;
 
-export const StyledEditButton = styled(Button)`
+export const StyledEditButton = styled.div`
   width: 120px;
-  height: 40px;
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
-  display: grid;
-  place-items: center;
 `;
