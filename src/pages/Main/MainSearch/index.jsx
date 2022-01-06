@@ -3,8 +3,15 @@ import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { setCategory, setSearch } from "../../../redux/actions/search_action";
 import { FaHashtag } from "react-icons/fa";
-import * as S from "../style";
-import { StyledIconContainer, StyledTag } from "./style";
+import {
+  StyledIconContainer,
+  StyledQuickSearchContainer,
+  StyledQuickSearchText,
+  StyledSearchBar,
+  StyledSearchBtn,
+  StyledSearchContainer,
+  StyledTag,
+} from "./style";
 
 function MainSearch() {
   const [selectedCategory, setselectedCategory] = useState("");
@@ -32,6 +39,7 @@ function MainSearch() {
       newArray.push(category);
     }
     setrandomCategory(newArray);
+    // redux 값을 초기화
     dispatch(setSearch(""));
     dispatch(setCategory(""));
   }, []);
@@ -52,38 +60,22 @@ function MainSearch() {
 
   return (
     <>
-      <S.SearchContainer>
-        <S.SearchBtn>
+      <StyledSearchContainer>
+        <StyledSearchBtn>
           <BiSearch />
-        </S.SearchBtn>
-        <S.SearchBar
+        </StyledSearchBtn>
+        <StyledSearchBar
           onChange={changeSearch}
           placeholder="세션/스터디명 ex) 바닐라 자바스크립트 세션"
         />
-      </S.SearchContainer>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "120px auto",
-          marginTop: "20px",
-          marginLeft: "-10px",
-          alignItems: "start",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontSize: "16px",
-            fontFamily: "NexonBo",
-            marginTop: "10px",
-          }}
-        >
+      </StyledSearchContainer>
+      <StyledQuickSearchContainer>
+        <StyledQuickSearchText>
           <StyledIconContainer>
             <FaHashtag color="white" />
           </StyledIconContainer>
           &emsp;빠른 검색
-        </div>
+        </StyledQuickSearchText>
         <div>
           {randomCategory.map((tag) => (
             <StyledTag
@@ -95,7 +87,7 @@ function MainSearch() {
             </StyledTag>
           ))}
         </div>
-      </div>
+      </StyledQuickSearchContainer>
     </>
   );
 }

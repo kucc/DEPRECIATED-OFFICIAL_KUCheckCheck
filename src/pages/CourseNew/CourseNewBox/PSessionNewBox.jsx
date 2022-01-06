@@ -82,7 +82,7 @@ function PCourseNewBox({ enrollHandler }) {
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 
-        <S.MainSessTab style={{ marginBottom: "17px" }}>
+        {/* <S.MainSessTab style={{ marginBottom: "17px" }}>
           <S.MainSessItem onClick={() => setcourseType(1)}>
             {courseType === 1 ? (
               <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
@@ -106,7 +106,7 @@ function PCourseNewBox({ enrollHandler }) {
               <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
             )}
           </S.MainSessItem>
-        </S.MainSessTab>
+        </S.MainSessTab> */}
       </StyledTopContainer>
 
       <StyledBottomContainer>

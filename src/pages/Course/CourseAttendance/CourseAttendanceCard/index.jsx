@@ -7,9 +7,9 @@ import {
   StyledBox,
   StyledContainer,
   StyledEmoji,
-  StyledAbsence,
-  StyledAttendance,
   StyledLate,
+  StyledAttend,
+  StyledAbsent,
 } from "./style";
 import { useHistory } from "react-router-dom";
 const { Option } = Select;
@@ -75,21 +75,15 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
           {courseAttendanceData &&
             courseAttendanceData.attendance.map((state, index) => {
               if (isEditMode === false) {
-                //출석 관리 페이지에서 들어올때
+                //출석 수정 모드가 아닐 때
                 if (state === 0)
-                  return (
-                    <StyledAttendance key={index}>
-                      {word.attend}
-                    </StyledAttendance>
-                  );
+                  return <StyledAttend key={index}>{word.attend}</StyledAttend>;
                 else if (state === 1)
-                  return (
-                    <StyledAbsence key={index}>{word.absent}</StyledAbsence>
-                  );
+                  return <StyledAbsent key={index}>{word.absent}</StyledAbsent>;
                 else if (state === 2)
                   return <StyledLate key={index}>{word.late}</StyledLate>;
               } else {
-                //출석편집에서 들어올때.
+                //출석 수정 모드일 때
                 return (
                   <Select
                     key={index}

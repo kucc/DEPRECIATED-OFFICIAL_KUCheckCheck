@@ -3,13 +3,20 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import CourseContainer from "../../../components/CourseContainer/CourseContainer";
-import * as S from "../style";
 import EmptyBox from "../../../components/EmptyBox";
 import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
 import { useHistory } from "react-router-dom";
+import {
+  StyledMainBottomBtnCont,
+  StyledMainBottomWrapper,
+  StyledMainSessDuration,
+  StyledMainSessItemOffClick,
+  StyledMainSessRig,
+  StyledMainSessTab,
+  StyledMainVerticalLine,
+} from "./style";
 
 function MainBottomContainer() {
-  // Search를 redux에서 사용?? Database에서 사용??
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseContainerArray, setcourseContainerArray] = useState([]);
   const [filterResults, setfilterResults] = useState([]);
@@ -156,55 +163,39 @@ function MainBottomContainer() {
     setfilterResults(filteredResults);
   }, [searchTerm, searchCategory, courseSelect, courseContainerArray]);
 
-  // 학기 선택 기능
+  // 학기 정보 불러오기
   useEffect(() => {
-    firestoreService
-      .collection("courses")
-      .get()
-      .then((querySnapshot) => {
-        let courseArray = [];
-        querySnapshot.forEach((doc) => {
-          if (doc.data().semester === currentSemester) {
-            const coursesData = {
-              id: doc.id,
-              ...doc.data(),
-            };
-            courseArray.push(coursesData);
-          }
-        });
-        setcourseContainerArray(courseArray);
-      });
-  }, [currentSemester]);
-
-  //세션 불러오기
-  useEffect(() => {
-    firestoreService
-      .collection("common")
-      .doc("commonInfo")
-      .get()
-      .then((doc) => {
-        setcurrentSemester(doc.data().currentSemester);
-        // 배열을 역순으로 저장해줌
-        setpastSemester(doc.data().pastSemester.reverse());
-      });
-
-    firestoreService
-      .collection("courses")
-      .get()
-      .then((querySnapshot) => {
-        let courseArray = [];
-        querySnapshot.forEach((doc) => {
-          if (doc.data().semester === currentSemester) {
-            const coursesData = {
-              id: doc.id,
-              ...doc.data(),
-            };
-            courseArray.push(coursesData);
-          }
-        });
-        setcourseContainerArray(courseArray);
-      });
+    async function loadSemesterData() {
+      const semesterData = await firestoreService
+        .collection("common")
+        .doc("commonInfo")
+        .get();
+      setcurrentSemester(semesterData.data().currentSemester);
+      // 배열을 역순으로 저장해줌
+      setpastSemester(semesterData.data().pastSemester.reverse());
+      // setcourseContainerArray(courseArray);
+    }
+    loadSemesterData();
   }, []);
+
+  // 학기에 따라서 course 정보 불러오기
+  useEffect(() => {
+    async function loadCourseData() {
+      let courseArray = [];
+      const courseData = await firestoreService.collection("courses").get();
+      courseData.forEach((doc) => {
+        if (doc.data().semester === currentSemester) {
+          const coursesData = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          courseArray.push(coursesData);
+        }
+      });
+      setcourseContainerArray(courseArray);
+    }
+    loadCourseData();
+  }, [currentSemester]);
 
   const menu = (
     // 학기를 클릭했을 때 해야할 일
@@ -256,9 +247,9 @@ function MainBottomContainer() {
 
   return (
     <>
-      <S.MainBottomWrapper>
-        <S.MainBottomBtnCont>
-          <S.MainSessDuration>
+      <StyledMainBottomWrapper>
+        <StyledMainBottomBtnCont>
+          <StyledMainSessDuration>
             <Dropdown overlay={menu} placement="bottomLeft">
               <Button
                 type="danger"
@@ -273,51 +264,52 @@ function MainBottomContainer() {
                 {currentSemester} 학기
               </Button>
             </Dropdown>
-          </S.MainSessDuration>
-          <S.MainSessTab>
-            <S.MainSessItem onClick={() => setcourseSelect(0)}>
-              {courseSelect === 0 ? (
-                <S.MainSessItemOnClick>전체</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>전체</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(1)}>
-              {courseSelect === 1 ? (
-                <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>세션</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(2)}>
-              {courseSelect === 2 ? (
-                <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(3)}>
-              {courseSelect === 3 ? (
-                <S.MainSessItemOnClick>프로젝트</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
-              )}
-            </S.MainSessItem>
-          </S.MainSessTab>
-          <S.MainSessRig>
+          </StyledMainSessDuration>
+          <StyledMainSessTab>
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              // selectedType for use in StyledComponent
+              selectedType={0}
+              onClick={() => setcourseSelect(0)}
+            >
+              전체
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={1}
+              onClick={() => setcourseSelect(1)}
+            >
+              세션
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={2}
+              onClick={() => setcourseSelect(2)}
+            >
+              스터디
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={3}
+              onClick={() => setcourseSelect(3)}
+            >
+              프로젝트
+            </StyledMainSessItemOffClick>
+          </StyledMainSessTab>
+          <StyledMainSessRig>
             {user.currentUser && (
               <WhiteShadowButton
                 text="등록하기"
                 onClick={() => history.push("/course-new")}
               />
             )}
-          </S.MainSessRig>
-        </S.MainBottomBtnCont>
+          </StyledMainSessRig>
+        </StyledMainBottomBtnCont>
         {renderCourse()}
-      </S.MainBottomWrapper>
+      </StyledMainBottomWrapper>
     </>
   );
 }

@@ -41,6 +41,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
   const [selected, setselected] = useState(selectedDefault);
 
   useEffect(() => {
+    // load timeTable info from firebase
     firestoreService
       .collection("common")
       .doc("timeTable")
@@ -53,18 +54,18 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
 
   const renderTd = (index, timeHour, timeMin) => {
     return selected[index].slice(1).map((time, key) => {
-      if (eval("cells.time_" + timeHour + "_" + timeMin)[key].value) {
+      // timeHour : 9, timeMin: 00 => cells.time_9_00
+      const specificTime = eval("cells.time_" + timeHour + "_" + timeMin);
+      if (specificTime[key].value) {
         return (
           <td
             style={{
-              backgroundColor: eval("cells.time_" + timeHour + "_" + timeMin)[
-                key
-              ].color,
+              backgroundColor: specificTime[key].color,
             }}
             disabled
             key={key}
           >
-            {eval("cells.time_" + timeHour + "_" + timeMin)[key].value}
+            {specificTime[key].value}
           </td>
         );
       } else if (!editable) {

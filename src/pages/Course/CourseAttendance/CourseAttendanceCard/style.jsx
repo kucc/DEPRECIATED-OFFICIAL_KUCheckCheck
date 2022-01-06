@@ -41,13 +41,13 @@ export const StyledAttendanceBox = styled.div`
   font-size: 15px;
 `;
 
-export const StyledAttendance = styled.div`
+export const StyledAttend = styled.div`
   font-family: "NexonBo";
-  color: black;
+  color: #000000;
   margin: 3%;
 `;
 
-export const StyledAbsence = styled.div`
+export const StyledAbsent = styled.div`
   font-family: "NexonBo";
   color: red;
   margin: 3%;
@@ -55,6 +55,6 @@ export const StyledAbsence = styled.div`
 
 export const StyledLate = styled.div`
   font-family: "NexonBo";
-  color: #ff4d00;
+  color: #e67d4f;
   margin: 3%;
 `;
