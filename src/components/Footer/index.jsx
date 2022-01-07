@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { useLocation } from "react-router-dom";
 import DefaultLogo from "../DefaultLogo";
 import {
   StyledFooterBox,

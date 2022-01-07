@@ -36,20 +36,137 @@ const selectedDefault = [
   [false, false, false, false, false, false, false, false],
 ];
 
+const timeList = [
+  {
+    Hour: 9,
+    Minute: "00",
+  },
+  {
+    Hour: 9,
+    Minute: "30",
+  },
+  {
+    Hour: 10,
+    Minute: "00",
+  },
+  {
+    Hour: 10,
+    Minute: "30",
+  },
+  {
+    Hour: 11,
+    Minute: "00",
+  },
+  {
+    Hour: 11,
+    Minute: "30",
+  },
+  {
+    Hour: 12,
+    Minute: "00",
+  },
+  {
+    Hour: 12,
+    Minute: "30",
+  },
+  {
+    Hour: 13,
+    Minute: "00",
+  },
+  {
+    Hour: 13,
+    Minute: "30",
+  },
+  {
+    Hour: 14,
+    Minute: "00",
+  },
+  {
+    Hour: 14,
+    Minute: "30",
+  },
+  {
+    Hour: 15,
+    Minute: "00",
+  },
+  {
+    Hour: 15,
+    Minute: "30",
+  },
+  {
+    Hour: 16,
+    Minute: "00",
+  },
+  {
+    Hour: 16,
+    Minute: "30",
+  },
+  {
+    Hour: 17,
+    Minute: "00",
+  },
+  {
+    Hour: 17,
+    Minute: "30",
+  },
+  {
+    Hour: 18,
+    Minute: "00",
+  },
+  {
+    Hour: 18,
+    Minute: "30",
+  },
+  {
+    Hour: 19,
+    Minute: "00",
+  },
+  {
+    Hour: 19,
+    Minute: "30",
+  },
+  {
+    Hour: 20,
+    Minute: "00",
+  },
+  {
+    Hour: 20,
+    Minute: "30",
+  },
+  {
+    Hour: 21,
+    Minute: "00",
+  },
+  {
+    Hour: 21,
+    Minute: "30",
+  },
+  {
+    Hour: 22,
+    Minute: "00",
+  },
+  {
+    Hour: 22,
+    Minute: "30",
+  },
+];
+
 function TimeTable({ editable, selectedData, cellData, selectedColor }) {
   const [cells, setcells] = useState();
   const [selected, setselected] = useState(selectedDefault);
 
   useEffect(() => {
     // load timeTable info from firebase
-    firestoreService
-      .collection("common")
-      .doc("timeTable")
-      .get()
-      .then((doc) => {
-        setcells(doc.data());
-        cellData && cellData(doc.data());
-      });
+    async function loadTimeTable() {
+      const timeTableData = await firestoreService
+        .collection("common")
+        .doc("timeTable")
+        .get();
+      setcells(timeTableData.data());
+      // 상위 컴포넌트로 cellData를 보냄.
+      cellData && cellData(timeTableData.data());
+    }
+    loadTimeTable();
   }, []);
 
   const renderTd = (index, timeHour, timeMin) => {
@@ -57,11 +174,10 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
       // timeHour : 9, timeMin: 00 => cells.time_9_00
       const specificTime = eval("cells.time_" + timeHour + "_" + timeMin);
       if (specificTime[key].value) {
+        // if time exist on Database
         return (
           <td
-            style={{
-              backgroundColor: specificTime[key].color,
-            }}
+            style={{ backgroundColor: specificTime[key].color }}
             disabled
             key={key}
           >
@@ -69,10 +185,11 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
           </td>
         );
       } else if (!editable) {
+        // editable : false => disable 활성
         return (
           <td
+            style={{ backgroundColor: "rgb(211, 211, 211)" }}
             disabled
-            style={{ backgroundColor: "rgb(221, 221, 221)" }}
             key={key}
           />
         );
@@ -80,6 +197,15 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
         return <td key={key} />;
       }
     });
+  };
+
+  const renderTr = () => {
+    return timeList.map((time, index) => (
+      <tr key={index}>
+        <td disabled>{`${time.Hour} : ${time.Minute}`}</td>
+        {renderTd(index + 1, time.Hour, time.Minute)}
+      </tr>
+    ));
   };
 
   return (
@@ -102,118 +228,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
             <td disabled>금</td>
             <td disabled>토</td>
           </tr>
-          <tr>
-            <td disabled>9 : 00</td>
-            {renderTd(1, 9, "00")}
-          </tr>
-          <tr>
-            <td disabled>9 : 30</td>
-            {renderTd(2, 9, "30")}
-          </tr>
-          <tr>
-            <td disabled>10 : 00</td>
-            {renderTd(3, 10, "00")}
-          </tr>
-          <tr>
-            <td disabled>10 : 30</td>
-            {renderTd(4, 10, "30")}
-          </tr>
-          <tr>
-            <td disabled>11 : 00</td>
-            {renderTd(5, 11, "00")}
-          </tr>
-          <tr>
-            <td disabled>11 : 30</td>
-            {renderTd(6, 11, "30")}
-          </tr>
-          <tr>
-            <td disabled>12 : 00</td>
-            {renderTd(7, 12, "00")}
-          </tr>
-          <tr>
-            <td disabled>12 : 30</td>
-            {renderTd(8, 12, "30")}
-          </tr>
-          <tr>
-            <td disabled>13 : 00</td>
-            {renderTd(9, 13, "00")}
-          </tr>
-          <tr>
-            <td disabled>13 : 30</td>
-            {renderTd(10, 13, "30")}
-          </tr>
-          <tr>
-            <td disabled>14 : 00</td>
-            {renderTd(11, 14, "00")}
-          </tr>
-          <tr>
-            <td disabled>14 : 30</td>
-            {renderTd(12, 14, "30")}
-          </tr>
-          <tr>
-            <td disabled>15 : 00</td>
-            {renderTd(13, 15, "00")}
-          </tr>
-          <tr>
-            <td disabled>15 : 30</td>
-            {renderTd(14, 15, "30")}
-          </tr>
-          <tr>
-            <td disabled>16 : 00</td>
-            {renderTd(15, 16, "00")}
-          </tr>
-          <tr>
-            <td disabled>16 : 30</td>
-            {renderTd(16, 16, "30")}
-          </tr>
-          <tr>
-            <td disabled>17 : 00</td>
-            {renderTd(17, 17, "00")}
-          </tr>
-          <tr>
-            <td disabled>17 : 30</td>
-            {renderTd(18, 17, "30")}
-          </tr>
-          <tr>
-            <td disabled>18 : 00</td>
-            {renderTd(19, 18, "00")}
-          </tr>
-          <tr>
-            <td disabled>18 : 30</td>
-            {renderTd(20, 18, "30")}
-          </tr>
-          <tr>
-            <td disabled>19 : 00</td>
-            {renderTd(21, 19, "00")}
-          </tr>
-          <tr>
-            <td disabled>19 : 30</td>
-            {renderTd(22, 19, "30")}
-          </tr>
-          <tr>
-            <td disabled>20 : 00</td>
-            {renderTd(23, 20, "00")}
-          </tr>
-          <tr>
-            <td disabled>20 : 30</td>
-            {renderTd(24, 20, "30")}
-          </tr>
-          <tr>
-            <td disabled>21 : 00</td>
-            {renderTd(25, 21, "00")}
-          </tr>
-          <tr>
-            <td disabled>21 : 30</td>
-            {renderTd(26, 21, "30")}
-          </tr>
-          <tr>
-            <td disabled>22 : 00</td>
-            {renderTd(27, 22, "00")}
-          </tr>
-          <tr>
-            <td disabled>22 : 30</td>
-            {renderTd(28, 22, "30")}
-          </tr>
+          {renderTr()}
         </TableDragSelect>
       )}
     </StyledTableContainer>
