@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "../../../components/NavBar/NavBar";
-import { firestoreService } from "../../../firebase";
-import { StyledBackground, StyledNavBarContainer } from "../../Rules/style";
+import React from "react";
 import CourseAttendanceCard from "./CourseAttendanceCard";
 import CourseAttendanceTop from "./CourseAttendanceTop";
 

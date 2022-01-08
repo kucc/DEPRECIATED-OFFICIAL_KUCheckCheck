@@ -1,14 +1,17 @@
-import { Button } from "antd";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import NavBar from "../../../../components/NavBar/NavBar";
 import {
   StyledBackButton,
+  StyledBackground,
   StyledEditButton,
   StyledLeftBox,
-  StyledTextBox,
   StyledTopBox,
+  StyledTopContainer,
+  StyledTopDesc,
+  StyledTopTitle,
   StyledWeekBox,
+  StyledWeekTextBox,
 } from "./style";
 import { AiOutlineLeft } from "react-icons/ai";
 import { firestoreService } from "../../../../firebase";
@@ -57,50 +60,33 @@ function CourseAttendanceTop({
   };
 
   return (
-    <div style={{ backgroundColor: "rgb(245, 245, 245" }}>
+    <StyledBackground>
       <NavBar />
-      <div style={{ marginTop: "50px" }}>
+      <StyledTopContainer>
         <StyledTopBox>
-          <StyledBackButton
-            style={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              display: "grid",
-              placeItems: "center",
-              marginLeft: "-5px",
-            }}
-            onClick={() => history.goBack()}
-          >
+          <StyledBackButton onClick={() => history.goBack()}>
             <AiOutlineLeft style={{ strokeWidth: "50", fontSize: "20px" }} />
           </StyledBackButton>
           <StyledLeftBox>
             <div>
-              <div
-                style={{
-                  fontSize: "24px",
-                  fontFamily: "NexonBo",
-                }}
-              >
-                출결 확인하기
-              </div>
-              <div style={{ fontSize: "20px" }}>{courseName && courseName}</div>
+              <StyledTopTitle>출결 확인하기</StyledTopTitle>
+              <StyledTopDesc>{courseName && courseName}</StyledTopDesc>
             </div>
             {renderEditButton()}
           </StyledLeftBox>
         </StyledTopBox>
         <StyledWeekBox>
-          <StyledTextBox>1주차</StyledTextBox>
-          <StyledTextBox>2주차</StyledTextBox>
-          <StyledTextBox>3주차</StyledTextBox>
-          <StyledTextBox>4주차</StyledTextBox>
-          <StyledTextBox>5주차</StyledTextBox>
-          <StyledTextBox>6주차</StyledTextBox>
-          <StyledTextBox>7주차</StyledTextBox>
-          <StyledTextBox>8주차</StyledTextBox>
+          <StyledWeekTextBox>1주차</StyledWeekTextBox>
+          <StyledWeekTextBox>2주차</StyledWeekTextBox>
+          <StyledWeekTextBox>3주차</StyledWeekTextBox>
+          <StyledWeekTextBox>4주차</StyledWeekTextBox>
+          <StyledWeekTextBox>5주차</StyledWeekTextBox>
+          <StyledWeekTextBox>6주차</StyledWeekTextBox>
+          <StyledWeekTextBox>7주차</StyledWeekTextBox>
+          <StyledWeekTextBox>8주차</StyledWeekTextBox>
         </StyledWeekBox>
-      </div>
-    </div>
+      </StyledTopContainer>
+    </StyledBackground>
   );
 }
 
