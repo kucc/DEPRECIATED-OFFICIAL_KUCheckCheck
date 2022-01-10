@@ -22,7 +22,7 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   const word = { absent: "결석", attend: "출석", late: "지각" };
 
   useEffect(() => {
-    async function loadUserData() {
+    async function fetchUserData() {
       //user의 이름과 Emoji를 가져옴
       const userRef = await firestoreService
         .collection("users")
@@ -31,7 +31,7 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
       setuserName(userRef.data().name);
       setuserEmoji(userRef.data().emoji);
     }
-    loadUserData();
+    fetchUserData();
   }, []);
 
   const handleSelected = (value, key) => {

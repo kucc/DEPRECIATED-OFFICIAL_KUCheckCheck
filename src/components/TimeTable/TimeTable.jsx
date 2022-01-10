@@ -157,7 +157,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
 
   useEffect(() => {
     // load timeTable info from firebase
-    async function loadTimeTable() {
+    async function fetchTimeTable() {
       const timeTableData = await firestoreService
         .collection("common")
         .doc("timeTable")
@@ -166,7 +166,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
       // 상위 컴포넌트로 cellData를 보냄.
       cellData && cellData(timeTableData.data());
     }
-    loadTimeTable();
+    fetchTimeTable();
   }, []);
 
   const renderTd = (index, timeHour, timeMin) => {

@@ -1,7 +1,6 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import CourseAttendanceCard from "../CourseAttendance/CourseAttendanceCard";
-
 import CourseAttendanceTop from "../CourseAttendance/CourseAttendanceTop";
 
 function CourseAttendanceEdit({ courseData }) {

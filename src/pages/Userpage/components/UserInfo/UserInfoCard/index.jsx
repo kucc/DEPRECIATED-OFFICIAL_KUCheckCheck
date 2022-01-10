@@ -21,7 +21,7 @@ function UserInfoCard({ userData }) {
   const [firebaseUser, setfirebaseUser] = useState("");
   //유저 정보 불러오기
   useEffect(() => {
-    async function loadUserData() {
+    async function fetchUserData() {
       // key 값이 변함에 따라 값을 업데이트 해와야 하므로 다시 firebase 호출
       // 다른 방법으로 Top 컴포넌트에서 변경된 값을 prop으로 가져와서 update 해주는 방법이 있음. 또는 이벤트 리스너 사용.
       if (userData) {
@@ -32,7 +32,7 @@ function UserInfoCard({ userData }) {
         setfirebaseUser(data.data());
       }
     }
-    loadUserData();
+    fetchUserData();
   }, [userData]);
 
   return (
