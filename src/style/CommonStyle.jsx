@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { baseColor } from "../../style/Colors";
 
 export const StyledBackground = styled.div`
-  background-color: ${baseColor};
+  background-color: rgb(245, 245, 245);
 `;

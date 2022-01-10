@@ -1,7 +1,5 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
-import { firestoreService } from "../../../firebase";
 import CourseAttendanceCard from "../CourseAttendance/CourseAttendanceCard";
 
 import CourseAttendanceTop from "../CourseAttendance/CourseAttendanceTop";
