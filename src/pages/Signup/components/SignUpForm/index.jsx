@@ -45,6 +45,10 @@ function SignUpForm() {
         password
       );
 
+      await createdUser.user.updateProfile({
+        displayName: name,
+      });
+
       if (createdUser === null)
         throw new Error(CAN_NOT_CREATE_USER_IN_FIREBASE);
 
