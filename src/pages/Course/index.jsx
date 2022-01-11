@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { firestoreService } from "../../firebase";
+import CourseCurriculum from "./components/CourseCurriculum";
 
 function CoursePage() {
   const location = useLocation();
@@ -16,7 +17,7 @@ function CoursePage() {
     goal: "",
     date: "",
     maxMemberNum: "",
-    curriculum: {},
+    curriculum: [],
   });
 
   useEffect(() => {
@@ -72,6 +73,7 @@ function CoursePage() {
         name={leaderInfo.name}
         detailComment={leaderInfo.detailComment}
       />
+      {console.log(selected,courseInfo)}
       <ToggleButton setSelected={setSelected} />
       {/* 세션 소개 | 커리큘럼 선택버튼 */}
       {selected === "introduction" ? (
@@ -83,7 +85,7 @@ function CoursePage() {
           maxMemberNum={courseInfo.maxMemberNum}
         />
       ) : (
-        <CourseCurriculum />
+        <CourseCurriculum curriculum={courseInfo.curriculum} />
       )}
       <Button onClick={() => history.push(`${location.pathname}/attendance`)}>
         출결관리
@@ -139,8 +141,8 @@ function CourseIntroduction({ name, introduction, goal, date, maxMemberNum }) {
   );
 }
 
-function CourseCurriculum() {
-  return <div></div>;
-}
+// function CourseCurriculum() {
+//   return <div></div>;
+// }
 
 export default CoursePage;

@@ -2,14 +2,7 @@ import React from "react";
 import { Timeline } from "antd";
 import { StyledContainer } from "./style";
 
-function Curriculum() {
-  const curriculum = [
-    "1주차에는 이런걸 할거에요",
-    "2주차에는 이런걸 할거에요",
-    "3주차에는 이런걸 할거에요",
-    "4주차에는 이런걸 할거에요",
-    "5주차에는 이런걸 할거에요",
-  ];
+function CourseCurriculum({curriculum}) {
 
   return (
     <StyledContainer>
@@ -22,4 +15,4 @@ function Curriculum() {
   );
 }
 
-export default Curriculum;
+export default CourseCurriculum;
