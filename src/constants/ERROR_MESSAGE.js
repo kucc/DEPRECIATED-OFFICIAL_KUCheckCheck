@@ -14,4 +14,7 @@ module.exports = {
     "상단의 세션 혹은 스터디를 선택했는지 확인해주세요!",
   ALREADY_APPLIED_COURSE: "이미 신청한 과목입니다.",
   NOT_ENROLLMENT_TERM: "신청 기간이 아닙니다.",
+  NEED_TO_LOGIN: "로그인이 필요합니다.",
+  COURSE_LEADER_ONLY: "세션장 혹은 스터디장만이 접근할 수 있습니다.",
+  COURSE_CHECK_ADMIN_ONLY: "출석체크 담당자만이 접근할 수 있습니다.",
 };

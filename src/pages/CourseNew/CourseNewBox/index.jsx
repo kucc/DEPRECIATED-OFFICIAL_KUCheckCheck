@@ -64,6 +64,7 @@ export default function CourseNewBox() {
         },
       ],
       semester: currentSemester,
+      courseCheckAdmin: [],
     };
 
     try {

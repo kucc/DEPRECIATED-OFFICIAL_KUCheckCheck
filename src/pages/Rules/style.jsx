@@ -1,14 +1,21 @@
 import { Collapse } from "antd";
 import styled from "styled-components";
 
-export const SRulesBox = styled.div`
+export const StyledRulesBox = styled.div`
   display: grid;
   grid-template-rows: 100px auto;
   margin-left: 14.24%;
   margin-right: 14.24%;
 `;
 
-export const SCollapse = styled(Collapse)`
+export const StyledRulesTitle = styled.div`
+  font-size: 26px;
+  margin-left: 5%;
+  font-family: "NexonBo";
+  margin-top: 50px;
+`;
+
+export const StyledRulesCollapse = styled(Collapse)`
   border: none;
   &.ant-collapse {
     background-color: rgb(245, 245, 245);
@@ -46,7 +53,7 @@ export const SCollapse = styled(Collapse)`
   }
 `;
 
-export const SPanel = styled(Collapse.Panel)`
+export const StyledRulesPanel = styled(Collapse.Panel)`
   .ant-collapse-header {
     color: white !important;
     height: 100px;
@@ -61,14 +68,6 @@ export const SPanel = styled(Collapse.Panel)`
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
   }
-`;
-
-export const StyledNavBarContainer = styled.div`
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  box-shadow: 0 11px 10px 2px lightgrey;
-  background-color: white;
-  z-index: 1;
 `;
 
 export const StyledBackground = styled.div`

@@ -1,21 +1,35 @@
-import { Button, Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
 import CourseContainer from "../../../components/CourseContainer/CourseContainer";
-import * as S from "../style";
 import EmptyBox from "../../../components/EmptyBox";
+import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
+import { useHistory } from "react-router-dom";
+import {
+  StyledMainBottomBtnCont,
+  StyledMainBottomWrapper,
+  StyledMainSessDuration,
+  StyledMainSessItemOffClick,
+  StyledMainSessRig,
+  StyledMainSessTab,
+  StyledMainVerticalLine,
+} from "./style";
 
 function MainBottomContainer() {
-  // Search를 redux에서 사용?? Database에서 사용??
   const [courseSelect, setcourseSelect] = useState(0);
-  const [courseContainerArray, setcourseContainerArray] = useState([]);
-  const [filterResults, setfilterResults] = useState([]);
+  const [courseArray, setcourseArray] = useState([]);
+  const [filteredCourseArray, setfilteredCourseArray] = useState([]);
+  // current Semester : 현재 무슨 학기인지 => string
   const [currentSemester, setcurrentSemester] = useState("");
+  // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  // user, searchTerm, searchCategory : from redux
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
+  const history = useHistory();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
   const escapeRegExp = (searchTerm) => {
@@ -25,22 +39,19 @@ function MainBottomContainer() {
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
     // course의 id만을 가지는 배열을 복사
-    const courseContainerArrayId = courseContainerArray.reduce(
-      (acc, course) => {
-        acc.push(course.id);
-        return acc;
-      },
-      []
-    );
+    const courseArrayId = courseArray.reduce((acc, course) => {
+      acc.push(course.id);
+      return acc;
+    }, []);
 
-    let searchTermResults = [...courseContainerArrayId];
-    let searchCategoryResults = [...courseContainerArrayId];
-    let courseToggleResults = [...courseContainerArrayId];
+    let searchTermResults = [...courseArrayId];
+    let searchCategoryResults = [...courseArrayId];
+    let courseToggleResults = [...courseArrayId];
 
     // 1. 검색에 의한 filter
     if (searchTerm) {
       const regex = new RegExp(escapeRegExp(searchTerm), "gi");
-      searchTermResults = courseContainerArray.reduce((acc, course) => {
+      searchTermResults = courseArray.reduce((acc, course) => {
         if (
           // courseName 검색
           course.courseName.match(regex) ||
@@ -56,7 +67,7 @@ function MainBottomContainer() {
     }
     // 2. Category에 의한 filter
     if (searchCategory) {
-      searchCategoryResults = courseContainerArray.reduce((acc, course) => {
+      searchCategoryResults = courseArray.reduce((acc, course) => {
         switch (searchCategory) {
           case "Web":
             if (
@@ -115,7 +126,7 @@ function MainBottomContainer() {
     if (courseSelect) {
       // Type 1. 세션
       if (courseSelect === 1) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 1) {
             acc.push(course.id);
           }
@@ -123,14 +134,14 @@ function MainBottomContainer() {
         }, []);
         // Type 2. 스터디
       } else if (courseSelect === 2) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 2) {
             acc.push(course.id);
           }
           return acc;
         }, []);
       } else if (courseSelect === 3) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 3) {
             acc.push(course.id);
           }
@@ -139,7 +150,7 @@ function MainBottomContainer() {
       }
     }
     // 4가지의 배열 중 겹치는 course만 filter 함.
-    const filteredResults = courseContainerArray.reduce((acc, course) => {
+    const filteredResults = courseArray.reduce((acc, course) => {
       if (
         searchTermResults.indexOf(course.id) > -1 &&
         searchCategoryResults.indexOf(course.id) > -1 &&
@@ -150,58 +161,50 @@ function MainBottomContainer() {
       return acc;
     }, []);
     // filterResult에 넣어줌.
-    setfilterResults(filteredResults);
-  }, [searchTerm, searchCategory, courseSelect, courseContainerArray]);
+    setfilteredCourseArray(filteredResults);
+  }, [searchTerm, searchCategory, courseSelect, courseArray]);
 
-  // 학기 선택 기능
+  // 학기 정보 불러오기
   useEffect(() => {
-    firestoreService
-      .collection("courses")
-      .get()
-      .then((querySnapshot) => {
-        let courseArray = [];
-        querySnapshot.forEach((doc) => {
-          if (doc.data().semester === currentSemester) {
-            const coursesData = {
-              id: doc.id,
-              ...doc.data(),
-            };
-            courseArray.push(coursesData);
-          }
-        });
-        setcourseContainerArray(courseArray);
-      });
-  }, [currentSemester]);
-
-  //세션 불러오기
-  useEffect(() => {
-    firestoreService
-      .collection("common")
-      .doc("commonInfo")
-      .get()
-      .then((doc) => {
-        setcurrentSemester(doc.data().currentSemester);
-        // 배열을 역순으로 저장해줌
-        setpastSemester(doc.data().pastSemester.reverse());
-      });
-
-    firestoreService
-      .collection("courses")
-      .get()
-      .then((querySnapshot) => {
-        let courseArray = [];
-        querySnapshot.forEach((doc) => {
-          if (doc.data().semester === currentSemester) {
-            const coursesData = {
-              id: doc.id,
-              ...doc.data(),
-            };
-            courseArray.push(coursesData);
-          }
-        });
-        setcourseContainerArray(courseArray);
-      });
+    async function loadSemesterData() {
+      const semesterData = await firestoreService
+        .collection("common")
+        .doc("commonInfo")
+        .get();
+      setcurrentSemester(semesterData.data().currentSemester);
+      // 배열을 역순으로 저장해줌
+      setpastSemester(semesterData.data().pastSemester.reverse());
+      // setcourseArray(courseArray);
+    }
+    loadSemesterData();
   }, []);
+
+  // 학기에 따라서 course 정보 불러오기
+  useEffect(() => {
+    async function fetchCourseData() {
+      try {
+        setIsLoading(true);
+        let newCourseArray = [];
+        const firebaseCourseData = await firestoreService
+          .collection("courses")
+          .get();
+        firebaseCourseData.forEach((doc) => {
+          if (doc.data().semester === currentSemester) {
+            const coursesData = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            newCourseArray.push(coursesData);
+          }
+        });
+        setcourseArray(newCourseArray);
+        setIsLoading(false);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    fetchCourseData();
+  }, [currentSemester]);
 
   const menu = (
     // 학기를 클릭했을 때 해야할 일
@@ -220,11 +223,13 @@ function MainBottomContainer() {
   );
 
   const renderCourse = () => {
+    if (isLoading) return <Skeleton />;
+    // if filetring is On
     if (searchTerm || courseSelect !== 0 || searchCategory) {
-      if (filterResults.length === 0) {
+      if (filteredCourseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return filterResults.map((course) => {
+        return filteredCourseArray.map((course) => {
           return (
             <CourseContainer
               key={course.id}
@@ -235,10 +240,10 @@ function MainBottomContainer() {
         });
       }
     } else {
-      if (courseContainerArray.length === 0) {
+      if (courseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return courseContainerArray.map((course) => {
+        return courseArray.map((course) => {
           return (
             <CourseContainer
               key={course.id}
@@ -253,9 +258,9 @@ function MainBottomContainer() {
 
   return (
     <>
-      <S.MainBottomWrapper>
-        <S.MainBottomBtnCont>
-          <S.MainSessDuration>
+      <StyledMainBottomWrapper>
+        <StyledMainBottomBtnCont>
+          <StyledMainSessDuration>
             <Dropdown overlay={menu} placement="bottomLeft">
               <Button
                 type="danger"
@@ -270,60 +275,52 @@ function MainBottomContainer() {
                 {currentSemester} 학기
               </Button>
             </Dropdown>
-          </S.MainSessDuration>
-          <S.MainSessTab>
-            <S.MainSessItem onClick={() => setcourseSelect(0)}>
-              {courseSelect === 0 ? (
-                <S.MainSessItemOnClick>전체</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>전체</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(1)}>
-              {courseSelect === 1 ? (
-                <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>세션</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(2)}>
-              {courseSelect === 2 ? (
-                <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
-              )}
-              <S.MainVerticalLine />
-            </S.MainSessItem>
-            <S.MainSessItem onClick={() => setcourseSelect(3)}>
-              {courseSelect === 3 ? (
-                <S.MainSessItemOnClick>프로젝트</S.MainSessItemOnClick>
-              ) : (
-                <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
-              )}
-            </S.MainSessItem>
-          </S.MainSessTab>
-          <S.MainSessRig>
+          </StyledMainSessDuration>
+          <StyledMainSessTab>
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              // selectedType for use in StyledComponent
+              selectedType={0}
+              onClick={() => setcourseSelect(0)}
+            >
+              전체
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={1}
+              onClick={() => setcourseSelect(1)}
+            >
+              세션
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={2}
+              onClick={() => setcourseSelect(2)}
+            >
+              스터디
+            </StyledMainSessItemOffClick>
+            <StyledMainVerticalLine />
+            <StyledMainSessItemOffClick
+              courseSelect={courseSelect}
+              selectedType={3}
+              onClick={() => setcourseSelect(3)}
+            >
+              프로젝트
+            </StyledMainSessItemOffClick>
+          </StyledMainSessTab>
+          <StyledMainSessRig>
             {user.currentUser && (
-              <Button
-                style={{
-                  width: "100%",
-                  height: "40px",
-                  borderRadius: "25px",
-                  boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 1.5px",
-                  display: "grid",
-                  placeItems: "center",
-                }}
-                href="/course-new"
-              >
-                등록하기
-              </Button>
+              <WhiteShadowButton
+                text="등록하기"
+                onClick={() => history.push("/course-new")}
+              />
             )}
-          </S.MainSessRig>
-        </S.MainBottomBtnCont>
+          </StyledMainSessRig>
+        </StyledMainBottomBtnCont>
         {renderCourse()}
-      </S.MainBottomWrapper>
+      </StyledMainBottomWrapper>
     </>
   );
 }

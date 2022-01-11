@@ -1,11 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { useLocation } from "react-router-dom";
+import DefaultLogo from "../DefaultLogo";
 import {
   StyledFooterBox,
   StyledFooterContainer,
   StyledFooterDesc,
-  StyledFooterImg,
   StyledFooterImgBox,
   StyledFooterLink,
   StyledFooterTitle,
@@ -67,7 +66,14 @@ export default function Footer() {
         <StyledFooterDesc>jjs01hwang@gmail.com (이희준)</StyledFooterDesc>
       </StyledFooterBox>
       <StyledFooterImgBox>
-        <StyledFooterImg onClick={onImgClick} src="img/logo/type-1-3.png" />
+        <DefaultLogo
+          width={124}
+          height={124}
+          logoName="type-1-3"
+          style={{ pointer: "cursor" }}
+          isPointer={true}
+          onClick={onImgClick}
+        />
         Copyright ⓒ KUCC All Rights Reserved
       </StyledFooterImgBox>
     </StyledFooterContainer>

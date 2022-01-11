@@ -19,7 +19,6 @@ import {
   StyledTopContainer,
 } from "../style";
 import NavBar from "../../../components/NavBar/NavBar";
-import TimeTable from "../../../components/TimeTable/TimeTable";
 
 function PCourseNewBox({ enrollHandler }) {
   //하나의 객체로..?
@@ -79,13 +78,11 @@ function PCourseNewBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <StyledNavBarContainer>
-        <NavBar />
-      </StyledNavBarContainer>
+      <NavBar />
       <StyledTopContainer>
         <p style={{ fontSize: "20px", fontFamily: "NexonBo" }}>등록하기</p>
 
-        <S.MainSessTab style={{ marginBottom: "17px" }}>
+        {/* <S.MainSessTab style={{ marginBottom: "17px" }}>
           <S.MainSessItem onClick={() => setcourseType(1)}>
             {courseType === 1 ? (
               <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
@@ -109,7 +106,7 @@ function PCourseNewBox({ enrollHandler }) {
               <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
             )}
           </S.MainSessItem>
-        </S.MainSessTab>
+        </S.MainSessTab> */}
       </StyledTopContainer>
 
       <StyledBottomContainer>

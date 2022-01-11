@@ -50,5 +50,6 @@ export const StyledFooterImgBox = styled.div`
 
 export const StyledFooterImg = styled.img`
   width: 124px;
+  height: 124px;
   cursor: pointer;
 `;

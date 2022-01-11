@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Space } from "antd";
-import FullWidthButton from "../../../../components/FullWidthButton";
+
 import InputBoxWithLabel from "../../../../components/InputBoxWithLabel";
 import { authService } from "../../../../firebase";
 import { StyledForm } from "./style";
+import FullWidthButton from "../../../../components/Buttons/FullWidthButton";
 
 function LoginForm() {
   const history = useHistory();
