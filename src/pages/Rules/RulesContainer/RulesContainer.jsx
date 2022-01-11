@@ -12,7 +12,7 @@ import {
 function RulesContainer() {
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
-    async function loadNoticesData() {
+    async function fetchNoticesData() {
       const noticesData = await firestoreService.collection("notices").get();
       // 임시 배열에 Data를 push
       let noticesArray = [];
@@ -22,7 +22,7 @@ function RulesContainer() {
       });
       setNotices(noticesArray);
     }
-    loadNoticesData();
+    fetchNoticesData();
   }, []);
 
   return (

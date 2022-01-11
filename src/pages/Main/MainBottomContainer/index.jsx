@@ -1,4 +1,4 @@
-import { Button, Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreService } from "../../../firebase";
@@ -18,10 +18,14 @@ import {
 
 function MainBottomContainer() {
   const [courseSelect, setcourseSelect] = useState(0);
-  const [courseContainerArray, setcourseContainerArray] = useState([]);
-  const [filterResults, setfilterResults] = useState([]);
+  const [courseArray, setcourseArray] = useState([]);
+  const [filteredCourseArray, setfilteredCourseArray] = useState([]);
+  // current Semester : 현재 무슨 학기인지 => string
   const [currentSemester, setcurrentSemester] = useState("");
+  // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  // user, searchTerm, searchCategory : from redux
   const user = useSelector((state) => state.user);
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const searchCategory = useSelector((state) => state.search.category);
@@ -35,22 +39,19 @@ function MainBottomContainer() {
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
   useEffect(() => {
     // course의 id만을 가지는 배열을 복사
-    const courseContainerArrayId = courseContainerArray.reduce(
-      (acc, course) => {
-        acc.push(course.id);
-        return acc;
-      },
-      []
-    );
+    const courseArrayId = courseArray.reduce((acc, course) => {
+      acc.push(course.id);
+      return acc;
+    }, []);
 
-    let searchTermResults = [...courseContainerArrayId];
-    let searchCategoryResults = [...courseContainerArrayId];
-    let courseToggleResults = [...courseContainerArrayId];
+    let searchTermResults = [...courseArrayId];
+    let searchCategoryResults = [...courseArrayId];
+    let courseToggleResults = [...courseArrayId];
 
     // 1. 검색에 의한 filter
     if (searchTerm) {
       const regex = new RegExp(escapeRegExp(searchTerm), "gi");
-      searchTermResults = courseContainerArray.reduce((acc, course) => {
+      searchTermResults = courseArray.reduce((acc, course) => {
         if (
           // courseName 검색
           course.courseName.match(regex) ||
@@ -66,7 +67,7 @@ function MainBottomContainer() {
     }
     // 2. Category에 의한 filter
     if (searchCategory) {
-      searchCategoryResults = courseContainerArray.reduce((acc, course) => {
+      searchCategoryResults = courseArray.reduce((acc, course) => {
         switch (searchCategory) {
           case "Web":
             if (
@@ -125,7 +126,7 @@ function MainBottomContainer() {
     if (courseSelect) {
       // Type 1. 세션
       if (courseSelect === 1) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 1) {
             acc.push(course.id);
           }
@@ -133,14 +134,14 @@ function MainBottomContainer() {
         }, []);
         // Type 2. 스터디
       } else if (courseSelect === 2) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 2) {
             acc.push(course.id);
           }
           return acc;
         }, []);
       } else if (courseSelect === 3) {
-        courseToggleResults = courseContainerArray.reduce((acc, course) => {
+        courseToggleResults = courseArray.reduce((acc, course) => {
           if (course.courseType && course.courseType === 3) {
             acc.push(course.id);
           }
@@ -149,7 +150,7 @@ function MainBottomContainer() {
       }
     }
     // 4가지의 배열 중 겹치는 course만 filter 함.
-    const filteredResults = courseContainerArray.reduce((acc, course) => {
+    const filteredResults = courseArray.reduce((acc, course) => {
       if (
         searchTermResults.indexOf(course.id) > -1 &&
         searchCategoryResults.indexOf(course.id) > -1 &&
@@ -160,8 +161,8 @@ function MainBottomContainer() {
       return acc;
     }, []);
     // filterResult에 넣어줌.
-    setfilterResults(filteredResults);
-  }, [searchTerm, searchCategory, courseSelect, courseContainerArray]);
+    setfilteredCourseArray(filteredResults);
+  }, [searchTerm, searchCategory, courseSelect, courseArray]);
 
   // 학기 정보 불러오기
   useEffect(() => {
@@ -173,28 +174,36 @@ function MainBottomContainer() {
       setcurrentSemester(semesterData.data().currentSemester);
       // 배열을 역순으로 저장해줌
       setpastSemester(semesterData.data().pastSemester.reverse());
-      // setcourseContainerArray(courseArray);
+      // setcourseArray(courseArray);
     }
     loadSemesterData();
   }, []);
 
   // 학기에 따라서 course 정보 불러오기
   useEffect(() => {
-    async function loadCourseData() {
-      let courseArray = [];
-      const courseData = await firestoreService.collection("courses").get();
-      courseData.forEach((doc) => {
-        if (doc.data().semester === currentSemester) {
-          const coursesData = {
-            id: doc.id,
-            ...doc.data(),
-          };
-          courseArray.push(coursesData);
-        }
-      });
-      setcourseContainerArray(courseArray);
+    async function fetchCourseData() {
+      try {
+        setIsLoading(true);
+        let newCourseArray = [];
+        const firebaseCourseData = await firestoreService
+          .collection("courses")
+          .get();
+        firebaseCourseData.forEach((doc) => {
+          if (doc.data().semester === currentSemester) {
+            const coursesData = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            newCourseArray.push(coursesData);
+          }
+        });
+        setcourseArray(newCourseArray);
+        setIsLoading(false);
+      } catch (error) {
+        console.log("error", error);
+      }
     }
-    loadCourseData();
+    fetchCourseData();
   }, [currentSemester]);
 
   const menu = (
@@ -214,11 +223,13 @@ function MainBottomContainer() {
   );
 
   const renderCourse = () => {
+    if (isLoading) return <Skeleton />;
+    // if filetring is On
     if (searchTerm || courseSelect !== 0 || searchCategory) {
-      if (filterResults.length === 0) {
+      if (filteredCourseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return filterResults.map((course) => {
+        return filteredCourseArray.map((course) => {
           return (
             <CourseContainer
               key={course.id}
@@ -229,10 +240,10 @@ function MainBottomContainer() {
         });
       }
     } else {
-      if (courseContainerArray.length === 0) {
+      if (courseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return courseContainerArray.map((course) => {
+        return courseArray.map((course) => {
           return (
             <CourseContainer
               key={course.id}

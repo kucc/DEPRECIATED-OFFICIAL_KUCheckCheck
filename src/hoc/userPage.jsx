@@ -10,7 +10,7 @@ export default function () {
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
-      async function loadUserData() {
+      async function fetchUserData() {
         // load course Data
         const userId = props.match.params.id;
         // get course Data from firebase
@@ -27,7 +27,7 @@ export default function () {
           props.history.push("/login");
         }
       }
-      loadUserData();
+      fetchUserData();
     }, []);
 
     return <UserPage {...props} userData={userData} />;

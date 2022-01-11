@@ -17,7 +17,7 @@ export default function (SpecificComponent, option) {
     const [courseData, setCourseData] = useState([]);
 
     useEffect(() => {
-      async function loadCourseData() {
+      async function fetchCourseData() {
         // load course Data
         const courseId = props.match.params.id;
         // get course Data from firebase
@@ -53,7 +53,7 @@ export default function (SpecificComponent, option) {
             break;
         }
       }
-      loadCourseData();
+      fetchCourseData();
     }, []);
     // 해당 Component로 courseData prop을 보내줌.
     return <SpecificComponent {...props} courseData={courseData} />;
