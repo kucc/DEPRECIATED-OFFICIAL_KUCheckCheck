@@ -28,7 +28,7 @@ function PCourseNewBox({ enrollHandler }) {
   const [language, setlanguage] = useState("C");
   const [difficulty, setdifficulty] = useState("");
   const [requireTime, setrequireTime] = useState("");
-  const [courseType, setcourseType] = useState("");
+  const [courseType, setcourseType] = useState(1);
   const [selectedImg, setselectedImg] = useState("C");
   const [courseDate, setcourseDate] = useState("");
   const [coursePlace, setcoursePlace] = useState("");
