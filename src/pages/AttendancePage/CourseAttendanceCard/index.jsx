@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { firestoreService } from "../../../../firebase";
+import { firestoreService } from "../../../firebase";
 import { Select } from "antd";
 import "antd/dist/antd.css";
 import {

@@ -123,8 +123,8 @@ function CourseApplication({ course, courseId }) {
       .then((doc) => {
         const newenrollmentTerm = [];
         // firebase timestamp => javascript date
-        newenrollmentTerm.push(doc.data().enrollmentTerm[0].toDate());
-        newenrollmentTerm.push(doc.data().enrollmentTerm[1].toDate());
+        newenrollmentTerm.push(doc.data().enrollmentTerm.start.toDate());
+        newenrollmentTerm.push(doc.data().enrollmentTerm.end.toDate());
         setenrollmentTerm(newenrollmentTerm);
         // 현재 학기 등록
         setcurrentSemester(doc.data().currentSemester);

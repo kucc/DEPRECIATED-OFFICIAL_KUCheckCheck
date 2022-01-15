@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Select } from "antd";
 import "antd/dist/antd.css";
-import * as S from "../../Main/style";
 import { Option } from "antd/lib/mentions";
 import {
   CHECK_TOP_SESSION_OR_STUDY,
@@ -13,14 +12,13 @@ import {
   StyledBottomContainer,
   StyledInputBox,
   StyledInputNumber,
-  StyledNavBarContainer,
   StyledText,
   StyledTextArea,
   StyledTopContainer,
 } from "../style";
 import NavBar from "../../../components/NavBar/NavBar";
 
-function PCourseNewBox({ enrollHandler }) {
+function CourseRegisterBox({ enrollHandler }) {
   //하나의 객체로..?
   const [courseName, setcourseName] = useState("");
   const [courseInfo, setcourseInfo] = useState("");
@@ -457,4 +455,4 @@ function PCourseNewBox({ enrollHandler }) {
     </StyledBackground>
   );
 }
-export default PCourseNewBox;
+export default CourseRegisterBox;

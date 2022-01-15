@@ -9,7 +9,7 @@ import {
   StyledRulesPanel,
 } from "../style";
 
-function RulesContainer() {
+function NoticeContainer() {
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
     async function fetchNoticesData() {
@@ -46,4 +46,4 @@ function RulesContainer() {
   );
 }
 
-export default RulesContainer;
+export default NoticeContainer;

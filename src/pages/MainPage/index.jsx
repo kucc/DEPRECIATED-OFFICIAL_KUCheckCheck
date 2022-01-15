@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { StyledBackground } from "../Rules/style";
+import { StyledBackground } from "../NoticePage/style";
 import MainBottomContainer from "./MainBottomContainer";
 import MainTopContainer from "./MainTopContainer";
 
-function Main() {
+function MainPage() {
   return (
     <StyledBackground>
       <NavBar isMain={true} />
@@ -13,4 +13,4 @@ function Main() {
     </StyledBackground>
   );
 }
-export default Main;
+export default MainPage;

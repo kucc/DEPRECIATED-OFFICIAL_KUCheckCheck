@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SUCCESS_APPLICATION } from "../../../constants/ERROR_MESSAGE";
 import { firestoreService } from "../../../firebase";
-import PCourseNewBox from "./PSessionNewBox";
+import CourseRegisterBox from "./CourseRegisterBox";
 
-export default function CourseNewBox() {
+export default function CourseUpdate() {
+  // CourseUpdate는 CourseRegisterBox로 정보를 받아와서 firebase로 정보를 update하는 함수.
   const history = useHistory();
   const currentUser = useSelector((state) => state.user.currentUser);
   const [currentSemester, setcurrentSemester] = useState("");
@@ -129,7 +130,7 @@ export default function CourseNewBox() {
 
   return (
     <>
-      <PCourseNewBox enrollHandler={enrollHandler} />
+      <CourseRegisterBox enrollHandler={enrollHandler} />
     </>
   );
 }

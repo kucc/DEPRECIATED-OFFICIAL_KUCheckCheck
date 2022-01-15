@@ -1,18 +1,18 @@
 import React from "react";
-import SignUpForm from "./components/SignUpForm";
+import JoinForm from "./components/JoinForm";
 import Description from "../../components/Description";
 import { StyledRow, StyledCol, Wrapper } from "./style";
 
-function SignUp() {
+function JoinPage() {
   return (
     <StyledRow>
       <StyledCol span={6} offset={8}>
         <Wrapper>
           <Description />
-          <SignUpForm />
+          <JoinForm />
         </Wrapper>
       </StyledCol>
     </StyledRow>
   );
 }
-export default SignUp;
+export default JoinPage;
