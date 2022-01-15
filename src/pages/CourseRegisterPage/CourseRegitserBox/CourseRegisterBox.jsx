@@ -5,7 +5,7 @@ import { Option } from "antd/lib/mentions";
 import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
-} from "../../../constants/ERROR_MESSAGE";
+} from "../../../utility/ALERT_MESSAGE";
 import {
   StyledBackground,
   StyledBlackButton,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor } from "../../../style/Colors";
+import { MAIN_COLOR } from "../../../utility/COLORS";
 
 export const StyledMainTopWrapper = styled.div`
   min-height: 18em;
@@ -18,7 +18,7 @@ export const StyledMainTitle1 = styled.div`
     font-size: 4em;
     font-weight: 700;
     font-family: NexonBo;
-    color: ${mainColor};
+    color: ${MAIN_COLOR};
   }
 `;
 

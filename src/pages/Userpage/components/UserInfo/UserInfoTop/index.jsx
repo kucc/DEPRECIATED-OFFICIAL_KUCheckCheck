@@ -2,8 +2,8 @@ import { Button, Modal, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import WhiteShadowButton from "../../../../../components/Buttons/WhiteShadowButton";
-import RandomEmoji from "../../../../../components/RandomEmoji/RandomEmoji";
 import { firestoreService } from "../../../../../firebase";
+import { RandomEmoji } from "../../../../../utility/COMMON_FUNCTION";
 import {
   StyledUserInfoModalEmoji,
   StyledUserInfoModalText,

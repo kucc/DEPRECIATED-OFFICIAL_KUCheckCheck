@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mainBackground } from "../../../style/Colors";
 
 export const StyledMainBottomWrapper = styled.div`
   margin-top: 100px;

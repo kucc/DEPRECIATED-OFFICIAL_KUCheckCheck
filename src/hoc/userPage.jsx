@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { NEED_TO_LOGIN } from "../constants/ERROR_MESSAGE";
+import { NEED_TO_LOGIN } from "../utility/ALERT_MESSAGE";
 import { authService, firestoreService } from "../firebase";
 import UserPage from "../pages/UserPage";
 
