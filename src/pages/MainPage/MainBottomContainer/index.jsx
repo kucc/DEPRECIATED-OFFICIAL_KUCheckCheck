@@ -314,7 +314,7 @@ function MainBottomContainer() {
             {user.currentUser && (
               <WhiteShadowButton
                 text="등록하기"
-                onClick={() => history.push("/course-new")}
+                onClick={() => history.push("/course/register")}
               />
             )}
           </StyledMainSessRig>

@@ -76,8 +76,12 @@ function App() {
           path="/course/session/:id/change"
           component={course(CourseChange, 2)}
         /> */}
-        {/* 라우터 이름 변경? */}
-        <Route path="/course-new" exact component={auth(CourseRegisterPage)} />
+        <Route
+          exact
+          path="/course/register"
+          exact
+          component={auth(CourseRegisterPage)}
+        />
         <Route path="/" exact component={MainPage} />
       </Switch>
       <Footer />
