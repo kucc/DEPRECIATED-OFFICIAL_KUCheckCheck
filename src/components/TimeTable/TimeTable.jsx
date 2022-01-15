@@ -3,157 +3,14 @@ import TableDragSelect from "react-table-drag-select";
 import "react-table-drag-select/style.css";
 import { StyledTableContainer } from "./style";
 import { firestoreService } from "../../firebase";
-
-const selectedDefault = [
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-];
-
-const timeList = [
-  {
-    Hour: 9,
-    Minute: "00",
-  },
-  {
-    Hour: 9,
-    Minute: "30",
-  },
-  {
-    Hour: 10,
-    Minute: "00",
-  },
-  {
-    Hour: 10,
-    Minute: "30",
-  },
-  {
-    Hour: 11,
-    Minute: "00",
-  },
-  {
-    Hour: 11,
-    Minute: "30",
-  },
-  {
-    Hour: 12,
-    Minute: "00",
-  },
-  {
-    Hour: 12,
-    Minute: "30",
-  },
-  {
-    Hour: 13,
-    Minute: "00",
-  },
-  {
-    Hour: 13,
-    Minute: "30",
-  },
-  {
-    Hour: 14,
-    Minute: "00",
-  },
-  {
-    Hour: 14,
-    Minute: "30",
-  },
-  {
-    Hour: 15,
-    Minute: "00",
-  },
-  {
-    Hour: 15,
-    Minute: "30",
-  },
-  {
-    Hour: 16,
-    Minute: "00",
-  },
-  {
-    Hour: 16,
-    Minute: "30",
-  },
-  {
-    Hour: 17,
-    Minute: "00",
-  },
-  {
-    Hour: 17,
-    Minute: "30",
-  },
-  {
-    Hour: 18,
-    Minute: "00",
-  },
-  {
-    Hour: 18,
-    Minute: "30",
-  },
-  {
-    Hour: 19,
-    Minute: "00",
-  },
-  {
-    Hour: 19,
-    Minute: "30",
-  },
-  {
-    Hour: 20,
-    Minute: "00",
-  },
-  {
-    Hour: 20,
-    Minute: "30",
-  },
-  {
-    Hour: 21,
-    Minute: "00",
-  },
-  {
-    Hour: 21,
-    Minute: "30",
-  },
-  {
-    Hour: 22,
-    Minute: "00",
-  },
-  {
-    Hour: 22,
-    Minute: "30",
-  },
-];
+import {
+  timeTableSelectedDefault,
+  timeTableTimeList,
+} from "../../utility/CONSTANTS";
 
 function TimeTable({ editable, selectedData, cellData, selectedColor }) {
   const [cells, setcells] = useState();
-  const [selected, setselected] = useState(selectedDefault);
+  const [selected, setselected] = useState(timeTableSelectedDefault);
 
   useEffect(() => {
     // load timeTable info from firebase
@@ -200,7 +57,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
   };
 
   const renderTr = () => {
-    return timeList.map((time, index) => (
+    return timeTableTimeList.map((time, index) => (
       <tr key={index}>
         <td disabled>{`${time.Hour} : ${time.Minute}`}</td>
         {renderTd(index + 1, time.Hour, time.Minute)}

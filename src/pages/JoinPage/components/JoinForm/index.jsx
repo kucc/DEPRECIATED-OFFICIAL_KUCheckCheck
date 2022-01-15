@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom";
 import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
   PASSWORD_DOSE_NOT_MATCH,
-} from "../../../../constants/ERROR_MESSAGE";
+} from "../../../../utility/ALERT_MESSAGE";
 import { authService, firestoreService } from "../../../../firebase";
-import RandomEmoji from "../../../../components/RandomEmoji/RandomEmoji";
+import { RandomEmoji } from "../../../../utility/COMMON_FUNCTION";
 
 function JoinForm() {
   const [inputs, setInputs] = useState({
@@ -104,6 +104,7 @@ function JoinForm() {
           labelTitle="이름"
           inputName="name"
           inputType="text"
+          // 이거 그대로 냅둘건가 ? ㅋㅋㅋㅋㅋ
           placehodler="ex) 정인아"
           value={name}
           onChange={onChange}

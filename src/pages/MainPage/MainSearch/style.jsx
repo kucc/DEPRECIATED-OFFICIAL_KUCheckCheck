@@ -1,7 +1,6 @@
-import { Button } from "antd";
 import CheckableTag from "antd/lib/tag/CheckableTag";
 import styled from "styled-components";
-import { baseColor, mainColor } from "../../../style/Colors";
+import { BASE_COLOR, MAIN_COLOR } from "../../../utility/COLORS";
 
 export const StyledTag = styled(CheckableTag)`
   -webkit-touch-callout: none;
@@ -45,7 +44,7 @@ export const StyledSearchBar = styled.input`
   min-width: 28em;
   height: 3.5em;
   border-radius: 29px;
-  background-color: ${baseColor};
+  background-color: ${BASE_COLOR};
   border: none;
   z-index: 0;
   box-shadow: rgb(50 50 93 / 8%) 0px 13px 27px -5px,
@@ -66,7 +65,7 @@ export const StyledSearchBtn = styled.div`
   height: 3.5em;
   display: flex;
   align-items: center;
-  background: ${mainColor};
+  background: ${MAIN_COLOR};
   width: 7em;
   border-radius: 32px;
   box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px,

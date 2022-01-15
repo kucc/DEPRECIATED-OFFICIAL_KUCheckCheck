@@ -15,6 +15,7 @@ import {
   StyledMainSessTab,
   StyledMainVerticalLine,
 } from "./style";
+import { MAIN_COLOR } from "../../../utility/COLORS";
 
 function MainBottomContainer() {
   const [courseSelect, setcourseSelect] = useState(0);
@@ -268,8 +269,8 @@ function MainBottomContainer() {
                   width: "100%",
                   height: "40px",
                   borderRadius: "25px",
-                  backgroundColor: "#c32020",
-                  borderColor: "#c32020",
+                  backgroundColor: MAIN_COLOR,
+                  borderColor: MAIN_COLOR,
                 }}
               >
                 {currentSemester} 학기

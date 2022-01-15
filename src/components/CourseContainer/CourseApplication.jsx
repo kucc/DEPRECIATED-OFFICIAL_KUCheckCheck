@@ -7,7 +7,7 @@ import {
   ALREADY_APPLIED_COURSE,
   NOT_ENROLLMENT_TERM,
   SUCCESS_APPLIED_COURSE,
-} from "../../constants/ERROR_MESSAGE";
+} from "../../utility/ALERT_MESSAGE";
 import {
   StyledCourseApplyOn,
   StyledCourseApplyOff,

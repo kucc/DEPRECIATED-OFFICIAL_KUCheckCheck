@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { clearUser, setUser } from "./redux/actions/user_action";
 import "antd/dist/antd.css";
 import "./App.css";
-import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
+import { ALREADY_LOGGED_IN } from "./utility/ALERT_MESSAGE";
 import Footer from "./components/Footer";
 import TimeTablePage from "./pages/TimeTablePage";
 import course from "./hoc/course";
