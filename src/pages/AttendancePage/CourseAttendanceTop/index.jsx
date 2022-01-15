@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import NavBar from "../../../../components/NavBar/NavBar";
+import NavBar from "../../../components/NavBar/NavBar";
 import {
   StyledBackButton,
   StyledBackground,
@@ -14,9 +14,9 @@ import {
   StyledWeekTextBox,
 } from "./style";
 import { AiOutlineLeft } from "react-icons/ai";
-import { firestoreService } from "../../../../firebase";
+import { firestoreService } from "../../../firebase";
 import { useSelector } from "react-redux";
-import WhiteShadowButton from "../../../../components/Buttons/WhiteShadowButton";
+import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
 
 function CourseAttendanceTop({
   courseName,

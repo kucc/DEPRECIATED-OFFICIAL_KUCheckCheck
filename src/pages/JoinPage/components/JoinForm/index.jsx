@@ -11,7 +11,7 @@ import {
 import { authService, firestoreService } from "../../../../firebase";
 import RandomEmoji from "../../../../components/RandomEmoji/RandomEmoji";
 
-function SignUpForm() {
+function JoinForm() {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -130,4 +130,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default JoinForm;

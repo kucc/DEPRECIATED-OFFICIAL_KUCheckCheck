@@ -2,7 +2,7 @@ import React from "react";
 import CourseAttendanceCard from "./CourseAttendanceCard";
 import CourseAttendanceTop from "./CourseAttendanceTop";
 
-function CourseAttendace({ courseData }) {
+function AttendacePage({ courseData }) {
   const courseName = courseData.courseName;
   const userData = courseData.courseAttendance;
   const courseId = courseData.courseId;
@@ -30,4 +30,4 @@ function CourseAttendace({ courseData }) {
   );
 }
 
-export default CourseAttendace;
+export default AttendacePage;

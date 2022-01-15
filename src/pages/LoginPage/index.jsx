@@ -4,7 +4,7 @@ import Description from "../../components/Description";
 import { StyledRow, StyledCol, Wrapper } from "./style";
 import DefaultLogo from "../../components/DefaultLogo";
 
-function Login() {
+function LoginPage() {
   return (
     <StyledRow>
       <StyledCol span={6} offset={8}>
@@ -27,4 +27,4 @@ function Login() {
     </StyledRow>
   );
 }
-export default Login;
+export default LoginPage;
