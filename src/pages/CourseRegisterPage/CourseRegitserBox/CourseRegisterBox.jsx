@@ -30,7 +30,7 @@ function CourseRegisterBox({ enrollHandler }) {
   const [language, setlanguage] = useState('C');
   const [difficulty, setdifficulty] = useState('');
   const [requireTime, setrequireTime] = useState('');
-  const [courseType, setcourseType] = useState(1);
+  const [courseType] = useState(1);
   const [selectedImg, setselectedImg] = useState('C');
   const [courseDate, setcourseDate] = useState('');
   const [coursePlace, setcoursePlace] = useState('');
@@ -183,9 +183,8 @@ function CourseRegisterBox({ enrollHandler }) {
 
               <Select
                 defaultValue='난이도'
-                style={{ width: 100 }}
-                onChange={handledifficult}
-                style={{ margin: '0px' }}>
+                style={{ width: 100, margin: '0px' }}
+                onChange={handledifficult}>
                 <Option value='easy'>초급</Option>
                 <Option value='medium'>중급</Option>
                 <Option value='hard'>고급</Option>
@@ -193,9 +192,8 @@ function CourseRegisterBox({ enrollHandler }) {
 
               <Select
                 defaultValue='투자 시간'
-                style={{ width: 120 }}
-                onChange={handleTime}
-                style={{ margin: '30px' }}>
+                style={{ width: 120, margin: '30px' }}
+                onChange={handleTime}>
                 <Option value='1'>1학점</Option>
                 <Option value='2'>2학점</Option>
                 <Option value='3'>3학점</Option>
