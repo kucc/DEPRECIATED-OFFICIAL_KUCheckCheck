@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import NavBar from '../../../components/NavBar/NavBar';
-import { firestoreService } from '../../../firebase';
+import NavBar from '@components/NavBar';
+
+import { firestoreService } from '@/firebase';
+
 import {
   StyledBackground,
   StyledRulesBox,

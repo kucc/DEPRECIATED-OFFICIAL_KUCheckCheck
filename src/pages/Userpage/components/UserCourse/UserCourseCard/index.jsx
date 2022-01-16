@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { Timeline } from 'antd';
 
-import CourseContainer from '../../../../../components/CourseContainer/CourseContainer';
-import EmptyBox from '../../../../../components/EmptyBox';
+import CourseContainer from '@components/CourseContainer/CourseContainer';
+import EmptyBox from '@components/EmptyBox';
+
 import {
   StyledCourseCardContainer,
   StyledCourseItemContainer,

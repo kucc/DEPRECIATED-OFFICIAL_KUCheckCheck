@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hoc/*": ["./src/hoc/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@actions/*": ["./src/redux/actions/*"],
+      "@reducer/*": ["./src/redux/reducer/*"],
+      "@font/*": ["./src/font/*"],
+      "@utility/*": ["./src/utility/*"],
+      "@/*": ["./src/*"]
+    }
+  }
+}

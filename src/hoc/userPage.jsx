@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
-import { authService, firestoreService } from '../firebase';
-import UserPage from '../pages/UserPage';
-import { NEED_TO_LOGIN } from '../utility/ALERT_MESSAGE';
+import UserPage from '@pages/UserPage';
+
+import { authService, firestoreService } from '@/firebase';
+import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
 export default function () {
   // userpage는 로그인이 필요한 페이지

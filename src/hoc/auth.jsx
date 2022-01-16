@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 
-import { authService } from '../firebase';
-import { NEED_TO_LOGIN } from '../utility/ALERT_MESSAGE';
+import { authService } from '@/firebase';
+import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
 export default function (SpecificComponent) {
   function AuthCheck(props) {

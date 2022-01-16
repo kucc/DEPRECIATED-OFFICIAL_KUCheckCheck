@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Space } from 'antd';
 import { useHistory } from 'react-router';
 
-import FullWidthButton from '../../../../components/Buttons/FullWidthButton';
-import InputBoxWithLabel from '../../../../components/InputBoxWithLabel';
-import { authService } from '../../../../firebase';
+import FullWidthButton from '@components/Buttons/FullWidthButton';
+import InputBoxWithLabel from '@components/InputBoxWithLabel';
+
+import { authService } from '@/firebase';
+
 import { StyledForm } from './style';
 
 function LoginForm() {

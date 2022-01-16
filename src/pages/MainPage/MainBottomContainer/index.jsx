@@ -4,11 +4,13 @@ import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import WhiteShadowButton from '../../../components/Buttons/WhiteShadowButton';
-import CourseContainer from '../../../components/CourseContainer/CourseContainer';
-import EmptyBox from '../../../components/EmptyBox';
-import { firestoreService } from '../../../firebase';
-import { MAIN_COLOR } from '../../../utility/COLORS';
+import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+import CourseContainer from '@components/CourseContainer/CourseContainer';
+import EmptyBox from '@components/EmptyBox';
+
+import { firestoreService } from '@/firebase';
+import { MAIN_COLOR } from '@utility/COLORS';
+
 import {
   StyledMainBottomBtnCont,
   StyledMainBottomWrapper,

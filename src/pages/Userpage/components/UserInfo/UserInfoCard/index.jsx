@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 
-import { firestoreService } from '../../../../../firebase';
+import { firestoreService } from '@/firebase';
+
 import {
   StyledDetailCommentBox,
   StyledInfoBottom,

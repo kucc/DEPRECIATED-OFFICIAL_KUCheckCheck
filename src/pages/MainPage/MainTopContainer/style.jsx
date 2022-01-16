@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '../../../utility/COLORS';
+import { MAIN_COLOR } from '@utility/COLORS';
 
 export const StyledMainTopWrapper = styled.div`
   min-height: 18em;

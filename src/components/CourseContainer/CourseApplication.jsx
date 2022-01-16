@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
+import { firestoreService } from '@/firebase';
 import { message } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
 import { AiFillLock, AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 
-import { firestoreService } from '../../firebase';
 import {
   ALREADY_APPLIED_COURSE,
   NOT_ENROLLMENT_TERM,
   SUCCESS_APPLIED_COURSE,
-} from '../../utility/ALERT_MESSAGE';
+} from '@utility/ALERT_MESSAGE';
+
 import {
   StyledCourseApplyLock,
   StyledCourseApplyMy,

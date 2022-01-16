@@ -15,7 +15,7 @@ var jsOption = {
     '<THIRD_PARTY_MODULES>',
     '^@(?:redux|actions|reducer)',
     '^@(?:components|pages)(.*)$',
-    '^@(?:hoc|firebase|utility)(.*)$',
+    '^@(?:hoc|utility|/)(.*)$',
     '^[./]',
   ],
   importOrderSeparation: true,

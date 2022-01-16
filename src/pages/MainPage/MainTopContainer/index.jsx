@@ -1,6 +1,7 @@
 import React from 'react';
 
-import DefaultLogo from '../../../components/DefaultLogo';
+import DefaultLogo from '@components/DefaultLogo';
+
 import MainSearch from '../MainSearch';
 import {
   StyledMainExplain,

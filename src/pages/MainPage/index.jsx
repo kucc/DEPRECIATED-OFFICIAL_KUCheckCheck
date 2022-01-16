@@ -1,6 +1,7 @@
 import React from 'react';
 
-import NavBar from '../../components/NavBar/NavBar';
+import NavBar from '@components/NavBar';
+
 import { StyledBackground } from '../NoticePage/style';
 import MainBottomContainer from './MainBottomContainer';
 import MainTopContainer from './MainTopContainer';

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import 'antd/dist/antd.css';
 
-import CourseAttendanceCard from '../CourseAttendance/CourseAttendanceCard';
-import CourseAttendanceTop from '../CourseAttendance/CourseAttendanceTop';
+import CourseAttendanceCard from '../CourseAttendanceCard';
+import CourseAttendanceTop from '../CourseAttendanceTop';
 
 function CourseAttendanceEdit({ courseData }) {
   const [courseAttendance, setcourseAttendance] = useState();

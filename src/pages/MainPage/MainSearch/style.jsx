@@ -1,7 +1,7 @@
 import CheckableTag from 'antd/lib/tag/CheckableTag';
 import styled from 'styled-components';
 
-import { BASE_COLOR, MAIN_COLOR } from '../../../utility/COLORS';
+import { BASE_COLOR, MAIN_COLOR } from '@utility/COLORS';
 
 export const StyledTag = styled(CheckableTag)`
   -webkit-touch-callout: none;

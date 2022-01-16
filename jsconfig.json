@@ -1,22 +1,12 @@
 {
+  "extends": "./jsconfig.paths.json",
   "compilerOptions": {
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true,
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "baseUrl": ".",
-    "paths": {
-      "@components": ["src/components/*"],
-      "@pages": ["src/pages/*"],
-      "@hoc": ["src/hoc/*"],
-      "@firebase": ["src/firebase/*"],
-      "@redux": ["src/redux/*"],
-      "@actions": ["src/redux/actions/*"],
-      "@reducer": ["src/redux/reducer/*"],
-      "@font": ["src/font/*"],
-      "@utility": ["src/utility/*"]
-    },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -24,8 +14,19 @@
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hoc/*": ["./src/hoc/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@actions/*": ["./src/redux/actions/*"],
+      "@reducer/*": ["./src/redux/reducer/*"],
+      "@font/*": ["./src/font/*"],
+      "@utility/*": ["./src/utility/*"],
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["**/*.js", "**/*.jsx"],
+  "include": ["src", "craco.config.js"],
   "exclude": ["node_modules"]
 }

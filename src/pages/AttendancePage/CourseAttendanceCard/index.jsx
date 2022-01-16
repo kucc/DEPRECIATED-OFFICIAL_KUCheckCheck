@@ -4,7 +4,8 @@ import { Select } from 'antd';
 import 'antd/dist/antd.css';
 import { useHistory } from 'react-router-dom';
 
-import { firestoreService } from '../../../firebase';
+import { firestoreService } from '@/firebase';
+
 import {
   StyledAbsent,
   StyledAttend,
