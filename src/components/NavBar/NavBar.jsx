@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import { authService } from '../../firebase';
+import { authService } from '@firebase';
+
 import DefaultLogo from '../DefaultLogo';
 import * as S from './style';
 

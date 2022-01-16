@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputBoxWithLabel from '../../../../components/InputBoxWithLabel';
+import InputBoxWithLabel from '@components/InputBoxWithLabel';
 
 function InputBox({
   labelTitle,

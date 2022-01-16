@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { firestoreService } from '../../../firebase';
-import { SUCCESS_APPLICATION } from '../../../utility/ALERT_MESSAGE';
+import { firestoreService } from '@firebase';
+import { SUCCESS_APPLICATION } from '@utility/ALERT_MESSAGE';
+
 import CourseRegisterBox from './CourseRegisterBox';
 
 export default function CourseUpdate() {

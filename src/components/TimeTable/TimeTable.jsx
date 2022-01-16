@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import TableDragSelect from 'react-table-drag-select';
 import 'react-table-drag-select/style.css';
 
-import { firestoreService } from '../../firebase';
+import { firestoreService } from '@firebase';
 import {
   timeTableSelectedDefault,
   timeTableTimeList,
-} from '../../utility/CONSTANTS';
+} from '@utility/CONSTANTS';
+
 import { StyledTableContainer } from './style';
 
 function TimeTable({ editable, selectedData, cellData, selectedColor }) {

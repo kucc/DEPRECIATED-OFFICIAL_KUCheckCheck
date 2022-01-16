@@ -4,9 +4,11 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import WhiteShadowButton from '../../../components/Buttons/WhiteShadowButton';
-import NavBar from '../../../components/NavBar/NavBar';
-import { firestoreService } from '../../../firebase';
+import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+import NavBar from '@components/NavBar/NavBar';
+
+import { firestoreService } from '@firebase';
+
 import {
   StyledBackButton,
   StyledBackground,

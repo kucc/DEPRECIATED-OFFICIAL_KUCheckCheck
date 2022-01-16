@@ -1,7 +1,8 @@
 import React from 'react';
 
-import NavBar from '../../components/NavBar/NavBar';
-import TimeTable from '../../components/TimeTable/TimeTable';
+import NavBar from '@components/NavBar/NavBar';
+import TimeTable from '@components/TimeTable/TimeTable';
+
 import {
   StyledBackground,
   StyledTimeTableBackground,

@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
-import { authService, firestoreService } from '../firebase';
+import { authService, firestoreService } from '@firebase';
 import {
   COURSE_CHECK_ADMIN_ONLY,
   COURSE_LEADER_ONLY,
   NEED_TO_LOGIN,
-} from '../utility/ALERT_MESSAGE';
+} from '@utility/ALERT_MESSAGE';
 
 export default function (SpecificComponent, option) {
   // option : 0 => 모든 사람이 출입할 수 있음

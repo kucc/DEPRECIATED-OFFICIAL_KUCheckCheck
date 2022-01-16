@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Modal } from 'antd';
 import { useSelector } from 'react-redux';
 
-import WhiteShadowButton from '../../../../../components/Buttons/WhiteShadowButton';
-import { firestoreService } from '../../../../../firebase';
-import { RandomEmoji } from '../../../../../utility/COMMON_FUNCTION';
+import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+
+import { firestoreService } from '@firebase';
+import { RandomEmoji } from '@utility/COMMON_FUNCTION';
+
 import {
   StyledUserInfoModalEmoji,
   StyledUserInfoModalText,

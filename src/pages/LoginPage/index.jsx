@@ -1,7 +1,8 @@
 import React from 'react';
 
-import DefaultLogo from '../../components/DefaultLogo';
-import Description from '../../components/Description';
+import DefaultLogo from '@components/DefaultLogo';
+import Description from '@components/Description';
+
 import LoginForm from './components/LoginForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
 
