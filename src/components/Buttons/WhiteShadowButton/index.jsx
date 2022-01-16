@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { StyledWhiteShadowButton } from './style';
 
 const WhiteShadowButton = ({ text, onClick, type = 'default' }) => {
@@ -16,3 +18,9 @@ const WhiteShadowButton = ({ text, onClick, type = 'default' }) => {
 };
 
 export default WhiteShadowButton;
+
+WhiteShadowButton.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+};

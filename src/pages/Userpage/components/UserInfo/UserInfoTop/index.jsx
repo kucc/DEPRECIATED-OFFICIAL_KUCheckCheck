@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Input, Modal } from 'antd';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
@@ -135,3 +136,8 @@ function UserInfoTop({ onChangeFunc, userData }) {
 }
 
 export default UserInfoTop;
+
+UserInfoTop.propTypes = {
+  onChangeFunc: PropTypes.func.isRequired,
+  userData: PropTypes.object.isRequired,
+};

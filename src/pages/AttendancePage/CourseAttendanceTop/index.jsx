@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -95,3 +96,11 @@ function CourseAttendanceTop({
 }
 
 export default CourseAttendanceTop;
+
+CourseAttendanceTop.propTypes = {
+  courseName: PropTypes.string,
+  courseId: PropTypes.string,
+  isEditMode: PropTypes.bool,
+  courseAttendance: PropTypes.array,
+  courseCheckAdmin: PropTypes.array,
+};

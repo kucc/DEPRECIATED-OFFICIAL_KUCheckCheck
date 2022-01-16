@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 import UserInfoCard from './UserInfoCard';
 import UserInfoTop from './UserInfoTop';
 import { StyledUserInfoContainer } from './style';
@@ -19,3 +21,7 @@ function UserInfo({ userData }) {
 }
 
 export default UserInfo;
+
+UserInfo.propTypes = {
+  userData: PropTypes.object,
+};

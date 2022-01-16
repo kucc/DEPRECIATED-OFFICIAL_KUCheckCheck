@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import PropTypes from 'prop-types';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 
@@ -39,7 +40,7 @@ function UserInfoCard({ userData }) {
   }, [userData]);
 
   return (
-    <StyledInfoCardContainer className="out-shadow-strong border-radius-all">
+    <StyledInfoCardContainer className='out-shadow-strong border-radius-all'>
       <StyledInfoCardEmoji>
         {firebaseUser && firebaseUser.emoji}
       </StyledInfoCardEmoji>
@@ -78,3 +79,7 @@ function UserInfoCard({ userData }) {
 }
 
 export default UserInfoCard;
+
+UserInfoCard.propTypes = {
+  userData: PropTypes.object,
+};

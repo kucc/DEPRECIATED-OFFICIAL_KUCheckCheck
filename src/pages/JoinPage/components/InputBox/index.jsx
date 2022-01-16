@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import InputBoxWithLabel from '@components/InputBoxWithLabel';
 
 function InputBox({
@@ -23,3 +25,12 @@ function InputBox({
 }
 
 export default InputBox;
+
+InputBox.propTypes = {
+  labelTitle: PropTypes.string,
+  inputName: PropTypes.string,
+  inputType: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
