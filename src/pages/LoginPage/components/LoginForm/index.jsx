@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import FullWidthButton from '@components/Buttons/FullWidthButton';
 import InputBoxWithLabel from '@components/InputBoxWithLabel';
 
-import { authService } from '@firebase';
+import { authService } from '@/firebase';
 
 import { StyledForm } from './style';
 

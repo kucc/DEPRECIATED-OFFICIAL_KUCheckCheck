@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import UserPage from '@pages/UserPage';
 
-import { authService, firestoreService } from '@firebase';
+import { authService, firestoreService } from '@/firebase';
 import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
 export default function () {

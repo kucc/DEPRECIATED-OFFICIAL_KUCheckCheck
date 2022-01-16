@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
-import NavBar from '@components/NavBar/NavBar';
+import NavBar from '@components/NavBar';
 
-import { firestoreService } from '@firebase';
+import { firestoreService } from '@/firebase';
 
 import {
   StyledBackButton,

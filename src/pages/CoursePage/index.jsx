@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Button } from 'antd';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import NavBar from '@components/NavBar/NavBar';
+import NavBar from '@components/NavBar';
 
-import { firestoreService } from '@firebase';
+import { firestoreService } from '@/firebase';
 
 import CourseCurriculum from './components/CourseCurriculum';
 

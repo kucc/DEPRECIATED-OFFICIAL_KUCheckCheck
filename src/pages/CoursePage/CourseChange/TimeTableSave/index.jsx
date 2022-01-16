@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button } from 'antd';
 
-import TimeTable from '@components/TimeTable/TimeTable';
+import TimeTable from '@components/TimeTable';
 
 function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
   const [selectedData, setselectedData] = useState([]);

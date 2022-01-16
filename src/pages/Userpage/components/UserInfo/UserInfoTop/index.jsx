@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
 
-import { firestoreService } from '@firebase';
+import { firestoreService } from '@/firebase';
 import { RandomEmoji } from '@utility/COMMON_FUNCTION';
 
 import {

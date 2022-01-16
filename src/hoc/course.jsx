@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
-import { authService, firestoreService } from '@firebase';
+import { authService, firestoreService } from '@/firebase';
 import {
   COURSE_CHECK_ADMIN_ONLY,
   COURSE_LEADER_ONLY,

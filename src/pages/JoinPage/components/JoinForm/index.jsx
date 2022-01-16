@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import FullWidthButton from '@components/Buttons/FullWidthButton';
 
-import { authService, firestoreService } from '@firebase';
+import { authService, firestoreService } from '@/firebase';
 import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
   PASSWORD_DOSE_NOT_MATCH,

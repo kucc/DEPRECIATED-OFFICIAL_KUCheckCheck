@@ -8,7 +8,7 @@ import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
 import CourseContainer from '@components/CourseContainer/CourseContainer';
 import EmptyBox from '@components/EmptyBox';
 
-import { firestoreService } from '@firebase';
+import { firestoreService } from '@/firebase';
 import { MAIN_COLOR } from '@utility/COLORS';
 
 import {

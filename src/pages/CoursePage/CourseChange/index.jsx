@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import { firestoreService } from '@firebase';
+import { firestoreService } from '@/firebase';
 
 import TimeTableSave from './TimeTableSave';
 

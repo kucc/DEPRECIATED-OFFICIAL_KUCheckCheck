@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavBar from '@components/NavBar/NavBar';
+import NavBar from '@components/NavBar';
 
 import UserCourse from './components/UserCourse';
 import UserInfo from './components/UserInfo';

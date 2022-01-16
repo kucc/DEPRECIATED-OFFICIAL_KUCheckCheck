@@ -4,7 +4,7 @@ import { Button, Select } from 'antd';
 import 'antd/dist/antd.css';
 import { Option } from 'antd/lib/mentions';
 
-import NavBar from '@components/NavBar/NavBar';
+import NavBar from '@components/NavBar';
 
 import {
   CHECK_TOP_SESSION_OR_STUDY,
