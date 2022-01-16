@@ -280,55 +280,26 @@ function MainBottomContainer() {
           </StyledMainSessDuration>
           <StyledMainSessTab>
             <StyledMainSessItemOffClick
-<<<<<<< HEAD
-              className={courseSelect === 0 && "in-shadow-weak"}
-              onClick={() => setcourseSelect(0)}
-            >
-=======
-              courseSelect={courseSelect}
-              // selectedType for use in StyledComponent
-              selectedType={0}
+              className={courseSelect === 0 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(0)}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
               전체
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-<<<<<<< HEAD
-              className={courseSelect === 1 && "in-shadow-weak"}
-              onClick={() => setcourseSelect(1)}
-            >
-=======
-              courseSelect={courseSelect}
-              selectedType={1}
+              className={courseSelect === 1 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(1)}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
               세션
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-<<<<<<< HEAD
-              className={courseSelect === 2 && "in-shadow-weak"}
-              onClick={() => setcourseSelect(2)}
-            >
-=======
-              courseSelect={courseSelect}
-              selectedType={2}
+              className={courseSelect === 2 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(2)}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
               스터디
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-<<<<<<< HEAD
-              className={courseSelect === 3 && "in-shadow-weak"}
-              onClick={() => setcourseSelect(3)}
-            >
-=======
-              courseSelect={courseSelect}
-              selectedType={3}
+              className={courseSelect === 3 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(3)}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
               프로젝트
             </StyledMainSessItemOffClick>
           </StyledMainSessTab>

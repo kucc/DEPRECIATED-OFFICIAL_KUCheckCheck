@@ -109,13 +109,9 @@ function CourseRegisterBox({ enrollHandler }) {
         </S.MainSessTab> */}
       </StyledTopContainer>
 
-      <StyledBottomContainer className="border-radius-all">
+      <StyledBottomContainer className='border-radius-all'>
         <div>
-<<<<<<< HEAD
-          <StyledBlackButton className="border-radius-all">
-=======
-          <StyledBlackButton type='primary' shape='round' size={'large'}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
+          <StyledBlackButton className='border-radius-all'>
             필수 정보
           </StyledBlackButton>
 
@@ -217,11 +213,7 @@ function CourseRegisterBox({ enrollHandler }) {
         </div>
 
         <div>
-<<<<<<< HEAD
-          <StyledBlackButton className="border-radius-all">
-=======
-          <StyledBlackButton type='primary' shape='round' size={'large'}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
+          <StyledBlackButton className='border-radius-all'>
             세부 정보
           </StyledBlackButton>
 
@@ -287,11 +279,7 @@ function CourseRegisterBox({ enrollHandler }) {
         </div>
 
         <div>
-<<<<<<< HEAD
-          <StyledBlackButton className="border-radius-all">
-=======
-          <StyledBlackButton type='primary' shape='round' size={'large'}>
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
+          <StyledBlackButton className='border-radius-all'>
             커리큘럼
           </StyledBlackButton>
 

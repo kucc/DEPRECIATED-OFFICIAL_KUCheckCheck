@@ -63,24 +63,19 @@ function MainSearch() {
   return (
     <>
       <StyledSearchContainer>
-        <StyledSearchBtn className="out-shadow-middle border-radius-all">
+        <StyledSearchBtn className='out-shadow-middle border-radius-all'>
           <BiSearch />
         </StyledSearchBtn>
         <StyledSearchBar
-          className="out-shadow-middle border-radius-all"
+          className='out-shadow-middle border-radius-all'
           onChange={changeSearch}
           placeholder='세션/스터디명 ex) 바닐라 자바스크립트 세션'
         />
       </StyledSearchContainer>
       <StyledQuickSearchContainer>
         <StyledQuickSearchText>
-<<<<<<< HEAD
-          <StyledIconContainer className="border-radius-all-half">
-            <FaHashtag color="white" />
-=======
           <StyledIconContainer>
             <FaHashtag color='white' />
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
           </StyledIconContainer>
           &emsp;빠른 검색
         </StyledQuickSearchText>
@@ -88,7 +83,7 @@ function MainSearch() {
           {randomCategory.map(tag => (
             <StyledTag
               key={tag}
-              className="border-radius-all"
+              className='border-radius-all'
               checked={selectedCategory === tag}
               onClick={() => handleCategory(tag)}>
               {tag}

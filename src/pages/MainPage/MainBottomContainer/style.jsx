@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import styled from "styled-components";
-import { StyledSideMargin } from "../../../utility/COMMON_STYLE";
-=======
 import styled from 'styled-components';
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
+import { StyledSideMargin } from '../../../utility/COMMON_STYLE';
 
 export const StyledMainBottomWrapper = styled(StyledSideMargin)`
   margin-top: 100px;
@@ -31,14 +27,6 @@ export const StyledMainSessRig = styled.div`
 `;
 
 export const StyledMainSessItemOffClick = styled.div`
-<<<<<<< HEAD
-=======
-  background-color: ${props =>
-    props.courseSelect === props.selectedType && 'white'};
-  box-shadow: ${props =>
-    props.courseSelect === props.selectedType &&
-    'inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px'};
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
   border-radius: 24px;
   width: 80%;
   text-align: center;

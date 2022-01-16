@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import { Collapse } from "antd";
-import styled from "styled-components";
-import { StyledSideMargin } from "../../utility/COMMON_STYLE";
-=======
 import { Collapse } from 'antd';
 import styled from 'styled-components';
->>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
+
+import { StyledSideMargin } from '../../utility/COMMON_STYLE';
 
 export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
