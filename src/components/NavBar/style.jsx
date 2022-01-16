@@ -11,9 +11,6 @@ export const NavBarShadowContainer = styled.div`
   padding-right: 14.24%;
   margin-top: -12px;
   height: 90px;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  box-shadow: 0 11px 10px 2px lightgrey;
   background-color: white;
 `;
 
@@ -39,15 +36,6 @@ export const NavBarTextContainer = styled.div`
     props.hoverState && props.hoverState !== props.text ? 'gray' : 'black'};
   font-size: 15px;
   font-family: 'NexonBo';
-  /* &:hover {
-    background-color: rgb(245, 245, 245);
-    border-radius: 24px;
-    box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
-    -webkit-transition: width 0.5s, border-radius 0.5s, box-shadow 0.5s,
-      background-color 0.5s;
-    transition: width 0.5s, border-radius 0.5s, box-shadow 0.5s,
-      background-color 0.5s;
-  } */
 `;
 export const NavBarAuth = styled.div`
   display: grid;

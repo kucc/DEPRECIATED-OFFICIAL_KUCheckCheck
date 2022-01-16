@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import { StyledSideMargin } from '../../../utility/COMMON_STYLE';
 
-export const StyledMainBottomWrapper = styled.div`
+export const StyledMainBottomWrapper = styled(StyledSideMargin)`
   margin-top: 100px;
-  margin-left: 14.21%;
-  margin-right: 14.21%;
   padding-bottom: 30px;
 `;
 
@@ -28,11 +27,6 @@ export const StyledMainSessRig = styled.div`
 `;
 
 export const StyledMainSessItemOffClick = styled.div`
-  background-color: ${props =>
-    props.courseSelect === props.selectedType && 'white'};
-  box-shadow: ${props =>
-    props.courseSelect === props.selectedType &&
-    'inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px'};
   border-radius: 24px;
   width: 80%;
   text-align: center;

@@ -282,30 +282,25 @@ function MainBottomContainer() {
           </StyledMainSessDuration>
           <StyledMainSessTab>
             <StyledMainSessItemOffClick
-              courseSelect={courseSelect}
-              // selectedType for use in StyledComponent
-              selectedType={0}
+              className={courseSelect === 0 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(0)}>
               전체
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-              courseSelect={courseSelect}
-              selectedType={1}
+              className={courseSelect === 1 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(1)}>
               세션
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-              courseSelect={courseSelect}
-              selectedType={2}
+              className={courseSelect === 2 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(2)}>
               스터디
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
-              courseSelect={courseSelect}
-              selectedType={3}
+              className={courseSelect === 3 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(3)}>
               프로젝트
             </StyledMainSessItemOffClick>

@@ -98,4 +98,36 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
+  .out-shadow-strong{
+    box-shadow: 0 11px 10px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-middle{
+    box-shadow: 0 6px 5px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-weak{
+    box-shadow: 0px 3px 1.5px lightgrey;
+  }
+  .in-shadow-weak{
+    box-shadow: inset 0px 3px 1.5px lightgrey;
+    background-color: white;
+    transition: all 0.1s;
+  }
+  // bottom에만 border radius
+  .border-radius-bottom-strong{
+    border-bottom-right-radius: 67px;
+  border-bottom-left-radius: 67px;
+  }
+  .border-radius-bottom{
+    border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  }
+  // 각 모서리 전부 border radius
+  .border-radius-all-half{
+    border-radius : 50%
+  }
+  .border-radius-all{
+    border-radius : 30px
+  }
 `;

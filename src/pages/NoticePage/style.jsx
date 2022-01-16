@@ -1,7 +1,9 @@
 import { Collapse } from 'antd';
 import styled from 'styled-components';
 
-export const StyledRulesBox = styled.div`
+import { StyledSideMargin } from '../../utility/COMMON_STYLE';
+
+export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
   grid-template-rows: 100px auto;
   margin-left: 14.24%;
@@ -24,14 +26,7 @@ export const StyledRulesCollapse = styled(Collapse)`
     border-radius: 24px;
     background-color: black;
     margin-bottom: 50px;
-    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px,
-      rgb(0 0 0 / 30%) 0px 8px 16px -8px;
-  }
-
-  .ant-collapse > .ant-collapse-item:last-child,
-  .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
-    background-color: black;
-    border-radius: 24px;
+    box-shadow: 0 11px 10px 2px lightgrey;
   }
 
   .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
@@ -58,10 +53,9 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     color: white !important;
     height: 100px;
     display: flex;
-    align-items: center;
+    align-items: center !important;
     margin-left: 100px;
     font-size: 28px;
-    border-radius: 24px;
   }
 
   .ant-collapse-content {

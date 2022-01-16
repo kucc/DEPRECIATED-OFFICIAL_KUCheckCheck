@@ -5,9 +5,6 @@ export const StyledCourseContainer = styled.div`
   width: 100%;
   min-width: 1100px;
   height: 120px;
-  border-radius: 20px;
-  box-shadow: rgb(50 50 93 / 15%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 10%) 0px 8px 16px -8px;
   display: grid;
   grid-template-columns: 150px auto;
   margin-top: 20px;

@@ -6,9 +6,6 @@ export const StyledMainTopWrapper = styled.div`
   min-height: 18em;
   padding: 5em 21em 2em;
   height: 30em;
-  border-bottom-right-radius: 67px;
-  border-bottom-left-radius: 67px;
-  box-shadow: 0 11px 10px 2px lightgrey;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: white;

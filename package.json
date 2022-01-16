@@ -16,7 +16,7 @@
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.0",
     "react-table-drag-select": "^0.3.1",
     "redux": "^4.1.1",
     "redux-promise": "^0.6.0",
@@ -64,6 +64,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "lint-staged": "^12.1.7",
     "prettier": "^2.4.1",
-    "webpack": "^4.4.0"
+    "webpack": "^4.4.0",
+    "react-error-overlay": "^6.0.9"
   }
 }

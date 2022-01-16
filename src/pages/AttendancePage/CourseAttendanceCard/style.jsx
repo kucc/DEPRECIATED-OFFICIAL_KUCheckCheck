@@ -1,8 +1,7 @@
 import styled from 'styled-components';
+import { StyledSidePadding } from '../../../utility/COMMON_STYLE';
 
-export const StyledContainer = styled.div`
-  padding-left: 14.24%;
-  padding-right: 14.24%;
+export const StyledContainer = styled(StyledSidePadding)`
   background-color: rgb(245, 245, 245);
   display: grid;
   grid-template-columns: 130px auto;
