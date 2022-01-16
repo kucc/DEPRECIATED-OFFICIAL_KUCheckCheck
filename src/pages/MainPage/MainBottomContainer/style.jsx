@@ -28,11 +28,6 @@ export const StyledMainSessRig = styled.div`
 `;
 
 export const StyledMainSessItemOffClick = styled.div`
-  background-color: ${(props) =>
-    props.courseSelect === props.selectedType && "white"};
-  box-shadow: ${(props) =>
-    props.courseSelect === props.selectedType &&
-    "inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px"};
   border-radius: 24px;
   width: 80%;
   text-align: center;

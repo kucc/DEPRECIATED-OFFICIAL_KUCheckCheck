@@ -47,8 +47,6 @@ export const StyledSearchBar = styled.input`
   background-color: ${BASE_COLOR};
   border: none;
   z-index: 0;
-  box-shadow: rgb(50 50 93 / 8%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 20%) 0px 8px 16px -8px;
   padding-left: 50px;
   &::placeholder {
     color: rgb(204, 204, 204);
@@ -68,8 +66,6 @@ export const StyledSearchBtn = styled.div`
   background: ${MAIN_COLOR};
   width: 7em;
   border-radius: 32px;
-  box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 20%) 0px 8px 16px -8px;
   cursor: pointer;
   & > svg {
     font-size: 2em;

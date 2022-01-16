@@ -14,6 +14,8 @@ import CourseApplication from "./CourseApplication";
 function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
   const [onImageHover, setonImageHover] = useState(false);
+  const [onCourseHover, setOnCourseHover] = useState(false);
+  const toggleHover = () => setOnCourseHover((prev) => !prev);
 
   const renderCouresImage = () =>
     // 이미지 최대 3개까지 표시
@@ -70,7 +72,13 @@ function CourseContainer({ course, CourseApplicationState }) {
 
   return (
     <>
-      <StyledCourseContainer>
+      {/*  */}
+      <StyledCourseContainer
+        onMouseEnter={toggleHover}
+        onMouseLeave={toggleHover}
+        style={{ paddingBottom: onCourseHover ? "10px" : "0px" }}
+        className={onCourseHover ? "out-shadow-strong" : "out-shadow-middle"}
+      >
         <StyledCourseImgContainer>
           {renderCouresImage()}
         </StyledCourseImgContainer>

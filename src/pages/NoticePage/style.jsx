@@ -24,8 +24,7 @@ export const StyledRulesCollapse = styled(Collapse)`
     border-radius: 24px;
     background-color: black;
     margin-bottom: 50px;
-    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px,
-      rgb(0 0 0 / 30%) 0px 8px 16px -8px;
+    box-shadow: 0 11px 10px 2px lightgrey;
   }
 
   .ant-collapse > .ant-collapse-item:last-child,

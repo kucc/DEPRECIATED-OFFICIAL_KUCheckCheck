@@ -97,4 +97,20 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
+  .out-shadow-strong{
+    box-shadow: 0 11px 10px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-middle{
+    box-shadow: 0 6px 5px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-weak{
+    box-shadow: 0px 3px 1.5px lightgrey;
+  }
+  .in-shadow-weak{
+    box-shadow: inset 0px 3px 1.5px lightgrey;
+    background-color: white;
+    transition: all 0.1s;
+  }
 `;
