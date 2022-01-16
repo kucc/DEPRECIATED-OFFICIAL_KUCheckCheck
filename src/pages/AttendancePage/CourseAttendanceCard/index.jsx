@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Select } from 'antd';
 import 'antd/dist/antd.css';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 import { firestoreService } from '@/firebase';
@@ -114,3 +115,9 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
 }
 
 export default CourseAttendanceCard;
+
+CourseAttendanceCard.propTypes = {
+  userData: PropTypes.object,
+  isEditMode: PropTypes.bool,
+  editedAttendance: PropTypes.func,
+};

@@ -22,7 +22,7 @@ function LoginPage() {
             }}>
             JOIN
           </a>
-          <DefaultLogo logoName='type-1-3' width='80px' height='80px' />
+          <DefaultLogo logoName='type-1-3' width={80} height={80} />
         </Wrapper>
       </StyledCol>
     </StyledRow>

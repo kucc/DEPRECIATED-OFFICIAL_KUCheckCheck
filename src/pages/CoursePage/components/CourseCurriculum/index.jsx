@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Timeline } from 'antd';
+import PropTypes from 'prop-types';
 
 import { StyledContainer } from './style';
 
@@ -21,3 +22,7 @@ function CourseCurriculum({ curriculum }) {
 }
 
 export default CourseCurriculum;
+
+CourseCurriculum.propTypes = {
+  curriculum: PropTypes.array,
+};

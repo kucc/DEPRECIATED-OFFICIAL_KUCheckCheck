@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import PropTypes from 'prop-types';
 import TableDragSelect from 'react-table-drag-select';
 import 'react-table-drag-select/style.css';
 
@@ -94,3 +95,10 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
 }
 
 export default TimeTable;
+
+TimeTable.propTypes = {
+  editable: PropTypes.bool,
+  selectedData: PropTypes.func,
+  cellData: PropTypes.func,
+  selectedColor: PropTypes.string,
+};

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
 import CourseApplication from './CourseApplication';
@@ -17,7 +18,7 @@ function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
   const [onImageHover, setonImageHover] = useState(false);
   const [onCourseHover, setOnCourseHover] = useState(false);
-  const toggleHover = () => setOnCourseHover((prev) => !prev);
+  const toggleHover = () => setOnCourseHover(prev => !prev);
 
   const renderCouresImage = () =>
     // 이미지 최대 3개까지 표시
@@ -78,13 +79,12 @@ function CourseContainer({ course, CourseApplicationState }) {
       <StyledCourseContainer
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
-        style={{ paddingBottom: onCourseHover ? "10px" : "0px" }}
+        style={{ paddingBottom: onCourseHover ? '10px' : '0px' }}
         className={
           onCourseHover
-            ? "out-shadow-strong border-radius-all"
-            : "out-shadow-middle border-radius-all"
-        }
-      >
+            ? 'out-shadow-strong border-radius-all'
+            : 'out-shadow-middle border-radius-all'
+        }>
         <StyledCourseImgContainer>
           {renderCouresImage()}
         </StyledCourseImgContainer>
@@ -130,3 +130,8 @@ function CourseContainer({ course, CourseApplicationState }) {
 }
 
 export default CourseContainer;
+
+CourseContainer.propTypes = {
+  course: PropTypes.object.isRequired,
+  CourseApplicationState: PropTypes.bool,
+};

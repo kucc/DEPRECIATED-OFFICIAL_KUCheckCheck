@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { StyledButton } from './style';
 
 function FullWidthButton({ htmlType, text, loading }) {
@@ -15,3 +17,9 @@ function FullWidthButton({ htmlType, text, loading }) {
 }
 
 export default FullWidthButton;
+
+FullWidthButton.propTypes = {
+  htmlType: PropTypes.string,
+  text: PropTypes.string,
+  loading: PropTypes.bool,
+};

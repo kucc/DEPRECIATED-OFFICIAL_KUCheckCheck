@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { authService } from '@/firebase';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+
+import { authService } from '@/firebase';
 
 import DefaultLogo from '../DefaultLogo';
 import * as S from './style';
@@ -40,8 +42,8 @@ const NavBar = ({ isMain = false }) => {
           <DefaultLogo
             isPointer={true}
             logoName='type-1-3'
-            width='90px'
-            height='90px'
+            width={90}
+            height={90}
           />
         </Link>
         <Link to='/rules'>
@@ -118,7 +120,7 @@ const NavBar = ({ isMain = false }) => {
         </S.NavBarNonShadowContainer>
       ) : (
         <S.NavBarBackground>
-          <S.NavBarShadowContainer className="out-shadow-strong border-radius-bottom">
+          <S.NavBarShadowContainer className='out-shadow-strong border-radius-bottom'>
             {renderNavBar()}
           </S.NavBarShadowContainer>
         </S.NavBarBackground>
@@ -128,3 +130,7 @@ const NavBar = ({ isMain = false }) => {
 };
 
 export default NavBar;
+
+NavBar.propTypes = {
+  isMain: PropTypes.bool,
+};

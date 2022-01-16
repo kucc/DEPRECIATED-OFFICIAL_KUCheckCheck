@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import NavBar from '@components/NavBar';
@@ -147,3 +148,29 @@ function CourseIntroduction({ name, introduction, goal, date, maxMemberNum }) {
 // }
 
 export default CoursePage;
+
+CoursePage.propTypes = {
+  name: PropTypes.string,
+  introduction: PropTypes.string,
+  goal: PropTypes.string,
+  date: PropTypes.string,
+  maxMemberNum: PropTypes.number,
+  curriculum: PropTypes.array,
+};
+
+CourseLeaderBox.propTypes = {
+  name: PropTypes.string,
+  detailComment: PropTypes.string,
+};
+
+ToggleButton.propTypes = {
+  setSelected: PropTypes.func,
+};
+
+CourseIntroduction.propTypes = {
+  name: PropTypes.string,
+  introduction: PropTypes.string,
+  goal: PropTypes.string,
+  date: PropTypes.string,
+  maxMemberNum: PropTypes.number,
+};
