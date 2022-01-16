@@ -1,6 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 
+// import PropTypes from 'prop-types';
+// TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
 import UserPage from '@pages/UserPage';
 
 import { authService, firestoreService } from '@/firebase';
@@ -8,7 +10,7 @@ import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
 export default function () {
   // userpage는 로그인이 필요한 페이지
-  function UserPageCheck(props) {
+  const UserPageCheck = props => {
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
@@ -33,6 +35,11 @@ export default function () {
     }, []);
 
     return <UserPage {...props} userData={userData} />;
-  }
+  };
   return UserPageCheck;
 }
+
+// UserPageCheck.propTypes = {
+//   history: PropTypes.object.isRequired,
+//   match: PropTypes.object.isRequired,
+// };
