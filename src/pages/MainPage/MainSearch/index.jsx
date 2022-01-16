@@ -63,10 +63,11 @@ function MainSearch() {
   return (
     <>
       <StyledSearchContainer>
-        <StyledSearchBtn>
+        <StyledSearchBtn className='out-shadow-middle border-radius-all'>
           <BiSearch />
         </StyledSearchBtn>
         <StyledSearchBar
+          className='out-shadow-middle border-radius-all'
           onChange={changeSearch}
           placeholder='세션/스터디명 ex) 바닐라 자바스크립트 세션'
         />
@@ -82,6 +83,7 @@ function MainSearch() {
           {randomCategory.map(tag => (
             <StyledTag
               key={tag}
+              className='border-radius-all'
               checked={selectedCategory === tag}
               onClick={() => handleCategory(tag)}>
               {tag}

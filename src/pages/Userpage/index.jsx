@@ -3,16 +3,17 @@ import React from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import UserCourse from './components/UserCourse';
 import UserInfo from './components/UserInfo';
-import { StyledBackground, StyledMainContainer } from './style';
+import { StyledBackground } from './style';
+import { StyledSideMargin } from '../../utility/COMMON_STYLE';
 
 function UserPage({ userData }) {
   return (
     <StyledBackground>
       <NavBar />
-      <StyledMainContainer>
+      <StyledSideMargin>
         <UserInfo userData={userData} />
         <UserCourse userData={userData} />
-      </StyledMainContainer>
+      </StyledSideMargin>
     </StyledBackground>
   );
 }

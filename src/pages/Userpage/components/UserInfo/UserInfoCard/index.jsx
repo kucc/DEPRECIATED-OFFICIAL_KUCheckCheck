@@ -38,7 +38,7 @@ function UserInfoCard({ userData }) {
   }, [userData]);
 
   return (
-    <StyledInfoCardContainer>
+    <StyledInfoCardContainer className="out-shadow-strong border-radius-all">
       <StyledInfoCardEmoji>
         {firebaseUser && firebaseUser.emoji}
       </StyledInfoCardEmoji>
