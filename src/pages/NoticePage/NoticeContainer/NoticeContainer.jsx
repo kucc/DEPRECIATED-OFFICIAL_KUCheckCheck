@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { firestoreService } from "../../../firebase";
-import NavBar from "../../../components/NavBar/NavBar";
+import React, { useEffect, useState } from 'react';
+
+import NavBar from '../../../components/NavBar/NavBar';
+import { firestoreService } from '../../../firebase';
 import {
+  StyledBackground,
   StyledRulesBox,
   StyledRulesCollapse,
-  StyledRulesTitle,
-  StyledBackground,
   StyledRulesPanel,
-} from "../style";
+  StyledRulesTitle,
+} from '../style';
 
 function NoticeContainer() {
   const [Notices, setNotices] = useState([]);
   useEffect(() => {
     async function fetchNoticesData() {
-      const noticesData = await firestoreService.collection("notices").get();
+      const noticesData = await firestoreService.collection('notices').get();
       // 임시 배열에 Data를 push
       let noticesArray = [];
-      noticesData.forEach((doc) => {
+      noticesData.forEach(doc => {
         console.log(doc.data());
         noticesArray.push(doc.data());
       });
@@ -31,9 +32,8 @@ function NoticeContainer() {
       <StyledRulesBox>
         <StyledRulesTitle>공지사항</StyledRulesTitle>
         <StyledRulesCollapse
-          defaultActiveKey={["0"]}
-          expandIconPosition="right"
-        >
+          defaultActiveKey={['0']}
+          expandIconPosition='right'>
           {Notices &&
             Notices.map((item, key) => (
               <StyledRulesPanel header={item.title} key={key}>

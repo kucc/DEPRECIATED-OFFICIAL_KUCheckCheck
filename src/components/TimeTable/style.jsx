@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledTableContainer = styled.div`
   margin-top: 45px;
@@ -10,7 +10,7 @@ export const StyledTableContainer = styled.div`
   }
 
   .table-drag-select td.cell-selected {
-    background-color: ${(props) => props.selectedColor || "#A9A9A9"};
+    background-color: ${props => props.selectedColor || '#A9A9A9'};
   }
   .table-drag-select td.cell-being-selected {
     background-color: #3f83d5 !important;

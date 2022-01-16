@@ -1,4 +1,4 @@
-import { SET_CATEGORY, SET_SEARCH } from "./types";
+import { SET_CATEGORY, SET_SEARCH } from './types';
 
 export function setSearch(searchTerm) {
   return {

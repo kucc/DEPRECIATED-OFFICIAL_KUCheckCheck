@@ -1,7 +1,9 @@
-import "antd/dist/antd.css";
-import React, { useEffect, useState } from "react";
-import CourseAttendanceCard from "../CourseAttendance/CourseAttendanceCard";
-import CourseAttendanceTop from "../CourseAttendance/CourseAttendanceTop";
+import React, { useEffect, useState } from 'react';
+
+import 'antd/dist/antd.css';
+
+import CourseAttendanceCard from '../CourseAttendance/CourseAttendanceCard';
+import CourseAttendanceTop from '../CourseAttendance/CourseAttendanceTop';
 
 function CourseAttendanceEdit({ courseData }) {
   const [courseAttendance, setcourseAttendance] = useState();
@@ -14,7 +16,7 @@ function CourseAttendanceEdit({ courseData }) {
       setcourseAttendance(courseData.courseAttendance);
   }, [courseData]);
 
-  const onEditedAttendance = (data) => {
+  const onEditedAttendance = data => {
     let newcourseAttendance = courseAttendance;
     courseAttendance.map((course, key) => {
       if (course.id === data.id) {
@@ -43,7 +45,7 @@ function CourseAttendanceEdit({ courseData }) {
               isEditMode={true}
               key={key}
               indexKey={key}
-              editedAttendance={(data) => onEditedAttendance(data)}
+              editedAttendance={data => onEditedAttendance(data)}
             />
           );
         })}

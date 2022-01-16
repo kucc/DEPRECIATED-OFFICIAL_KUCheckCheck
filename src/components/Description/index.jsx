@@ -1,7 +1,9 @@
-import React from "react";
-import { Typography } from "antd";
-import { DescriptionForm, DescriptionLogo } from "./style";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+
+import { Typography } from 'antd';
+import { useHistory } from 'react-router-dom';
+
+import { DescriptionForm, DescriptionLogo } from './style';
 
 const { Title, Text } = Typography;
 
@@ -10,9 +12,9 @@ function Description() {
   return (
     <DescriptionForm>
       <DescriptionLogo
-        alt="KUCC Icon"
-        src={"./img/KUCCicon.png"}
-        onClick={() => history.push("/")}
+        alt='KUCC Icon'
+        src={'./img/KUCCicon.png'}
+        onClick={() => history.push('/')}
       />
       <Title>
         KUCC

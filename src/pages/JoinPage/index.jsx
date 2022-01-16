@@ -1,7 +1,8 @@
-import React from "react";
-import JoinForm from "./components/JoinForm";
-import Description from "../../components/Description";
-import { StyledRow, StyledCol, Wrapper } from "./style";
+import React from 'react';
+
+import Description from '../../components/Description';
+import JoinForm from './components/JoinForm';
+import { StyledCol, StyledRow, Wrapper } from './style';
 
 function JoinPage() {
   return (

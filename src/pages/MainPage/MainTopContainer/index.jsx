@@ -1,13 +1,13 @@
-import React from "react";
-import DefaultLogo from "../../../components/DefaultLogo";
-import MainSearch from "../MainSearch";
+import React from 'react';
 
+import DefaultLogo from '../../../components/DefaultLogo';
+import MainSearch from '../MainSearch';
 import {
-  StyledMainTopWrapper,
+  StyledMainExplain,
   StyledMainTitle1,
   StyledMainTitle2,
-  StyledMainExplain,
-} from "./style";
+  StyledMainTopWrapper,
+} from './style';
 
 function MainTopContainer() {
   return (
@@ -25,10 +25,10 @@ function MainTopContainer() {
         <MainSearch />
       </div>
       <DefaultLogo
-        logoName="type-3-2"
+        logoName='type-3-2'
         width={450}
         height={450}
-        style={{ marginTop: "0px", marginLeft: "40px" }}
+        style={{ marginTop: '0px', marginLeft: '40px' }}
       />
     </StyledMainTopWrapper>
   );

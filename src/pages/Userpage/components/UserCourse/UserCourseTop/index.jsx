@@ -1,5 +1,6 @@
-import React from "react";
-import { UserCourseTopContainer, UserCourseTopText } from "./style";
+import React from 'react';
+
+import { UserCourseTopContainer, UserCourseTopText } from './style';
 
 function UserCourseTop() {
   //세션 불러오기

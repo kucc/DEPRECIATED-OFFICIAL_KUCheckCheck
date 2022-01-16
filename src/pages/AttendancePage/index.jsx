@@ -1,6 +1,7 @@
-import React from "react";
-import CourseAttendanceCard from "./CourseAttendanceCard";
-import CourseAttendanceTop from "./CourseAttendanceTop";
+import React from 'react';
+
+import CourseAttendanceCard from './CourseAttendanceCard';
+import CourseAttendanceTop from './CourseAttendanceTop';
 
 function AttendacePage({ courseData }) {
   const courseName = courseData.courseName;

@@ -1,5 +1,5 @@
-import TimelineItem from "antd/lib/timeline/TimelineItem";
-import styled from "styled-components";
+import TimelineItem from 'antd/lib/timeline/TimelineItem';
+import styled from 'styled-components';
 
 export const StyledTimelineItem = styled(TimelineItem)`
   .ant-timeline-item-content {
