@@ -10,7 +10,7 @@ function CourseCurriculum({ curriculum }) {
       <Timeline mode='left'>
         {curriculum.map((el, i) => {
           return (
-            <Timeline.Item color='gray' label={`${i + 1}주차`}>
+            <Timeline.Item color='gray' label={`${i + 1}주차`} key={i}>
               {el}
             </Timeline.Item>
           );

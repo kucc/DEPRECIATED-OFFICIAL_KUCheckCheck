@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Button, Input, Modal } from 'antd';
+import { Input, Modal } from 'antd';
 import { useSelector } from 'react-redux';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
