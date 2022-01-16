@@ -1,11 +1,14 @@
-import { Button, Dropdown, Menu, Skeleton } from "antd";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { firestoreService } from "../../../firebase";
-import CourseContainer from "../../../components/CourseContainer/CourseContainer";
-import EmptyBox from "../../../components/EmptyBox";
-import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+
+import { Button, Dropdown, Menu, Skeleton } from 'antd';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import WhiteShadowButton from '../../../components/Buttons/WhiteShadowButton';
+import CourseContainer from '../../../components/CourseContainer/CourseContainer';
+import EmptyBox from '../../../components/EmptyBox';
+import { firestoreService } from '../../../firebase';
+import { MAIN_COLOR } from '../../../utility/COLORS';
 import {
   StyledMainBottomBtnCont,
   StyledMainBottomWrapper,
@@ -14,27 +17,26 @@ import {
   StyledMainSessRig,
   StyledMainSessTab,
   StyledMainVerticalLine,
-} from "./style";
-import { MAIN_COLOR } from "../../../utility/COLORS";
+} from './style';
 
 function MainBottomContainer() {
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseArray, setcourseArray] = useState([]);
   const [filteredCourseArray, setfilteredCourseArray] = useState([]);
   // current Semester : 현재 무슨 학기인지 => string
-  const [currentSemester, setcurrentSemester] = useState("");
+  const [currentSemester, setcurrentSemester] = useState('');
   // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // user, searchTerm, searchCategory : from redux
-  const user = useSelector((state) => state.user);
-  const searchTerm = useSelector((state) => state.search.searchTerm);
-  const searchCategory = useSelector((state) => state.search.category);
+  const user = useSelector(state => state.user);
+  const searchTerm = useSelector(state => state.search.searchTerm);
+  const searchCategory = useSelector(state => state.search.category);
   const history = useHistory();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
-  const escapeRegExp = (searchTerm) => {
-    return searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const escapeRegExp = searchTerm => {
+    return searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
 
   // 다양한 조건에 의한 filter, 1. 검색어, 2. tag(Category, Language), 3. 세션/스터디/프로젝트 분류
@@ -51,7 +53,7 @@ function MainBottomContainer() {
 
     // 1. 검색에 의한 filter
     if (searchTerm) {
-      const regex = new RegExp(escapeRegExp(searchTerm), "gi");
+      const regex = new RegExp(escapeRegExp(searchTerm), 'gi');
       searchTermResults = courseArray.reduce((acc, course) => {
         if (
           // courseName 검색
@@ -59,7 +61,7 @@ function MainBottomContainer() {
           // courseLeader 검색
           course.courseLeader.name.match(regex) ||
           // courseLanguage 검색
-          course.language.find((element) => element.match(regex))
+          course.language.find(element => element.match(regex))
         ) {
           acc.push(course.id);
         }
@@ -70,52 +72,52 @@ function MainBottomContainer() {
     if (searchCategory) {
       searchCategoryResults = courseArray.reduce((acc, course) => {
         switch (searchCategory) {
-          case "Web":
+          case 'Web':
             if (
               // 두 배열의 공통된 부분을 찾음
-              ["Database", "Html", "Javascript", "Node", "React"].filter((x) =>
-                course.language.includes(x)
+              ['Database', 'Html', 'Javascript', 'Node', 'React'].filter(x =>
+                course.language.includes(x),
               ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
-          case "App":
+          case 'App':
             if (
-              ["Java", "Kotlin", "ReactNative", "Swift"].filter((x) =>
-                course.language.includes(x)
+              ['Java', 'Kotlin', 'ReactNative', 'Swift'].filter(x =>
+                course.language.includes(x),
               ).length > 0
             ) {
               acc.push(course.id);
             }
             break;
-          case "알고리즘":
-            if (course.language.includes("Algorithm")) {
+          case '알고리즘':
+            if (course.language.includes('Algorithm')) {
               acc.push(course.id);
             }
             break;
-          case "머신러닝":
-            if (course.language.includes("MachineLearning")) {
+          case '머신러닝':
+            if (course.language.includes('MachineLearning')) {
               acc.push(course.id);
             }
             break;
-          case "C":
-            if (course.language.includes("C")) {
+          case 'C':
+            if (course.language.includes('C')) {
               acc.push(course.id);
             }
             break;
-          case "Python":
-            if (course.language.includes("Python")) {
+          case 'Python':
+            if (course.language.includes('Python')) {
               acc.push(course.id);
             }
             break;
-          case "Javascript":
-            if (course.language.includes("Javascript")) {
+          case 'Javascript':
+            if (course.language.includes('Javascript')) {
               acc.push(course.id);
             }
             break;
-          case "Java":
-            if (course.language.includes("Java")) {
+          case 'Java':
+            if (course.language.includes('Java')) {
               acc.push(course.id);
             }
             break;
@@ -169,8 +171,8 @@ function MainBottomContainer() {
   useEffect(() => {
     async function loadSemesterData() {
       const semesterData = await firestoreService
-        .collection("common")
-        .doc("commonInfo")
+        .collection('common')
+        .doc('commonInfo')
         .get();
       setcurrentSemester(semesterData.data().currentSemester);
       // 배열을 역순으로 저장해줌
@@ -187,9 +189,9 @@ function MainBottomContainer() {
         setIsLoading(true);
         let newCourseArray = [];
         const firebaseCourseData = await firestoreService
-          .collection("courses")
+          .collection('courses')
           .get();
-        firebaseCourseData.forEach((doc) => {
+        firebaseCourseData.forEach(doc => {
           if (doc.data().semester === currentSemester) {
             const coursesData = {
               id: doc.id,
@@ -201,7 +203,7 @@ function MainBottomContainer() {
         setcourseArray(newCourseArray);
         setIsLoading(false);
       } catch (error) {
-        console.log("error", error);
+        console.log('error', error);
       }
     }
     fetchCourseData();
@@ -230,7 +232,7 @@ function MainBottomContainer() {
       if (filteredCourseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return filteredCourseArray.map((course) => {
+        return filteredCourseArray.map(course => {
           return (
             <CourseContainer
               key={course.id}
@@ -244,7 +246,7 @@ function MainBottomContainer() {
       if (courseArray.length === 0) {
         return <EmptyBox />;
       } else {
-        return courseArray.map((course) => {
+        return courseArray.map(course => {
           return (
             <CourseContainer
               key={course.id}
@@ -262,17 +264,16 @@ function MainBottomContainer() {
       <StyledMainBottomWrapper>
         <StyledMainBottomBtnCont>
           <StyledMainSessDuration>
-            <Dropdown overlay={menu} placement="bottomLeft">
+            <Dropdown overlay={menu} placement='bottomLeft'>
               <Button
-                type="danger"
+                type='danger'
                 style={{
-                  width: "100%",
-                  height: "40px",
-                  borderRadius: "25px",
+                  width: '100%',
+                  height: '40px',
+                  borderRadius: '25px',
                   backgroundColor: MAIN_COLOR,
                   borderColor: MAIN_COLOR,
-                }}
-              >
+                }}>
                 {currentSemester} 학기
               </Button>
             </Dropdown>
@@ -282,40 +283,36 @@ function MainBottomContainer() {
               courseSelect={courseSelect}
               // selectedType for use in StyledComponent
               selectedType={0}
-              onClick={() => setcourseSelect(0)}
-            >
+              onClick={() => setcourseSelect(0)}>
               전체
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
               courseSelect={courseSelect}
               selectedType={1}
-              onClick={() => setcourseSelect(1)}
-            >
+              onClick={() => setcourseSelect(1)}>
               세션
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
               courseSelect={courseSelect}
               selectedType={2}
-              onClick={() => setcourseSelect(2)}
-            >
+              onClick={() => setcourseSelect(2)}>
               스터디
             </StyledMainSessItemOffClick>
             <StyledMainVerticalLine />
             <StyledMainSessItemOffClick
               courseSelect={courseSelect}
               selectedType={3}
-              onClick={() => setcourseSelect(3)}
-            >
+              onClick={() => setcourseSelect(3)}>
               프로젝트
             </StyledMainSessItemOffClick>
           </StyledMainSessTab>
           <StyledMainSessRig>
             {user.currentUser && (
               <WhiteShadowButton
-                text="등록하기"
-                onClick={() => history.push("/course/register")}
+                text='등록하기'
+                onClick={() => history.push('/course/register')}
               />
             )}
           </StyledMainSessRig>

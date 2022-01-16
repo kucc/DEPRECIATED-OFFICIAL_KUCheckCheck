@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import { NEED_TO_LOGIN } from "../utility/ALERT_MESSAGE";
-import { authService, firestoreService } from "../firebase";
-import UserPage from "../pages/UserPage";
+import React, { useEffect, useState } from 'react';
+
+import { authService, firestoreService } from '../firebase';
+import UserPage from '../pages/UserPage';
+import { NEED_TO_LOGIN } from '../utility/ALERT_MESSAGE';
 
 export default function () {
   // userpage는 로그인이 필요한 페이지
@@ -15,7 +16,7 @@ export default function () {
         const userId = props.match.params.id;
         // get course Data from firebase
         const data = await firestoreService
-          .collection("users")
+          .collection('users')
           .doc(userId)
           .get();
         // attach courseId to data
@@ -24,7 +25,7 @@ export default function () {
         // need to login
         if (!authService.currentUser) {
           alert(NEED_TO_LOGIN);
-          props.history.push("/login");
+          props.history.push('/login');
         }
       }
       fetchUserData();

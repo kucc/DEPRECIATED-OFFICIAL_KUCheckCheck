@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import UserInfoTop from "./UserInfoTop";
-import UserInfoCard from "./UserInfoCard";
-import { StyledUserInfoContainer } from "./style";
+import React, { useState } from 'react';
+
+import UserInfoCard from './UserInfoCard';
+import UserInfoTop from './UserInfoTop';
+import { StyledUserInfoContainer } from './style';
 
 function UserInfo({ userData }) {
-  const [changeState, setchangeState] = useState("");
-  const handleChange = (data) => {
+  const [changeState, setchangeState] = useState('');
+  const handleChange = data => {
     setchangeState(data);
   };
 

@@ -1,6 +1,12 @@
-import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import NavBar from "../../../components/NavBar/NavBar";
+import React from 'react';
+
+import { AiOutlineLeft } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+
+import WhiteShadowButton from '../../../components/Buttons/WhiteShadowButton';
+import NavBar from '../../../components/NavBar/NavBar';
+import { firestoreService } from '../../../firebase';
 import {
   StyledBackButton,
   StyledBackground,
@@ -12,11 +18,7 @@ import {
   StyledTopTitle,
   StyledWeekBox,
   StyledWeekTextBox,
-} from "./style";
-import { AiOutlineLeft } from "react-icons/ai";
-import { firestoreService } from "../../../firebase";
-import { useSelector } from "react-redux";
-import WhiteShadowButton from "../../../components/Buttons/WhiteShadowButton";
+} from './style';
 
 function CourseAttendanceTop({
   courseName,
@@ -25,7 +27,7 @@ function CourseAttendanceTop({
   courseAttendance,
   courseCheckAdmin,
 }) {
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector(state => state.user.currentUser);
   const location = useLocation();
   const history = useHistory();
 
@@ -33,7 +35,7 @@ function CourseAttendanceTop({
     if (isEditMode) {
       // course 정보 update
       await firestoreService
-        .collection("courses")
+        .collection('courses')
         .doc(courseId)
         .update({ courseAttendance: courseAttendance });
       history.goBack();
@@ -50,8 +52,8 @@ function CourseAttendanceTop({
       return (
         <StyledEditButton>
           <WhiteShadowButton
-            type={isEditMode ? "danger" : ""}
-            text={isEditMode ? "수정완료" : "수정하기"}
+            type={isEditMode ? 'danger' : ''}
+            text={isEditMode ? '수정완료' : '수정하기'}
             onClick={handleClick}
           />
         </StyledEditButton>
@@ -65,7 +67,7 @@ function CourseAttendanceTop({
       <StyledTopContainer>
         <StyledTopBox>
           <StyledBackButton onClick={() => history.goBack()}>
-            <AiOutlineLeft style={{ strokeWidth: "50", fontSize: "20px" }} />
+            <AiOutlineLeft style={{ strokeWidth: '50', fontSize: '20px' }} />
           </StyledBackButton>
           <StyledLeftBox>
             <div>

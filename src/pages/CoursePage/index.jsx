@@ -1,34 +1,36 @@
-import { Button } from "antd";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
-import { firestoreService } from "../../firebase";
-import CourseCurriculum from "./components/CourseCurriculum";
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+
+import { Button } from 'antd';
+import { useHistory, useLocation } from 'react-router-dom';
+
+import NavBar from '../../components/NavBar/NavBar';
+import { firestoreService } from '../../firebase';
+import CourseCurriculum from './components/CourseCurriculum';
 
 function CoursePage() {
   const location = useLocation();
   const history = useHistory();
 
-  const [selected, setSelected] = useState("introduction");
-  const [leaderInfo, setLeaderInfo] = useState({ name: "", detailComment: "" });
+  const [selected, setSelected] = useState('introduction');
+  const [leaderInfo, setLeaderInfo] = useState({ name: '', detailComment: '' });
   const [courseInfo, setCourseInfo] = useState({
-    name: "",
-    introduction: "",
-    goal: "",
-    date: "",
-    maxMemberNum: "",
+    name: '',
+    introduction: '',
+    goal: '',
+    date: '',
+    maxMemberNum: '',
     curriculum: [],
   });
 
   useEffect(() => {
-    const courseId = location.pathname.split("/").at(-1);
+    const courseId = location.pathname.split('/').at(-1);
 
     firestoreService
-      .collection("courses")
+      .collection('courses')
       .doc(courseId)
       .get()
-      .then((courseDoc) => {
+      .then(courseDoc => {
         const {
           courseName,
           courseInfo,
@@ -51,18 +53,18 @@ function CoursePage() {
         // 코스 리더에 대한 정보 불러오기
         const leaderId = courseLeader.id;
         firestoreService
-          .collection("users")
+          .collection('users')
           .doc(leaderId)
           .get()
-          .then((userDoc) => {
+          .then(userDoc => {
             const { name, detailComment } = userDoc.data();
             setLeaderInfo({ name, detailComment });
           })
-          .catch((leaderInfoFetchError) => {
+          .catch(leaderInfoFetchError => {
             console.error(leaderInfoFetchError);
           });
       })
-      .catch((courseInfoFetchError) => {
+      .catch(courseInfoFetchError => {
         console.error(courseInfoFetchError);
       });
   }, []);
@@ -77,7 +79,7 @@ function CoursePage() {
       {console.log(selected, courseInfo)}
       <ToggleButton setSelected={setSelected} />
       {/* 세션 소개 | 커리큘럼 선택버튼 */}
-      {selected === "introduction" ? (
+      {selected === 'introduction' ? (
         <CourseIntroduction
           name={courseInfo.name}
           introduction={courseInfo.introduction}
@@ -89,8 +91,8 @@ function CoursePage() {
         <CourseCurriculum curriculum={courseInfo.curriculum} />
       )}
       <Button onClick={() => history.push(`${location.pathname}/attendance`)}>
-        {" "}
-        출결관리{" "}
+        {' '}
+        출결관리{' '}
       </Button>
     </div>
   );
@@ -110,16 +112,14 @@ function ToggleButton({ setSelected }) {
     <div>
       <button
         onClick={() => {
-          setSelected("introduction");
-        }}
-      >
+          setSelected('introduction');
+        }}>
         세션 소개
       </button>
       <button
         onClick={() => {
-          setSelected("curriculum");
-        }}
-      >
+          setSelected('curriculum');
+        }}>
         커리 큘럼
       </button>
     </div>

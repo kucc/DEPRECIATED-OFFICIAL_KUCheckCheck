@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledNavBarContainer = styled.div`
   border-bottom-right-radius: 30px;

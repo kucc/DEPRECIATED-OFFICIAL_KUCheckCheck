@@ -1,5 +1,6 @@
-import React from "react";
-import NoticeContainer from "./NoticeContainer/NoticeContainer";
+import React from 'react';
+
+import NoticeContainer from './NoticeContainer/NoticeContainer';
 
 function NoticePage() {
   return (

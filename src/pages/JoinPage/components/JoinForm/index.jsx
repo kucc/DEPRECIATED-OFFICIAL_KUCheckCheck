@@ -1,30 +1,32 @@
-import React, { useState } from "react";
-import FullWidthButton from "../../../../components/Buttons/FullWidthButton";
-import { StyledForm } from "./style";
-import { Space } from "antd";
-import InputBox from "../InputBox";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+
+import { Space } from 'antd';
+import { useHistory } from 'react-router-dom';
+
+import FullWidthButton from '../../../../components/Buttons/FullWidthButton';
+import { authService, firestoreService } from '../../../../firebase';
 import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
   PASSWORD_DOSE_NOT_MATCH,
-} from "../../../../utility/ALERT_MESSAGE";
-import { authService, firestoreService } from "../../../../firebase";
-import { RandomEmoji } from "../../../../utility/COMMON_FUNCTION";
+} from '../../../../utility/ALERT_MESSAGE';
+import { RandomEmoji } from '../../../../utility/COMMON_FUNCTION';
+import InputBox from '../InputBox';
+import { StyledForm } from './style';
 
 function JoinForm() {
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    name: "",
-    link: "",
-    comment: "",
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    name: '',
+    link: '',
+    comment: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const history = useHistory();
   const { email, password, passwordConfirm, name, link, comment } = inputs;
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { value, name } = e.target;
 
     setInputs({
@@ -33,7 +35,7 @@ function JoinForm() {
     });
   };
 
-  const submitHandler = async (event) => {
+  const submitHandler = async event => {
     try {
       setIsSubmitted(true);
       event.preventDefault();
@@ -42,7 +44,7 @@ function JoinForm() {
 
       const createdUser = await authService.createUserWithEmailAndPassword(
         email,
-        password
+        password,
       );
 
       await createdUser.user.updateProfile({
@@ -57,18 +59,18 @@ function JoinForm() {
         name,
         comment,
         link,
-        role: "준회원",
+        role: '준회원',
         emoji: RandomEmoji(),
         courseHistory: [],
-        detailComment: "",
+        detailComment: '',
       };
 
       await firestoreService
-        .collection("users")
+        .collection('users')
         .doc(createdUser.user.uid)
         .set(userData);
-      alert("회원 가입을 완료하였습니다!");
-      history.push("/");
+      alert('회원 가입을 완료하였습니다!');
+      history.push('/');
     } catch (error) {
       alert(error.message);
     } finally {
@@ -78,54 +80,54 @@ function JoinForm() {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <Space direction="vertical" size="large">
+      <Space direction='vertical' size='large'>
         <InputBox
-          labelTitle="이메일"
-          inputName="email"
-          inputType="email"
+          labelTitle='이메일'
+          inputName='email'
+          inputType='email'
           value={email}
           onChange={onChange}
         />
         <InputBox
-          labelTitle="비밀번호"
-          inputName="password"
-          inputType="password"
+          labelTitle='비밀번호'
+          inputName='password'
+          inputType='password'
           value={password}
           onChange={onChange}
         />
         <InputBox
-          labelTitle="비밀번호 확인"
-          inputName="passwordConfirm"
-          inputType="password"
+          labelTitle='비밀번호 확인'
+          inputName='passwordConfirm'
+          inputType='password'
           value={passwordConfirm}
           onChange={onChange}
         />
         <InputBox
-          labelTitle="이름"
-          inputName="name"
-          inputType="text"
+          labelTitle='이름'
+          inputName='name'
+          inputType='text'
           // 이거 그대로 냅둘건가 ? ㅋㅋㅋㅋㅋ
-          placehodler="ex) 정인아"
+          placehodler='ex) 정인아'
           value={name}
           onChange={onChange}
         />
         <InputBox
-          labelTitle="링크"
-          inputName="link"
-          inputType="text"
-          placehodler="ex) https://github.com/"
+          labelTitle='링크'
+          inputName='link'
+          inputType='text'
+          placehodler='ex) https://github.com/'
           value={link}
           onChange={onChange}
         />
         <InputBox
-          labelTitle="소개"
-          inputName="comment"
-          inputType="text"
-          placehodler="50자 이내"
+          labelTitle='소개'
+          inputName='comment'
+          inputType='text'
+          placehodler='50자 이내'
           value={comment}
           onChange={onChange}
         />
-        <FullWidthButton htmlType="submit" text="JOIN" loading={isSubmitted} />
+        <FullWidthButton htmlType='submit' text='JOIN' loading={isSubmitted} />
       </Space>
     </StyledForm>
   );

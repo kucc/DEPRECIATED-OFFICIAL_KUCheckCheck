@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NavBarBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -35,10 +35,10 @@ export const NavBarLogoContainer = styled.div`
 `;
 export const NavBarTextContainer = styled.div`
   cursor: pointer;
-  color: ${(props) =>
-    props.hoverState && props.hoverState !== props.text ? "gray" : "black"};
+  color: ${props =>
+    props.hoverState && props.hoverState !== props.text ? 'gray' : 'black'};
   font-size: 15px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   /* &:hover {
     background-color: rgb(245, 245, 245);
     border-radius: 24px;
@@ -63,10 +63,10 @@ export const NavBarAuthOn = styled.div`
   font-size: 15px;
   & > p {
     margin-bottom: 0px;
-    font-family: "NexonBo";
+    font-family: 'NexonBo';
   }
   & > div {
-    font-family: "NexonBo";
+    font-family: 'NexonBo';
   }
 `;
 export const NavBarAuthCont = styled.div`

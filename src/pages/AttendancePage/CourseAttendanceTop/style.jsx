@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import styled from "styled-components";
+import { Button } from 'antd';
+import styled from 'styled-components';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -17,7 +17,7 @@ export const StyledTopBox = styled.div`
 
 export const StyledTopTitle = styled.div`
   font-size: 24px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
 `;
 
 export const StyledTopDesc = styled.div`

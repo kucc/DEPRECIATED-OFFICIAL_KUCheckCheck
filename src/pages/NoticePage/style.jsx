@@ -1,5 +1,5 @@
-import { Collapse } from "antd";
-import styled from "styled-components";
+import { Collapse } from 'antd';
+import styled from 'styled-components';
 
 export const StyledRulesBox = styled.div`
   display: grid;
@@ -11,7 +11,7 @@ export const StyledRulesBox = styled.div`
 export const StyledRulesTitle = styled.div`
   font-size: 26px;
   margin-left: 5%;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin-top: 50px;
 `;
 

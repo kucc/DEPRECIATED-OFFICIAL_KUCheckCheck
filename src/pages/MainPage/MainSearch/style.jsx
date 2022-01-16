@@ -1,6 +1,7 @@
-import CheckableTag from "antd/lib/tag/CheckableTag";
-import styled from "styled-components";
-import { BASE_COLOR, MAIN_COLOR } from "../../../utility/COLORS";
+import CheckableTag from 'antd/lib/tag/CheckableTag';
+import styled from 'styled-components';
+
+import { BASE_COLOR, MAIN_COLOR } from '../../../utility/COLORS';
 
 export const StyledTag = styled(CheckableTag)`
   -webkit-touch-callout: none;
@@ -90,6 +91,6 @@ export const StyledQuickSearchText = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin-top: 10px;
 `;

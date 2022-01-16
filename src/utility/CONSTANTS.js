@@ -33,114 +33,114 @@ export const timeTableSelectedDefault = [
 export const timeTableTimeList = [
   {
     Hour: 9,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 9,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 10,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 10,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 11,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 11,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 12,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 12,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 13,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 13,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 14,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 14,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 15,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 15,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 16,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 16,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 17,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 17,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 18,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 18,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 19,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 19,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 20,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 20,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 21,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 21,
-    Minute: "30",
+    Minute: '30',
   },
   {
     Hour: 22,
-    Minute: "00",
+    Minute: '00',
   },
   {
     Hour: 22,
-    Minute: "30",
+    Minute: '30',
   },
 ];

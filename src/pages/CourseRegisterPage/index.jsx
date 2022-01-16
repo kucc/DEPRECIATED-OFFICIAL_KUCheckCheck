@@ -1,5 +1,6 @@
-import React from "react";
-import CourseUpdate from "./CourseRegitserBox/CourseUpdate";
+import React from 'react';
+
+import CourseUpdate from './CourseRegitserBox/CourseUpdate';
 
 function CourseRegisterPage() {
   return (
