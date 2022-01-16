@@ -18,14 +18,12 @@ export const StyledBottomContainer = styled.div`
   margin-right: 10%;
   padding: 80px;
   background-color: white;
-  border-radius: 25px;
   grid-gap: 50px;
 `;
 
 export const StyledBlackButton = styled.button`
   background-color: black;
   color: white;
-  border-radius: 25px;
   border: 0px;
   width: 150px;
   height: 50px;

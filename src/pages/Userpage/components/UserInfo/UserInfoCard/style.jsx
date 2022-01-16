@@ -4,7 +4,6 @@ export const StyledInfoCardContainer = styled.div`
   background-color: white;
   width: 100%;
   height: 500px;
-  border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr 1px 5fr;
   padding: 70px;

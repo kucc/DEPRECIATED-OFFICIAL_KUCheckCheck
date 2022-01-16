@@ -13,7 +13,6 @@ export const StyledTimeTableBox = styled.div`
 
 export const StyledTimeTableBackground = styled.div`
   background-color: white;
-  border-radius: 40px;
   padding-bottom: 50px;
 `;
 

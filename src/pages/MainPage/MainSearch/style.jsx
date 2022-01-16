@@ -13,7 +13,6 @@ export const StyledTag = styled(CheckableTag)`
   margin-left: 10px;
   margin-top: 10px;
   background-color: #f5f5f5;
-  border-radius: 10px;
   border: none;
   padding-top: 3px;
   padding-left: 12px;
@@ -31,7 +30,6 @@ export const StyledIconContainer = styled.div`
   height: 27px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
 `;
 
 export const StyledSearchContainer = styled.div`
@@ -43,7 +41,6 @@ export const StyledSearchContainer = styled.div`
 export const StyledSearchBar = styled.input`
   min-width: 28em;
   height: 3.5em;
-  border-radius: 29px;
   background-color: ${BASE_COLOR};
   border: none;
   z-index: 0;
@@ -65,7 +62,6 @@ export const StyledSearchBtn = styled.div`
   align-items: center;
   background: ${MAIN_COLOR};
   width: 7em;
-  border-radius: 32px;
   cursor: pointer;
   & > svg {
     font-size: 2em;

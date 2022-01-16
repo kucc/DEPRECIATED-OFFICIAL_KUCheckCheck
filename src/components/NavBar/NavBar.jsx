@@ -122,7 +122,7 @@ const NavBar = ({ isMain = false }) => {
         </S.NavBarNonShadowContainer>
       ) : (
         <S.NavBarBackground>
-          <S.NavBarShadowContainer className="out-shadow-strong">
+          <S.NavBarShadowContainer className="out-shadow-strong border-radius-bottom">
             {renderNavBar()}
           </S.NavBarShadowContainer>
         </S.NavBarBackground>

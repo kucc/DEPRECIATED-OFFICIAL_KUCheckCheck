@@ -77,7 +77,11 @@ function CourseContainer({ course, CourseApplicationState }) {
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
         style={{ paddingBottom: onCourseHover ? "10px" : "0px" }}
-        className={onCourseHover ? "out-shadow-strong" : "out-shadow-middle"}
+        className={
+          onCourseHover
+            ? "out-shadow-strong border-radius-all"
+            : "out-shadow-middle border-radius-all"
+        }
       >
         <StyledCourseImgContainer>
           {renderCouresImage()}

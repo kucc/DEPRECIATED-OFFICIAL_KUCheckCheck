@@ -113,4 +113,20 @@ const GlobalStyle = createGlobalStyle`
     background-color: white;
     transition: all 0.1s;
   }
+  // bottom에만 border radius
+  .border-radius-bottom-strong{
+    border-bottom-right-radius: 67px;
+  border-bottom-left-radius: 67px;
+  }
+  .border-radius-bottom{
+    border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  }
+  // 각 모서리 전부 border radius
+  .border-radius-all-half{
+    border-radius : 50%
+  }
+  .border-radius-all{
+    border-radius : 30px
+  }
 `;

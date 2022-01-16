@@ -11,7 +11,7 @@ import {
 
 function MainTopContainer() {
   return (
-    <StyledMainTopWrapper className="out-shadow-strong">
+    <StyledMainTopWrapper className="out-shadow-strong border-radius-bottom-strong">
       <div>
         <StyledMainTitle1>
           <p>KUCC</p>

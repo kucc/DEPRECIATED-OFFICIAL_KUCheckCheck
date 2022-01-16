@@ -27,12 +27,6 @@ export const StyledRulesCollapse = styled(Collapse)`
     box-shadow: 0 11px 10px 2px lightgrey;
   }
 
-  .ant-collapse > .ant-collapse-item:last-child,
-  .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
-    background-color: black;
-    border-radius: 24px;
-  }
-
   .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
     display: inline-block;
     padding-right: 30 px;
@@ -57,10 +51,9 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     color: white !important;
     height: 100px;
     display: flex;
-    align-items: center;
+    align-items: center !important;
     margin-left: 100px;
     font-size: 28px;
-    border-radius: 24px;
   }
 
   .ant-collapse-content {

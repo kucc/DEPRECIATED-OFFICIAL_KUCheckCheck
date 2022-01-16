@@ -14,7 +14,7 @@ function TimeTablePage() {
       <NavBar />
       <StyledTimeTableBox>
         <StyledTimeTableText>시간표</StyledTimeTableText>
-        <StyledTimeTableBackground>
+        <StyledTimeTableBackground className="border-radius-all">
           <TimeTable editable={false} />
         </StyledTimeTableBackground>
       </StyledTimeTableBox>

@@ -11,8 +11,6 @@ export const NavBarShadowContainer = styled.div`
   padding-right: 14.24%;
   margin-top: -12px;
   height: 90px;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
   background-color: white;
 `;
 

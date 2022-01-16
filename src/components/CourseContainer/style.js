@@ -5,7 +5,6 @@ export const StyledCourseContainer = styled.div`
   width: 100%;
   min-width: 1100px;
   height: 120px;
-  border-radius: 20px;
   display: grid;
   grid-template-columns: 150px auto;
   margin-top: 20px;
