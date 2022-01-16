@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import styled from "styled-components";
+import { StyledSideMargin } from "../../../utility/COMMON_STYLE";
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -9,9 +10,7 @@ export const StyledTopContainer = styled.div`
   margin-top: 50px;
 `;
 
-export const StyledTopBox = styled.div`
-  padding-left: 14.24%;
-  padding-right: 14.24%;
+export const StyledTopBox = styled(StyledSideMargin)`
   display: flex;
 `;
 

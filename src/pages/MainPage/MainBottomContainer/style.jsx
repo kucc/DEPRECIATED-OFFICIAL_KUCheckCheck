@@ -1,9 +1,8 @@
 import styled from "styled-components";
+import { StyledSideMargin } from "../../../utility/COMMON_STYLE";
 
-export const StyledMainBottomWrapper = styled.div`
+export const StyledMainBottomWrapper = styled(StyledSideMargin)`
   margin-top: 100px;
-  margin-left: 14.21%;
-  margin-right: 14.21%;
   padding-bottom: 30px;
 `;
 

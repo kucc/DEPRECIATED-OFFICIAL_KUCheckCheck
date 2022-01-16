@@ -1,14 +1,13 @@
 import styled from "styled-components";
+import { StyledSideMargin } from "../../utility/COMMON_STYLE";
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
 `;
 
-export const StyledTimeTableBox = styled.div`
+export const StyledTimeTableBox = styled(StyledSideMargin)`
   display: grid;
   grid-template-rows: 100px auto;
-  margin-left: 14.24%;
-  margin-right: 14.24%;
 `;
 
 export const StyledTimeTableBackground = styled.div`

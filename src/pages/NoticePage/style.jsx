@@ -1,7 +1,8 @@
 import { Collapse } from "antd";
 import styled from "styled-components";
+import { StyledSideMargin } from "../../utility/COMMON_STYLE";
 
-export const StyledRulesBox = styled.div`
+export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
   grid-template-rows: 100px auto;
   margin-left: 14.24%;
