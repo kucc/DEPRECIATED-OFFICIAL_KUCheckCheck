@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { StyledSideMargin } from "../../utility/COMMON_STYLE";
+import styled from 'styled-components';
+import { StyledSideMargin } from '../../utility/COMMON_STYLE';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -17,7 +17,7 @@ export const StyledTimeTableBackground = styled.div`
 
 export const StyledTimeTableText = styled.div`
   margin-left: 5%;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin-top: 50px;
   font-size: 26px;
 `;

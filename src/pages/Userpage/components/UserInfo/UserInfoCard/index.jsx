@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { firestoreService } from "../../../../../firebase";
-import { FiPaperclip } from "react-icons/fi";
-import { HiOutlineMail } from "react-icons/hi";
+import React, { useEffect, useState } from 'react';
+
+import { FiPaperclip } from 'react-icons/fi';
+import { HiOutlineMail } from 'react-icons/hi';
+
+import { firestoreService } from '../../../../../firebase';
 import {
-  StyledInfoCardContainer,
   StyledDetailCommentBox,
-  StyledInfoCardEmoji,
+  StyledInfoBottom,
+  StyledInfoBottomContainer,
+  StyledInfoCardContainer,
   StyledInfoCardContour,
+  StyledInfoCardEmoji,
   StyledInfoDetailContainer,
   StyledInfoDetailName,
   StyledInfoDetailText,
+  StyledInfoEmail,
   StyledInfoIconContainer,
   StyledInfoLink,
-  StyledInfoEmail,
-  StyledInfoBottomContainer,
-  StyledInfoBottom,
-} from "./style";
+} from './style';
 
 function UserInfoCard({ userData }) {
-  const [firebaseUser, setfirebaseUser] = useState("");
+  const [firebaseUser, setfirebaseUser] = useState('');
   //유저 정보 불러오기
   useEffect(() => {
     async function fetchUserData() {
@@ -26,7 +28,7 @@ function UserInfoCard({ userData }) {
       // 다른 방법으로 Top 컴포넌트에서 변경된 값을 prop으로 가져와서 update 해주는 방법이 있음. 또는 이벤트 리스너 사용.
       if (userData) {
         const data = await firestoreService
-          .collection("users")
+          .collection('users')
           .doc(userData.userId)
           .get();
         setfirebaseUser(data.data());
@@ -54,7 +56,7 @@ function UserInfoCard({ userData }) {
         <StyledInfoBottomContainer>
           <StyledInfoBottom>
             <StyledInfoIconContainer>
-              <FiPaperclip color="white" />
+              <FiPaperclip color='white' />
             </StyledInfoIconContainer>
             <StyledInfoLink href={firebaseUser && firebaseUser.link}>
               {firebaseUser && firebaseUser.link}
@@ -62,7 +64,7 @@ function UserInfoCard({ userData }) {
           </StyledInfoBottom>
           <StyledInfoBottom>
             <StyledInfoIconContainer>
-              <HiOutlineMail color="white" />
+              <HiOutlineMail color='white' />
             </StyledInfoIconContainer>
             <StyledInfoEmail>
               {firebaseUser && firebaseUser.email}

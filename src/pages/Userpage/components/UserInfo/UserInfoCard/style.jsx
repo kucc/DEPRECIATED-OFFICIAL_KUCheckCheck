@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledInfoCardContainer = styled.div`
   background-color: white;
@@ -31,7 +31,7 @@ export const StyledInfoDetailContainer = styled.div`
 
 export const StyledInfoDetailName = styled.div`
   font-size: 32px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
 `;
 
 export const StyledInfoDetailText = styled.div``;

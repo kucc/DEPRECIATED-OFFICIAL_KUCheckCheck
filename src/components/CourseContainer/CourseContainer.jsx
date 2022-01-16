@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
+import React, { useState } from 'react';
+
+import { useHistory } from 'react-router';
+
+import CourseApplication from './CourseApplication';
 import {
   StyledCourseContainer,
   StyledCourseExplain,
@@ -8,8 +11,7 @@ import {
   StyledCourseLevel,
   StyledCourseText,
   StyledCourseTitle,
-} from "./style";
-import CourseApplication from "./CourseApplication";
+} from './style';
 
 function CourseContainer({ course, CourseApplicationState }) {
   const history = useHistory();
@@ -29,12 +31,12 @@ function CourseContainer({ course, CourseApplicationState }) {
             onMouseEnter={() => setonImageHover(true)}
             onMouseLeave={() => setonImageHover(false)}
             style={{
-              position: "absolute",
-              backgroundColor: "white",
-              borderRadius: "50%",
-              width: "60px",
+              position: 'absolute',
+              backgroundColor: 'white',
+              borderRadius: '50%',
+              width: '60px',
               zIndex: 3,
-              cursor: "pointer",
+              cursor: 'pointer',
             }}
             key={key}
             src={`/img/icon/${image}.png`}
@@ -45,13 +47,13 @@ function CourseContainer({ course, CourseApplicationState }) {
         return (
           <img
             style={{
-              position: "absolute",
-              backgroundColor: "white",
-              borderRadius: "50%",
-              width: "60px",
+              position: 'absolute',
+              backgroundColor: 'white',
+              borderRadius: '50%',
+              width: '60px',
               zIndex: 3 - key,
               left: onImageHover ? 45 + key * 70 : 45 + key * 20,
-              transition: "all .2s ease",
+              transition: 'all .2s ease',
             }}
             key={key}
             src={`/img/icon/${image}.png`}
@@ -88,36 +90,32 @@ function CourseContainer({ course, CourseApplicationState }) {
         </StyledCourseImgContainer>
         <StyledCourseExplainWrapper
           style={{
-            display: "grid",
+            display: 'grid',
             gridTemplateColumns: CourseApplicationState
-              ? "auto 250px 180px"
-              : "auto 250px",
-          }}
-        >
+              ? 'auto 250px 180px'
+              : 'auto 250px',
+          }}>
           <StyledCourseText
-            onClick={() => history.push(`/course/session/${course.id}`)}
-          >
+            onClick={() => history.push(`/course/session/${course.id}`)}>
             <StyledCourseTitle>
               <div>
                 {course.courseName.length < 18
                   ? course.courseName
-                  : course.courseName.slice(0, 18) + "..."}
+                  : course.courseName.slice(0, 18) + '...'}
               </div>
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>
           <StyledCourseLevel
-            onClick={() => history.push(`/course/session/${course.id}`)}
-          >
+            onClick={() => history.push(`/course/session/${course.id}`)}>
             <div
-              style={{ display: "flex", placeContent: "center", gap: "3px" }}
-            >
-              <div style={{ display: "flex" }}>
+              style={{ display: 'flex', placeContent: 'center', gap: '3px' }}>
+              <div style={{ display: 'flex' }}>
                 <div>난이도 : &nbsp;</div>
-                <div style={{ color: "red" }}>{course.difficulty}</div>
+                <div style={{ color: 'red' }}>{course.difficulty}</div>
                 <div>&nbsp;/</div>
               </div>
-              <div style={{ fontFamily: "NexonBo" }}>
+              <div style={{ fontFamily: 'NexonBo' }}>
                 {course.requireTime}학점
               </div>
             </div>

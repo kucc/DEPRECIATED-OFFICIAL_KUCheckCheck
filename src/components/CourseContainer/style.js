@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import styled from "styled-components";
+import { Button } from 'antd';
+import styled from 'styled-components';
 
 export const StyledCourseContainer = styled.div`
   width: 100%;
@@ -29,7 +29,7 @@ export const StyledCourseText = styled.div`
 
 export const StyledCourseTitle = styled.div`
   & > div {
-    font-family: "NexonBo";
+    font-family: 'NexonBo';
     font-size: 26px;
     margin-bottom: 5px;
   }
@@ -37,7 +37,7 @@ export const StyledCourseTitle = styled.div`
 
 export const StyledCourseExplain = styled.div`
   & > p {
-    font-family: "NexonRe";
+    font-family: 'NexonRe';
   }
   font-size: 13.3px;
   margin-top: -10px;

@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { firestoreService } from "../../../firebase";
-import { Select } from "antd";
-import "antd/dist/antd.css";
+import React, { useEffect, useState } from 'react';
+
+import { Select } from 'antd';
+import 'antd/dist/antd.css';
+import { useHistory } from 'react-router-dom';
+
+import { firestoreService } from '../../../firebase';
 import {
+  StyledAbsent,
+  StyledAttend,
   StyledAttendanceBox,
   StyledBox,
   StyledContainer,
   StyledEmoji,
   StyledLate,
-  StyledAttend,
-  StyledAbsent,
-} from "./style";
-import { useHistory } from "react-router-dom";
+} from './style';
+
 const { Option } = Select;
 
 function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
@@ -19,13 +22,13 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   const [userEmoji, setuserEmoji] = useState();
   const [courseAttendanceData, setCourseAttendanceData] = useState(userData);
   const history = useHistory();
-  const word = { absent: "결석", attend: "출석", late: "지각" };
+  const word = { absent: '결석', attend: '출석', late: '지각' };
 
   useEffect(() => {
     async function fetchUserData() {
       //user의 이름과 Emoji를 가져옴
       const userRef = await firestoreService
-        .collection("users")
+        .collection('users')
         .doc(userData.id)
         .get();
       setuserName(userRef.data().name);
@@ -53,7 +56,7 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
     editedAttendance(newCourseAttendanceData);
   };
 
-  const setDefaultValue = (state) => {
+  const setDefaultValue = state => {
     // return Default Value on state
     if (state === 0) {
       return word.attend;
@@ -89,8 +92,7 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
                     key={index}
                     defaultValue={setDefaultValue(state)}
                     style={{ width: 100 }}
-                    onChange={handleSelected}
-                  >
+                    onChange={handleSelected}>
                     <Option key={`0_${index}`} value={word.attend}>
                       {word.attend}
                     </Option>

@@ -1,8 +1,9 @@
-import React from "react";
-import NavBar from "../../components/NavBar/NavBar";
-import { StyledBackground } from "../NoticePage/style";
-import MainBottomContainer from "./MainBottomContainer";
-import MainTopContainer from "./MainTopContainer";
+import React from 'react';
+
+import NavBar from '../../components/NavBar/NavBar';
+import { StyledBackground } from '../NoticePage/style';
+import MainBottomContainer from './MainBottomContainer';
+import MainTopContainer from './MainTopContainer';
 
 function MainPage() {
   return (

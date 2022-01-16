@@ -1,5 +1,6 @@
-import React from "react";
-import { StyledInput, StyledLabel, Wrapper } from "./style";
+import React from 'react';
+
+import { StyledInput, StyledLabel, Wrapper } from './style';
 
 function InputBoxWithLabel({
   labelTitle,

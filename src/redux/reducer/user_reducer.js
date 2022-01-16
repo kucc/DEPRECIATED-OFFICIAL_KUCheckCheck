@@ -1,6 +1,5 @@
 // reducer의 기능 구현
-
-import { CLEAR_USER, SET_USER } from "../actions/types";
+import { CLEAR_USER, SET_USER } from '../actions/types';
 
 const initialUserState = {
   currentUser: null,

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const UserCourseTopContainer = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const UserCourseTopContainer = styled.div`
 
 export const UserCourseTopText = styled.div`
   font-size: 20px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin-left: 20px;
   margin-top: 50px;
 `;

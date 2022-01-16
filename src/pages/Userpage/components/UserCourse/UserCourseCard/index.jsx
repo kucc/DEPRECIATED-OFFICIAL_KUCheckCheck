@@ -1,13 +1,15 @@
-import { Timeline } from "antd";
-import React, { useEffect, useState } from "react";
-import CourseContainer from "../../../../../components/CourseContainer/CourseContainer";
-import EmptyBox from "../../../../../components/EmptyBox";
+import React, { useEffect, useState } from 'react';
+
+import { Timeline } from 'antd';
+
+import CourseContainer from '../../../../../components/CourseContainer/CourseContainer';
+import EmptyBox from '../../../../../components/EmptyBox';
 import {
   StyledCourseCardContainer,
   StyledCourseItemContainer,
   StyledCourseSemester,
   StyledTimelineItem,
-} from "./style";
+} from './style';
 
 function UserCourseCard({ userData }) {
   const [courseContainerArray, setcourseContainerArray] = useState([]);

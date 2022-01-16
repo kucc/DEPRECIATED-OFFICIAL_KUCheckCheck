@@ -1,14 +1,19 @@
-import React from "react";
-import { Timeline } from "antd";
-import { StyledContainer } from "./style";
+import React from 'react';
 
-function CourseCurriculum({curriculum}) {
+import { Timeline } from 'antd';
 
+import { StyledContainer } from './style';
+
+function CourseCurriculum({ curriculum }) {
   return (
     <StyledContainer>
-      <Timeline mode="left">
+      <Timeline mode='left'>
         {curriculum.map((el, i) => {
-          return <Timeline.Item color="gray" label={`${i + 1}주차`}>{el}</Timeline.Item>;
+          return (
+            <Timeline.Item color='gray' label={`${i + 1}주차`}>
+              {el}
+            </Timeline.Item>
+          );
         })}
       </Timeline>
     </StyledContainer>

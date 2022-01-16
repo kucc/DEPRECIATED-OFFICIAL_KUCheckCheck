@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledFooterContainer = styled.div`
   padding-top: 100px;
@@ -14,7 +14,7 @@ export const StyledFooterBox = styled.div`
 `;
 
 export const StyledFooterTitle = styled.div`
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   font-size: 14px;
   width: 200px;
 `;

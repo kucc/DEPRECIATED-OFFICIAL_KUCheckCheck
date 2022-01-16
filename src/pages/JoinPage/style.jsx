@@ -1,5 +1,5 @@
-import { Col, Row } from "antd";
-import styled from "styled-components";
+import { Col, Row } from 'antd';
+import styled from 'styled-components';
 
 export const StyledRow = styled(Row)`
   background-color: #f5f5f5;

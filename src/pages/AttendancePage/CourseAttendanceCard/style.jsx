@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { StyledSidePadding } from "../../../utility/COMMON_STYLE";
+import styled from 'styled-components';
+import { StyledSidePadding } from '../../../utility/COMMON_STYLE';
 
 export const StyledContainer = styled(StyledSidePadding)`
   background-color: rgb(245, 245, 245);
@@ -13,7 +13,7 @@ export const StyledBox = styled.div`
   background-color: white;
   border-radius: 50%;
   text-align: center;
-  font-family: "NexonRe";
+  font-family: 'NexonRe';
   font-size: 10px;
   width: 130px;
   height: 130px;
@@ -41,19 +41,19 @@ export const StyledAttendanceBox = styled.div`
 `;
 
 export const StyledAttend = styled.div`
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   color: #000000;
   margin: 3%;
 `;
 
 export const StyledAbsent = styled.div`
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   color: red;
   margin: 3%;
 `;
 
 export const StyledLate = styled.div`
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   color: #e67d4f;
   margin: 3%;
 `;

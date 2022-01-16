@@ -1,6 +1,7 @@
-import React from "react";
-import UserCourseCard from "./UserCourseCard";
-import UserCourseTop from "./UserCourseTop";
+import React from 'react';
+
+import UserCourseCard from './UserCourseCard';
+import UserCourseTop from './UserCourseTop';
 
 function UserCourse({ userData }) {
   return (

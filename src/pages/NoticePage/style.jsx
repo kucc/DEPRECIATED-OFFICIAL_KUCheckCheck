@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { Collapse } from "antd";
 import styled from "styled-components";
 import { StyledSideMargin } from "../../utility/COMMON_STYLE";
+=======
+import { Collapse } from 'antd';
+import styled from 'styled-components';
+>>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
 
 export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
@@ -12,7 +17,7 @@ export const StyledRulesBox = styled(StyledSideMargin)`
 export const StyledRulesTitle = styled.div`
   font-size: 26px;
   margin-left: 5%;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin-top: 50px;
 `;
 

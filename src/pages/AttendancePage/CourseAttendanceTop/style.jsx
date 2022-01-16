@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { Button } from "antd";
 import styled from "styled-components";
 import { StyledSideMargin } from "../../../utility/COMMON_STYLE";
+=======
+import { Button } from 'antd';
+import styled from 'styled-components';
+>>>>>>> 07c6c05844124c4efcc890d219209c5c04ed114c
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -16,7 +21,7 @@ export const StyledTopBox = styled(StyledSideMargin)`
 
 export const StyledTopTitle = styled.div`
   font-size: 24px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
 `;
 
 export const StyledTopDesc = styled.div`

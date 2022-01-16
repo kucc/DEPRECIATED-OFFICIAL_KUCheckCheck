@@ -1,6 +1,6 @@
-import { InputNumber } from "antd";
-import TextArea from "antd/lib/input/TextArea";
-import styled from "styled-components";
+import { InputNumber } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import styled from 'styled-components';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -61,7 +61,7 @@ export const StyledInputNumber = styled(InputNumber)`
 
 export const StyledText = styled.p`
   font-size: 15px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
   margin: 30px;
   margin-top: 0px;
 `;

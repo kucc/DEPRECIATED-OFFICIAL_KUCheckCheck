@@ -1,24 +1,26 @@
-import React, { useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import { authService } from "./firebase";
-import { useDispatch } from "react-redux";
-import { clearUser, setUser } from "./redux/actions/user_action";
-import "antd/dist/antd.css";
-import "./App.css";
-import { ALREADY_LOGGED_IN } from "./utility/ALERT_MESSAGE";
-import Footer from "./components/Footer";
-import TimeTablePage from "./pages/TimeTablePage";
-import course from "./hoc/course";
-import userPage from "./hoc/userPage";
-import CoursePage from "./pages/CoursePage";
-import auth from "./hoc/auth";
-import LoginPage from "./pages/LoginPage";
-import JoinPage from "./pages/JoinPage";
-import NoticePage from "./pages/NoticePage";
-import CourseRegisterPage from "./pages/CourseRegisterPage";
-import MainPage from "./pages/MainPage";
-import AttendacePage from "./pages/AttendancePage";
+import React, { useEffect } from 'react';
+
+import 'antd/dist/antd.css';
+import { useDispatch } from 'react-redux';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+
+import './App.css';
+import Footer from './components/Footer';
+import { authService } from './firebase';
+import auth from './hoc/auth';
+import course from './hoc/course';
+import userPage from './hoc/userPage';
+import AttendacePage from './pages/AttendancePage';
+import CoursePage from './pages/CoursePage';
+import CourseRegisterPage from './pages/CourseRegisterPage';
+import JoinPage from './pages/JoinPage';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import NoticePage from './pages/NoticePage';
+import TimeTablePage from './pages/TimeTablePage';
+import { clearUser, setUser } from './redux/actions/user_action';
+import { ALREADY_LOGGED_IN } from './utility/ALERT_MESSAGE';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +28,11 @@ function App() {
 
   useEffect(() => {
     const path = document.location.pathname;
-    authService.onAuthStateChanged((user) => {
+    authService.onAuthStateChanged(user => {
       if (user) {
-        if (path === "/login" || path === "/signup") {
+        if (path === '/login' || path === '/signup') {
           alert(ALREADY_LOGGED_IN);
-          history.push("/");
+          history.push('/');
         }
         dispatch(setUser(user));
       } else {
@@ -46,11 +48,11 @@ function App() {
     <>
       <GlobalStyle />
       <Switch>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={JoinPage} />
-        <Route path="/userpage/:id" component={userPage()} />
-        <Route path="/rules" component={NoticePage} />
-        <Route path="/timetable" component={TimeTablePage} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={JoinPage} />
+        <Route path='/userpage/:id' component={userPage()} />
+        <Route path='/rules' component={NoticePage} />
+        <Route path='/timetable' component={TimeTablePage} />
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
@@ -59,12 +61,12 @@ function App() {
         */}
         <Route
           exact
-          path="/course/session/:id"
+          path='/course/session/:id'
           component={course(CoursePage, 0)}
         />
         <Route
           exact
-          path="/course/session/:id/attendance"
+          path='/course/session/:id/attendance'
           component={course(AttendacePage, 1)}
         />
         {/* <Route
@@ -78,11 +80,10 @@ function App() {
         /> */}
         <Route
           exact
-          path="/course/register"
-          exact
+          path='/course/register'
           component={auth(CourseRegisterPage)}
         />
-        <Route path="/" exact component={MainPage} />
+        <Route path='/' exact component={MainPage} />
       </Switch>
       <Footer />
     </>

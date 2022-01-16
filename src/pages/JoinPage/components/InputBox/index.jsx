@@ -1,7 +1,15 @@
-import React from "react";
-import InputBoxWithLabel from "../../../../components/InputBoxWithLabel";
+import React from 'react';
 
-function InputBox({ labelTitle, inputName, inputType, placeholder, value, onChange }) {
+import InputBoxWithLabel from '../../../../components/InputBoxWithLabel';
+
+function InputBox({
+  labelTitle,
+  inputName,
+  inputType,
+  placeholder,
+  value,
+  onChange,
+}) {
   return (
     <InputBoxWithLabel
       labelTitle={labelTitle}
