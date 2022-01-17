@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
 import NavBar from '@components/NavBar';
@@ -29,23 +29,19 @@ function CourseAttendanceTop({
   isEditMode,
   courseAttendance,
   courseCheckAdmin,
+  toggleEditMode,
 }) {
   const user = useSelector(state => state.user.currentUser);
-  const location = useLocation();
   const history = useHistory();
 
   const handleClick = async () => {
+    toggleEditMode();
     if (isEditMode) {
       // course 정보 update
       await firestoreService
         .collection('courses')
         .doc(courseId)
         .update({ courseAttendance: courseAttendance });
-      history.goBack();
-    } else {
-      history.push({
-        pathname: `${location.pathname}/edit`,
-      });
     }
   };
 
@@ -103,4 +99,5 @@ CourseAttendanceTop.propTypes = {
   isEditMode: PropTypes.bool,
   courseAttendance: PropTypes.array,
   courseCheckAdmin: PropTypes.array,
+  toggleEditMode: PropTypes.func,
 };

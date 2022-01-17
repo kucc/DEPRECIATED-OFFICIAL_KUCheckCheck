@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -10,13 +10,32 @@ function AttendacePage({ courseData }) {
   const userData = courseData.courseAttendance;
   const courseId = courseData.courseId;
   const courseCheckAdmin = courseData.courseCheckAdmin;
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [courseAttendance, setcourseAttendance] = useState();
+
+  useEffect(() => {
+    courseData.courseAttendance &&
+      setcourseAttendance(courseData.courseAttendance);
+  }, [courseData]);
+
+  const onEditedAttendance = data => {
+    let newcourseAttendance = courseAttendance;
+    courseAttendance.map((course, key) => {
+      if (course.id === data.id) {
+        newcourseAttendance[key] = data;
+      }
+    });
+    setcourseAttendance(newcourseAttendance);
+  };
 
   return (
     <>
       <CourseAttendanceTop
         courseName={courseName}
         courseId={courseId}
-        isEditMode={false}
+        isEditMode={isEditMode}
+        toggleEditMode={() => setIsEditMode(prev => !prev)}
+        courseAttendance={courseAttendance}
         courseCheckAdmin={courseCheckAdmin}
       />
       {userData &&
@@ -25,7 +44,8 @@ function AttendacePage({ courseData }) {
             <CourseAttendanceCard
               key={key}
               userData={userData}
-              isEditMode={false}
+              isEditMode={isEditMode}
+              editedAttendance={data => onEditedAttendance(data)}
             />
           );
         })}
