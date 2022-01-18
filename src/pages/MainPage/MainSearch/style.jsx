@@ -24,15 +24,6 @@ export const StyledTag = styled(CheckableTag)`
     color: white;
   }
 `;
-
-export const StyledIconContainer = styled.div`
-  background-color: black;
-  width: 27px;
-  height: 27px;
-  display: grid;
-  place-items: center;
-`;
-
 export const StyledSearchContainer = styled.div`
   margin-top: 2em;
   display: flex;
