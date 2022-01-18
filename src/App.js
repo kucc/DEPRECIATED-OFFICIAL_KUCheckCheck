@@ -70,11 +70,6 @@ function App() {
           component={course(AttendacePage, 1)}
         />
         {/* <Route
-          exact
-          path="/course/session/:id/attendance/edit"
-          component={course(CourseAttendaceEdit, 3)}
-        /> */}
-        {/* <Route
           path="/course/session/:id/change"
           component={course(CourseChange, 2)}
         /> */}

@@ -72,11 +72,13 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   return (
     <>
       <StyledContainer>
-        <StyledBox onClick={() => history.push(`/userpage/${userData.id}`)}>
+        <StyledBox
+          className='out-shadow-middle'
+          onClick={() => history.push(`/userpage/${userData.id}`)}>
           <StyledEmoji>{userEmoji}</StyledEmoji>
           <p>{userName}</p>
         </StyledBox>
-        <StyledAttendanceBox>
+        <StyledAttendanceBox className='in-shadow-weak'>
           {courseAttendanceData &&
             courseAttendanceData.attendance.map((state, index) => {
               if (isEditMode === false) {
