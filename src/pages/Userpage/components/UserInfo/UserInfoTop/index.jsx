@@ -139,5 +139,5 @@ export default UserInfoTop;
 
 UserInfoTop.propTypes = {
   onChangeFunc: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
+  userData: PropTypes.array.isRequired,
 };

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 // TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
 import { authService, firestoreService } from '@/firebase';
 import {
@@ -10,13 +11,13 @@ import {
   NEED_TO_LOGIN,
 } from '@utility/ALERT_MESSAGE';
 
-export default function (SpecificComponent, option) {
+function CourseHoc(SpecificComponent, option) {
   // option : 0 => 모든 사람이 출입할 수 있음
   // option : 1 => 로그인된 사람만이 출입할 수 있음
   // option : 2 => 세션장만이 출입할 수 있음
   // option : 3 => 출석관리자만이 출입할 수 있음
 
-  function CourseCheck(props) {
+  const CourseCheck = props => {
     const [courseData, setCourseData] = useState([]);
 
     useEffect(() => {
@@ -60,11 +61,16 @@ export default function (SpecificComponent, option) {
     }, []);
     // 해당 Component로 courseData prop을 보내줌.
     return <SpecificComponent {...props} courseData={courseData} />;
-  }
+  };
+  CourseCheck.propTypes = {
+    props: PropTypes.object.isRequired,
+  };
   return CourseCheck;
 }
 
-// CourseCheck.propTypes = {
-//   history: PropTypes.object.isRequired,
-//   match: PropTypes.object.isRequired,
-// };
+CourseHoc.propTypes = {
+  SpecificComponent: PropTypes.element.isRequired,
+  option: PropTypes.number.isRequired,
+};
+
+export default CourseHoc;

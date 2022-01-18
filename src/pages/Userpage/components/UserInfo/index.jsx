@@ -23,5 +23,5 @@ function UserInfo({ userData }) {
 export default UserInfo;
 
 UserInfo.propTypes = {
-  userData: PropTypes.object,
+  userData: PropTypes.array,
 };

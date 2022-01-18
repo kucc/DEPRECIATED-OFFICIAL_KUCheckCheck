@@ -17,5 +17,5 @@ function UserCourse({ userData }) {
 export default UserCourse;
 
 UserCourse.propTypes = {
-  userData: PropTypes.object,
+  userData: PropTypes.array,
 };

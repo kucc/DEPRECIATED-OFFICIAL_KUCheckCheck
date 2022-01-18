@@ -8,9 +8,9 @@ import { createGlobalStyle } from 'styled-components';
 import './App.css';
 import Footer from './components/Footer';
 import { authService } from './firebase';
-import auth from './hoc/auth';
-import course from './hoc/course';
-import userPage from './hoc/userPage';
+import AuthHoc from './hoc/auth';
+import CourseHoc from './hoc/course';
+import UserPageHoc from './hoc/userPage';
 import AttendacePage from './pages/AttendancePage';
 import CoursePage from './pages/CoursePage';
 import CourseRegisterPage from './pages/CourseRegisterPage';
@@ -50,7 +50,7 @@ function App() {
       <Switch>
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={JoinPage} />
-        <Route path='/userpage/:id' component={userPage()} />
+        <Route path='/userpage/:id' component={UserPageHoc()} />
         <Route path='/rules' component={NoticePage} />
         <Route path='/timetable' component={TimeTablePage} />
         {/* 
@@ -62,12 +62,12 @@ function App() {
         <Route
           exact
           path='/course/session/:id'
-          component={course(CoursePage, 0)}
+          component={CourseHoc(CoursePage, 0)}
         />
         <Route
           exact
           path='/course/session/:id/attendance'
-          component={course(AttendacePage, 1)}
+          component={CourseHoc(AttendacePage, 1)}
         />
         {/* <Route
           path="/course/session/:id/change"
@@ -76,7 +76,7 @@ function App() {
         <Route
           exact
           path='/course/register'
-          component={auth(CourseRegisterPage)}
+          component={AuthHoc(CourseRegisterPage)}
         />
         <Route path='/' exact component={MainPage} />
       </Switch>

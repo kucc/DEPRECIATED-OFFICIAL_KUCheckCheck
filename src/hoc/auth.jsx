@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 
-// import PropTypes from 'prop-types';
-// TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
+import PropTypes from 'prop-types';
+
 import { authService } from '@/firebase';
 import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
-export default function (SpecificComponent) {
-  function AuthCheck(props) {
+function AuthHoc(SpecificComponent) {
+  const AuthCheck = props => {
     useEffect(() => {
       authService.onAuthStateChanged(user => {
         if (!user) {
@@ -18,9 +18,13 @@ export default function (SpecificComponent) {
     }, []);
 
     return <SpecificComponent {...props} />;
-  }
+  };
+  AuthCheck.propTypes = {
+    props: PropTypes.object,
+  };
   return AuthCheck;
 }
-// AuthCheck.propTypes = {
-//   history: PropTypes.object.isRequired,
-// };
+AuthHoc.propTypes = {
+  SpecificComponent: PropTypes.element,
+};
+export default AuthHoc;
