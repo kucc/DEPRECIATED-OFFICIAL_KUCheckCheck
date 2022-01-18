@@ -53,7 +53,7 @@ function UserInfoTop({ onChangeFunc, userData }) {
     } catch (error) {
       alert('Error updating document: ', error);
     }
-    // 상위 컴포넌트를 리렌더링 하기 위해 key 값에 Data() 값을 보냄.
+    // 상위 컴포넌트를 리렌더링 하기 위해 key 값에 Date() 값을 보냄.
     onChangeFunc(Date());
   };
 
@@ -139,5 +139,5 @@ export default UserInfoTop;
 
 UserInfoTop.propTypes = {
   onChangeFunc: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
+  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 };

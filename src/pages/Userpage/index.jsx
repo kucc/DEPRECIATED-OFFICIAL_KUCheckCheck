@@ -23,5 +23,5 @@ function UserPage({ userData }) {
 export default UserPage;
 
 UserPage.propTypes = {
-  userData: PropTypes.object,
+  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
