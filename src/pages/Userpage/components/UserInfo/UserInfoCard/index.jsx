@@ -81,5 +81,5 @@ function UserInfoCard({ userData }) {
 export default UserInfoCard;
 
 UserInfoCard.propTypes = {
-  userData: PropTypes.array,
+  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
