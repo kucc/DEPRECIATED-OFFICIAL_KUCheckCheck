@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import styled from 'styled-components';
 
-import { StyledSideMargin } from '../../../utility/COMMON_STYLE';
+import { StyledSideMargin } from '@utility/COMMON_STYLE';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);

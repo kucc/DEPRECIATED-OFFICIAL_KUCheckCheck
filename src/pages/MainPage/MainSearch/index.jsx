@@ -4,9 +4,10 @@ import { BiSearch } from 'react-icons/bi';
 import { FaHashtag } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 
+import { setCategory, setSearch } from '@redux/actions/search_action';
+
 import BlackIcon from '@components/BlackIcon';
 
-import { setCategory, setSearch } from '../../../redux/actions/search_action';
 import {
   StyledQuickSearchContainer,
   StyledQuickSearchText,
