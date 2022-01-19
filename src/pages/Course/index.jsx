@@ -6,8 +6,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import { firestoreService } from "../../firebase";
 import CourseCurriculum from "./components/CourseCurriculum";
 
-import { firestoreService } from "../../firebase";
-
 function CoursePage() {
   const location = useLocation();
   const history = useHistory();
@@ -76,7 +74,7 @@ function CoursePage() {
         name={leaderInfo.name}
         detailComment={leaderInfo.detailComment}
       />
-      {console.log(selected,courseInfo)}
+      {console.log(selected, courseInfo)}
       <ToggleButton setSelected={setSelected} />
       {/* 세션 소개 | 커리큘럼 선택버튼 */}
       {selected === "introduction" ? (
