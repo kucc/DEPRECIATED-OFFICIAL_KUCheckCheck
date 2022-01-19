@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 
-<<<<<<< HEAD:src/pages/Course/index.jsx
-=======
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -13,7 +11,6 @@ import { firestoreService } from '@/firebase';
 
 import CourseCurriculum from './components/CourseCurriculum';
 
->>>>>>> 28adda79f7f1a89c35330ec2c3ed7d466bfb15e7:src/pages/CoursePage/index.jsx
 function CoursePage() {
   const location = useLocation();
   const history = useHistory();
