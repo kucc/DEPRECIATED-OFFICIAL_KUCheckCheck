@@ -1,13 +1,10 @@
-import { Button } from "antd";
-import styled from "styled-components";
+import { Button } from 'antd';
+import styled from 'styled-components';
 
 export const StyledCourseContainer = styled.div`
   width: 100%;
   min-width: 1100px;
   height: 120px;
-  border-radius: 20px;
-  box-shadow: rgb(50 50 93 / 15%) 0px 13px 27px -5px,
-    rgb(0 0 0 / 10%) 0px 8px 16px -8px;
   display: grid;
   grid-template-columns: 150px auto;
   margin-top: 20px;
@@ -32,7 +29,7 @@ export const StyledCourseText = styled.div`
 
 export const StyledCourseTitle = styled.div`
   & > div {
-    font-family: "NexonBo";
+    font-family: 'NexonBo';
     font-size: 26px;
     margin-bottom: 5px;
   }
@@ -40,7 +37,7 @@ export const StyledCourseTitle = styled.div`
 
 export const StyledCourseExplain = styled.div`
   & > p {
-    font-family: "NexonRe";
+    font-family: 'NexonRe';
   }
   font-size: 13.3px;
   margin-top: -10px;

@@ -1,0 +1,32 @@
+{
+  "extends": "./jsconfig.paths.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "module": "commonjs",
+    "target": "es5",
+    "baseUrl": ".",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hoc/*": ["./src/hoc/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@actions/*": ["./src/redux/actions/*"],
+      "@reducer/*": ["./src/redux/reducer/*"],
+      "@font/*": ["./src/font/*"],
+      "@utility/*": ["./src/utility/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "craco.config.js"],
+  "exclude": ["node_modules"]
+}

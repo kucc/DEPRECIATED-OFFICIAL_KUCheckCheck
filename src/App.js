@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Main from "./pages/Main";
-import { authService } from "./firebase";
-import { useDispatch } from "react-redux";
-import { clearUser, setUser } from "./redux/actions/user_action";
-import "antd/dist/antd.css";
-import "./App.css";
-import { ALREADY_LOGGED_IN } from "./constants/ERROR_MESSAGE";
-import CourseAttendace from "./pages/Course/CourseAttendance";
-import CourseAttendaceEdit from "./pages/Course/CourseAttendanceEdit";
-import CoursePage from "./pages/Course";
-import Footer from "./components/Footer";
-import Rules from "./pages/Rules";
-import CourseNew from "./pages/CourseNew";
-import TimeTablePage from "./pages/TimeTablePage";
-import CourseChange from "./pages/Course/CourseChange";
-import course from "./hoc/course";
-import userPage from "./hoc/userPage";
-import auth from "./hoc/auth";
+import React, { useEffect } from 'react';
+
+import 'antd/dist/antd.css';
+import { useDispatch } from 'react-redux';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+
+import './App.css';
+import Footer from './components/Footer';
+import { authService } from './firebase';
+import AuthHoc from './hoc/auth';
+import CourseHoc from './hoc/course';
+import UserPageHoc from './hoc/userPage';
+import AttendacePage from './pages/AttendancePage';
+import CoursePage from './pages/CoursePage';
+import CourseRegisterPage from './pages/CourseRegisterPage';
+import JoinPage from './pages/JoinPage';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import NoticePage from './pages/NoticePage';
+import TimeTablePage from './pages/TimeTablePage';
+import { clearUser, setUser } from './redux/actions/user_action';
+import { ALREADY_LOGGED_IN } from './utility/ALERT_MESSAGE';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,11 +28,11 @@ function App() {
 
   useEffect(() => {
     const path = document.location.pathname;
-    authService.onAuthStateChanged((user) => {
+    authService.onAuthStateChanged(user => {
       if (user) {
-        if (path === "/login" || path === "/signup") {
+        if (path === '/login' || path === '/signup') {
           alert(ALREADY_LOGGED_IN);
-          history.push("/");
+          history.push('/');
         }
         dispatch(setUser(user));
       } else {
@@ -48,11 +48,11 @@ function App() {
     <>
       <GlobalStyle />
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/userpage/:id" component={userPage()} />
-        <Route path="/rules" component={Rules} />
-        <Route path="/timetable" component={TimeTablePage} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={JoinPage} />
+        <Route path='/userpage/:id' component={UserPageHoc()} />
+        <Route path='/rules' component={NoticePage} />
+        <Route path='/timetable' component={TimeTablePage} />
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
@@ -61,25 +61,24 @@ function App() {
         */}
         <Route
           exact
-          path="/course/session/:id"
-          component={course(CoursePage, 0)}
+          path='/course/session/:id'
+          component={CourseHoc(CoursePage, 0)}
         />
         <Route
           exact
-          path="/course/session/:id/attendance"
-          component={course(CourseAttendace, 1)}
+          path='/course/session/:id/attendance'
+          component={CourseHoc(AttendacePage, 1)}
         />
-        <Route
-          exact
-          path="/course/session/:id/attendance/edit"
-          component={course(CourseAttendaceEdit, 3)}
-        />
-        <Route
+        {/* <Route
           path="/course/session/:id/change"
           component={course(CourseChange, 2)}
+        /> */}
+        <Route
+          exact
+          path='/course/register'
+          component={AuthHoc(CourseRegisterPage)}
         />
-        <Route path="/course-new" exact component={auth(CourseNew)} />
-        <Route path="/" exact component={Main} />
+        <Route path='/' exact component={MainPage} />
       </Switch>
       <Footer />
     </>
@@ -90,10 +89,40 @@ export default App;
 
 const GlobalStyle = createGlobalStyle`
   * {
-    /* background-color: rgb(245, 245, 245); */
     padding: 0px;
     margin: 0px;
-    /* box-sizing: border-box; */
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+  }
+  .out-shadow-strong{
+    box-shadow: 0 11px 10px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-middle{
+    box-shadow: 0 6px 5px 2px lightgrey;
+    transition: all 0.15s;
+  }
+  .out-shadow-weak{
+    box-shadow: 0px 3px 1.5px lightgrey;
+  }
+  .in-shadow-weak{
+    box-shadow: inset 0px 3px 1.5px lightgrey;
+    background-color: white;
+    transition: all 0.1s;
+  }
+  // bottom에만 border radius
+  .border-radius-bottom-strong{
+    border-bottom-right-radius: 67px;
+  border-bottom-left-radius: 67px;
+  }
+  .border-radius-bottom{
+    border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  }
+  // 각 모서리 전부 border radius
+  .border-radius-all-half{
+    border-radius : 50%
+  }
+  .border-radius-all{
+    border-radius : 30px
   }
 `;

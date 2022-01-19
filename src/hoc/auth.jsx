@@ -1,20 +1,30 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { NEED_TO_LOGIN } from "../constants/ERROR_MESSAGE";
-import { authService } from "../firebase";
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 
-export default function (SpecificComponent) {
-  function AuthCheck(props) {
+import PropTypes from 'prop-types';
+
+import { authService } from '@/firebase';
+import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
+
+function AuthHoc(SpecificComponent) {
+  const AuthCheck = props => {
     useEffect(() => {
-      authService.onAuthStateChanged((user) => {
+      authService.onAuthStateChanged(user => {
         if (!user) {
           alert(NEED_TO_LOGIN);
-          props.history.push("/login");
+          props.history.push('/login');
         }
       });
     }, []);
 
     return <SpecificComponent {...props} />;
-  }
+  };
+  AuthCheck.propTypes = {
+    props: PropTypes.object,
+  };
   return AuthCheck;
 }
+AuthHoc.propTypes = {
+  SpecificComponent: PropTypes.element,
+};
+export default AuthHoc;

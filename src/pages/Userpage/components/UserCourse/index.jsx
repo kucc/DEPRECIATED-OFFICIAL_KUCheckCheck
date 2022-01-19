@@ -1,6 +1,9 @@
-import React from "react";
-import UserCourseCard from "./UserCourseCard";
-import UserCourseTop from "./UserCourseTop";
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import UserCourseCard from './UserCourseCard';
+import UserCourseTop from './UserCourseTop';
 
 function UserCourse({ userData }) {
   return (
@@ -12,3 +15,7 @@ function UserCourse({ userData }) {
 }
 
 export default UserCourse;
+
+UserCourse.propTypes = {
+  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledUserInfoTopContainer = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const StyledUserInfoTopContainer = styled.div`
 
 export const StyledUserInfoTopTitle = styled.div`
   font-size: 26px;
-  font-family: "NexonBo";
+  font-family: 'NexonBo';
 `;
 
 export const StyledUserInfoModalText = styled.div``;

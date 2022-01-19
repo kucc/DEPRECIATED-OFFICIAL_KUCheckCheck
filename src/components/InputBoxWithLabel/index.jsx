@@ -1,5 +1,8 @@
-import React from "react";
-import { StyledInput, StyledLabel, Wrapper } from "./style";
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import { StyledInput, StyledLabel, Wrapper } from './style';
 
 function InputBoxWithLabel({
   labelTitle,
@@ -26,3 +29,12 @@ function InputBoxWithLabel({
 }
 
 export default InputBoxWithLabel;
+
+InputBoxWithLabel.propTypes = {
+  labelTitle: PropTypes.string,
+  inputName: PropTypes.string,
+  inputType: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
