@@ -5,7 +5,8 @@ import { BASE_COLOR } from '@utility/COLORS';
 import { StyledSidePadding } from '../../../utility/COMMON_STYLE';
 
 export const StyledContainer = styled(StyledSidePadding)`
-  background-color: $ ${BASE_COLOR};
+  background-color: ${BASE_COLOR};
+
   display: grid;
   grid-template-columns: 130px auto;
   padding-bottom: 40px;
