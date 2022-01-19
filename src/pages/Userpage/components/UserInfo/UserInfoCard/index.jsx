@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 
+import BlackIcon from '@components/BlackIcon';
+
 import { firestoreService } from '@/firebase';
 
 import {
@@ -17,7 +19,6 @@ import {
   StyledInfoDetailName,
   StyledInfoDetailText,
   StyledInfoEmail,
-  StyledInfoIconContainer,
   StyledInfoLink,
 } from './style';
 
@@ -57,17 +58,13 @@ function UserInfoCard({ userData }) {
         </StyledDetailCommentBox>
         <StyledInfoBottomContainer>
           <StyledInfoBottom>
-            <StyledInfoIconContainer>
-              <FiPaperclip color='white' />
-            </StyledInfoIconContainer>
+            <BlackIcon IconComponent={<FiPaperclip color='white' />} />
             <StyledInfoLink href={firebaseUser && firebaseUser.link}>
               {firebaseUser && firebaseUser.link}
             </StyledInfoLink>
           </StyledInfoBottom>
           <StyledInfoBottom>
-            <StyledInfoIconContainer>
-              <HiOutlineMail color='white' />
-            </StyledInfoIconContainer>
+            <BlackIcon IconComponent={<HiOutlineMail color='white' />} />
             <StyledInfoEmail>
               {firebaseUser && firebaseUser.email}
             </StyledInfoEmail>

@@ -4,9 +4,10 @@ import { BiSearch } from 'react-icons/bi';
 import { FaHashtag } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 
+import BlackIcon from '@components/BlackIcon';
+
 import { setCategory, setSearch } from '../../../redux/actions/search_action';
 import {
-  StyledIconContainer,
   StyledQuickSearchContainer,
   StyledQuickSearchText,
   StyledSearchBar,
@@ -74,9 +75,7 @@ function MainSearch() {
       </StyledSearchContainer>
       <StyledQuickSearchContainer>
         <StyledQuickSearchText>
-          <StyledIconContainer>
-            <FaHashtag color='white' />
-          </StyledIconContainer>
+          <BlackIcon IconComponent={<FaHashtag color='white' />} />
           &emsp;빠른 검색
         </StyledQuickSearchText>
         <div>
