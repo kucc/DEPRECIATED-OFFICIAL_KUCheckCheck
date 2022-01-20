@@ -62,12 +62,3 @@ export const StyledDetailCommentBox = styled.div`
   border-radius: 24px;
   padding: 23px;
 `;
-
-export const StyledInfoIconContainer = styled.div`
-  background-color: black;
-  width: 27px;
-  height: 27px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-`;
