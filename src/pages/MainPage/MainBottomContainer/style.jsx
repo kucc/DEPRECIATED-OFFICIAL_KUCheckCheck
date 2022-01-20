@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { StyledSideMargin } from '../../../utility/COMMON_STYLE';
+
+import { StyledSideMargin } from '@utility/COMMON_STYLE';
 
 export const StyledMainBottomWrapper = styled(StyledSideMargin)`
   margin-top: 100px;

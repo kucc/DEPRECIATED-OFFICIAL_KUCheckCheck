@@ -13,7 +13,9 @@ function Description() {
     <DescriptionForm>
       <DescriptionLogo
         alt='KUCC Icon'
-        src={'./img/KUCCicon.png'}
+        src={
+          'https://user-images.githubusercontent.com/41494099/86317182-c58a8900-bc69-11ea-9a6e-dfdb1e0141be.png'
+        }
         onClick={() => history.push('/')}
       />
       <Title>
