@@ -84,32 +84,6 @@ function CourseRegisterBox({ enrollHandler }) {
       <NavBar />
       <StyledTopContainer>
         <p style={{ fontSize: '20px', fontFamily: 'NexonBo' }}>등록하기</p>
-
-        {/* <S.MainSessTab style={{ marginBottom: "17px" }}>
-          <S.MainSessItem onClick={() => setcourseType(1)}>
-            {courseType === 1 ? (
-              <S.MainSessItemOnClick>세션</S.MainSessItemOnClick>
-            ) : (
-              <S.MainSessItemOffClick>세션</S.MainSessItemOffClick>
-            )}
-            <S.MainVerticalLine />
-          </S.MainSessItem>
-          <S.MainSessItem onClick={() => setcourseType(2)}>
-            {courseType === 2 ? (
-              <S.MainSessItemOnClick>스터디</S.MainSessItemOnClick>
-            ) : (
-              <S.MainSessItemOffClick>스터디</S.MainSessItemOffClick>
-            )}
-            <S.MainVerticalLine />
-          </S.MainSessItem>
-          <S.MainSessItem onClick={() => setcourseType(3)}>
-            {courseType === 3 ? (
-              <S.MainSessItemOnClick>프로젝트</S.MainSessItemOnClick>
-            ) : (
-              <S.MainSessItemOffClick>프로젝트</S.MainSessItemOffClick>
-            )}
-          </S.MainSessItem>
-        </S.MainSessTab> */}
       </StyledTopContainer>
 
       <StyledBottomContainer className='border-radius-all'>
@@ -140,7 +114,7 @@ function CourseRegisterBox({ enrollHandler }) {
                     marginRight: '20px',
                     objectFit: 'contain',
                   }}
-                  src={`./img/icon/${selectedImg}.png`}
+                  src={`./img/icon/${selectedImg}.svg`}
                 />
 
                 <Select
