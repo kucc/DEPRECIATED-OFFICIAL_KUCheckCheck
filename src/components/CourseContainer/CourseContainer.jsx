@@ -47,7 +47,7 @@ function CourseContainer({ course, CourseApplicationState }) {
               cursor: 'pointer',
             }}
             key={key}
-            src={`/img/icon/${image}.png`}
+            src={`/img/icon/${image}.svg`}
             onClick={() => history.push(`/course/session/${course.id}`)}
           />
         );
@@ -65,7 +65,7 @@ function CourseContainer({ course, CourseApplicationState }) {
               // transition: 'all .2s ease',
             }}
             key={key}
-            src={`/img/icon/${image}.png`}
+            src={`/img/icon/${image}.svg`}
           />
         );
       }

@@ -6,7 +6,7 @@ function DefaultLogo({ logoName, width, height, onClick, isPointer = false }) {
   return (
     <img
       onClick={onClick}
-      src={`/img/logo/${logoName}.png`}
+      src={`/img/logo/${logoName}.svg`}
       alt='default-logo'
       width={width + 'px' || '49px'}
       height={height + 'px' || '15px'}
