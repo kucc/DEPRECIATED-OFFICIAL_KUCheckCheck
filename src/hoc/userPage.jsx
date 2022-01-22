@@ -12,7 +12,7 @@ import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 function UserPageHoc() {
   // userpage는 로그인이 필요한 페이지
   const UserPageCheck = props => {
-    const [userData, setUserData] = useState([]);
+    const [userData, setUserData] = useState({});
 
     useEffect(() => {
       async function fetchUserData() {

@@ -7,15 +7,16 @@ import UserInfoTop from './UserInfoTop';
 import { StyledUserInfoContainer } from './style';
 
 function UserInfo({ userData }) {
-  const [changeState, setchangeState] = useState('');
+  const [changeListener, setChangeListener] = useState('');
+
   const handleChange = data => {
-    setchangeState(data);
+    setChangeListener(data);
   };
 
   return (
     <StyledUserInfoContainer>
       <UserInfoTop userData={userData} onChangeFunc={handleChange} />
-      <UserInfoCard userData={userData} key={changeState} />
+      <UserInfoCard userData={userData} key={changeListener} />
     </StyledUserInfoContainer>
   );
 }
@@ -23,5 +24,5 @@ function UserInfo({ userData }) {
 export default UserInfo;
 
 UserInfo.propTypes = {
-  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  userData: PropTypes.object,
 };

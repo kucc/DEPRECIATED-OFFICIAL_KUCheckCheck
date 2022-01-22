@@ -18,7 +18,7 @@ function CourseHoc(SpecificComponent, option) {
   // option : 3 => 출석관리자만이 출입할 수 있음
 
   const CourseCheck = props => {
-    const [courseData, setCourseData] = useState([]);
+    const [courseData, setCourseData] = useState({});
 
     useEffect(() => {
       async function fetchCourseData() {
@@ -29,11 +29,15 @@ function CourseHoc(SpecificComponent, option) {
           .collection('courses')
           .doc(courseId)
           .get();
+
         // attach courseId to data
         setCourseData({ ...data.data(), courseId });
         const user = authService.currentUser;
 
         switch (option) {
+          case 0:
+            // pass
+            break;
           case 1:
             // 유저 정보가 없을 경우
             if (!user) {
@@ -60,7 +64,10 @@ function CourseHoc(SpecificComponent, option) {
       fetchCourseData();
     }, []);
     // 해당 Component로 courseData prop을 보내줌.
-    return <SpecificComponent {...props} courseData={courseData} />;
+    // courseLeader 정보도 함께 보내주기
+    if (courseData) {
+      return <SpecificComponent {...props} courseData={courseData} />;
+    }
   };
   CourseCheck.propTypes = {
     props: PropTypes.object.isRequired,
