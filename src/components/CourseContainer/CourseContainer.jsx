@@ -4,6 +4,8 @@ import { animated, useSpring } from '@react-spring/web';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
+import CourseDifficulty from '@components/CourseDifficulty';
+
 import CourseApplication from './CourseApplication';
 import {
   StyledCourseContainer,
@@ -114,20 +116,11 @@ function CourseContainer({ course, CourseApplicationState }) {
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>
-          <StyledCourseLevel
-            onClick={() => history.push(`/course/session/${course.id}`)}>
-            <div
-              style={{ display: 'flex', placeContent: 'center', gap: '3px' }}>
-              <div style={{ display: 'flex' }}>
-                <div>난이도 : &nbsp;</div>
-                <div style={{ color: 'red' }}>{course.difficulty}</div>
-                <div>&nbsp;/</div>
-              </div>
-              <div style={{ fontFamily: 'NexonBo' }}>
-                {course.requireTime}학점
-              </div>
-            </div>
-          </StyledCourseLevel>
+          <CourseDifficulty
+            onClick={() => history.push(`/course/session/${course.id}`)}
+            difficulty={course.difficulty}
+            requireTime={course.requireTime}
+          />
           {CourseApplicationState && (
             <CourseApplication courseId={course.id} course={course} />
           )}

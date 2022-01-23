@@ -14,4 +14,5 @@ export const StyledSelect = styled.div`
 
 export const StyledBottomBackground = styled.div`
   background-color: white;
+  padding-top: 50px;
 `;

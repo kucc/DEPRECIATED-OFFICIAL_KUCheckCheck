@@ -45,17 +45,6 @@ export const StyledCourseExplain = styled.div`
 
 export const StyledCourseFavorite = styled.div``;
 
-export const StyledCourseLevel = styled.div`
-  margin-top: 25px;
-  margin-right: 25px;
-  padding-top: 25px;
-  height: 64px;
-  background-color: rgb(245, 245, 245);
-  text-align: center;
-  border-radius: 30px;
-  cursor: pointer;
-`;
-
 export const StyledCourseApplyOn = styled(Button)`
   margin-top: 25px;
   margin-right: 25px;

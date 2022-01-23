@@ -16,7 +16,7 @@ export const StyledSidePadding = styled.div`
 
 export const StyledVerticalLine = styled.div`
   border-right: 1px solid #b6b6b677;
-  height: 40px;
+  height: ${props => (props.length ? `${props.length}px` : '40px')};
   margin-left: 5%;
 `;
 
