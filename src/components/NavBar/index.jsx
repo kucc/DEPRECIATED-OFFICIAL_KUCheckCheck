@@ -6,13 +6,13 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { authService } from '@/firebase';
 
-import DefaultLogo from '../DefaultLogo';
+import { DefaultLogo } from '../DefaultLogo';
 import * as S from './style';
 
 // TODO
 // NavBar 컴포넌트를 src/components 하위 항목으로 이동
 // 불필요한 함수 삭제 및 스타일 분리
-const NavBar = ({ isMain = false }) => {
+export const NavBar = ({ isMain = false }) => {
   const user = useSelector(state => state.user);
   const history = useHistory();
   const [hoverState, sethoverState] = useState('');
@@ -128,8 +128,6 @@ const NavBar = ({ isMain = false }) => {
     </>
   );
 };
-
-export default NavBar;
 
 NavBar.propTypes = {
   isMain: PropTypes.bool,

@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 import { StyledInput, StyledLabel, Wrapper } from './style';
 
-function InputBoxWithLabel({
+export const InputBoxWithLabel = ({
   labelTitle,
   inputName,
   inputType,
   placeholder,
   value,
   onChange,
-}) {
+}) => {
   return (
     <Wrapper>
       {labelTitle && (
@@ -26,9 +26,7 @@ function InputBoxWithLabel({
       />
     </Wrapper>
   );
-}
-
-export default InputBoxWithLabel;
+};
 
 InputBoxWithLabel.propTypes = {
   labelTitle: PropTypes.string,

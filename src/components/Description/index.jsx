@@ -7,7 +7,7 @@ import { DescriptionForm, DescriptionLogo } from './style';
 
 const { Title, Text } = Typography;
 
-function Description() {
+export const Description = () => {
   const history = useHistory();
   return (
     <DescriptionForm>
@@ -30,6 +30,4 @@ function Description() {
       </Text>
     </DescriptionForm>
   );
-}
-
-export default Description;
+};

@@ -2,7 +2,13 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-function DefaultLogo({ logoName, width, height, onClick, isPointer = false }) {
+export const DefaultLogo = ({
+  logoName,
+  width,
+  height,
+  onClick,
+  isPointer = false,
+}) => {
   return (
     <img
       onClick={onClick}
@@ -13,9 +19,7 @@ function DefaultLogo({ logoName, width, height, onClick, isPointer = false }) {
       style={{ cursor: isPointer ? 'pointer' : 'default' }}
     />
   );
-}
-
-export default DefaultLogo;
+};
 
 DefaultLogo.propTypes = {
   logoName: PropTypes.string,

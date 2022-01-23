@@ -4,7 +4,7 @@ import { animated, useSpring } from '@react-spring/web';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
-import CourseApplication from './CourseApplication';
+import { CourseApplication } from './CourseApplication';
 import {
   StyledCourseContainer,
   StyledCourseExplain,
@@ -15,7 +15,7 @@ import {
   StyledCourseTitle,
 } from './style';
 
-function CourseContainer({ course, CourseApplicationState }) {
+export const CourseContainer = ({ course, CourseApplicationState }) => {
   const history = useHistory();
   // const [onImageHover, setonImageHover] = useState(false);
   const [onCourseHover, setOnCourseHover] = useState(false);
@@ -135,9 +135,7 @@ function CourseContainer({ course, CourseApplicationState }) {
       </StyledCourseContainer>
     </>
   );
-}
-
-export default CourseContainer;
+};
 
 CourseContainer.propTypes = {
   course: PropTypes.object.isRequired,

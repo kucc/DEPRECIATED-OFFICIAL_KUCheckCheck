@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router';
 
-import DefaultLogo from '../DefaultLogo';
+import { DefaultLogo } from '../DefaultLogo';
 import {
   StyledFooterBox,
   StyledFooterContainer,
@@ -14,7 +14,7 @@ import {
   StyledVerticalLine,
 } from './style';
 
-export default function Footer() {
+export const Footer = () => {
   const history = useHistory();
 
   const onImgClick = () => {
@@ -80,4 +80,4 @@ export default function Footer() {
       </StyledFooterImgBox>
     </StyledFooterContainer>
   );
-}
+};
