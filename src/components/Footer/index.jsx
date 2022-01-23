@@ -43,7 +43,9 @@ export const Footer = () => {
         <StyledFooterTitle>Developers</StyledFooterTitle>
         <StyledFooterDesc>KUCHECKCHECK</StyledFooterDesc>
         <StyledVerticalLine />
-        <StyledFooterDesc>김세진 김채린 명재위 이희준 정인아</StyledFooterDesc>
+        <StyledFooterDesc>
+          강태웅 김세진 김채린 명재위 이희준 정인아
+        </StyledFooterDesc>
       </StyledFooterBox>
       <StyledHorizontalLine />
       <StyledFooterBox>
