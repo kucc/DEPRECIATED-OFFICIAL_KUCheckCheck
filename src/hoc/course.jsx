@@ -34,43 +34,22 @@ function CourseHoc(SpecificComponent, option) {
         setCourseData({ ...data.data(), courseId });
         const user = authService.currentUser;
 
-        switch (option) {
-          case 0:
-            // pass
-            break;
-          case 1:
-            // 유저 정보가 없을 경우
-            if (!user) {
-              alert(NEED_TO_LOGIN);
-              props.history.push('/login');
-            }
-            break;
-          case 2:
-            // 유저가 없거나, courseLeader가 아닐 경우
-            if (!user || data.data().courseLeader.id !== user.uid) {
-              alert(COURSE_LEADER_ONLY);
-              props.history.push('/');
-            }
-            break;
-          case 3:
-            // 유저가 없거나, 출석 관리자가 아닐 경우
-            if (!user || !data.data().courseCheckAdmin.includes(user.uid)) {
-              alert(COURSE_CHECK_ADMIN_ONLY);
-              props.history.push('/');
-            }
-            break;
+        if (option === 1) {
+          if (!user) {
+            alert(NEED_TO_LOGIN);
+            props.history.push('/login');
+          }
         }
       }
       fetchCourseData();
     }, []);
     // 해당 Component로 courseData prop을 보내줌.
     // courseLeader 정보도 함께 보내주기
-    if (courseData) {
-      return <SpecificComponent {...props} courseData={courseData} />;
-    }
+
+    return <SpecificComponent {...props} courseData={courseData} />;
   };
   CourseCheck.propTypes = {
-    props: PropTypes.object.isRequired,
+    props: PropTypes.object,
   };
   return CourseCheck;
 }

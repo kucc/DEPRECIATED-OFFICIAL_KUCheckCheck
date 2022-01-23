@@ -10,15 +10,14 @@ import EmptyBox from '@components/EmptyBox';
 
 import { firestoreService } from '@/firebase';
 import { MAIN_COLOR } from '@utility/COLORS';
+import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
 import {
   StyledMainBottomBtnCont,
   StyledMainBottomWrapper,
   StyledMainSessDuration,
-  StyledMainSessItemOffClick,
   StyledMainSessRig,
   StyledMainSessTab,
-  StyledMainVerticalLine,
 } from './style';
 
 function MainBottomContainer() {
@@ -281,29 +280,29 @@ function MainBottomContainer() {
             </Dropdown>
           </StyledMainSessDuration>
           <StyledMainSessTab>
-            <StyledMainSessItemOffClick
+            <StyledSelectItem
               className={courseSelect === 0 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(0)}>
               전체
-            </StyledMainSessItemOffClick>
-            <StyledMainVerticalLine />
-            <StyledMainSessItemOffClick
+            </StyledSelectItem>
+            <StyledVerticalLine />
+            <StyledSelectItem
               className={courseSelect === 1 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(1)}>
               세션
-            </StyledMainSessItemOffClick>
-            <StyledMainVerticalLine />
-            <StyledMainSessItemOffClick
+            </StyledSelectItem>
+            <StyledVerticalLine />
+            <StyledSelectItem
               className={courseSelect === 2 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(2)}>
               스터디
-            </StyledMainSessItemOffClick>
-            <StyledMainVerticalLine />
-            <StyledMainSessItemOffClick
+            </StyledSelectItem>
+            <StyledVerticalLine />
+            <StyledSelectItem
               className={courseSelect === 3 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(3)}>
               프로젝트
-            </StyledMainSessItemOffClick>
+            </StyledSelectItem>
           </StyledMainSessTab>
           <StyledMainSessRig>
             {user.currentUser && (

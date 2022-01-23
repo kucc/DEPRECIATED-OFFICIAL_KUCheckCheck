@@ -26,18 +26,3 @@ export const StyledMainSessRig = styled.div`
     padding-top: 5px !important;
   }
 `;
-
-export const StyledMainSessItemOffClick = styled.div`
-  border-radius: 24px;
-  width: 80%;
-  text-align: center;
-  margin: 0 10%;
-  padding-top: 10px;
-  cursor: pointer;
-`;
-
-export const StyledMainVerticalLine = styled.div`
-  border-right: 1px solid #b6b6b677;
-  height: 40px;
-  margin-left: 5%;
-`;

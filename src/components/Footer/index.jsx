@@ -10,8 +10,8 @@ import {
   StyledFooterImgBox,
   StyledFooterLink,
   StyledFooterTitle,
+  StyledFooterVerticalLine,
   StyledHorizontalLine,
-  StyledVerticalLine,
 } from './style';
 
 export default function Footer() {
@@ -36,13 +36,13 @@ export default function Footer() {
       <StyledFooterBox>
         <StyledFooterTitle>Creaters</StyledFooterTitle>
         <StyledFooterDesc>바닐라 자바칩</StyledFooterDesc>
-        <StyledVerticalLine />
+        <StyledFooterVerticalLine />
         <StyledFooterDesc>곽나경 김채린 박가영 정인아</StyledFooterDesc>
       </StyledFooterBox>
       <StyledFooterBox>
         <StyledFooterTitle>Developers</StyledFooterTitle>
         <StyledFooterDesc>KUCHECKCHECK</StyledFooterDesc>
-        <StyledVerticalLine />
+        <StyledFooterVerticalLine />
         <StyledFooterDesc>김세진 김채린 명재위 이희준 정인아</StyledFooterDesc>
       </StyledFooterBox>
       <StyledHorizontalLine />

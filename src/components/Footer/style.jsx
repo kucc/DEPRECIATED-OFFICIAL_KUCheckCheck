@@ -29,7 +29,7 @@ export const StyledFooterLink = styled.a`
   color: black;
 `;
 
-export const StyledVerticalLine = styled.div`
+export const StyledFooterVerticalLine = styled.div`
   height: 25px;
   border-right: 1px solid #b6b6b677;
   margin-left: 20px;

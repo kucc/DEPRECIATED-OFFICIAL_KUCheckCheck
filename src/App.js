@@ -56,8 +56,6 @@ function App() {
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
-          option : 2 => 세션장만이 출입할 수 있음
-          option : 3 => 출석관리자만이 출입할 수 있음 
         */}
         <Route
           exact

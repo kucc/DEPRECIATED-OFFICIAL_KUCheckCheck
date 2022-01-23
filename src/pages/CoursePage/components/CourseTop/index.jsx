@@ -6,15 +6,15 @@ import UserCard from '@components/UserCard';
 
 import { StyledCourseTopContainer } from './style';
 
-const CourseTop = ({ leaderInfo }) => {
+const CourseTop = ({ leaderData }) => {
   return (
     <StyledCourseTopContainer>
       <UserCard
         isDetail={false}
-        emoji={leaderInfo.emoji}
-        name={leaderInfo.name}
-        comment={leaderInfo.comment}
-        userId={leaderInfo.id}
+        emoji={leaderData.emoji}
+        name={leaderData.name}
+        comment={leaderData.comment}
+        userId={leaderData.id}
       />
     </StyledCourseTopContainer>
   );
@@ -23,5 +23,5 @@ const CourseTop = ({ leaderInfo }) => {
 export default CourseTop;
 
 CourseTop.propTypes = {
-  leaderInfo: PropTypes.object,
+  leaderData: PropTypes.object,
 };

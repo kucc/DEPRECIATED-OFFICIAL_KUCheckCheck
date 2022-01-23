@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
 import TimeTable from '@components/TimeTable';
 
-function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
+function CourseTimeTable({ courseData, courseId, timeTableInfo }) {
   const [selectedData, setselectedData] = useState([]);
   const [cellData, setcellData] = useState([]);
   const [selectedColor, setselectedColor] = useState('#FE7773');
@@ -18,7 +19,7 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
       } else if (data == true) {
         return {
           color: randomColor,
-          value: courseInfo.courseName,
+          value: courseData.courseName,
           courseId: courseId,
         };
       } else {
@@ -71,7 +72,7 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
     '#F2DD66',
   ];
   return (
-    <div style={{ marginLeft: '20%', marginRight: '20%', marginTop: '20px' }}>
+    <div style={{ marginTop: '40px' }}>
       <div style={{ display: 'flex', gap: '20px' }}>
         {colorArray.map((color, key) => {
           return (
@@ -101,4 +102,10 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
   );
 }
 
-export default TimeTableSave;
+export default CourseTimeTable;
+
+CourseTimeTable.propTypes = {
+  courseData: PropTypes.object,
+  courseId: PropTypes.string,
+  timeTableInfo: PropTypes.func,
+};
