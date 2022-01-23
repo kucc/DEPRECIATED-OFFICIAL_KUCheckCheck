@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router';
 
-import DefaultLogo from '../DefaultLogo';
+import { DefaultLogo } from '../DefaultLogo';
 import {
   StyledFooterBox,
   StyledFooterContainer,
@@ -14,7 +14,7 @@ import {
   StyledHorizontalLine,
 } from './style';
 
-export default function Footer() {
+export const Footer = () => {
   const history = useHistory();
 
   const onImgClick = () => {
@@ -43,7 +43,9 @@ export default function Footer() {
         <StyledFooterTitle>Developers</StyledFooterTitle>
         <StyledFooterDesc>KUCHECKCHECK</StyledFooterDesc>
         <StyledFooterVerticalLine />
-        <StyledFooterDesc>김세진 김채린 명재위 이희준 정인아</StyledFooterDesc>
+        <StyledFooterDesc>
+          강태웅 김세진 김채린 명재위 이희준 정인아
+        </StyledFooterDesc>
       </StyledFooterBox>
       <StyledHorizontalLine />
       <StyledFooterBox>
@@ -80,4 +82,4 @@ export default function Footer() {
       </StyledFooterImgBox>
     </StyledFooterContainer>
   );
-}
+};

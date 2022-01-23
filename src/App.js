@@ -5,22 +5,25 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
+import { clearUser, setUser } from '@redux/actions/user_action';
+
+import { Footer } from '@components';
+import {
+  AttendacePage,
+  CoursePage,
+  CourseRegisterPage,
+  JoinPage,
+  LoginPage,
+  MainPage,
+  NoticePage,
+  TimeTablePage,
+} from '@pages';
+
+import { authService } from '@/firebase';
+import { AuthHoc, CourseHoc, UserPageHoc } from '@hoc';
+import { ALREADY_LOGGED_IN } from '@utility/ALERT_MESSAGE';
+
 import './App.css';
-import Footer from './components/Footer';
-import { authService } from './firebase';
-import AuthHoc from './hoc/auth';
-import CourseHoc from './hoc/course';
-import UserPageHoc from './hoc/userPage';
-import AttendacePage from './pages/AttendancePage';
-import CoursePage from './pages/CoursePage';
-import CourseRegisterPage from './pages/CourseRegisterPage';
-import JoinPage from './pages/JoinPage';
-import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
-import NoticePage from './pages/NoticePage';
-import TimeTablePage from './pages/TimeTablePage';
-import { clearUser, setUser } from './redux/actions/user_action';
-import { ALREADY_LOGGED_IN } from './utility/ALERT_MESSAGE';
 
 function App() {
   const dispatch = useDispatch();

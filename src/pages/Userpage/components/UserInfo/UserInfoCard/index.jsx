@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
+import { BlackIcon } from '@components';
 import UserCard from '@components/UserCard';
 import { StyledInfoCardContainer } from '@components/UserCard/style';
 
@@ -9,8 +10,6 @@ import { firestoreService } from '@/firebase';
 
 function UserInfoCard({ userData }) {
   const [firebaseUser, setfirebaseUser] = useState();
-
-  console.log(firebaseUser);
 
   //유저 정보 불러오기
   useEffect(() => {

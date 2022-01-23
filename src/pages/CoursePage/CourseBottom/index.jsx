@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+import { WhiteShadowButton } from '@components/Buttons';
 import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService } from '@/firebase';

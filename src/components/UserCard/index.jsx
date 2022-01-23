@@ -6,7 +6,7 @@ import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
 
-import BlackIcon from '@components/BlackIcon';
+import { BlackIcon } from '@components/BlackIcon';
 
 import {
   StyledArrowContainer,

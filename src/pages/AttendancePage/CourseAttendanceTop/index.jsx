@@ -5,8 +5,7 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
-import NavBar from '@components/NavBar';
+import { NavBar, WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
 

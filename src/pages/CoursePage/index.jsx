@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-import FullWidthButton from '@components/Buttons/FullWidthButton';
-import CourseApplication from '@components/CourseContainer/CourseApplication';
-import NavBar from '@components/NavBar';
+import { FullWidthButton } from '@components/Buttons';
+import { CourseApplication } from '@components/CourseContainer/CourseApplication';
+import { NavBar } from '@components/NavBar';
 
 import { firestoreService } from '@/firebase';
 import { MAIN_COLOR } from '@utility/COLORS';
@@ -19,7 +19,7 @@ import {
   StyledRegisterButton,
 } from './style';
 
-function CoursePage({ courseData }) {
+export const CoursePage = ({ courseData }) => {
   const [leaderData, setLeaderData] = useState({});
   const history = useHistory();
   const { courseId } = courseData;
@@ -78,9 +78,7 @@ function CoursePage({ courseData }) {
       )}
     </StyledBackground>
   );
-}
-
-export default CoursePage;
+};
 
 CoursePage.propTypes = {
   courseData: PropTypes.object,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { StyledButton } from './style';
 
-function FullWidthButton({ htmlType, text, loading, style }) {
+export const FullWidthButton = ({ htmlType, text, loading, style }) => {
   return (
     <StyledButton
       style={style}
@@ -15,9 +15,7 @@ function FullWidthButton({ htmlType, text, loading, style }) {
       {text}
     </StyledButton>
   );
-}
-
-export default FullWidthButton;
+};
 
 FullWidthButton.propTypes = {
   htmlType: PropTypes.string,

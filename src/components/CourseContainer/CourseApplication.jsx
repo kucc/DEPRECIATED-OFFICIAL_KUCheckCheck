@@ -20,7 +20,7 @@ import {
   StyledCourseApplyOn,
 } from './style';
 
-function CourseApplication({ course, courseId }) {
+export const CourseApplication = ({ course, courseId }) => {
   const { maxMemberNum, semester } = course;
   const currentUser = useSelector(state => state.user.currentUser);
   const [Loading, setLoading] = useState(false);
@@ -314,9 +314,7 @@ function CourseApplication({ course, courseId }) {
       </Modal>
     </>
   );
-}
-
-export default CourseApplication;
+};
 
 CourseApplication.propTypes = {
   course: PropTypes.object,

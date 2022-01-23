@@ -12,7 +12,12 @@ import {
 
 import { StyledTableContainer } from './style';
 
-function TimeTable({ editable, selectedData, cellData, selectedColor }) {
+export const TimeTable = ({
+  editable,
+  selectedData,
+  cellData,
+  selectedColor,
+}) => {
   const [cells, setcells] = useState();
   const [selected, setselected] = useState(timeTableSelectedDefault);
 
@@ -92,9 +97,7 @@ function TimeTable({ editable, selectedData, cellData, selectedColor }) {
       )}
     </StyledTableContainer>
   );
-}
-
-export default TimeTable;
+};
 
 TimeTable.propTypes = {
   editable: PropTypes.bool,

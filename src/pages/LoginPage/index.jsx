@@ -1,12 +1,11 @@
 import React from 'react';
 
-import DefaultLogo from '@components/DefaultLogo';
-import Description from '@components/Description';
+import { DefaultLogo, Description } from '@components';
 
 import LoginForm from './components/LoginForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
 
-function LoginPage() {
+export const LoginPage = () => {
   return (
     <StyledRow>
       <StyledCol span={6} offset={8}>
@@ -27,5 +26,4 @@ function LoginPage() {
       </StyledCol>
     </StyledRow>
   );
-}
-export default LoginPage;
+};
