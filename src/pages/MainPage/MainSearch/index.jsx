@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { setCategory, setSearch } from '@redux/actions/search_action';
 
-import BlackIcon from '@components/BlackIcon';
+import { BlackIcon } from '@components';
 
 import {
   StyledQuickSearchContainer,

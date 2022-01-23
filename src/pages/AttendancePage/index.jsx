@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CourseAttendanceCard from './CourseAttendanceCard';
 import CourseAttendanceTop from './CourseAttendanceTop';
 
-function AttendacePage({ courseData }) {
+export const AttendacePage = ({ courseData }) => {
   const courseName = courseData.courseName;
   const userData = courseData.courseAttendance;
   const courseId = courseData.courseId;
@@ -51,9 +51,7 @@ function AttendacePage({ courseData }) {
         })}
     </>
   );
-}
-
-export default AttendacePage;
+};
 
 AttendacePage.propTypes = {
   courseData: PropTypes.object,

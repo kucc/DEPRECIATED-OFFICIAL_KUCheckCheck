@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Space } from 'antd';
 import { useHistory } from 'react-router';
 
-import FullWidthButton from '@components/Buttons/FullWidthButton';
-import InputBoxWithLabel from '@components/InputBoxWithLabel';
+import { FullWidthButton, InputBoxWithLabel } from '@components';
 
 import { authService } from '@/firebase';
 

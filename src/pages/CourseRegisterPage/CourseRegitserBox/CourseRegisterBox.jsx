@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import { Option } from 'antd/lib/mentions';
 import PropTypes from 'prop-types';
 
-import NavBar from '@components/NavBar';
+import { NavBar } from '@components';
 
 import {
   CHECK_TOP_SESSION_OR_STUDY,

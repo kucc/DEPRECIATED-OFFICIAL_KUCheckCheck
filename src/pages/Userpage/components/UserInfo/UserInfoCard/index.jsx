@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 
-import BlackIcon from '@components/BlackIcon';
+import { BlackIcon } from '@components';
 
 import { firestoreService } from '@/firebase';
 
