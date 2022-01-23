@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { authService } from '@/firebase';
 import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
-function AuthHoc(SpecificComponent) {
+export const AuthHoc = SpecificComponent => {
   const AuthCheck = props => {
     useEffect(() => {
       authService.onAuthStateChanged(user => {
@@ -23,8 +23,7 @@ function AuthHoc(SpecificComponent) {
     props: PropTypes.object,
   };
   return AuthCheck;
-}
+};
 AuthHoc.propTypes = {
   SpecificComponent: PropTypes.element,
 };
-export default AuthHoc;

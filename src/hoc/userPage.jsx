@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
-import UserPage from '@pages/UserPage';
+import { UserPage } from '@pages';
 
 import { authService, firestoreService } from '@/firebase';
 import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
-function UserPageHoc() {
+export const UserPageHoc = () => {
   // userpage는 로그인이 필요한 페이지
   const UserPageCheck = props => {
     const [userData, setUserData] = useState([]);
@@ -41,5 +41,4 @@ function UserPageHoc() {
     props: PropTypes.object.isRequired,
   };
   return UserPageCheck;
-}
-export default UserPageHoc;
+};
