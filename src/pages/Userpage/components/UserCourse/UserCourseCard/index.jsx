@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';
 
-import CourseContainer from '@components/CourseContainer/CourseContainer';
-import EmptyBox from '@components/EmptyBox';
+import { CourseContainer, EmptyBox } from '@components';
 
 import {
   StyledCourseCardContainer,

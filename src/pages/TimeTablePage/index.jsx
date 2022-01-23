@@ -1,7 +1,6 @@
 import React from 'react';
 
-import NavBar from '@components/NavBar';
-import TimeTable from '@components/TimeTable';
+import { NavBar, TimeTable } from '@components';
 
 import {
   StyledBackground,
@@ -10,7 +9,7 @@ import {
   StyledTimeTableText,
 } from './style';
 
-function TimeTablePage() {
+export const TimeTablePage = () => {
   return (
     <StyledBackground>
       <NavBar />
@@ -22,5 +21,4 @@ function TimeTablePage() {
       </StyledTimeTableBox>
     </StyledBackground>
   );
-}
-export default TimeTablePage;
+};

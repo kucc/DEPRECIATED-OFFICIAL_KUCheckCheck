@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
-import TimeTable from '@components/TimeTable';
+import { TimeTable } from '@components';
 
 function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
   const [selectedData, setselectedData] = useState([]);
-  const [cellData, setcellData] = useState([]);
+  const [, setcellData] = useState([]);
   const [selectedColor, setselectedColor] = useState('#FE7773');
 
   const renderselectedData = (index, randomColor, timeHour, timeMin) => {
@@ -100,5 +101,11 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
     </div>
   );
 }
+
+TimeTableSave.propTypes = {
+  courseInfo: PropTypes.object,
+  courseId: PropTypes.string,
+  timeTableInfo: PropTypes.func,
+};
 
 export default TimeTableSave;

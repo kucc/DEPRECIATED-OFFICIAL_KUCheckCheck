@@ -4,7 +4,7 @@ import { Input, Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+import { WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
 import { RandomEmoji } from '@utility/COMMON_FUNCTION';

@@ -5,13 +5,13 @@ import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import NavBar from '@components/NavBar';
+import { NavBar } from '@components';
 
 import { firestoreService } from '@/firebase';
 
 import CourseCurriculum from './components/CourseCurriculum';
 
-function CoursePage() {
+export const CoursePage = () => {
   const location = useLocation();
   const history = useHistory();
 
@@ -99,7 +99,7 @@ function CoursePage() {
       </Button>
     </div>
   );
-}
+};
 
 function CourseLeaderBox({ name, detailComment }) {
   return (
@@ -146,8 +146,6 @@ function CourseIntroduction({ name, introduction, goal, date, maxMemberNum }) {
 // function CourseCurriculum() {
 //   return <div></div>;
 // }
-
-export default CoursePage;
 
 CoursePage.propTypes = {
   name: PropTypes.string,

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Description from '@components/Description';
+import { Description } from '@components';
 
 import JoinForm from './components/JoinForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
 
-function JoinPage() {
+export const JoinPage = () => {
   return (
     <StyledRow>
       <StyledCol span={6} offset={8}>
@@ -16,5 +16,4 @@ function JoinPage() {
       </StyledCol>
     </StyledRow>
   );
-}
-export default JoinPage;
+};

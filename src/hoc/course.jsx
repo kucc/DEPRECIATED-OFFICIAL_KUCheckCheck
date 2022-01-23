@@ -11,7 +11,7 @@ import {
   NEED_TO_LOGIN,
 } from '@utility/ALERT_MESSAGE';
 
-function CourseHoc(SpecificComponent, option) {
+export const CourseHoc = (SpecificComponent, option) => {
   // option : 0 => 모든 사람이 출입할 수 있음
   // option : 1 => 로그인된 사람만이 출입할 수 있음
   // option : 2 => 세션장만이 출입할 수 있음
@@ -66,11 +66,9 @@ function CourseHoc(SpecificComponent, option) {
     props: PropTypes.object.isRequired,
   };
   return CourseCheck;
-}
+};
 
 CourseHoc.propTypes = {
   SpecificComponent: PropTypes.element.isRequired,
   option: PropTypes.number.isRequired,
 };
-
-export default CourseHoc;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import NavBar from '@components/NavBar';
+import { NavBar } from '@components';
 
 import { firestoreService } from '@/firebase';
 

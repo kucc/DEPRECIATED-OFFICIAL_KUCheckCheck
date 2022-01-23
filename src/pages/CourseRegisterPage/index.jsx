@@ -2,11 +2,10 @@ import React from 'react';
 
 import CourseUpdate from './CourseRegitserBox/CourseUpdate';
 
-function CourseRegisterPage() {
+export const CourseRegisterPage = () => {
   return (
     <>
       <CourseUpdate />
     </>
   );
-}
-export default CourseRegisterPage;
+};
