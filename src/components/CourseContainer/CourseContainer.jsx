@@ -102,8 +102,9 @@ function CourseContainer({ course, CourseApplicationState }) {
           style={{
             display: 'grid',
             gridTemplateColumns: CourseApplicationState
-              ? 'auto 250px 180px'
+              ? 'auto 250px 150px 30px'
               : 'auto 250px',
+            marginTop: '25px',
           }}>
           <StyledCourseText
             onClick={() => history.push(`/course/session/${course.id}`)}>
@@ -120,6 +121,7 @@ function CourseContainer({ course, CourseApplicationState }) {
             onClick={() => history.push(`/course/session/${course.id}`)}
             difficulty={course.difficulty}
             requireTime={course.requireTime}
+            style={{ marginTop: '0px' }}
           />
           {CourseApplicationState && (
             <CourseApplication courseId={course.id} course={course} />

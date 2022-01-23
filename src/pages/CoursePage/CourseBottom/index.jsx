@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
 import WhiteShadowButton from '@components/Buttons/WhiteShadowButton';
+import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService } from '@/firebase';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
@@ -13,11 +13,15 @@ import CourseInformation from './CourseInformation';
 import CourseTimeTable from './CourseTimeTable';
 import {
   StyledBottomBackground,
+  StyledCourseHeaderImg,
+  StyledCourseHeaderTitle,
+  StyledCourseHeaderTop,
   StyledSelect,
   StyledSelectContainer,
 } from './style';
 
 const CourseBottom = ({ courseData }) => {
+  const { language, courseName, difficulty, requireTime } = courseData;
   const currentUser = authService.currentUser;
   const [selected, setSelected] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
@@ -73,6 +77,18 @@ const CourseBottom = ({ courseData }) => {
           )}
       </StyledSelectContainer>
       <StyledBottomBackground className='border-radius-all'>
+        <StyledCourseHeaderTop>
+          {language && (
+            <StyledCourseHeaderImg src={`/img/icon/${language[0]}.svg`} />
+          )}
+          <StyledVerticalLine length={70} />
+          <StyledCourseHeaderTitle>{courseName}</StyledCourseHeaderTitle>
+          <CourseDifficulty
+            difficulty={difficulty}
+            requireTime={requireTime}
+            style={{ marginTop: '0px', cursor: 'auto' }}
+          />
+        </StyledCourseHeaderTop>
         {renderCourseBottom()}
       </StyledBottomBackground>
     </div>

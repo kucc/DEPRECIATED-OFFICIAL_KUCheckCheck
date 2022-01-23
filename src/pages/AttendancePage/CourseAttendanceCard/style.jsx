@@ -55,6 +55,6 @@ export const StyledAbsent = styled.div`
 
 export const StyledLate = styled.div`
   font-family: 'NexonBo';
-  color: #e67d4f;
+  color: red;
   margin: 3%;
 `;

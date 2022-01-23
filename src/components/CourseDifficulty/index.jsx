@@ -9,9 +9,13 @@ import {
   StyledRedText,
 } from './style';
 
-const CourseDifficulty = ({ onClick, difficulty, requireTime }) => {
+const CourseDifficulty = ({ onClick, difficulty, requireTime, style }) => {
+  console.log(style);
   return (
-    <StyledCourseDifficulty onClick={onClick}>
+    <StyledCourseDifficulty
+      className='in-shadow-weak'
+      onClick={onClick}
+      style={style}>
       <StyledCourseLevel>
         <div>난이도 : &nbsp;</div>
         <StyledRedText>{difficulty}</StyledRedText>
@@ -28,4 +32,5 @@ CourseDifficulty.propTypes = {
   onClick: PropTypes.func,
   difficulty: PropTypes.string,
   requireTime: PropTypes.string,
+  style: PropTypes.object,
 };

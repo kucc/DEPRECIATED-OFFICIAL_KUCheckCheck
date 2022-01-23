@@ -5,7 +5,7 @@ export const StyledCourseDifficulty = styled.div`
   margin-right: 25px;
   padding-top: 25px;
   height: 64px;
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(245, 245, 245) !important;
   text-align: center;
   border-radius: 30px;
   cursor: pointer;
