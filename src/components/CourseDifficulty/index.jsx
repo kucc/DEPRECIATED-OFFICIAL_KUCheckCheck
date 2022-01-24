@@ -10,7 +10,6 @@ import {
 } from './style';
 
 const CourseDifficulty = ({ onClick, difficulty, requireTime, style }) => {
-  console.log(style);
   return (
     <StyledCourseDifficulty
       className='in-shadow-weak'

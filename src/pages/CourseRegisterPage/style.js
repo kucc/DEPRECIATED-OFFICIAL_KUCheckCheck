@@ -30,35 +30,6 @@ export const StyledBlackButton = styled.button`
   margin-bottom: 10px;
 `;
 
-export const StyledTextArea = styled(TextArea)`
-  background-color: rgb(245, 245, 245);
-  border-radius: 15px;
-  border: none;
-  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
-  padding-left: 30px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  outline: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const StyledInputNumber = styled(InputNumber)`
-  background-color: rgb(245, 245, 245);
-  border-radius: 15px;
-  border: none;
-  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
-  width: 300px;
-  padding-left: 30px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  outline: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
 export const StyledText = styled.p`
   font-size: 15px;
   font-family: 'NexonBo';

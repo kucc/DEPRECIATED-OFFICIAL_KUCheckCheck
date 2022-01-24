@@ -8,6 +8,7 @@ import { CourseApplication } from '@components/CourseContainer/CourseApplication
 import { NavBar } from '@components/NavBar';
 
 import { firestoreService } from '@/firebase';
+import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
 import { MAIN_COLOR } from '@utility/COLORS';
 import { StyledBackground } from '@utility/COMMON_STYLE';
 
@@ -40,7 +41,7 @@ export const CoursePage = ({ courseData }) => {
             id: courseData.courseLeader.id,
           });
         } catch (error) {
-          console.error(leaderDataFetchError);
+          alert(FAILED_TO_LOAD_DATA);
         }
       }
     }

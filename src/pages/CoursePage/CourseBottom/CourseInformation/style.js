@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledInfoText = styled.div`
   margin-top: 80px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 100px auto;
   gap: 20px;
   margin-left: 151px;
 `;

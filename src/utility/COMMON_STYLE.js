@@ -1,3 +1,5 @@
+import { InputNumber } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
 import styled from 'styled-components';
 
 export const StyledBackground = styled.div`
@@ -27,4 +29,33 @@ export const StyledSelectItem = styled.div`
   margin: 0 10%;
   padding-top: 10px;
   cursor: pointer;
+`;
+
+export const StyledTextArea = styled(TextArea)`
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  border: none;
+  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
+  padding-left: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const StyledInputNumber = styled(InputNumber)`
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  border: none;
+  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
+  width: 300px;
+  padding-left: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
 `;

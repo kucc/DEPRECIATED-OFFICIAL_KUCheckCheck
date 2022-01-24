@@ -11,15 +11,14 @@ import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
 } from '@utility/ALERT_MESSAGE';
+import { StyledInputNumber, StyledTextArea } from '@utility/COMMON_STYLE';
 
 import {
   StyledBackground,
   StyledBlackButton,
   StyledBottomContainer,
   StyledInputBox,
-  StyledInputNumber,
   StyledText,
-  StyledTextArea,
   StyledTopContainer,
 } from '../style';
 

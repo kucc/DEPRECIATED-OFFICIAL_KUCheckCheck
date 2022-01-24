@@ -5,7 +5,23 @@ import PropTypes from 'prop-types';
 
 import { StyledContainer, StyledTimeline } from './style';
 
-function CourseCurriculum({ curriculum }) {
+function CourseCurriculum({ curriculum, isEdit, isSubmit, isCurriFinished }) {
+  
+  async function updateCourseCurri() {
+    try {
+      // asdsa
+    } catch (error) {
+      // alert('Error updating document: ', error);
+    }
+  }
+
+  useEffect(() => {
+    if (isSubmit) {
+      updateCourseCurri();
+      isCurriFinished(true);
+    }
+  }, [isSubmit]);
+
   return (
     <StyledContainer>
       <StyledTimeline mode='left'>
@@ -25,4 +41,7 @@ export default CourseCurriculum;
 
 CourseCurriculum.propTypes = {
   curriculum: PropTypes.array,
+  isEdit: PropTypes.bool,
+  isSubmit: PropTypes.bool,
+  isCurriFinished: PropTypes.func,
 };

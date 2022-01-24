@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,7 @@ import { WhiteShadowButton } from '@components/Buttons';
 import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService } from '@/firebase';
+import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
 import CourseCurriculum from './CourseCurriculum';
@@ -21,22 +22,51 @@ import {
 } from './style';
 
 const CourseBottom = ({ courseData }) => {
-  const { language, courseName, difficulty, requireTime } = courseData;
+  const { language, courseName, difficulty, requireTime, courseId } =
+    courseData;
   const currentUser = authService.currentUser;
   const [selected, setSelected] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [isInfoFinished, setIsInfoFinished] = useState(false);
+  const [isCurriFinished, setIsCurriFinished] = useState(false);
+  const [isTimeFinished, setIsTimeFinished] = useState(false);
+
+  console.log(isInfoFinished, isCurriFinished, isTimeFinished);
+
+  // 새로고침 함수
+  useEffect(() => {
+    if (isInfoFinished && isCurriFinished && isTimeFinished) {
+      window.location.replace(`/course/session/${courseId}`);
+    }
+  }, [isInfoFinished, isCurriFinished, isTimeFinished]);
 
   const renderCourseBottom = () => {
     if (selected === 0) {
-      return <CourseInformation courseData={courseData} />;
+      return (
+        <CourseInformation
+          courseData={courseData}
+          isEdit={isEdit}
+          isSubmit={isSubmit}
+          isInfoFinished={data => setIsInfoFinished(data)}
+        />
+      );
     } else if (selected === 1) {
-      return <CourseCurriculum curriculum={courseData.courseCurriculum} />;
+      return (
+        <CourseCurriculum
+          curriculum={courseData.courseCurriculum}
+          isEdit={isEdit}
+          isSubmit={isSubmit}
+          isCurriFinished={data => setIsCurriFinished(data)}
+        />
+      );
     } else {
       return (
         <CourseTimeTable
           courseData={courseData}
           courseId={courseData.courseId}
-          timeTableInfo={timeTableInfo => console.log(timeTableInfo)}
+          isSubmit={isSubmit}
+          isTimeFinished={data => console.log(data)}
         />
       );
     }
@@ -71,8 +101,17 @@ const CourseBottom = ({ courseData }) => {
           courseData.courseLeader &&
           currentUser.uid === courseData.courseLeader.id && (
             <WhiteShadowButton
-              text='수정하기'
-              onClick={() => setIsEdit(prev => !prev)}
+              type={isEdit ? 'danger' : 'default'}
+              text={isEdit ? '수정완료' : '수정하기'}
+              onClick={() => {
+                if (isEdit) {
+                  setIsSubmit(true);
+                  setSelected(0);
+                } else {
+                  setIsSubmit(false);
+                }
+                setIsEdit(prev => !prev);
+              }}
             />
           )}
       </StyledSelectContainer>
