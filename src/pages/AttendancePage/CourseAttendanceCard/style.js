@@ -23,6 +23,12 @@ export const StyledBox = styled.div`
   display: grid;
   place-items: center;
   cursor: pointer;
+  &:hover {
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    background-color: black;
+    color: white;
+  }
 `;
 
 export const StyledEmoji = styled.div`
