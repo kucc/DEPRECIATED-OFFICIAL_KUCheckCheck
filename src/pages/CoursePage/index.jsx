@@ -1,174 +1,86 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Button } from 'antd';
 import PropTypes from 'prop-types';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { NavBar } from '@components';
+import { FullWidthButton } from '@components/Buttons';
+import { CourseApplication } from '@components/CourseContainer/CourseApplication';
+import { NavBar } from '@components/NavBar';
 
 import { firestoreService } from '@/firebase';
+import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
+import { MAIN_COLOR } from '@utility/COLORS';
+import { StyledBackground } from '@utility/COMMON_STYLE';
 
-import CourseCurriculum from './components/CourseCurriculum';
+import CourseBottom from './CourseBottom';
+import CourseTop from './CourseTop';
+import {
+  StyledAttendanceButton,
+  StyledCoursePageContainer,
+  StyledRegisterButton,
+} from './style';
 
-export const CoursePage = () => {
-  const location = useLocation();
+export const CoursePage = ({ courseData }) => {
+  const [leaderData, setLeaderData] = useState({});
   const history = useHistory();
-
-  const [selected, setSelected] = useState('introduction');
-  const [leaderInfo, setLeaderInfo] = useState({ name: '', detailComment: '' });
-  const [courseInfo, setCourseInfo] = useState({
-    name: '',
-    introduction: '',
-    goal: '',
-    date: '',
-    maxMemberNum: '',
-    curriculum: [],
-  });
+  const { courseId } = courseData;
 
   useEffect(() => {
-    const courseId = location.pathname.split('/').at(-1);
+    // courseLeader setUp
+    async function fetchLeaderData() {
+      if (courseData.courseLeader) {
+        const leaderId = courseData.courseLeader.id;
+        try {
+          const leaderData = await firestoreService
+            .collection('users')
+            .doc(leaderId)
+            .get();
 
-    firestoreService
-      .collection('courses')
-      .doc(courseId)
-      .get()
-      .then(courseDoc => {
-        const {
-          courseName,
-          courseInfo,
-          courseGoal,
-          courseDate,
-          maxMemberNum,
-          courseLeader,
-          courseCurriculum,
-        } = courseDoc.data();
-
-        setCourseInfo({
-          name: courseName,
-          introduction: courseInfo,
-          goal: courseGoal,
-          date: courseDate,
-          maxMemberNum: maxMemberNum,
-          curriculum: courseCurriculum,
-        });
-
-        // 코스 리더에 대한 정보 불러오기
-        const leaderId = courseLeader.id;
-        firestoreService
-          .collection('users')
-          .doc(leaderId)
-          .get()
-          .then(userDoc => {
-            const { name, detailComment } = userDoc.data();
-            setLeaderInfo({ name, detailComment });
-          })
-          .catch(leaderInfoFetchError => {
-            console.error(leaderInfoFetchError);
+          setLeaderData({
+            ...leaderData.data(),
+            id: courseData.courseLeader.id,
           });
-      })
-      .catch(courseInfoFetchError => {
-        console.error(courseInfoFetchError);
-      });
-  }, []);
+        } catch (error) {
+          alert(FAILED_TO_LOAD_DATA);
+        }
+      }
+    }
+    fetchLeaderData();
+  }, [courseData]);
 
   return (
-    <div>
+    <StyledBackground>
       <NavBar />
-      <CourseLeaderBox
-        name={leaderInfo.name}
-        detailComment={leaderInfo.detailComment}
-      />
-      {console.log(selected, courseInfo)}
-      <ToggleButton setSelected={setSelected} />
-      {/* 세션 소개 | 커리큘럼 선택버튼 */}
-      {selected === 'introduction' ? (
-        <CourseIntroduction
-          name={courseInfo.name}
-          introduction={courseInfo.introduction}
-          goal={courseInfo.goal}
-          date={courseInfo.date}
-          maxMemberNum={courseInfo.maxMemberNum}
-        />
-      ) : (
-        <CourseCurriculum curriculum={courseInfo.curriculum} />
+      <StyledCoursePageContainer>
+        {leaderData && <CourseTop leaderData={leaderData} />}
+        {/* 세션 소개 | 커리큘럼 선택버튼 */}
+        <CourseBottom courseData={courseData} />
+      </StyledCoursePageContainer>
+      {courseId && (
+        <>
+          <StyledAttendanceButton
+            className='out-shadow-middle'
+            onClick={() =>
+              history.push(`/course/session/${courseId}/attendance`)
+            }>
+            <FullWidthButton
+              text='출결보기'
+              style={{
+                height: '64px',
+                backgroundColor: MAIN_COLOR,
+                cursor: 'pointer',
+              }}
+            />
+          </StyledAttendanceButton>
+          <StyledRegisterButton className='out-shadow-middle'>
+            <CourseApplication course={courseData} courseId={courseId} />
+          </StyledRegisterButton>
+        </>
       )}
-      <Button onClick={() => history.push(`${location.pathname}/attendance`)}>
-        {' '}
-        출결관리{' '}
-      </Button>
-    </div>
+    </StyledBackground>
   );
 };
-
-function CourseLeaderBox({ name, detailComment }) {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{detailComment}</h2>
-    </div>
-  );
-}
-
-function ToggleButton({ setSelected }) {
-  return (
-    <div>
-      <button
-        onClick={() => {
-          setSelected('introduction');
-        }}>
-        세션 소개
-      </button>
-      <button
-        onClick={() => {
-          setSelected('curriculum');
-        }}>
-        커리 큘럼
-      </button>
-    </div>
-  );
-}
-
-function CourseIntroduction({ name, introduction, goal, date, maxMemberNum }) {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <div>세션 소개: {introduction}</div>
-      <div>세션 목표: {goal}</div>
-      <div>진행 요일: {date}</div>
-      <div>참여 인원: {maxMemberNum}</div>
-      <div>진행 장소 및 방법</div>
-      <div>유의 사항</div>
-    </div>
-  );
-}
-
-// function CourseCurriculum() {
-//   return <div></div>;
-// }
 
 CoursePage.propTypes = {
-  name: PropTypes.string,
-  introduction: PropTypes.string,
-  goal: PropTypes.string,
-  date: PropTypes.string,
-  maxMemberNum: PropTypes.number,
-  curriculum: PropTypes.array,
-};
-
-CourseLeaderBox.propTypes = {
-  name: PropTypes.string,
-  detailComment: PropTypes.string,
-};
-
-ToggleButton.propTypes = {
-  setSelected: PropTypes.func,
-};
-
-CourseIntroduction.propTypes = {
-  name: PropTypes.string,
-  introduction: PropTypes.string,
-  goal: PropTypes.string,
-  date: PropTypes.string,
-  maxMemberNum: PropTypes.number,
+  courseData: PropTypes.object,
 };

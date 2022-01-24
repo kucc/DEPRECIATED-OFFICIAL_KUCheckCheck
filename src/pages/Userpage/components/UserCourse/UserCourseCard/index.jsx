@@ -50,5 +50,5 @@ function UserCourseCard({ userData }) {
 export default UserCourseCard;
 
 UserCourseCard.propTypes = {
-  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  userData: PropTypes.object,
 };

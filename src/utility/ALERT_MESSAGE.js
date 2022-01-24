@@ -17,4 +17,5 @@ module.exports = {
   NEED_TO_LOGIN: '로그인이 필요합니다.',
   COURSE_LEADER_ONLY: '세션장 혹은 스터디장만이 접근할 수 있습니다.',
   COURSE_CHECK_ADMIN_ONLY: '출석체크 담당자만이 접근할 수 있습니다.',
+  FAILED_TO_LOAD_DATA: '정보를 가져오는데 실패했습니다.',
 };

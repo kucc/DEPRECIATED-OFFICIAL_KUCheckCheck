@@ -23,7 +23,7 @@ export const StyledCourseExplainWrapper = styled.div``;
 
 export const StyledCourseText = styled.div`
   padding-left: 20px;
-  padding-top: 30px;
+  padding-top: 5px;
   cursor: pointer;
 `;
 
@@ -45,35 +45,21 @@ export const StyledCourseExplain = styled.div`
 
 export const StyledCourseFavorite = styled.div``;
 
-export const StyledCourseLevel = styled.div`
-  margin-top: 25px;
-  margin-right: 25px;
-  padding-top: 25px;
-  height: 64px;
-  background-color: rgb(245, 245, 245);
-  text-align: center;
-  border-radius: 30px;
-  cursor: pointer;
-`;
-
 export const StyledCourseApplyOn = styled(Button)`
-  margin-top: 25px;
   margin-right: 25px;
-  margin-bottom: 20px;
   border-radius: 30px;
   height: 64px;
   display: grid;
   place-items: center;
   background-color: #c32020;
   font-size: 16px;
+  width: 100%;
   /* -webkit-transition: background-color 1.5s;
   transition: background-color 1.5s; */
 `;
 
 export const StyledCourseApplyOff = styled.button`
-  margin-top: 25px;
   margin-right: 25px;
-  margin-bottom: 20px;
   border-radius: 30px;
   height: 64px;
   display: grid;
@@ -82,14 +68,13 @@ export const StyledCourseApplyOff = styled.button`
   color: white;
   font-size: 16px;
   cursor: not-allowed;
+  width: 100%;
   /* -webkit-transition: background-color 1.5s;
   transition: background-color 1.5s; */
 `;
 
 export const StyledCourseApplyMy = styled.button`
-  margin-top: 25px;
   margin-right: 25px;
-  margin-bottom: 20px;
   border-radius: 30px;
   height: 64px;
   display: grid;
@@ -98,6 +83,7 @@ export const StyledCourseApplyMy = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
+  width: 100%;
   &:hover {
     background-color: #393838;
   }
@@ -106,9 +92,7 @@ export const StyledCourseApplyMy = styled.button`
 `;
 
 export const StyledCourseApplyLock = styled.button`
-  margin-top: 25px;
   margin-right: 25px;
-  margin-bottom: 20px;
   border-radius: 30px;
   height: 64px;
   display: flex;
@@ -119,4 +103,5 @@ export const StyledCourseApplyLock = styled.button`
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
+  width: 100%;
 `;

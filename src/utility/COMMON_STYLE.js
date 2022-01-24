@@ -1,3 +1,5 @@
+import { InputNumber } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
 import styled from 'styled-components';
 
 export const StyledBackground = styled.div`
@@ -12,4 +14,48 @@ export const StyledSideMargin = styled.div`
 export const StyledSidePadding = styled.div`
   padding-left: 14.21%;
   padding-right: 14.21%;
+`;
+
+export const StyledVerticalLine = styled.div`
+  border-right: 1px solid #b6b6b677;
+  height: ${props => (props.length ? `${props.length}px` : '40px')};
+  margin-left: 5%;
+`;
+
+export const StyledSelectItem = styled.div`
+  border-radius: 24px;
+  width: 80%;
+  text-align: center;
+  margin: 0 10%;
+  padding-top: 10px;
+  cursor: pointer;
+`;
+
+export const StyledTextArea = styled(TextArea)`
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  border: none;
+  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
+  padding-left: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const StyledInputNumber = styled(InputNumber)`
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  border: none;
+  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
+  width: 300px;
+  padding-left: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
 `;

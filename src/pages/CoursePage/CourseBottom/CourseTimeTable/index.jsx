@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
+import { CirclePicker } from 'react-color';
 
 import { TimeTable } from '@components';
 
-function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
-  const [selectedData, setselectedData] = useState([]);
-  const [, setcellData] = useState([]);
-  const [selectedColor, setselectedColor] = useState('#FE7773');
+import { MAIN_COLOR } from '@utility/COLORS';
 
-  const renderselectedData = (index, randomColor, timeHour, timeMin) => {
+import { StyledColorContainer, StyledTimeTableContainer } from './style';
+
+function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
+  const [selectedData, setselectedData] = useState([]);
+  const [cellData, setcellData] = useState([]);
+  const [selectedColor, setSelectedColor] = useState(MAIN_COLOR);
+
+  const renderselectedData = (index, selectColor, timeHour, timeMin) => {
     return selectedData[index].slice(1).map((data, key) => {
       if (eval('cellData.time_' + timeHour + '_' + timeMin)[key].value) {
         return {
@@ -18,8 +23,8 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
         };
       } else if (data == true) {
         return {
-          color: randomColor,
-          value: courseInfo.courseName,
+          color: selectColor,
+          value: courseData.courseName,
           courseId: courseId,
         };
       } else {
@@ -29,7 +34,6 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
   };
 
   const handleSubmit = () => {
-    // 밝은 색 중 선택하게 변경
     const courseNewTimeTable = {
       time_9_00: renderselectedData(1, selectedColor, 9, '00'),
       time_9_30: renderselectedData(2, selectedColor, 9, '30'),
@@ -60,52 +64,33 @@ function TimeTableSave({ courseInfo, courseId, timeTableInfo }) {
       time_22_00: renderselectedData(27, selectedColor, 22, '00'),
       time_22_30: renderselectedData(28, selectedColor, 22, '30'),
     };
-    timeTableInfo(courseNewTimeTable);
+    newCourseDataTime(courseNewTimeTable);
   };
-
-  const colorArray = [
-    '#FE7773',
-    '#D1DDDB',
-    '#85B8C8',
-    '#7FB174',
-    '#D3B8D8',
-    '#F2DD66',
-  ];
   return (
-    <div style={{ marginLeft: '20%', marginRight: '20%', marginTop: '20px' }}>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        {colorArray.map((color, key) => {
-          return (
-            <div
-              style={{
-                height: selectedColor === color ? '55px' : '50px',
-                width: selectedColor === color ? '55px' : '50px',
-                backgroundColor: color,
-                borderRadius: '50%',
-                cursor: 'pointer',
-                zIndex: '0',
-              }}
-              onClick={() => setselectedColor(color)}
-              key={key}
-            />
-          );
-        })}
-      </div>
+    <StyledTimeTableContainer>
+      <StyledColorContainer>
+        <Button onClick={handleSubmit}>저장하기</Button>
+        최대한 다양한 색깔로 선택해주세요. <br />
+        저장 버튼을 누르셔야 저장이 됩니다.
+        <CirclePicker
+          color={selectedColor}
+          onChangeComplete={color => setSelectedColor(color.hex)}
+        />
+      </StyledColorContainer>
       <TimeTable
-        editable='true'
+        editable={true}
         selectedData={selectedData => setselectedData(selectedData)}
         cellData={cellData => setcellData(cellData)}
         selectedColor={selectedColor}
       />
-      <Button onClick={handleSubmit}>저장하기</Button>
-    </div>
+    </StyledTimeTableContainer>
   );
 }
 
-TimeTableSave.propTypes = {
-  courseInfo: PropTypes.object,
-  courseId: PropTypes.string,
-  timeTableInfo: PropTypes.func,
-};
+export default CourseTimeTable;
 
-export default TimeTableSave;
+CourseTimeTable.propTypes = {
+  courseData: PropTypes.object,
+  courseId: PropTypes.string,
+  newCourseDataTime: PropTypes.func,
+};

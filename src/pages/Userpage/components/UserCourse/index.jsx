@@ -17,5 +17,5 @@ function UserCourse({ userData }) {
 export default UserCourse;
 
 UserCourse.propTypes = {
-  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  userData: PropTypes.object,
 };

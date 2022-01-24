@@ -59,8 +59,6 @@ function App() {
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
-          option : 2 => 세션장만이 출입할 수 있음
-          option : 3 => 출석관리자만이 출입할 수 있음 
         */}
         <Route
           exact
@@ -72,10 +70,6 @@ function App() {
           path='/course/session/:id/attendance'
           component={CourseHoc(AttendacePage, 1)}
         />
-        {/* <Route
-          path="/course/session/:id/change"
-          component={course(CourseChange, 2)}
-        /> */}
         <Route
           exact
           path='/course/register'
@@ -97,18 +91,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
   .out-shadow-strong{
-    box-shadow: 0 11px 10px 2px lightgrey;
+    box-shadow: 0 11px 10px 2px lightgrey !important;
     transition: all 0.15s;
   }
   .out-shadow-middle{
-    box-shadow: 0 6px 5px 2px lightgrey;
+    box-shadow: 0 6px 5px 2px lightgrey !important; 
     transition: all 0.15s;
   }
   .out-shadow-weak{
-    box-shadow: 0px 3px 1.5px lightgrey;
+    box-shadow: 0px 3px 1.5px lightgrey !important;
   }
   .in-shadow-weak{
-    box-shadow: inset 0px 3px 1.5px lightgrey;
+    box-shadow: inset 0px 3px 1.5px lightgrey !important;
     background-color: white;
     transition: all 0.1s;
   }

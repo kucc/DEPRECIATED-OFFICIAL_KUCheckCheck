@@ -23,5 +23,5 @@ export const UserPage = ({ userData }) => {
 };
 
 UserPage.propTypes = {
-  userData: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  userData: PropTypes.object,
 };
