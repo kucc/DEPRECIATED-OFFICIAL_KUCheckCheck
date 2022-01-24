@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';
@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { StyledContainer, StyledTimeline } from './style';
 
 function CourseCurriculum({ curriculum, isEdit, isSubmit, isCurriFinished }) {
-  
   async function updateCourseCurri() {
     try {
       // asdsa

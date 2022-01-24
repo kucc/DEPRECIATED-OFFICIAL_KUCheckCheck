@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-import { Button } from 'antd';
 import PropTypes from 'prop-types';
+import { CirclePicker } from 'react-color';
 
 import { TimeTable } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { colorArray } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility/COLORS';
 
 function CourseTimeTable({ courseData, courseId, isSubmit, isTimeFinished }) {
   const [selectedData, setselectedData] = useState([]);
   const [cellData, setcellData] = useState([]);
-  const [selectedColor, setselectedColor] = useState('#FE7773');
+  const [selectedColor, setSelectedColor] = useState(MAIN_COLOR);
 
-  const renderselectedData = (index, randomColor, timeHour, timeMin) => {
+  const renderselectedData = (index, selectColor, timeHour, timeMin) => {
     return selectedData[index].slice(1).map((data, key) => {
       if (eval('cellData.time_' + timeHour + '_' + timeMin)[key].value) {
         return {
@@ -21,7 +21,7 @@ function CourseTimeTable({ courseData, courseId, isSubmit, isTimeFinished }) {
         };
       } else if (data == true) {
         return {
-          color: randomColor,
+          color: selectColor,
           value: courseData.courseName,
           courseId: courseId,
         };
@@ -82,23 +82,12 @@ function CourseTimeTable({ courseData, courseId, isSubmit, isTimeFinished }) {
 
   return (
     <div style={{ marginTop: '40px' }}>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        {colorArray.map((color, key) => {
-          return (
-            <div
-              style={{
-                height: selectedColor === color ? '55px' : '50px',
-                width: selectedColor === color ? '55px' : '50px',
-                backgroundColor: color,
-                borderRadius: '50%',
-                cursor: 'pointer',
-                zIndex: '0',
-              }}
-              onClick={() => setselectedColor(color)}
-              key={key}
-            />
-          );
-        })}
+      <div style={{ display: 'grid', justifyContent: 'center', gap: '30px' }}>
+        최대한 다양한 색깔로 선택해주세요!!
+        <CirclePicker
+          color={selectedColor}
+          onChangeComplete={color => setSelectedColor(color.hex)}
+        />
       </div>
       <TimeTable
         editable={true}
