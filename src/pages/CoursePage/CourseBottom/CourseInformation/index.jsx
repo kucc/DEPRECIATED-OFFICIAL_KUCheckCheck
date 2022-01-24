@@ -2,17 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { firestoreService } from '@/firebase';
 import { StyledInputNumber, StyledTextArea } from '@utility/COMMON_STYLE';
 
 import { StyledInfoDesc, StyledInfoText, StyledInfoTitle } from './style';
 
-const CourseInformation = ({
-  courseData,
-  isEdit,
-  isSubmit,
-  isInfoFinished,
-}) => {
+const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const {
     courseInfo,
     courseGoal,
@@ -29,28 +23,24 @@ const CourseInformation = ({
   const [newCoursePlace, setNewCoursePlace] = useState('');
   const [newCourseNotice, setNewCourseNotice] = useState('');
 
-  async function updateCourseInfo() {
-    try {
-      await firestoreService.collection('courses').doc(courseId).update({
-        courseInfo: newCourseInfo,
-        courseGoal: newCourseGoal,
-        courseDate: newCourseDate,
-        maxMemberNum: newMaxMemberNum,
-        coursePlace: newCoursePlace,
-        courseNotice: newCourseNotice,
-      });
-    } catch (error) {
-      alert('Error updating document: ', error);
-    }
-  }
-
   useEffect(() => {
-    if (isSubmit) {
-      updateCourseInfo();
-      isInfoFinished(true);
-    }
-  }, [isSubmit]);
-
+    // updateCourseInfo();
+    newCourseDataInfo({
+      courseInfo: newCourseInfo,
+      courseGoal: newCourseGoal,
+      courseDate: newCourseDate,
+      maxMemberNum: newMaxMemberNum,
+      coursePlace: newCoursePlace,
+      courseNotice: newCourseNotice,
+    });
+  }, [
+    newCourseInfo,
+    newCourseGoal,
+    newCourseDate,
+    newMaxMemberNum,
+    newCoursePlace,
+    newCourseNotice,
+  ]);
   useEffect(() => {
     if (courseData) {
       setNewCourseInfo(courseInfo);
@@ -151,6 +141,5 @@ export default CourseInformation;
 CourseInformation.propTypes = {
   courseData: PropTypes.object,
   isEdit: PropTypes.bool,
-  isSubmit: PropTypes.bool,
-  isInfoFinished: PropTypes.func,
+  newCourseDataInfo: PropTypes.func,
 };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { WhiteShadowButton } from '@components/Buttons';
 import CourseDifficulty from '@components/CourseDifficulty';
 
-import { authService } from '@/firebase';
+import { authService, firestoreService } from '@/firebase';
 import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
@@ -28,45 +28,73 @@ const CourseBottom = ({ courseData }) => {
   const [selected, setSelected] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isInfoFinished, setIsInfoFinished] = useState(false);
-  const [isCurriFinished, setIsCurriFinished] = useState(false);
-  const [isTimeFinished, setIsTimeFinished] = useState(false);
+  const [newCourseDataInfo, setNewCourseDataInfo] = useState({});
+  const [newCourseDataCurri, setNewCourseDataCurri] = useState([]);
+  const [newCourseDataTime, setNewCourseDataTime] = useState({});
+  const [newCourseData, setNewCourseData] = useState({});
 
-  console.log(isInfoFinished, isCurriFinished, isTimeFinished);
-
-  // 새로고침 함수
+  // load courseData
   useEffect(() => {
-    if (isInfoFinished && isCurriFinished && isTimeFinished) {
-      window.location.replace(`/course/session/${courseId}`);
+    if (courseData) {
+      setNewCourseData(courseData);
     }
-  }, [isInfoFinished, isCurriFinished, isTimeFinished]);
+  }, [courseData]);
+
+  // 수정 완료를 눌렀을 때
+  const handleSubmit = async () => {
+    try {
+      // update courseData
+      if (Object.keys(newCourseDataInfo).length !== 0) {
+        await firestoreService
+          .collection('courses')
+          .doc(courseId)
+          .update(newCourseDataInfo);
+      }
+      if (newCourseDataCurri.length !== 0) {
+        await firestoreService
+          .collection('courses')
+          .doc(courseId)
+          .update({ courseCurriculum: newCourseDataCurri });
+      }
+      // update TimeTable
+      if (Object.keys(newCourseDataTime).length !== 0) {
+        await firestoreService
+          .collection('common')
+          .doc('timeTable')
+          .update(newCourseDataTime);
+      }
+    } catch (error) {
+      alert('Error updating document: ', error);
+    }
+    setSelected(0);
+    // 새로고침 함수 추가.
+  };
 
   const renderCourseBottom = () => {
-    if (selected === 0) {
+    if (selected === 0 && newCourseData) {
       return (
         <CourseInformation
-          courseData={courseData}
+          courseData={newCourseData}
           isEdit={isEdit}
           isSubmit={isSubmit}
-          isInfoFinished={data => setIsInfoFinished(data)}
+          newCourseDataInfo={data => setNewCourseDataInfo(data)}
         />
       );
     } else if (selected === 1) {
       return (
         <CourseCurriculum
-          curriculum={courseData.courseCurriculum}
+          curriculum={newCourseData.courseCurriculum}
           isEdit={isEdit}
           isSubmit={isSubmit}
-          isCurriFinished={data => setIsCurriFinished(data)}
+          newCourseDataCurri={data => setNewCourseDataCurri(data)}
         />
       );
     } else {
       return (
         <CourseTimeTable
-          courseData={courseData}
-          courseId={courseData.courseId}
-          isSubmit={isSubmit}
-          isTimeFinished={data => console.log(data)}
+          courseData={newCourseData}
+          courseId={newCourseData.courseId}
+          newCourseDataTime={data => setNewCourseDataTime(data)}
         />
       );
     }
@@ -105,10 +133,7 @@ const CourseBottom = ({ courseData }) => {
               text={isEdit ? '수정완료' : '수정하기'}
               onClick={() => {
                 if (isEdit) {
-                  setIsSubmit(true);
-                  setSelected(0);
-                } else {
-                  setIsSubmit(false);
+                  handleSubmit();
                 }
                 setIsEdit(prev => !prev);
               }}
