@@ -60,9 +60,7 @@ export const CoursePage = ({ courseData }) => {
         <>
           <StyledAttendanceButton
             className='out-shadow-middle'
-            onClick={() =>
-              history.push(`/course/session/${courseId}/attendance`)
-            }>
+            onClick={() => history.push(`/course/${courseId}/attendance`)}>
             <FullWidthButton
               text='출결보기'
               style={{

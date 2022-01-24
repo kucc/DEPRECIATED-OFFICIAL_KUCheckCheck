@@ -8,7 +8,7 @@ export const StyledSelectContainer = styled.div`
 
 export const StyledSelect = styled.div`
   display: grid;
-  grid-template-columns: 100px 1px 100px 1px 100px;
+  grid-template-columns: 120px 1px 120px 1px 120px;
   font-weight: 700;
 `;
 

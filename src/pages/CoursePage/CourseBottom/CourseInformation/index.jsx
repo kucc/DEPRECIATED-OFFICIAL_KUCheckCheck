@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
+import { renderWord } from '@utility/COMMON_FUNCTION';
 import { StyledInputNumber, StyledTextArea } from '@utility/COMMON_STYLE';
 
 import { StyledInfoDesc, StyledInfoText, StyledInfoTitle } from './style';
@@ -15,6 +16,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     coursePlace,
     courseNotice,
     courseId,
+    courseType,
   } = courseData;
   const [newCourseInfo, setNewCourseInfo] = useState('');
   const [newCourseGoal, setNewCourseGoal] = useState('');
@@ -54,7 +56,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   return (
     <div>
       <StyledInfoText>
-        <StyledInfoTitle>세션 소개</StyledInfoTitle>
+        <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
         {isEdit ? (
           <StyledTextArea
             defaultValue={courseInfo}
@@ -67,7 +69,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
         )}
       </StyledInfoText>
       <StyledInfoText>
-        <StyledInfoTitle>세션 목표</StyledInfoTitle>
+        <StyledInfoTitle>{renderWord(courseType)} 목표</StyledInfoTitle>
         {isEdit ? (
           <StyledTextArea
             defaultValue={courseGoal}
