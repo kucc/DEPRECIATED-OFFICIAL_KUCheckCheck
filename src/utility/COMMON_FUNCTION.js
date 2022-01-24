@@ -2,6 +2,16 @@ export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];
 };
 
+export const renderWord = courseType => {
+  if (courseType === 1) {
+    return '세션';
+  } else if (courseType === 2) {
+    return '스터디';
+  } else if (courseType === 3) {
+    return '프로젝트';
+  }
+};
+
 const emojis = [
   '🧕',
   '👮‍♀️',

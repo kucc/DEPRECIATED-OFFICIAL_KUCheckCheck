@@ -50,7 +50,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             }}
             key={key}
             src={`/img/icon/${image}.svg`}
-            onClick={() => history.push(`/course/session/${course.id}`)}
+            onClick={() => history.push(`/course/${course.id}`)}
           />
         );
       } else {
@@ -107,7 +107,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             marginTop: '25px',
           }}>
           <StyledCourseText
-            onClick={() => history.push(`/course/session/${course.id}`)}>
+            onClick={() => history.push(`/course/${course.id}`)}>
             <StyledCourseTitle>
               <div>
                 {course.courseName.length < 18
@@ -118,7 +118,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>
           <CourseDifficulty
-            onClick={() => history.push(`/course/session/${course.id}`)}
+            onClick={() => history.push(`/course/${course.id}`)}
             difficulty={course.difficulty}
             requireTime={course.requireTime}
             style={{ marginTop: '0px' }}

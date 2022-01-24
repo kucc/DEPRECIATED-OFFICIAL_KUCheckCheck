@@ -7,6 +7,7 @@ import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService, firestoreService } from '@/firebase';
 import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
+import { renderWord } from '@utility/COMMON_FUNCTION';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
 import CourseCurriculum from './CourseCurriculum';
@@ -22,8 +23,14 @@ import {
 } from './style';
 
 const CourseBottom = ({ courseData }) => {
-  const { language, courseName, difficulty, requireTime, courseId } =
-    courseData;
+  const {
+    language,
+    courseName,
+    difficulty,
+    requireTime,
+    courseId,
+    courseType,
+  } = courseData;
   const currentUser = authService.currentUser;
   const [selected, setSelected] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
@@ -99,6 +106,7 @@ const CourseBottom = ({ courseData }) => {
       );
     }
   };
+
   return (
     <div>
       <StyledSelectContainer>
@@ -106,7 +114,7 @@ const CourseBottom = ({ courseData }) => {
           <StyledSelectItem
             className={selected === 0 && 'in-shadow-weak'}
             onClick={() => setSelected(0)}>
-            세션 소개
+            {renderWord(courseType)} 소개
           </StyledSelectItem>
           <StyledVerticalLine />
           <StyledSelectItem
