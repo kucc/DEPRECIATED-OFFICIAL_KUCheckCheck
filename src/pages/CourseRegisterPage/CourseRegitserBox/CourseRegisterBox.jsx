@@ -11,13 +11,26 @@ import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
 } from '@utility/ALERT_MESSAGE';
-import { StyledInputNumber, StyledTextArea } from '@utility/COMMON_STYLE';
+import {
+  StyledInputNumber,
+  StyledSelectItem,
+  StyledTextArea,
+  StyledVerticalLine,
+} from '@utility/COMMON_STYLE';
 
 import {
   StyledBackground,
   StyledBlackButton,
   StyledBottomContainer,
+  StyledCourseRegisterContainer,
+  StyledCourseRegisterText,
   StyledInputBox,
+  StyledLaguageImg,
+  StyledRegisterRequireTop,
+  StyledRegisterRequireTopLeft,
+  StyledRegisterRequireTopRight,
+  StyledSelect,
+  StyledTagSelect,
   StyledText,
   StyledTopContainer,
 } from '../style';
@@ -27,16 +40,18 @@ function CourseRegisterBox({ enrollHandler }) {
   const [courseName, setcourseName] = useState('');
   const [courseInfo, setcourseInfo] = useState('');
   const [courseGoal, setcourseGoal] = useState('');
-  const [language, setlanguage] = useState('C');
+  const [language, setlanguage] = useState(['C']);
   const [difficulty, setdifficulty] = useState('');
   const [requireTime, setrequireTime] = useState('');
-  const [courseType] = useState(1);
+  const [courseType, setCourseType] = useState(1);
   const [selectedImg, setselectedImg] = useState('C');
   const [courseDate, setcourseDate] = useState('');
   const [coursePlace, setcoursePlace] = useState('');
   const [courseNotice, setcourseNotice] = useState('');
   const [courseMember, setcourseMember] = useState('');
-  const [courseCurriculum, setcourseCurriculum] = useState({});
+  const [courseCurriculum, setCourseCurriculum] = useState([]);
+
+  console.log(language);
 
   const onChangeTitle = event => {
     setcourseName(event.target.value);
@@ -50,21 +65,34 @@ function CourseRegisterBox({ enrollHandler }) {
     setcourseGoal(event.target.value);
   };
 
-  const handleLanguage = value => {
-    setselectedImg(value);
+  const onChangeLanguage = value => {
+    let currentImg;
+    if (value.length === 0) {
+      currentImg = 'Null';
+    } else {
+      currentImg = value[value.length - 1];
+    }
+    setselectedImg(currentImg);
     setlanguage(value);
   };
 
-  const handledifficult = value => {
+  const onChangeDifficult = value => {
     setdifficulty(value);
   };
 
-  const handleTime = value => {
+  const onChangeTime = value => {
     setrequireTime(value);
   };
 
-  const onChangecourseDate = event => {
+  const onChangeCourseDate = event => {
     setcourseDate(event.target.value);
+  };
+
+  const onChangeCourseCurriculum = (value, index) => {
+    let updateCurriculum = courseCurriculum;
+    updateCurriculum[index] = value;
+    console.log(courseCurriculum);
+    setCourseCurriculum(updateCurriculum);
   };
 
   const onChangePlace = event => {
@@ -78,102 +106,108 @@ function CourseRegisterBox({ enrollHandler }) {
     setcourseMember(value);
   };
 
+  const curriculumArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
   return (
     <StyledBackground>
       <NavBar />
-      <StyledTopContainer>
-        <p style={{ fontSize: '20px', fontFamily: 'NexonBo' }}>등록하기</p>
-      </StyledTopContainer>
-
+      <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
           <StyledBlackButton className='border-radius-all'>
             필수 정보
           </StyledBlackButton>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '50% 50%',
-            }}>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '130px auto',
-                alignItems: 'center',
-                borderRight: '1px solid #b6b6b677',
-              }}>
-              <StyledText style={{ marginTop: '30px' }}>사용언어</StyledText>
-              <div>
-                <img
-                  style={{
-                    width: '70px',
-                    height: '70px',
-                    borderRadius: '50%',
-                    marginRight: '20px',
-                    objectFit: 'contain',
-                  }}
-                  src={`./img/icon/${selectedImg}.svg`}
-                />
+          <StyledRegisterRequireTop>
+            <StyledRegisterRequireTopLeft>
+              <StyledText
+                style={{
+                  margin: '30px',
+                }}>
+                활동
+              </StyledText>
+              <StyledSelectItem
+                style={{ padding: '10px' }}
+                className={courseType === 1 && 'out-shadow-middle'}
+                onClick={() => setCourseType(1)}>
+                세션
+              </StyledSelectItem>
+              <StyledVerticalLine />
+              <StyledSelectItem
+                style={{ padding: '10px' }}
+                className={courseType === 2 && 'out-shadow-middle'}
+                onClick={() => setCourseType(2)}>
+                스터디
+              </StyledSelectItem>
+              <StyledVerticalLine />
+              <StyledSelectItem
+                style={{ padding: '10px' }}
+                className={courseType === 3 && 'out-shadow-middle'}
+                onClick={() => setCourseType(3)}>
+                프로젝트
+              </StyledSelectItem>
+            </StyledRegisterRequireTopLeft>
 
-                <Select
-                  style={{ width: 'calc(100% - 150px)', marginRight: '50px' }}
-                  defaultValue='C'
-                  onChange={handleLanguage}>
-                  <Option value='C'>C</Option>
-                  <Option value='Cpp'>C++</Option>
-                  <Option value='Csharp'>C#</Option>
-                  <Option value='Database'>데이터베이스</Option>
-                  <Option value='Go'>Go</Option>
-                  <Option value='Html'>HTML & CSS</Option>
-                  <Option value='Java'>Java</Option>
-                  <Option value='Javascript'>Javascript</Option>
-                  <Option value='Kotlin'>Kotlin</Option>
-                  <Option value='MachineLearning'>기계 학습</Option>
-                  <Option value='Node'>Node.js</Option>
-                  <Option value='Python'>Python</Option>
-                  <Option value='React'>React.js</Option>
-                  <Option value='ReactNative'>React Native</Option>
-                  <Option value='Ruby'>Ruby</Option>
-                  <Option value='Scala'>Scala</Option>
-                  <Option value='Swift'>Swift</Option>
-                  <Option value='Algorithm'>자료구조 & 알고리즘</Option>
-                  <Option value='Etc'>기타</Option>
-                </Select>
-              </div>
-            </div>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '130px auto auto',
-                alignItems: 'center',
-              }}>
+            <StyledRegisterRequireTopRight>
               <StyledText
                 style={{
                   margin: '30px',
                 }}>
                 난이도 / <br /> 투자 시간
               </StyledText>
-
-              <Select
+              <StyledSelect
                 defaultValue='난이도'
-                style={{ width: 100, margin: '0px' }}
-                onChange={handledifficult}>
+                className='out-shadow-middle'
+                width={150}
+                onChange={onChangeDifficult}>
                 <Option value='easy'>초급</Option>
                 <Option value='medium'>중급</Option>
                 <Option value='hard'>고급</Option>
-              </Select>
-
-              <Select
+              </StyledSelect>
+              <StyledSelect
                 defaultValue='투자 시간'
-                style={{ width: 120, margin: '30px' }}
-                onChange={handleTime}>
+                onChange={onChangeTime}
+                className='out-shadow-middle'
+                width={150}>
                 <Option value='1'>1학점</Option>
                 <Option value='2'>2학점</Option>
                 <Option value='3'>3학점</Option>
-              </Select>
+              </StyledSelect>
+            </StyledRegisterRequireTopRight>
+          </StyledRegisterRequireTop>
+          <StyledInputBox style={{ marginTop: '10px' }}>
+            <StyledText style={{ marginTop: '30px' }}>사용언어</StyledText>
+            <div>
+              <StyledLaguageImg src={`/img/icon/${selectedImg}.svg`} />
+              <StyledTagSelect
+                mode='tags'
+                placeholder='사용 언어를 선택해주세요! (복수 선택 가능)'
+                // width={calc(100% - 150px)}
+                style={{ width: 'calc(100% - 90px)' }}
+                defaultValue='C'
+                onChange={onChangeLanguage}>
+                <Option value='C'>C</Option>
+                <Option value='Cpp'>C++</Option>
+                <Option value='Csharp'>C#</Option>
+                <Option value='Database'>데이터베이스</Option>
+                <Option value='Go'>Go</Option>
+                <Option value='Html'>HTML & CSS</Option>
+                <Option value='Java'>Java</Option>
+                <Option value='Javascript'>Javascript</Option>
+                <Option value='Kotlin'>Kotlin</Option>
+                <Option value='MachineLearning'>기계 학습</Option>
+                <Option value='Node'>Node.js</Option>
+                <Option value='Python'>Python</Option>
+                <Option value='React'>React.js</Option>
+                <Option value='ReactNative'>React Native</Option>
+                <Option value='Ruby'>Ruby</Option>
+                <Option value='Scala'>Scala</Option>
+                <Option value='Swift'>Swift</Option>
+                <Option value='Algorithm'>자료구조 & 알고리즘</Option>
+                <Option value='Etc'>기타</Option>
+              </StyledTagSelect>
             </div>
-          </div>
+          </StyledInputBox>
           <StyledInputBox>
             <StyledText style={{ marginTop: '30px' }}>세션 제목</StyledText>
             <StyledTextArea
@@ -215,7 +249,7 @@ function CourseRegisterBox({ enrollHandler }) {
             <StyledText>진행 요일</StyledText>
             <StyledTextArea
               maxLength={200}
-              onChange={onChangecourseDate}
+              onChange={onChangeCourseDate}
               placeholder='100자 이내'
               autoSize={{ minRows: 2 }}
             />
@@ -256,119 +290,19 @@ function CourseRegisterBox({ enrollHandler }) {
           <StyledBlackButton className='border-radius-all'>
             커리큘럼
           </StyledBlackButton>
-
-          <StyledInputBox style={{ marginTop: '20px' }}>
-            <StyledText>1주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  first: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>2주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  second: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>3주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  third: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>4주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  forth: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>5주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  fifth: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>6주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  sixth: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>7주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  seventh: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
-          <StyledInputBox>
-            <StyledText>8주차</StyledText>
-            <StyledTextArea
-              maxLength={200}
-              onChange={event => {
-                setcourseCurriculum({
-                  ...courseCurriculum,
-                  eighth: event.target.value,
-                });
-              }}
-              placeholder='200자 이내'
-              autoSize={{ minRows: 2 }}
-            />
-          </StyledInputBox>
+          {curriculumArray.map((item, index) => (
+            <StyledInputBox key={`${index}주차`} style={{ marginTop: '20px' }}>
+              <StyledText>{item}주차</StyledText>
+              <StyledTextArea
+                maxLength={200}
+                onChange={event =>
+                  onChangeCourseCurriculum(event.target.value, index)
+                }
+                placeholder='200자 이내'
+                autoSize={{ minRows: 2 }}
+              />
+            </StyledInputBox>
+          ))}
         </div>
 
         <Button
@@ -387,14 +321,14 @@ function CourseRegisterBox({ enrollHandler }) {
               !courseName ||
               !courseInfo ||
               !courseGoal ||
-              !language ||
+              language.length === 0 ||
               !difficulty ||
               !requireTime ||
               !courseDate ||
               !coursePlace ||
               !courseNotice ||
               !courseMember ||
-              !courseCurriculum
+              courseCurriculum.length < 8
             ) {
               alert(FORM_IS_NOT_FULL);
             } else if (!courseType) {

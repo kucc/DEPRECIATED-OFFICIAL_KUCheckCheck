@@ -19,6 +19,7 @@ export const StyledTimeline = styled(Timeline)`
   .ant-timeline-item-content {
     left: 200px !important;
     top: 3px;
+    width: calc(100% - 300px) !important;
   }
 
   .ant-timeline-item-head {
