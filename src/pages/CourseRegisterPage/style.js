@@ -34,7 +34,7 @@ export const StyledBlackButton = styled.button`
   background-color: black;
   color: white;
   border: 0px;
-  width: 150px;
+  width: ${props => props.width || '150px'};
   height: 50px;
   margin-bottom: 10px;
 `;
@@ -51,37 +51,6 @@ export const StyledInputBox = styled.p`
   grid-template-columns: 130px auto;
   align-items: center;
   margin-bottom: 30px;
-`;
-
-export const StyledSelect = styled(Select)`
-  .ant-select-selector {
-    border-radius: 20px !important;
-    height: 61px !important;
-  }
-  .ant-select-selection-item {
-    padding-left: 35px !important;
-    padding-top: 15px !important;
-  }
-  border-radius: 20px;
-  width: ${props => `${props.width}px` || '150px'};
-`;
-
-export const StyledTagSelect = styled(Select)`
-  .ant-select-selector {
-    border-radius: 20px !important;
-    height: 61px !important;
-    background-color: ${BASE_COLOR} !important;
-    box-shadow: inset 0px 3px 1.5px lightgrey !important;
-  }
-  .ant-select-selection-item {
-    margin-left: 10px;
-    border-radius: 10px !important;
-    background-color: white !important;
-  }
-  .ant-select-selection-item-content {
-    padding: 5px;
-  }
-  border-radius: 20px;
 `;
 
 export const StyledRegisterRequireTop = styled.div`

@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
+import { Select } from 'antd';
 import PropTypes from 'prop-types';
 
+import { firestoreService } from '@/firebase';
 import { renderWord } from '@utility/COMMON_FUNCTION';
-import { StyledInputNumber, StyledTextArea } from '@utility/COMMON_STYLE';
+import {
+  StyledInputNumber,
+  StyledTagSelect,
+  StyledTextArea,
+} from '@utility/COMMON_STYLE';
 
 import { StyledInfoDesc, StyledInfoText, StyledInfoTitle } from './style';
+
+const { Option } = Select;
 
 const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const {
@@ -17,6 +25,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     courseNotice,
     courseId,
     courseType,
+    courseMember,
   } = courseData;
   const [newCourseInfo, setNewCourseInfo] = useState('');
   const [newCourseGoal, setNewCourseGoal] = useState('');
@@ -24,9 +33,43 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const [newMaxMemberNum, setNewMaxMemberNum] = useState(0);
   const [newCoursePlace, setNewCoursePlace] = useState('');
   const [newCourseNotice, setNewCourseNotice] = useState('');
+  const [newCourseMember, setNewCourseMember] = useState([]);
+  const [newCourseCheckAdmin, setNewCourseCheckAdmin] = useState([]);
 
+  //한 user의 정보를 가져옴
+  async function fetchUserData(memberId) {
+    const userRef = await firestoreService
+      .collection('users')
+      .doc(memberId)
+      .get();
+    return userRef.data();
+  }
+
+  //member들의 정보를 가져옴
+  async function fetchUserArray() {
+    let newCourseMemberArr = [];
+    await Promise.all(
+      courseMember.map(async memberId => {
+        const memberInfo = await fetchUserData(memberId);
+        newCourseMemberArr.push({
+          id: memberId,
+          name: memberInfo.name,
+          email: memberInfo.email,
+        });
+      }),
+    );
+    setNewCourseMember(newCourseMemberArr);
+  }
+
+  // fetch CourseMember Array
   useEffect(() => {
-    // updateCourseInfo();
+    if (courseMember) {
+      fetchUserArray();
+    }
+  }, [courseMember]);
+
+  // 값 변화시 상위 컴포넌트로 데이터를 보냄
+  useEffect(() => {
     newCourseDataInfo({
       courseInfo: newCourseInfo,
       courseGoal: newCourseGoal,
@@ -34,6 +77,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
       maxMemberNum: newMaxMemberNum,
       coursePlace: newCoursePlace,
       courseNotice: newCourseNotice,
+      courseCheckAdmin: newCourseCheckAdmin,
     });
   }, [
     newCourseInfo,
@@ -42,7 +86,10 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     newMaxMemberNum,
     newCoursePlace,
     newCourseNotice,
+    newCourseCheckAdmin,
   ]);
+
+  // 초기 값 설정
   useEffect(() => {
     if (courseData) {
       setNewCourseInfo(courseInfo);
@@ -53,6 +100,10 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
       setNewCourseNotice(courseNotice);
     }
   }, [courseData]);
+
+  const onChangeCourseCheckAdmin = value => {
+    setNewCourseCheckAdmin(value);
+  };
   return (
     <div>
       <StyledInfoText>
@@ -134,6 +185,26 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
           <StyledInfoDesc>{courseNotice}</StyledInfoDesc>
         )}
       </StyledInfoText>
+      {isEdit && (
+        <StyledInfoText>
+          <StyledInfoTitle>출석체크 담당자 선택</StyledInfoTitle>
+          <StyledTagSelect
+            mode='tags'
+            placeholder='출석체크 담당자를 선택해주세요! (복수 선택 가능)'
+            // width={calc(100% - 150px)}
+            style={{ width: '100%' }}
+            onChange={onChangeCourseCheckAdmin}>
+            {newCourseMember &&
+              newCourseMember.map((member, index) => (
+                <Option
+                  key={index}
+                  value={
+                    member.id
+                  }>{`${member.name} (${member.email})`}</Option>
+              ))}
+          </StyledTagSelect>
+        </StyledInfoText>
+      )}
     </div>
   );
 };

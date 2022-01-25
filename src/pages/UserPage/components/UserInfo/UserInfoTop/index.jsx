@@ -101,17 +101,6 @@ function UserInfoTop({ onChangeFunc, userData }) {
         <StyledUserInfoModalEmoji onClick={userEmojiHandler}>
           {userEmoji}
         </StyledUserInfoModalEmoji>
-        <StyledUserInfoModalText>
-          링크 수정 (https://까지 넣어주세요!)
-        </StyledUserInfoModalText>
-        <TextArea
-          maxLength={200}
-          onChange={onChangeLink}
-          placeholder='링크 수정'
-          autoSize={{ minRows: 1 }}
-          style={{ width: '100%', marginBottom: '20px' }}
-          defaultValue={userLink}
-        />
         <StyledUserInfoModalText>코멘트 수정</StyledUserInfoModalText>
         <TextArea
           maxLength={100}
@@ -129,6 +118,17 @@ function UserInfoTop({ onChangeFunc, userData }) {
           autoSize={{ minRows: 1 }}
           style={{ width: '100%', marginBottom: '20px' }}
           defaultValue={userDetailComment}
+        />
+        <StyledUserInfoModalText>
+          링크 수정 (https://까지 넣어주세요!)
+        </StyledUserInfoModalText>
+        <TextArea
+          maxLength={200}
+          onChange={onChangeLink}
+          placeholder='링크 수정'
+          autoSize={{ minRows: 1 }}
+          style={{ width: '100%', marginBottom: '20px' }}
+          defaultValue={userLink}
         />
       </Modal>
     </StyledUserInfoTopContainer>
