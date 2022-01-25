@@ -60,16 +60,16 @@ function App() {
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
         */}
+        <Route
+          exact
+          path='/course/register'
+          component={AuthHoc(CourseRegisterPage)}
+        />
         <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
         <Route
           exact
           path='/course/:id/attendance'
           component={CourseHoc(AttendacePage, 1)}
-        />
-        <Route
-          exact
-          path='/course/register'
-          component={AuthHoc(CourseRegisterPage)}
         />
         <Route path='/' exact component={MainPage} />
       </Switch>
