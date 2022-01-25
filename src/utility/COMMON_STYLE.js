@@ -1,6 +1,8 @@
-import { InputNumber } from 'antd';
+import { InputNumber, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import styled from 'styled-components';
+
+import { BASE_COLOR } from './COLORS';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -58,4 +60,35 @@ export const StyledInputNumber = styled(InputNumber)`
   &:focus {
     outline: none;
   }
+`;
+
+export const StyledSelect = styled(Select)`
+  .ant-select-selector {
+    border-radius: 20px !important;
+    height: 61px !important;
+  }
+  .ant-select-selection-item {
+    padding-left: 35px !important;
+    padding-top: 15px !important;
+  }
+  border-radius: 20px;
+  width: ${props => `${props.width}px` || '150px'};
+`;
+
+export const StyledTagSelect = styled(Select)`
+  .ant-select-selector {
+    border-radius: 20px !important;
+    height: 61px !important;
+    background-color: ${BASE_COLOR} !important;
+    box-shadow: inset 0px 3px 1.5px lightgrey !important;
+  }
+  .ant-select-selection-item {
+    margin-left: 10px;
+    border-radius: 10px !important;
+    background-color: white !important;
+  }
+  .ant-select-selection-item-content {
+    padding: 5px;
+  }
+  border-radius: 20px;
 `;
