@@ -51,7 +51,7 @@ function CourseRegisterBox({ enrollHandler }) {
   const [courseMember, setcourseMember] = useState('');
   const [courseCurriculum, setCourseCurriculum] = useState([]);
 
-  console.log(courseCurriculum);
+  console.log(language);
 
   const onChangeTitle = event => {
     setcourseName(event.target.value);
@@ -321,7 +321,7 @@ function CourseRegisterBox({ enrollHandler }) {
               !courseName ||
               !courseInfo ||
               !courseGoal ||
-              !language ||
+              language.length === 0 ||
               !difficulty ||
               !requireTime ||
               !courseDate ||
