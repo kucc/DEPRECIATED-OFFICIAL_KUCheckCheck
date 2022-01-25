@@ -70,8 +70,11 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
     <StyledTimeTableContainer>
       <StyledColorContainer>
         <Button onClick={handleSubmit}>저장하기</Button>
-        최대한 다양한 색깔로 선택해주세요. <br />
-        저장 버튼을 누르셔야 저장이 됩니다.
+        <ul>
+          <li>동방을 사용하는 활동만 시간표 등록을 해주세요!</li>
+          <li>최대한 다양한 색깔로 선택해주세요.</li>
+          <li>저장 버튼을 누르셔야 저장이 됩니다.</li>
+        </ul>
         <CirclePicker
           color={selectedColor}
           onChangeComplete={color => setSelectedColor(color.hex)}

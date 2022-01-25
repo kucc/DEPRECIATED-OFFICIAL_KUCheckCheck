@@ -13,7 +13,9 @@ import {
 } from '@utility/ALERT_MESSAGE';
 import {
   StyledInputNumber,
+  StyledSelect,
   StyledSelectItem,
+  StyledTagSelect,
   StyledTextArea,
   StyledVerticalLine,
 } from '@utility/COMMON_STYLE';
@@ -22,17 +24,13 @@ import {
   StyledBackground,
   StyledBlackButton,
   StyledBottomContainer,
-  StyledCourseRegisterContainer,
   StyledCourseRegisterText,
   StyledInputBox,
   StyledLaguageImg,
   StyledRegisterRequireTop,
   StyledRegisterRequireTopLeft,
   StyledRegisterRequireTopRight,
-  StyledSelect,
-  StyledTagSelect,
   StyledText,
-  StyledTopContainer,
 } from '../style';
 
 function CourseRegisterBox({ enrollHandler }) {
@@ -114,8 +112,11 @@ function CourseRegisterBox({ enrollHandler }) {
       <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
-          <StyledBlackButton className='border-radius-all'>
+          <StyledBlackButton
+            // width='500px'
+            className='border-radius-all'>
             필수 정보
+            {/* ( 필수 정보는 수정이 불가하니 신중히 입력해주세요! ) */}
           </StyledBlackButton>
 
           <StyledRegisterRequireTop>
@@ -181,7 +182,7 @@ function CourseRegisterBox({ enrollHandler }) {
               <StyledLaguageImg src={`/img/icon/${selectedImg}.svg`} />
               <StyledTagSelect
                 mode='tags'
-                placeholder='사용 언어를 선택해주세요! (복수 선택 가능)'
+                placeholder='사용 언어를 선택해주세요! (복수 선택 가능). 중요한 순서대로 선택해주세요.'
                 // width={calc(100% - 150px)}
                 style={{ width: 'calc(100% - 90px)' }}
                 defaultValue='C'
@@ -209,7 +210,7 @@ function CourseRegisterBox({ enrollHandler }) {
             </div>
           </StyledInputBox>
           <StyledInputBox>
-            <StyledText style={{ marginTop: '30px' }}>세션 제목</StyledText>
+            <StyledText style={{ marginTop: '30px' }}>활동 제목</StyledText>
             <StyledTextArea
               allowClear={true}
               maxLength={50}
@@ -226,7 +227,7 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledBlackButton>
 
           <StyledInputBox style={{ marginTop: '20px' }}>
-            <StyledText>세션 소개</StyledText>
+            <StyledText>활동 소개</StyledText>
             <StyledTextArea
               maxLength={200}
               onChange={onChangeIntro}
@@ -236,7 +237,7 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledInputBox>
 
           <StyledInputBox>
-            <StyledText>세션 목표</StyledText>
+            <StyledText>활동 목표</StyledText>
             <StyledTextArea
               maxLength={200}
               onChange={onChangeGoal}
@@ -256,7 +257,7 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledInputBox>
 
           <StyledInputBox>
-            <StyledText>참여 인원</StyledText>
+            <StyledText>최대 인원</StyledText>
             <StyledInputNumber
               onChange={onChangeMember}
               placeholder='숫자만 적어주세요. ex) 6'
