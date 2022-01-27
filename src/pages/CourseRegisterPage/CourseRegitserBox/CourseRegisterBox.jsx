@@ -38,11 +38,11 @@ function CourseRegisterBox({ enrollHandler }) {
   const [courseName, setcourseName] = useState('');
   const [courseInfo, setcourseInfo] = useState('');
   const [courseGoal, setcourseGoal] = useState('');
-  const [language, setlanguage] = useState(['C']);
+  const [language, setlanguage] = useState(['']);
   const [difficulty, setdifficulty] = useState('');
   const [requireTime, setrequireTime] = useState('');
   const [courseType, setCourseType] = useState(1);
-  const [selectedImg, setselectedImg] = useState('C');
+  const [selectedImg, setselectedImg] = useState('Etc');
   const [courseDate, setcourseDate] = useState('');
   const [coursePlace, setcoursePlace] = useState('');
   const [courseNotice, setcourseNotice] = useState('');
@@ -148,7 +148,7 @@ function CourseRegisterBox({ enrollHandler }) {
                 프로젝트
               </StyledSelectItem>
             </StyledRegisterRequireTopLeft>
-
+            
             <StyledRegisterRequireTopRight>
               <StyledText
                 style={{
@@ -185,7 +185,6 @@ function CourseRegisterBox({ enrollHandler }) {
                 placeholder='사용 언어를 선택해주세요! (복수 선택 가능). 중요한 순서대로 선택해주세요.'
                 // width={calc(100% - 150px)}
                 style={{ width: 'calc(100% - 90px)' }}
-                defaultValue='C'
                 onChange={onChangeLanguage}>
                 <Option value='C'>C</Option>
                 <Option value='Cpp'>C++</Option>
