@@ -18,6 +18,7 @@ export const InputBoxWithLabel = ({
         <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
       )}
       <StyledInput
+        className='in-shadow-weak'
         name={inputName}
         type={inputType}
         placeholder={placeholder}

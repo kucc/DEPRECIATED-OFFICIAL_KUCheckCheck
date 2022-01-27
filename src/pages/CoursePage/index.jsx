@@ -35,7 +35,6 @@ export const CoursePage = ({ courseData }) => {
             .collection('users')
             .doc(leaderId)
             .get();
-
           setLeaderData({
             ...leaderData.data(),
             id: courseData.courseLeader.id,

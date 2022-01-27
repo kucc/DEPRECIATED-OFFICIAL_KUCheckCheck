@@ -90,5 +90,8 @@ export const StyledTagSelect = styled(Select)`
   .ant-select-selection-item-content {
     padding: 5px;
   }
+  .ant-select-selection-item-remove {
+    padding-top: 3px;
+  }
   border-radius: 20px;
 `;

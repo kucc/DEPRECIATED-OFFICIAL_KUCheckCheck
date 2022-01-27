@@ -6,8 +6,8 @@ import { NavBar } from '@components';
 
 import { StyledSideMargin } from '@utility/COMMON_STYLE';
 
-import UserCourse from './components/UserCourse';
-import UserInfo from './components/UserInfo';
+import UserCourse from './UserCourse';
+import UserInfo from './UserInfo';
 import { StyledBackground } from './style';
 
 export const UserPage = ({ userData }) => {

@@ -19,12 +19,10 @@ import {
 
 export const CourseContainer = ({ course, CourseApplicationState }) => {
   const history = useHistory();
-  // const [onImageHover, setonImageHover] = useState(false);
   const [onCourseHover, setOnCourseHover] = useState(false);
   const toggleHover = () => setOnCourseHover(prev => !prev);
   const [{ x }, set] = useSpring(() => ({
     x: 0,
-    // config: { duration: 180 }
   }));
 
   const renderCouresImage = () =>
@@ -38,8 +36,6 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
           <img
             onMouseEnter={() => set({ x: 1 })}
             onMouseLeave={() => set({ x: 0 })}
-            // onMouseEnter={() => setonImageHover(true)}
-            // onMouseLeave={() => setonImageHover(false)}
             style={{
               position: 'absolute',
               backgroundColor: 'white',
@@ -63,8 +59,6 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
               width: '60px',
               zIndex: 3 - key,
               left: x.to([0, 1], [45 + 20 * key, 45 + key * 70]),
-              // left: onImageHover ? 45 + key * 70 : 45 + key * 20,
-              // transition: 'all .2s ease',
             }}
             key={key}
             src={`/img/icon/${image}.svg`}
@@ -101,6 +95,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
         <StyledCourseExplainWrapper
           style={{
             display: 'grid',
+            // userpage에서의 재사용을 위해 application이 있는 상태와 없는 상태로 분리
             gridTemplateColumns: CourseApplicationState
               ? 'auto 250px 150px 30px'
               : 'auto 250px',
@@ -110,6 +105,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             onClick={() => history.push(`/course/${course.id}`)}>
             <StyledCourseTitle>
               <div>
+                {/* courseTitle이 너무 길면 18자까지만 출력 */}
                 {course.courseName.length < 18
                   ? course.courseName
                   : course.courseName.slice(0, 18) + '...'}

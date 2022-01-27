@@ -3,7 +3,9 @@ import React from 'react';
 import { Typography } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { DescriptionForm, DescriptionLogo } from './style';
+import { DefaultLogo } from '@components/DefaultLogo';
+
+import { DescriptionForm } from './style';
 
 const { Title, Text } = Typography;
 
@@ -11,12 +13,12 @@ export const Description = () => {
   const history = useHistory();
   return (
     <DescriptionForm>
-      <DescriptionLogo
-        alt='KUCC Icon'
-        src={
-          'https://user-images.githubusercontent.com/41494099/86317182-c58a8900-bc69-11ea-9a6e-dfdb1e0141be.png'
-        }
+      <DefaultLogo
+        logoName='type-3-1'
+        width={120}
+        height={120}
         onClick={() => history.push('/')}
+        isPointer={true}
       />
       <Title>
         KUCC

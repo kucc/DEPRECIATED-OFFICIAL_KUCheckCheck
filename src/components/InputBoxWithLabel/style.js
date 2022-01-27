@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { BASE_COLOR } from '@utility/COLORS';
+
 export const Wrapper = styled.div``;
 
 export const StyledLabel = styled.label`
@@ -12,11 +14,9 @@ export const StyledInput = styled.input`
   height: 3em;
   width: 100%;
   border-radius: 29px;
-  background-color: #f5f5f5;
+  background-color: ${BASE_COLOR} !important;
   border: none;
-  box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
   outline: none;
-
   &::placeholder {
     color: rgb(204, 204, 204);
     font-size: 12px;
