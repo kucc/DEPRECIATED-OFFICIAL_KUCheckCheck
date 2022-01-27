@@ -2,7 +2,7 @@ import React from 'react';
 
 import { DefaultLogo, Description } from '@components';
 
-import LoginForm from './components/LoginForm';
+import LoginForm from './LoginForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
 
 export const LoginPage = () => {
@@ -15,13 +15,15 @@ export const LoginPage = () => {
           <a
             href='/signup'
             style={{
+              color: 'black',
               textAlign: 'center',
               textDecoration: 'none',
               display: 'block',
+              marginTop: '-30px',
             }}>
             JOIN
           </a>
-          <DefaultLogo logoName='type-1-3' width={80} height={80} />
+          <DefaultLogo logoName='type-1-3' width={120} height={120} />
         </Wrapper>
       </StyledCol>
     </StyledRow>

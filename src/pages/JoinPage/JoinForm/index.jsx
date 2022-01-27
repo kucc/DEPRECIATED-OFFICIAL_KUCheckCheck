@@ -4,6 +4,7 @@ import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import { FullWidthButton } from '@components';
+import { InputBoxWithLabel } from '@components/InputBoxWithLabel';
 
 import { authService, firestoreService } from '@/firebase';
 import {
@@ -12,7 +13,6 @@ import {
 } from '@utility/ALERT_MESSAGE';
 import { RandomEmoji } from '@utility/COMMON_FUNCTION';
 
-import InputBox from '../InputBox';
 import { StyledForm } from './style';
 
 function JoinForm() {
@@ -66,7 +66,6 @@ function JoinForm() {
         courseHistory: [],
         detailComment: '',
       };
-
       await firestoreService
         .collection('users')
         .doc(createdUser.user.uid)
@@ -83,49 +82,48 @@ function JoinForm() {
   return (
     <StyledForm onSubmit={submitHandler}>
       <Space direction='vertical' size='large'>
-        <InputBox
+        <InputBoxWithLabel
           labelTitle='이메일'
           inputName='email'
           inputType='email'
           value={email}
           onChange={onChange}
         />
-        <InputBox
+        <InputBoxWithLabel
           labelTitle='비밀번호'
           inputName='password'
           inputType='password'
           value={password}
           onChange={onChange}
         />
-        <InputBox
+        <InputBoxWithLabel
           labelTitle='비밀번호 확인'
           inputName='passwordConfirm'
           inputType='password'
           value={passwordConfirm}
           onChange={onChange}
         />
-        <InputBox
+        <InputBoxWithLabel
           labelTitle='이름'
           inputName='name'
           inputType='text'
-          // 이거 그대로 냅둘건가 ? ㅋㅋㅋㅋㅋ
-          placehodler='ex) 정인아'
+          placeholder='ex) 정인아'
           value={name}
           onChange={onChange}
         />
-        <InputBox
-          labelTitle='링크'
+        <InputBoxWithLabel
+          labelTitle='링크 (https://까지 넣어주세요)'
           inputName='link'
           inputType='text'
-          placehodler='ex) https://github.com/'
+          placeholder='ex) https://github.com/'
           value={link}
           onChange={onChange}
         />
-        <InputBox
+        <InputBoxWithLabel
           labelTitle='소개'
           inputName='comment'
           inputType='text'
-          placehodler='50자 이내'
+          placeholder='50자 이내'
           value={comment}
           onChange={onChange}
         />

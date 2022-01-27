@@ -39,14 +39,14 @@ export const StyledBlackButton = styled.button`
   margin-bottom: 10px;
 `;
 
-export const StyledText = styled.p`
+export const StyledText = styled.div`
   font-size: 15px;
   font-family: 'NexonBo';
   margin: 30px;
   margin-top: 0px;
 `;
 
-export const StyledInputBox = styled.p`
+export const StyledInputBox = styled.div`
   display: grid;
   grid-template-columns: 130px auto;
   align-items: center;

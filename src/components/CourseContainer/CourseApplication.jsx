@@ -41,58 +41,44 @@ export const CourseApplication = ({ course, courseId }) => {
     }
   };
 
-  const handleOk = async () => {
-    // courseMember에서 해당 member를 제거
-    let courseMember = [];
-    await firestoreService
+  const handleRemoveCourse = async () => {
+    // courseData 가져오기
+    const courseData = await firestoreService
       .collection('courses')
       .doc(courseId)
-      .get()
-      .then(querySnapshot => {
-        courseMember = querySnapshot.data().courseMember;
-      });
+      .get();
+    // courseMember에서 해당 member를 제거
+    const courseMember = courseData.data().courseMember;
     const newcourseMember = courseMember.filter(
       element => element !== currentUser.uid,
     );
-
     // courseAttendance에서 해당 member를 제거
-    let courseAttendance = [];
-    await firestoreService
-      .collection('courses')
-      .doc(courseId)
-      .get()
-      .then(querySnapshot => {
-        courseAttendance = querySnapshot.data().courseAttendance;
-      });
+    const courseAttendance = courseData.data().courseAttendance;
     const newcourseAttendance = courseAttendance.filter(
       element => element.id !== currentUser.uid,
     );
 
-    // userHistory에서 해당 course를 제거
-    let courseHistory = [];
-    await firestoreService
+    //userData 기져오기
+    const useData = await firestoreService
       .collection('users')
       .doc(currentUser.uid)
-      .get()
-      .then(querySnapshot => {
-        courseHistory = querySnapshot.data().courseHistory;
-      });
+      .get();
+    // userHistory에서 해당 course를 제거
+    const courseHistory = useData.data().courseHistory;
     const newcourseHistory = courseHistory.filter(
       element => element.id !== courseId,
     );
 
-    setcourseMemberArr(newcourseMember);
     // firebase update
-
     await firestoreService.collection('courses').doc(courseId).update({
       courseMember: newcourseMember,
       courseAttendance: newcourseAttendance,
     });
-
     await firestoreService.collection('users').doc(currentUser.uid).update({
       courseHistory: newcourseHistory,
     });
 
+    setcourseMemberArr(newcourseMember);
     setIsModalVisible(false);
   };
 
@@ -166,14 +152,11 @@ export const CourseApplication = ({ course, courseId }) => {
                 });
 
               // 새로운 course History 배열을 생성
-              let newCourseHistory = [];
-              await firestoreService
+              const userData = await firestoreService
                 .collection('users')
                 .doc(currentUser.uid)
-                .get()
-                .then(querySnapshot => {
-                  newCourseHistory = querySnapshot.data().courseHistory;
-                });
+                .get();
+              const newCourseHistory = userData.data().courseHistory;
 
               // 유저 history에 course를 등록
               // memory 절약을 위해 userpage에서 render하는데 필요한 정보만 course에 담음
@@ -202,7 +185,7 @@ export const CourseApplication = ({ course, courseId }) => {
                 content: '신청이 완료되었습니다!',
                 style: {},
               });
-              alert(SUCCESS_APPLIED_COURSE);
+              // alert(SUCCESS_APPLIED_COURSE);
             } catch (error) {
               alert('error', error);
             } finally {
@@ -308,7 +291,7 @@ export const CourseApplication = ({ course, courseId }) => {
       <Modal
         title='취소하기'
         visible={isModalVisible}
-        onOk={handleOk}
+        onOk={handleRemoveCourse}
         onCancel={handleCancel}>
         <p>정말로 신청한 과목을 취소할까요?</p>
       </Modal>

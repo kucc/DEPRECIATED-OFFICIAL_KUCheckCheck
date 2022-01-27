@@ -18,6 +18,7 @@ import {
   NoticePage,
   TimeTablePage,
 } from '@pages';
+import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
 import { AuthHoc, CourseHoc, UserPageHoc } from '@hoc';
@@ -34,7 +35,6 @@ function App() {
     authService.onAuthStateChanged(user => {
       if (user) {
         if (path === '/login' || path === '/signup') {
-          alert(ALREADY_LOGGED_IN);
           history.push('/');
         }
         dispatch(setUser(user));
@@ -56,15 +56,15 @@ function App() {
         <Route path='/userpage/:id' component={UserPageHoc()} />
         <Route path='/rules' component={NoticePage} />
         <Route path='/timetable' component={TimeTablePage} />
-        {/* 
-          option : 0 => 모든 사람이 출입할 수 있음
-          option : 1 => 로그인된 사람만이 출입할 수 있음
-        */}
         <Route
           exact
           path='/course/register'
           component={AuthHoc(CourseRegisterPage)}
         />
+        {/* 
+          option : 0 => 모든 사람이 출입할 수 있음
+          option : 1 => 로그인된 사람만이 출입할 수 있음
+        */}
         <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
         <Route
           exact
@@ -72,6 +72,7 @@ function App() {
           component={CourseHoc(AttendacePage, 1)}
         />
         <Route path='/' exact component={MainPage} />
+        <Route component={NotFoundPage} />
       </Switch>
       <Footer />
     </>
