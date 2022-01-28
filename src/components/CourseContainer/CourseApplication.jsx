@@ -30,7 +30,7 @@ export const CourseApplication = ({ course, courseId }) => {
   const [enrollmentTerm, setenrollmentTerm] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [hoverState, sethoverState] = useState(false);
-  const [today, settoday] = useState('');
+  const today = new Date();
 
   const showModal = () => {
     // 세션 취소하기 modal
@@ -95,7 +95,6 @@ export const CourseApplication = ({ course, courseId }) => {
 
   useEffect(() => {
     setcourseMemberArr(course.courseMember);
-    settoday(new Date());
     // 이벤트 리스너
     firestoreService
       .collection('courses')
