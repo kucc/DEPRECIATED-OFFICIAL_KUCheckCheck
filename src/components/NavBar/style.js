@@ -57,6 +57,10 @@ export const NavBarAuthOn = styled.div`
   place-items: center;
   grid-template-columns: auto 90px 90px;
   font-size: 15px;
+  & > p {
+    margin-bottom: 0px;
+    font-family: 'NexonBo';
+  }
   @media (max-width: 1224px) {
     grid-template-columns: 60px 60px;
     min-width: 100px;
