@@ -35,35 +35,31 @@ export const Footer = () => {
 
   return (
     <>
-      <StyledFooterContainer isMobile={isMobile}>
+      <StyledFooterContainer>
         <StyledFooterBox>
-          <StyledFooterTitle isMobile={isMobile}>Creaters</StyledFooterTitle>
-          <StyledFooterDesc isMobile={isMobile}>바닐라 자바칩</StyledFooterDesc>
+          <StyledFooterTitle>Creaters</StyledFooterTitle>
+          <StyledFooterDesc>바닐라 자바칩</StyledFooterDesc>
           <StyledFooterVerticalLine />
-          <StyledFooterDesc isMobile={isMobile}>
-            곽나경 김채린 박가영 정인아
-          </StyledFooterDesc>
+          <StyledFooterDesc>곽나경 김채린 박가영 정인아</StyledFooterDesc>
         </StyledFooterBox>
         <StyledFooterBox>
-          <StyledFooterTitle isMobile={isMobile}>Developers</StyledFooterTitle>
-          <StyledFooterDesc isMobile={isMobile}>KUCHECKCHECK</StyledFooterDesc>
+          <StyledFooterTitle>Developers</StyledFooterTitle>
+          <StyledFooterDesc>KUCHECKCHECK</StyledFooterDesc>
           <StyledFooterVerticalLine />
-          <StyledFooterDesc isMobile={isMobile}>
+          <StyledFooterDesc>
             강태웅 김세진 김채린 명재위 이희준 정인아
           </StyledFooterDesc>
         </StyledFooterBox>
         <StyledHorizontalLine />
         <StyledFooterBox>
-          <StyledFooterTitle isMobile={isMobile}>Github</StyledFooterTitle>
-          <StyledFooterLink
-            isMobile={isMobile}
-            href='https://github.com/kucc/KUCheckCheck'>
+          <StyledFooterTitle>Github</StyledFooterTitle>
+          <StyledFooterLink href='https://github.com/kucc/KUCheckCheck'>
             https://github.com/kucc/KUCheckCheck
           </StyledFooterLink>
         </StyledFooterBox>
         <>
           <StyledFooterBox>
-            <StyledFooterTitle isMobile={isMobile}>KUCC</StyledFooterTitle>
+            <StyledFooterTitle>KUCC</StyledFooterTitle>
             <StyledFooterLink href='https://kucc.co.kr/'>
               https://kucc.co.kr/
             </StyledFooterLink>
@@ -72,16 +68,13 @@ export const Footer = () => {
             style={{
               marginLeft: isMobile ? '70px' : '200px',
               marginTop: '-7px',
-            }}
-            isMobile={isMobile}>
+            }}>
             Korea University Computer Club (고려대학교 중앙 컴퓨터 동아리)
           </StyledFooterDesc>
         </>
         <StyledFooterBox>
-          <StyledFooterTitle isMobile={isMobile}>Contact</StyledFooterTitle>
-          <StyledFooterDesc isMobile={isMobile}>
-            jjs01hwang@gmail.com (이희준)
-          </StyledFooterDesc>
+          <StyledFooterTitle>Contact</StyledFooterTitle>
+          <StyledFooterDesc>jjs01hwang@gmail.com (이희준)</StyledFooterDesc>
         </StyledFooterBox>
         <StyledFooterImgBox>
           <DefaultLogo
