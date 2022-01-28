@@ -23,6 +23,7 @@ export const CourseHoc = (SpecificComponent, option) => {
           .collection('courses')
           .doc(courseId)
           .get();
+        if (!data.exists) props.history.push('/course/not-found');
 
         // attach courseId to data
         setCourseData({ ...data.data(), courseId });

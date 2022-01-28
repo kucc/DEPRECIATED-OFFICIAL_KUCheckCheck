@@ -23,6 +23,8 @@ export const UserPageHoc = () => {
           .collection('users')
           .doc(userId)
           .get();
+
+        if (!data.exists) props.history.push('/user/not-found');
         // attach courseId to data
         setUserData({ ...data.data(), userId });
 

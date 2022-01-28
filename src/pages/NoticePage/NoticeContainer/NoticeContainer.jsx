@@ -20,7 +20,6 @@ function NoticeContainer() {
       // 임시 배열에 Data를 push
       let noticesArray = [];
       noticesData.forEach(doc => {
-        console.log(doc.data());
         noticesArray.push(doc.data());
       });
       setNotices(noticesArray);

@@ -51,11 +51,16 @@ function App() {
     <>
       <GlobalStyle />
       <Switch>
+        <Route exact path='/' component={MainPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={JoinPage} />
-        <Route path='/userpage/:id' component={UserPageHoc()} />
         <Route path='/rules' component={NoticePage} />
         <Route path='/timetable' component={TimeTablePage} />
+        {/* userPage */}
+        <Route exact path='/userpage/not-found' component={NotFoundPage} />
+        <Route path='/userpage/:id' component={UserPageHoc()} />
+        {/* coursePage */}
+        <Route exact path='/course/not-found' component={NotFoundPage} />
         <Route
           exact
           path='/course/register'
@@ -71,7 +76,6 @@ function App() {
           path='/course/:id/attendance'
           component={CourseHoc(AttendacePage, 1)}
         />
-        <Route path='/' exact component={MainPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
