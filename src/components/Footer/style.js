@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledFooterContainer = styled.div`
-  padding-top: 100px;
-  padding-left: 19%;
-  padding-right: 19%;
-  padding-bottom: 50px;
+  padding: ${props => (props.isMobile ? '30px 10.7%' : '50px 19%')};
+  padding-top: ${props => (props.isMobile ? '30px' : '100px')};
   background-color: rgb(245, 245, 245);
 `;
 
@@ -15,16 +13,16 @@ export const StyledFooterBox = styled.div`
 
 export const StyledFooterTitle = styled.div`
   font-family: 'NexonBo';
-  font-size: 14px;
-  width: 200px;
+  font-size: ${props => (props.isMobile ? '9px' : '14px')};
+  width: ${props => (props.isMobile ? '70px' : '200px')};
 `;
 
 export const StyledFooterDesc = styled.div`
-  font-size: 12px;
+  font-size: ${props => (props.isMobile ? '7px' : '12px')};
 `;
 
 export const StyledFooterLink = styled.a`
-  font-size: 12px;
+  font-size: ${props => (props.isMobile ? '7px' : '12px')};
   text-decoration: none;
   color: black;
 `;

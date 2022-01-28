@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Button, Select } from 'antd';
 import 'antd/dist/antd.css';
-import { Option } from 'antd/lib/mentions';
 import PropTypes from 'prop-types';
 
 import { NavBar } from '@components';
@@ -49,6 +48,7 @@ function CourseRegisterBox({ enrollHandler }) {
   const [courseMember, setcourseMember] = useState('');
   const [courseCurriculum, setCourseCurriculum] = useState([]);
 
+  // for antd select option
   const Option = Select.Option;
 
   const onChangeTitle = event => {
