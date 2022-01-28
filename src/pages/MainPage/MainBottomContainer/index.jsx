@@ -26,12 +26,15 @@ function MainBottomContainer() {
   const [currentSemester, setcurrentSemester] = useState('');
   // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
+  // registerTerm : course 등록 기간
+  const [registerTerm, setRegisterTerm] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // user, searchTerm, searchCategory : from redux
   const user = useSelector(state => state.user);
   const searchTerm = useSelector(state => state.search.searchTerm);
   const searchCategory = useSelector(state => state.search.category);
   const history = useHistory();
+  const today = new Date();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
   const escapeRegExp = searchTerm => {
@@ -168,17 +171,20 @@ function MainBottomContainer() {
 
   // 학기 정보 불러오기
   useEffect(() => {
-    async function loadSemesterData() {
-      const semesterData = await firestoreService
+    async function fetchSemesterData() {
+      const commonInfoData = await firestoreService
         .collection('common')
         .doc('commonInfo')
         .get();
-      setcurrentSemester(semesterData.data().currentSemester);
+      setcurrentSemester(commonInfoData.data().currentSemester);
       // 배열을 역순으로 저장해줌
-      setpastSemester(semesterData.data().pastSemester.reverse());
-      // setcourseArray(courseArray);
+      setpastSemester(commonInfoData.data().pastSemester.reverse());
+      let newRegisterTerm = [];
+      newRegisterTerm.push(commonInfoData.data().registerTerm.start.toDate());
+      newRegisterTerm.push(commonInfoData.data().registerTerm.end.toDate());
+      setRegisterTerm(newRegisterTerm);
     }
-    loadSemesterData();
+    fetchSemesterData();
   }, []);
 
   // 학기에 따라서 course 정보 불러오기
@@ -202,7 +208,7 @@ function MainBottomContainer() {
         setcourseArray(newCourseArray);
         setIsLoading(false);
       } catch (error) {
-        console.log('error', error);
+        alert('error', error);
       }
     }
     fetchCourseData();
@@ -303,12 +309,14 @@ function MainBottomContainer() {
             </StyledSelectItem>
           </StyledMainSessTab>
           <StyledMainSessRig>
-            {user.currentUser && (
-              <WhiteShadowButton
-                text='등록하기'
-                onClick={() => history.push('/course/register')}
-              />
-            )}
+            {registerTerm[0] <= today &&
+              today <= registerTerm[1] &&
+              user.currentUser && (
+                <WhiteShadowButton
+                  text='등록하기'
+                  onClick={() => history.push('/course/register')}
+                />
+              )}
           </StyledMainSessRig>
         </StyledMainBottomBtnCont>
         {renderCourse()}

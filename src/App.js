@@ -21,7 +21,7 @@ import {
 import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
-import { AuthHoc, CourseHoc, UserPageHoc } from '@hoc';
+import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
 import { ALREADY_LOGGED_IN } from '@utility/ALERT_MESSAGE';
 
 import './App.css';
@@ -64,7 +64,7 @@ function App() {
         <Route
           exact
           path='/course/register'
-          component={AuthHoc(CourseRegisterPage)}
+          component={CourseRegisterHoc(CourseRegisterPage)}
         />
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
