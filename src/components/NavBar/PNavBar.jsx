@@ -10,78 +10,82 @@ const PNavBar = ({ user, logout, myPage }) => {
   const [hoverState, sethoverState] = useState('');
   return (
     <>
-      <S.NavBarLogoContainer>
+      {/* Left Items */}
+      <S.NavBarTextContainer>
         <Link to='/'>
-          <DefaultLogo
-            isPointer={true}
-            logoName='type-1-3'
-            width={90}
-            height={90}
-          />
+          <S.NavBarLogoConatiner>
+            <DefaultLogo
+              isPointer={true}
+              logoName='type-1-3'
+              width={90}
+              height={90}
+            />
+          </S.NavBarLogoConatiner>
         </Link>
         <Link to='/rules'>
-          <S.NavBarTextContainer
+          <S.NavBarText
             text='공지사항'
             hoverState={hoverState}
             onMouseEnter={() => sethoverState('공지사항')}
             onMouseLeave={() => sethoverState('')}>
             공지사항
-          </S.NavBarTextContainer>
+          </S.NavBarText>
         </Link>
         <Link to='/timetable'>
-          <S.NavBarTextContainer
+          <S.NavBarText
             text='시간표'
             hoverState={hoverState}
             onMouseEnter={() => sethoverState('시간표')}
             onMouseLeave={() => sethoverState('')}>
             시간표
-          </S.NavBarTextContainer>
+          </S.NavBarText>
         </Link>
-      </S.NavBarLogoContainer>
-      <S.NavBarMenuContainer>
+      </S.NavBarTextContainer>
+      {/* right Items */}
+      <S.NavBarTextContainer>
         {user.isLogin === true ? (
-          <S.NavBarAuthOn>
-            <p>HELLO {user.currentUser.displayName}!</p>
-            <S.NavBarTextContainer
+          <>
+            <S.NavBarText>HELLO {user.currentUser.displayName}!</S.NavBarText>
+            <S.NavBarText
               text='MY'
               hoverState={hoverState}
               onMouseEnter={() => sethoverState('MY')}
               onMouseLeave={() => sethoverState('')}
               onClick={myPage}>
               MY
-            </S.NavBarTextContainer>
-            <S.NavBarTextContainer
+            </S.NavBarText>
+            <S.NavBarText
               text='로그아웃'
               hoverState={hoverState}
               onMouseEnter={() => sethoverState('로그아웃')}
               onMouseLeave={() => sethoverState('')}
               onClick={logout}>
               로그아웃
-            </S.NavBarTextContainer>
-          </S.NavBarAuthOn>
+            </S.NavBarText>
+          </>
         ) : (
-          <S.NavBarAuth>
+          <>
             <Link to='/login'>
-              <S.NavBarTextContainer
+              <S.NavBarText
                 text='로그인'
                 hoverState={hoverState}
                 onMouseEnter={() => sethoverState('로그인')}
                 onMouseLeave={() => sethoverState('')}>
                 LOGIN
-              </S.NavBarTextContainer>
+              </S.NavBarText>
             </Link>
             <Link to='/signup'>
-              <S.NavBarTextContainer
+              <S.NavBarText
                 text='회원가입'
                 hoverState={hoverState}
                 onMouseEnter={() => sethoverState('회원가입')}
                 onMouseLeave={() => sethoverState('')}>
                 JOIN
-              </S.NavBarTextContainer>
+              </S.NavBarText>
             </Link>
-          </S.NavBarAuth>
+          </>
         )}
-      </S.NavBarMenuContainer>
+      </S.NavBarTextContainer>
     </>
   );
 };
