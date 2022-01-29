@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledFooterContainer = styled.div`
-  padding: ${props => (props.isMobile ? '30px 10.7%' : '50px 19%')};
-  padding-top: ${props => (props.isMobile ? '30px' : '100px')};
+  padding: 50px 19%;
+  padding-top: 100px;
   background-color: rgb(245, 245, 245);
+  @media (max-width: 1224px) {
+    padding: 30px 10.7%;
+    padding-top: 30px;
+  }
 `;
 
 export const StyledFooterBox = styled.div`
@@ -13,18 +17,28 @@ export const StyledFooterBox = styled.div`
 
 export const StyledFooterTitle = styled.div`
   font-family: 'NexonBo';
-  font-size: ${props => (props.isMobile ? '9px' : '14px')};
-  width: ${props => (props.isMobile ? '70px' : '200px')};
+  font-size: 14px;
+  width: 200px;
+  @media (max-width: 1224px) {
+    font-size: 9px;
+    width: 70px;
+  }
 `;
 
 export const StyledFooterDesc = styled.div`
-  font-size: ${props => (props.isMobile ? '7px' : '12px')};
+  font-size: 12px;
+  @media (max-width: 1224px) {
+    font-size: 7px;
+  }
 `;
 
 export const StyledFooterLink = styled.a`
-  font-size: ${props => (props.isMobile ? '7px' : '12px')};
+  font-size: 12px;
   text-decoration: none;
   color: black;
+  @media (max-width: 1224px) {
+    font-size: 7px;
+  }
 `;
 
 export const StyledFooterVerticalLine = styled.div`

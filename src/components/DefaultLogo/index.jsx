@@ -8,6 +8,7 @@ export const DefaultLogo = ({
   height,
   onClick,
   isPointer = false,
+  style,
 }) => {
   return (
     <img
@@ -16,7 +17,7 @@ export const DefaultLogo = ({
       alt='default-logo'
       width={width + 'px' || '49px'}
       height={height + 'px' || '15px'}
-      style={{ cursor: isPointer ? 'pointer' : 'default' }}
+      style={{ cursor: isPointer ? 'pointer' : 'default', ...style }}
     />
   );
 };
@@ -27,4 +28,5 @@ DefaultLogo.propTypes = {
   height: PropTypes.number,
   onClick: PropTypes.func,
   isPointer: PropTypes.bool,
+  style: PropTypes.object,
 };
