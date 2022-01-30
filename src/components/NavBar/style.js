@@ -15,6 +15,7 @@ export const NavBarContainer = styled(StyledSidePadding)`
   @media (max-width: 1224px) {
     padding-left: 5.64%;
     padding-right: 5.64%;
+    height: 65px;
   }
 `;
 
