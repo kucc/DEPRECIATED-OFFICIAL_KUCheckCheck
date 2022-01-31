@@ -11,7 +11,7 @@ export const StyledMainTopWrapper = styled.div`
   background-color: white;
   @media (max-width: 1224px) {
     display: flex;
-    height: 658px;
+    height: auto;
     background-color: white;
     text-align: center;
     justify-content: center;
