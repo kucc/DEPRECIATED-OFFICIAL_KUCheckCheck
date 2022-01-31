@@ -19,6 +19,7 @@
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@hoc/*": ["./src/hoc/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@redux/*": ["./src/redux/*"],
       "@actions/*": ["./src/redux/actions/*"],
       "@reducer/*": ["./src/redux/reducer/*"],
