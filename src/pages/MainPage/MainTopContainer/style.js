@@ -9,6 +9,14 @@ export const StyledMainTopWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: white;
+  @media (max-width: 1224px) {
+    display: flex;
+    height: 658px;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const StyledMainTitle1 = styled.div`

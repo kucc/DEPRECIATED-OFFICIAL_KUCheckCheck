@@ -15,8 +15,8 @@ export const DefaultLogo = ({
       onClick={onClick}
       src={`/img/logo/${logoName}.svg`}
       alt='default-logo'
-      width={width + 'px' || '49px'}
-      height={height + 'px' || '15px'}
+      width={typeof width === 'number' ? width + 'px' : width || '49px'}
+      height={typeof height === 'number' ? height + 'px' : height || '15px'}
       style={{ cursor: isPointer ? 'pointer' : 'default', ...style }}
     />
   );
