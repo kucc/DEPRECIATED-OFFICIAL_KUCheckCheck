@@ -15,8 +15,20 @@ export const DefaultLogo = ({
       onClick={onClick}
       src={`/img/logo/${logoName}.svg`}
       alt='default-logo'
-      width={typeof width === 'number' ? width + 'px' : width || '49px'}
-      height={typeof height === 'number' ? height + 'px' : height || '15px'}
+      width={
+        width && typeof width === 'number'
+          ? width + 'px'
+          : width && typeof width !== 'number'
+          ? width
+          : '49px'
+      }
+      height={
+        height && typeof height === 'number'
+          ? height + 'px'
+          : height && typeof height !== 'number'
+          ? height
+          : '15px'
+      }
       style={{ cursor: isPointer ? 'pointer' : 'default', ...style }}
     />
   );
@@ -24,8 +36,8 @@ export const DefaultLogo = ({
 
 DefaultLogo.propTypes = {
   logoName: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onClick: PropTypes.func,
   isPointer: PropTypes.bool,
   style: PropTypes.object,
