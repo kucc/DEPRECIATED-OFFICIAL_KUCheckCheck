@@ -2,15 +2,19 @@ import React from 'react';
 
 import { DefaultLogo } from '@components';
 
+import useWindowDimensions from '@hooks/useWindowDimensions';
+
 import MainSearch from '../MainSearch';
 import * as S from './style';
 
 export const MMainTopContainer = () => {
+  const { width } = useWindowDimensions();
+
   return (
     <S.StyledMainTopWrapper className='out-shadow-strong border-radius-bottom-strong'>
       <div style={{ flexDirection: 'column' }}>
         <div>
-          <DefaultLogo logoName='type-3-2' width={220} height={'auto'} />
+          <DefaultLogo logoName='type-3-2' width={width / 3} height={'auto'} />
           <S.StyledMainTitle1>
             <p>KUCC</p>
           </S.StyledMainTitle1>
