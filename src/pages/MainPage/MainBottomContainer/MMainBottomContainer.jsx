@@ -7,18 +7,18 @@ import { useHistory } from 'react-router-dom';
 import { CourseContainer, EmptyBox, WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
+import useWindowDimensions from '@hooks/useWindowDimensions';
 import { MAIN_COLOR } from '@utility/COLORS';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
 import {
   StyledMainBottomBtnCont,
   StyledMainBottomWrapper,
-  StyledMainSessDuration,
   StyledMainSessRig,
   StyledMainSessTab,
 } from './style';
 
-function MainBottomContainer() {
+export const MMainBottomContainer = () => {
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseArray, setcourseArray] = useState([]);
   const [filteredCourseArray, setfilteredCourseArray] = useState([]);
@@ -35,6 +35,8 @@ function MainBottomContainer() {
   const searchCategory = useSelector(state => state.search.category);
   const history = useHistory();
   const today = new Date();
+  const { width } = useWindowDimensions();
+  // console.log(width);
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
   const escapeRegExp = searchTerm => {
@@ -268,22 +270,20 @@ function MainBottomContainer() {
     <>
       <StyledMainBottomWrapper>
         <StyledMainBottomBtnCont>
-          <StyledMainSessDuration>
-            <Dropdown overlay={menu} placement='bottomLeft'>
-              <Button
-                type='danger'
-                style={{
-                  width: '100%',
-                  height: '40px',
-                  borderRadius: '25px',
-                  backgroundColor: MAIN_COLOR,
-                  borderColor: MAIN_COLOR,
-                }}>
-                {currentSemester} 학기
-              </Button>
-            </Dropdown>
-          </StyledMainSessDuration>
-          <StyledMainSessTab>
+          <Dropdown overlay={menu} placement='bottomLeft'>
+            <Button
+              type='danger'
+              style={{
+                width: '92px',
+                height: '40px',
+                borderRadius: '25px',
+                backgroundColor: MAIN_COLOR,
+                borderColor: MAIN_COLOR,
+              }}>
+              {currentSemester} 학기
+            </Button>
+          </Dropdown>
+          <StyledMainSessTab screenWidth={width}>
             <StyledSelectItem
               className={courseSelect === 0 && 'in-shadow-weak'}
               onClick={() => setcourseSelect(0)}>
@@ -323,5 +323,4 @@ function MainBottomContainer() {
       </StyledMainBottomWrapper>
     </>
   );
-}
-export default MainBottomContainer;
+};

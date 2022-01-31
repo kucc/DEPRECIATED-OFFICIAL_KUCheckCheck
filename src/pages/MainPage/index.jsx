@@ -5,7 +5,10 @@ import { useMediaQuery } from 'react-responsive';
 import { NavBar } from '@components';
 
 import { StyledBackground } from '../NoticePage/style';
-import MainBottomContainer from './MainBottomContainer';
+import {
+  MMainBottomContainer,
+  PMainBottomContainer,
+} from './MainBottomContainer';
 import { MMainTopContainer, PMainTopContainer } from './MainTopContainer';
 
 export const MainPage = () => {
@@ -14,8 +17,17 @@ export const MainPage = () => {
   return (
     <StyledBackground>
       <NavBar isMain={true} />
-      {isMobile ? <MMainTopContainer /> : <PMainTopContainer />}
-      <MainBottomContainer />
+      {isMobile ? (
+        <>
+          <MMainTopContainer />
+          <MMainBottomContainer />
+        </>
+      ) : (
+        <>
+          <PMainTopContainer />
+          <PMainBottomContainer />
+        </>
+      )}
     </StyledBackground>
   );
 };
