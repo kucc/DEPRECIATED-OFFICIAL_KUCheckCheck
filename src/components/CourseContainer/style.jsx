@@ -3,25 +3,44 @@ import styled from 'styled-components';
 
 export const StyledCourseContainer = styled.div`
   width: 100%;
-  min-width: 1100px;
   height: 120px;
   display: grid;
   grid-template-columns: 150px auto;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 30px;
   background-color: white;
 `;
 
 export const StyledCourseImgContainer = styled.div`
   position: relative;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const StyledCourseExplainWrapper = styled.div``;
+export const StyledCourseExplainWrapper = styled.div`
+  display: grid;
+  margin-top: 25px;
+  ${({ CourseApplicationState, isMobile }) => {
+    if (!isMobile && CourseApplicationState) {
+      return `
+        grid-template-columns: auto 250px 150px 30px;
+      `;
+    } else if (!isMobile && !CourseApplicationState) {
+      return `
+        grid-template-columns: auto 250px;
+      `;
+    } else {
+      return `
+        grid-template-columns: auto;
+      `;
+    }
+  }};
+`;
 
 export const StyledCourseText = styled.div`
+  padding-right: 10px;
   padding-left: 20px;
   padding-top: 5px;
   cursor: pointer;
