@@ -8,7 +8,7 @@ import { StyledCol, StyledRow, Wrapper } from './style';
 export const LoginPage = () => {
   return (
     <StyledRow>
-      <StyledCol span={6} offset={8}>
+      <StyledCol>
         <Wrapper>
           <Description />
           <LoginForm />
