@@ -6,4 +6,7 @@ export const StyledForm = styled.form`
   & > .ant-space {
     width: 100%;
   }
+  @media (max-width: 1224px) {
+    width: 100%;
+  }
 `;
