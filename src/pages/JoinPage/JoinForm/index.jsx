@@ -112,7 +112,7 @@ function JoinForm() {
           onChange={onChange}
         />
         <InputBoxWithLabel
-          labelTitle='링크 (https://까지 넣어주세요)'
+          labelTitle='링크 (https://까지 포함)'
           inputName='link'
           inputType='text'
           placeholder='ex) https://github.com/'
