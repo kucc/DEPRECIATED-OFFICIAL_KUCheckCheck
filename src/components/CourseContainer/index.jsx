@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 
 import { animated, useSpring } from '@react-spring/web';
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router';
 
 import CourseDifficulty from '@components/CourseDifficulty';
+
+import useWindowDimensions from '@hooks/useWindowDimensions';
 
 import { CourseApplication } from './CourseApplication';
 import {
@@ -12,12 +15,14 @@ import {
   StyledCourseExplain,
   StyledCourseExplainWrapper,
   StyledCourseImgContainer,
-  StyledCourseLevel,
   StyledCourseText,
   StyledCourseTitle,
 } from './style';
 
 export const CourseContainer = ({ course, CourseApplicationState }) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const { width } = useWindowDimensions();
+
   const history = useHistory();
   const [onCourseHover, setOnCourseHover] = useState(false);
   const toggleHover = () => setOnCourseHover(prev => !prev);
@@ -79,8 +84,8 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
 
   return (
     <>
-      {/*  */}
       <StyledCourseContainer
+        screenWidth={width}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
         style={{ paddingBottom: onCourseHover ? '10px' : '0px' }}
@@ -93,14 +98,8 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
           {renderCouresImage()}
         </StyledCourseImgContainer>
         <StyledCourseExplainWrapper
-          style={{
-            display: 'grid',
-            // userpage에서의 재사용을 위해 application이 있는 상태와 없는 상태로 분리
-            gridTemplateColumns: CourseApplicationState
-              ? 'auto 250px 150px 30px'
-              : 'auto 250px',
-            marginTop: '25px',
-          }}>
+          isMobile={isMobile}
+          CourseApplicationState={CourseApplicationState}>
           <StyledCourseText
             onClick={() => history.push(`/course/${course.id}`)}>
             <StyledCourseTitle>
@@ -113,15 +112,19 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>
-          <CourseDifficulty
-            onClick={() => history.push(`/course/${course.id}`)}
-            difficulty={course.difficulty}
-            requireTime={course.requireTime}
-            style={{ marginTop: '0px' }}
-          />
-          {CourseApplicationState && (
-            <CourseApplication courseId={course.id} course={course} />
-          )}
+          {!isMobile ? (
+            <CourseDifficulty
+              onClick={() => history.push(`/course/${course.id}`)}
+              difficulty={course.difficulty}
+              requireTime={course.requireTime}
+              style={{ marginTop: '0px' }}
+            />
+          ) : null}
+          {!isMobile
+            ? CourseApplicationState && (
+                <CourseApplication courseId={course.id} course={course} />
+              )
+            : null}
         </StyledCourseExplainWrapper>
       </StyledCourseContainer>
     </>

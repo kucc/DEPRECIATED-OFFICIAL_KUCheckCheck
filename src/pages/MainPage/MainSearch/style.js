@@ -23,11 +23,18 @@ export const StyledTag = styled(CheckableTag)`
     background-color: #212121 !important;
     color: white;
   }
+  @media (max-width: 1224px) {
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 export const StyledSearchContainer = styled.div`
   margin-top: 2em;
   display: flex;
   align-items: center;
+  @media (max-width: 1224px) {
+    justify-content: center;
+  }
 `;
 
 export const StyledSearchBar = styled.input`
@@ -43,6 +50,21 @@ export const StyledSearchBar = styled.input`
   &:focus {
     outline: none;
   }
+  ${({ screenWidth }) => {
+    if (screenWidth < 450) {
+      return `
+      @media (max-width: 1224px) {
+        min-width: ${screenWidth - 138}px;
+      }
+      `;
+    } else {
+      return `
+      @media (max-width: 1224px) {
+        min-width: 22em;
+      }
+      `;
+    }
+  }}}
 `;
 
 export const StyledSearchBtn = styled.div`
@@ -66,8 +88,11 @@ export const StyledQuickSearchContainer = styled.div`
   display: grid;
   grid-template-columns: 120px auto;
   margin-top: 20px;
-  margin-left: -10px;
   align-items: start;
+  @media (max-width: 1224px) {
+    grid-template-columns: auto auto;
+    padding: 0 45px;
+  }
 `;
 
 export const StyledQuickSearchText = styled.div`
@@ -76,4 +101,9 @@ export const StyledQuickSearchText = styled.div`
   font-size: 16px;
   font-family: 'NexonBo';
   margin-top: 10px;
+  @media (max-width: 1224px) {
+    justify-content: center;
+    padding-left: 20px;
+    padding-bottom: 80px;
+  }
 `;

@@ -8,6 +8,8 @@ import { setCategory, setSearch } from '@redux/actions/search_action';
 
 import { BlackIcon } from '@components';
 
+import useWindowDimensions from '@hooks/useWindowDimensions';
+
 import {
   StyledQuickSearchContainer,
   StyledQuickSearchText,
@@ -21,6 +23,7 @@ function MainSearch() {
   const [selectedCategory, setselectedCategory] = useState('');
   const [randomCategory, setrandomCategory] = useState([]);
   const dispatch = useDispatch();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     // random인 요소를 4개 가진 배열을 생성
@@ -69,9 +72,10 @@ function MainSearch() {
           <BiSearch />
         </StyledSearchBtn>
         <StyledSearchBar
+          screenWidth={width}
           className='out-shadow-middle border-radius-all'
           onChange={changeSearch}
-          placeholder='세션/스터디명 ex) 바닐라 자바스크립트 세션'
+          placeholder='세션/스터디명 ex) C스터디'
         />
       </StyledSearchContainer>
       <StyledQuickSearchContainer>

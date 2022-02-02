@@ -2,26 +2,53 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 
 export const StyledCourseContainer = styled.div`
-  width: 100%;
-  min-width: 1100px;
-  height: 120px;
   display: grid;
   grid-template-columns: 150px auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  height: 120px;
+  margin: 30px 0;
   background-color: white;
+  @media (max-width: 1224px) {
+    grid-template-columns: 100px auto;
+    width: 120%;
+    margin: 30px -10%;
+  }
 `;
 
 export const StyledCourseImgContainer = styled.div`
   position: relative;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1224px) {
+    width: 80%;
+    margin-left: 30px;
+  }
 `;
 
-export const StyledCourseExplainWrapper = styled.div``;
+export const StyledCourseExplainWrapper = styled.div`
+  display: grid;
+  margin-top: 25px;
+  ${({ CourseApplicationState, isMobile }) => {
+    if (!isMobile && CourseApplicationState) {
+      return `
+        grid-template-columns: auto 250px 150px 30px;
+      `;
+    } else if (!isMobile && !CourseApplicationState) {
+      return `
+        grid-template-columns: auto 250px;
+      `;
+    } else {
+      return `
+        grid-template-columns: auto;
+      `;
+    }
+  }};
+`;
 
 export const StyledCourseText = styled.div`
+  padding-right: 10px;
   padding-left: 20px;
   padding-top: 5px;
   cursor: pointer;

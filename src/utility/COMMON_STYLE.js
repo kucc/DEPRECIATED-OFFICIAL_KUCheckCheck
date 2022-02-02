@@ -29,7 +29,9 @@ export const StyledSelectItem = styled.div`
   width: 80%;
   text-align: center;
   margin: 0 10%;
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 `;
 

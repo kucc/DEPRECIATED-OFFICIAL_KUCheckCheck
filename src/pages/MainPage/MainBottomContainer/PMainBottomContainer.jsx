@@ -18,7 +18,7 @@ import {
   StyledMainSessTab,
 } from './style';
 
-function MainBottomContainer() {
+export const PMainBottomContainer = () => {
   const [courseSelect, setcourseSelect] = useState(0);
   const [courseArray, setcourseArray] = useState([]);
   const [filteredCourseArray, setfilteredCourseArray] = useState([]);
@@ -323,5 +323,4 @@ function MainBottomContainer() {
       </StyledMainBottomWrapper>
     </>
   );
-}
-export default MainBottomContainer;
+};
