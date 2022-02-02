@@ -274,7 +274,7 @@ export const MMainBottomContainer = () => {
             <Button
               type='danger'
               style={{
-                width: '92px',
+                fontSize: `${width / 45}px`,
                 height: '40px',
                 borderRadius: '25px',
                 backgroundColor: MAIN_COLOR,
@@ -286,25 +286,29 @@ export const MMainBottomContainer = () => {
           <StyledMainSessTab screenWidth={width}>
             <StyledSelectItem
               className={courseSelect === 0 && 'in-shadow-weak'}
-              onClick={() => setcourseSelect(0)}>
+              onClick={() => setcourseSelect(0)}
+              screenWidth={width}>
               전체
             </StyledSelectItem>
             <StyledVerticalLine />
             <StyledSelectItem
               className={courseSelect === 1 && 'in-shadow-weak'}
-              onClick={() => setcourseSelect(1)}>
+              onClick={() => setcourseSelect(1)}
+              screenWidth={width}>
               세션
             </StyledSelectItem>
             <StyledVerticalLine />
             <StyledSelectItem
               className={courseSelect === 2 && 'in-shadow-weak'}
-              onClick={() => setcourseSelect(2)}>
+              onClick={() => setcourseSelect(2)}
+              screenWidth={width}>
               스터디
             </StyledSelectItem>
             <StyledVerticalLine />
             <StyledSelectItem
               className={courseSelect === 3 && 'in-shadow-weak'}
-              onClick={() => setcourseSelect(3)}>
+              onClick={() => setcourseSelect(3)}
+              screenWidth={width}>
               프로젝트
             </StyledSelectItem>
           </StyledMainSessTab>
