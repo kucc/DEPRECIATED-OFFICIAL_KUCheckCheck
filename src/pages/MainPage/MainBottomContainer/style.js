@@ -35,11 +35,12 @@ export const StyledMainSessTab = styled.div`
     if (screenWidth < 740) {
       return `
       @media (max-width: 1224px) {
-        margin-left: 30px;
+        font-size: ${screenWidth / 45}px;
+        margin-left: 20px;
         justify-content: center;
-        grid-template-columns: ${screenWidth / 8}px 1px ${
-        screenWidth / 8
-      }px 1px ${screenWidth / 8}px 1px ${screenWidth / 8}px !important;
+        grid-template-columns: ${screenWidth / 7.5}px 1px ${
+        screenWidth / 7
+      }px 1px ${screenWidth / 7.5}px 1px ${screenWidth / 7.5}px !important;
       }
     `;
     } else {
