@@ -6,9 +6,12 @@ export const StyledCourseContainer = styled.div`
   height: 120px;
   display: grid;
   grid-template-columns: 150px auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px 0;
   background-color: white;
+  @media (max-width: 1224px) {
+    width: 120%;
+    margin: 30px -10%;
+  }
 `;
 
 export const StyledCourseImgContainer = styled.div`
