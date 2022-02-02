@@ -2,13 +2,13 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 
 export const StyledCourseContainer = styled.div`
-  width: 100%;
-  height: 120px;
   display: grid;
   grid-template-columns: 150px auto;
+  height: 120px;
   margin: 30px 0;
   background-color: white;
   @media (max-width: 1224px) {
+    grid-template-columns: 100px auto;
     width: 120%;
     margin: 30px -10%;
   }
@@ -20,6 +20,11 @@ export const StyledCourseImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1224px) {
+    width: 80%;
+    margin-left: 30px;
+  }
 `;
 
 export const StyledCourseExplainWrapper = styled.div`
