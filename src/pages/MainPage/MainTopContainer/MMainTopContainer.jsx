@@ -14,15 +14,20 @@ export const MMainTopContainer = () => {
     <S.StyledMainTopWrapper className='out-shadow-strong border-radius-bottom-strong'>
       <div style={{ flexDirection: 'column' }}>
         <div>
-          <DefaultLogo logoName='type-3-2' width={width / 3} height={'auto'} />
-          <S.StyledMainTitle1>
+          <DefaultLogo
+            logoName='type-3-2'
+            width={width / 2}
+            height={'auto'}
+            style={{ paddingTop: '60px' }}
+          />
+          <S.StyledMainTitle1 screenWidth={width}>
             <p>KUCC</p>
           </S.StyledMainTitle1>
-          <S.StyledMainTitle2>
+          <S.StyledMainTitle2 screenWidth={width}>
             <p>길라잡이 </p>
           </S.StyledMainTitle2>
-          <S.StyledMainExplain>
-            <p>고려대학교 중앙 컴퓨터 동아리 세션관리시스템</p>
+          <S.StyledMainExplain screenWidth={width}>
+            <p>고려대학교 중앙 컴퓨터 동아리 세션 관리 시스템</p>
           </S.StyledMainExplain>
           <MainSearch />
         </div>
