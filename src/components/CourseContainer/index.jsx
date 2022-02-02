@@ -7,6 +7,8 @@ import { useHistory } from 'react-router';
 
 import CourseDifficulty from '@components/CourseDifficulty';
 
+import useWindowDimensions from '@hooks/useWindowDimensions';
+
 import { CourseApplication } from './CourseApplication';
 import {
   StyledCourseContainer,
@@ -19,6 +21,8 @@ import {
 
 export const CourseContainer = ({ course, CourseApplicationState }) => {
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const { width } = useWindowDimensions();
+
   const history = useHistory();
   const [onCourseHover, setOnCourseHover] = useState(false);
   const toggleHover = () => setOnCourseHover(prev => !prev);
@@ -80,8 +84,8 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
 
   return (
     <>
-      {/*  */}
       <StyledCourseContainer
+        screenWidth={width}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
         style={{ paddingBottom: onCourseHover ? '10px' : '0px' }}
