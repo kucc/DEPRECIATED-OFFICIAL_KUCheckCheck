@@ -5,12 +5,11 @@ export const StyledCourseContainer = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
   height: 120px;
-  margin: 30px 0;
+  margin: 30px 0px;
   background-color: white;
   @media (max-width: 1224px) {
     grid-template-columns: 100px auto;
-    width: 120%;
-    margin: 30px -10%;
+    margin: 10px 0px;
   }
 `;
 
@@ -59,6 +58,9 @@ export const StyledCourseTitle = styled.div`
     font-family: 'NexonBo';
     font-size: 26px;
     margin-bottom: 5px;
+    @media (max-width: 1224px) {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -68,49 +70,38 @@ export const StyledCourseExplain = styled.div`
   }
   font-size: 13.3px;
   margin-top: -10px;
+  @media (max-width: 1224px) {
+    font-size: 11px;
+    margin-top: -7px;
+  }
 `;
 
 export const StyledCourseFavorite = styled.div``;
 
-export const StyledCourseApplyOn = styled(Button)`
+export const StyledCourseApply = styled(Button)`
   margin-right: 25px;
   border-radius: 30px;
   height: 64px;
   display: grid;
   place-items: center;
-  background-color: #c32020;
   font-size: 16px;
   width: 100%;
-  /* -webkit-transition: background-color 1.5s;
-  transition: background-color 1.5s; */
 `;
 
-export const StyledCourseApplyOff = styled.button`
-  margin-right: 25px;
-  border-radius: 30px;
-  height: 64px;
-  display: grid;
-  place-items: center;
+export const StyledCourseApplyOn = styled(StyledCourseApply)`
+  background-color: #c32020;
+`;
+
+export const StyledCourseApplyOff = styled(StyledCourseApply)`
   background-color: #656565;
   color: white;
-  font-size: 16px;
   cursor: not-allowed;
-  width: 100%;
-  /* -webkit-transition: background-color 1.5s;
-  transition: background-color 1.5s; */
 `;
 
-export const StyledCourseApplyMy = styled.button`
-  margin-right: 25px;
-  border-radius: 30px;
-  height: 64px;
-  display: grid;
-  place-items: center;
+export const StyledCourseApplyMy = styled(StyledCourseApply)`
   background-color: #212121;
   color: white;
-  font-size: 16px;
   cursor: pointer;
-  width: 100%;
   &:hover {
     background-color: #393838;
   }
@@ -118,17 +109,10 @@ export const StyledCourseApplyMy = styled.button`
   transition: background-color 0.5s;
 `;
 
-export const StyledCourseApplyLock = styled.button`
-  margin-right: 25px;
-  border-radius: 30px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const StyledCourseApplyLock = styled(StyledCourseApply)`
   background-color: #3f3f3f;
   color: white;
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
-  width: 100%;
 `;

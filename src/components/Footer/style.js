@@ -5,7 +5,7 @@ export const StyledFooterContainer = styled.div`
   padding-top: 100px;
   background-color: rgb(245, 245, 245);
   @media (max-width: 1224px) {
-    padding: 30px 10.7%;
+    padding: 30px 7%;
     padding-top: 30px;
   }
 `;
@@ -29,6 +29,7 @@ export const StyledFooterDesc = styled.div`
   font-size: 12px;
   @media (max-width: 1224px) {
     font-size: 7px;
+    margin-left: -5px;
   }
 `;
 
@@ -46,6 +47,10 @@ export const StyledFooterVerticalLine = styled.div`
   border-right: 1px solid #b6b6b677;
   margin-left: 20px;
   margin-right: 20px;
+  @media (max-width: 1224px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 `;
 
 export const StyledHorizontalLine = styled.div`

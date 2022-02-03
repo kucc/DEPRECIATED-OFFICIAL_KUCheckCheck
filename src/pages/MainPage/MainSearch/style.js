@@ -15,9 +15,7 @@ export const StyledTag = styled(CheckableTag)`
   margin-top: 10px;
   background-color: #f5f5f5;
   border: none;
-  padding-top: 3px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding: 3px 14px;
   font-size: 14px;
   &.ant-tag-checkable-checked {
     background-color: #212121 !important;
@@ -26,6 +24,9 @@ export const StyledTag = styled(CheckableTag)`
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;
+    padding: 3px 7px;
+    font-size: 12px;
+    margin-left: 5px;
   }
 `;
 export const StyledSearchContainer = styled.div`
@@ -54,7 +55,7 @@ export const StyledSearchBar = styled.input`
     if (screenWidth < 450) {
       return `
       @media (max-width: 1224px) {
-        min-width: ${screenWidth - 138}px;
+        min-width: ${screenWidth - 120}px;
       }
       `;
     } else {
@@ -64,7 +65,7 @@ export const StyledSearchBar = styled.input`
       }
       `;
     }
-  }}}
+  }}
 `;
 
 export const StyledSearchBtn = styled.div`
@@ -91,7 +92,7 @@ export const StyledQuickSearchContainer = styled.div`
   align-items: start;
   @media (max-width: 1224px) {
     grid-template-columns: auto auto;
-    padding: 0 45px;
+    padding: 0px 30px;
   }
 `;
 
@@ -103,7 +104,7 @@ export const StyledQuickSearchText = styled.div`
   margin-top: 10px;
   @media (max-width: 1224px) {
     justify-content: center;
-    padding-left: 20px;
     padding-bottom: 80px;
+    font-size: 12px;
   }
 `;

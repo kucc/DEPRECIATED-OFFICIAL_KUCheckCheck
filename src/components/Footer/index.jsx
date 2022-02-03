@@ -78,8 +78,8 @@ export const Footer = () => {
         </StyledFooterBox>
         <StyledFooterImgBox>
           <DefaultLogo
-            width={isMobile ? 50 : 124}
-            height={isMobile ? 50 : 124}
+            width={isMobile ? 70 : 124}
+            height={isMobile ? 70 : 124}
             logoName='type-1-3'
             style={{ pointer: 'cursor' }}
             isPointer={true}

@@ -34,11 +34,12 @@ export const StyledMainTitle1 = styled.div`
     font-weight: 700;
     font-family: NexonBo;
     color: ${MAIN_COLOR};
+    margin-bottom: -55px;
   }
 `;
 
 export const StyledMainTitle2 = styled.div`
-  margin: -90px 0px 15px;
+  margin-bottom: 15px;
   & > p {
     ${({ screenWidth }) => {
       if (screenWidth < 1224) {
@@ -67,5 +68,8 @@ export const StyledMainExplain = styled.div`
 
   @media (max-width: 1224px) {
     margin: -60px 90px 20px;
+    & > p {
+      font-size: 14px;
+    }
   }
 `;
