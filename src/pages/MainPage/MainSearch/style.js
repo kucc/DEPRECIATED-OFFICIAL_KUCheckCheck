@@ -91,7 +91,8 @@ export const StyledQuickSearchContainer = styled.div`
   margin-top: 20px;
   align-items: start;
   @media (max-width: 1224px) {
-    grid-template-columns: auto auto;
+    display: flex;
+    gap: 10px;
     padding: 0px 30px;
   }
 `;

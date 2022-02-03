@@ -34,12 +34,14 @@ export const StyledMainTitle1 = styled.div`
     font-weight: 700;
     font-family: NexonBo;
     color: ${MAIN_COLOR};
-    margin-bottom: -55px;
+    @media (max-width: 1224px) {
+      margin-bottom: -55px;
+    }
   }
 `;
 
 export const StyledMainTitle2 = styled.div`
-  margin-bottom: 15px;
+  margin: -90px 0px 15px;
   & > p {
     ${({ screenWidth }) => {
       if (screenWidth < 1224) {
@@ -53,8 +55,11 @@ export const StyledMainTitle2 = styled.div`
     font-family: NexonBo;
     padding: 10px 0;
     @media (max-width: 1224px) {
-      padding: 30px 0;
+      padding: 30px 0px;
     }
+  }
+  @media (max-width: 1224px) {
+    margin-top: 0px;
   }
 `;
 
