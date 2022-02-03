@@ -4,7 +4,7 @@ import { MAIN_COLOR } from '@utility/COLORS';
 
 export const StyledMainTopWrapper = styled.div`
   min-height: 18em;
-  padding: 5em 21em 2em;
+  padding: 3.5em 21em 2em;
   height: 30em;
   display: grid;
   grid-template-columns: 1fr 1fr;

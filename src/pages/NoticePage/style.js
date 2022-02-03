@@ -73,7 +73,7 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     & > .ant-collapse-content-box {
       font-size: 20px;
       @media (max-width: 1224px) {
-        font-size: 15px;
+        font-size: 12px;
       }
     }
   }
