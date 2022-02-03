@@ -19,7 +19,7 @@ export const NavBarContainer = styled(StyledSidePadding)`
 `;
 
 export const NavBarLogoConatiner = styled.div`
-  margin-top: -7px;
+  margin-top: -4px;
   margin-right: 5px;
 `;
 
@@ -34,6 +34,7 @@ export const NavBarText = styled.div`
   font-size: 15px;
   font-family: 'NexonBo';
   padding: 20px;
+  padding-top: 25px;
   @media (max-width: 1224px) {
     font-size: 12px;
     padding: 10px;
