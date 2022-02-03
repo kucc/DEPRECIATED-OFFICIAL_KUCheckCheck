@@ -6,8 +6,9 @@ import { StyledSideMargin } from '@utility/COMMON_STYLE';
 export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
   grid-template-rows: 100px auto;
-  margin-left: 14.24%;
-  margin-right: 14.24%;
+  @media (max-width: 1224px) {
+    margin: 0px 5%;
+  }
 `;
 
 export const StyledRulesTitle = styled.div`
@@ -36,6 +37,9 @@ export const StyledRulesCollapse = styled(Collapse)`
     position: absolute;
     top: 50%;
     right: 40px;
+    @media (max-width: 1224px) {
+      right: 10px;
+    }
   }
   .ant-collapse-item:last-child,
   .ant-collapse-item:last-child > .ant-collapse-header {
@@ -56,11 +60,22 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     align-items: center !important;
     margin-left: 100px;
     font-size: 28px;
+    @media (max-width: 1224px) {
+      margin-left: 30px;
+      height: 100%;
+      font-size: 20px;
+    }
   }
 
   .ant-collapse-content {
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
+    & > .ant-collapse-content-box {
+      font-size: 20px;
+      @media (max-width: 1224px) {
+        font-size: 15px;
+      }
+    }
   }
 `;
 
