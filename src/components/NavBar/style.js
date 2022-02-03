@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
 import { StyledSidePadding } from '@utility/COMMON_STYLE';
 
 export const NavBarBackground = styled.div`
@@ -37,7 +36,7 @@ export const NavBarText = styled.div`
   padding: 20px;
   @media (max-width: 1224px) {
     font-size: 12px;
-    padding: 15px;
+    padding: 10px;
     padding-top: 25px;
   }
 `;

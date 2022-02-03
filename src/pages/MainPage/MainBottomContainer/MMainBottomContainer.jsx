@@ -274,7 +274,7 @@ export const MMainBottomContainer = () => {
             <Button
               type='danger'
               style={{
-                fontSize: `${width / 45}px`,
+                fontSize: `10px`,
                 height: '40px',
                 borderRadius: '25px',
                 backgroundColor: MAIN_COLOR,
@@ -312,7 +312,7 @@ export const MMainBottomContainer = () => {
               프로젝트
             </StyledSelectItem>
           </StyledMainSessTab>
-          <StyledMainSessRig>
+          {/* <StyledMainSessRig>
             {registerTerm[0] <= today &&
               today <= registerTerm[1] &&
               user.currentUser && (
@@ -321,7 +321,7 @@ export const MMainBottomContainer = () => {
                   onClick={() => history.push('/course/register')}
                 />
               )}
-          </StyledMainSessRig>
+          </StyledMainSessRig> */}
         </StyledMainBottomBtnCont>
         {renderCourse()}
       </StyledMainBottomWrapper>

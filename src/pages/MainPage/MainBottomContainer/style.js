@@ -8,9 +8,10 @@ export const StyledMainBottomWrapper = styled(StyledSideMargin)`
   @media (max-width: 1224px) {
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
     padding-bottom: 30px;
     justify-content: center;
+    margin: 70px 5%;
+    margin-bottom: 0px;
   }
 `;
 
@@ -38,9 +39,9 @@ export const StyledMainSessTab = styled.div`
         font-size: ${screenWidth / 45}px;
         margin-left: 20px;
         justify-content: center;
-        grid-template-columns: ${screenWidth / 7.5}px 1px ${
+        grid-template-columns: ${screenWidth / 7}px 1px ${
         screenWidth / 7
-      }px 1px ${screenWidth / 7.5}px 1px ${screenWidth / 7.5}px !important;
+      }px 1px ${screenWidth / 6.5}px 1px ${screenWidth / 6.5}px !important;
       }
     `;
     } else {
@@ -53,6 +54,9 @@ export const StyledMainSessTab = styled.div`
       `;
     }
   }}
+  @media (max-width: 1224px) {
+    margin-left: 10px;
+  }
 `;
 
 export const StyledMainSessRig = styled.div`

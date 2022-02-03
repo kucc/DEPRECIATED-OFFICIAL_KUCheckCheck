@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 import TableDragSelect from 'react-table-drag-select';
 import 'react-table-drag-select/style.css';
 
@@ -20,6 +21,7 @@ export const TimeTable = ({
 }) => {
   const [cells, setcells] = useState();
   const [selected, setselected] = useState(timeTableSelectedDefault);
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   useEffect(() => {
     // load timeTable info from firebase
@@ -35,6 +37,22 @@ export const TimeTable = ({
     fetchTimeTable();
   }, []);
 
+  const renderText = (specificTime, key) => {
+    if (isMobile) {
+      if (specificTime[key].value.length < 7) {
+        return specificTime[key].value;
+      } else {
+        return specificTime[key].value.slice(0, 7) + '..';
+      }
+    } else {
+      if (specificTime[key].value.length < 10) {
+        return specificTime[key].value;
+      } else {
+        return specificTime[key].value.slice(0, 10) + '...';
+      }
+    }
+  };
+
   const renderTd = (index, timeHour, timeMin) => {
     return selected[index].slice(1).map((time, key) => {
       // timeHour : 9, timeMin: 00 => cells.time_9_00
@@ -46,7 +64,7 @@ export const TimeTable = ({
             style={{ backgroundColor: specificTime[key].color }}
             disabled
             key={key}>
-            {specificTime[key].value}
+            {renderText(specificTime, key)}
           </td>
         );
       } else if (!editable) {
@@ -67,7 +85,11 @@ export const TimeTable = ({
   const renderTr = () => {
     return timeTableTimeList.map((time, index) => (
       <tr key={index}>
-        <td disabled>{`${time.Hour} : ${time.Minute}`}</td>
+        <td disabled>
+          {isMobile
+            ? `${time.Hour}:${time.Minute}`
+            : `${time.Hour} : ${time.Minute}`}
+        </td>
         {renderTd(index + 1, time.Hour, time.Minute)}
       </tr>
     ));

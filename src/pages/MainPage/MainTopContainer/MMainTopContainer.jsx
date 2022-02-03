@@ -27,7 +27,10 @@ export const MMainTopContainer = () => {
             <p>길라잡이 </p>
           </S.StyledMainTitle2>
           <S.StyledMainExplain screenWidth={width}>
-            <p>고려대학교 중앙 컴퓨터 동아리 세션 관리 시스템</p>
+            <p>
+              고려대학교 중앙 컴퓨터 동아리
+              <br /> 세션 관리 시스템
+            </p>
           </S.StyledMainExplain>
           <MainSearch />
         </div>

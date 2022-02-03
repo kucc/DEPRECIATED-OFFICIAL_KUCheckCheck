@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { FaHashtag } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { setCategory, setSearch } from '@redux/actions/search_action';
 
@@ -24,6 +25,7 @@ function MainSearch() {
   const [randomCategory, setrandomCategory] = useState([]);
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   useEffect(() => {
     // random인 요소를 4개 가진 배열을 생성
@@ -38,7 +40,8 @@ function MainSearch() {
       'Java',
     ];
     var newArray = [];
-    while (newArray.length < 4) {
+    const num = isMobile ? 3 : 4;
+    while (newArray.length < num) {
       const category = categoryData.splice(
         Math.floor(Math.random() * categoryData.length),
         1,
@@ -81,7 +84,7 @@ function MainSearch() {
       <StyledQuickSearchContainer>
         <StyledQuickSearchText>
           <BlackIcon IconComponent={<FaHashtag color='white' />} />
-          &emsp;빠른 검색
+          &ensp;빠른 검색
         </StyledQuickSearchText>
         <div>
           {randomCategory.map(tag => (

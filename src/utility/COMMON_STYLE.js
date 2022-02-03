@@ -26,13 +26,18 @@ export const StyledVerticalLine = styled.div`
 
 export const StyledSelectItem = styled.div`
   border-radius: 24px;
-  width: 80%;
   text-align: center;
-  margin: 0 10%;
+  margin: 0px 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @media (max-width: 1224px) {
+    margin: 0px 7%;
+    font-size: 9px;
+    font-family: 'NexonBo';
+    padding: 0px 5px;
+  }
 `;
 
 export const StyledTextArea = styled(TextArea)`

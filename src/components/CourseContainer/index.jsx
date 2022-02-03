@@ -30,11 +30,12 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
     x: 0,
   }));
 
-  const renderCouresImage = () =>
+  const renderCouresImage = () => {
     // 이미지 최대 3개까지 표시
     // styled component의 prop에 key를 넣으면 인식을 못하여
     // 불가피하게 jsx의 style 사용
-    course.language.slice(0, 3).map((image, key) => {
+    const num = isMobile ? 1 : 3;
+    return course.language.slice(0, num).map((image, key) => {
       // 첫 번째 이미지를 hover 했을 때 이미지가 펼쳐짐.
       if (key === 0) {
         return (
@@ -71,6 +72,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
         );
       }
     });
+  };
 
   const renderCourseLeader = () => {
     if (course.courseType === 1) {
