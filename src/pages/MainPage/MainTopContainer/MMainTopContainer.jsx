@@ -20,10 +20,10 @@ export const MMainTopContainer = () => {
             height={'auto'}
             style={{ paddingTop: '60px' }}
           />
-          <S.StyledMainTitle1 screenWidth={width}>
+          <S.StyledMainTitle1>
             <p>KUCC</p>
           </S.StyledMainTitle1>
-          <S.StyledMainTitle2 screenWidth={width}>
+          <S.StyledMainTitle2>
             <p>길라잡이 </p>
           </S.StyledMainTitle2>
           <S.StyledMainExplain screenWidth={width}>

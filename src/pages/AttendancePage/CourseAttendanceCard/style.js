@@ -5,11 +5,13 @@ import { StyledSidePadding } from '@utility/COMMON_STYLE';
 
 export const StyledContainer = styled(StyledSidePadding)`
   background-color: ${BASE_COLOR};
-
   display: grid;
-  grid-template-columns: 130px auto;
+  grid-template-columns: 200px auto;
   padding-bottom: 40px;
   align-items: center;
+  @media (max-width: 1224px) {
+    grid-template-columns: 100px auto;
+  }
 `;
 
 export const StyledBox = styled.div`
@@ -29,38 +31,50 @@ export const StyledBox = styled.div`
     background-color: black;
     color: white;
   }
+  @media (max-width: 1224px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const StyledEmoji = styled.div`
   font-size: 70px;
   margin-bottom: -15px;
+  @media (max-width: 1224px) {
+    font-size: 40px;
+  }
 `;
 
 export const StyledAttendanceBox = styled.div`
   background-color: white;
-  margin-left: 60px;
   height: 60px;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 15px;
+  @media (max-width: 1224px) {
+    font-size: 10px;
+  }
 `;
 
-export const StyledAttend = styled.div`
+const StyledTextBase = styled.div`
   font-family: 'NexonBo';
+  margin: 3%;
+  @media (max-width: 1224px) {
+    font-family: 'NexonRe';
+    margin: 1%;
+  }
+`;
+
+export const StyledAttend = styled(StyledTextBase)`
   color: #000000;
-  margin: 3%;
 `;
 
-export const StyledAbsent = styled.div`
-  font-family: 'NexonBo';
+export const StyledAbsent = styled(StyledTextBase)`
   color: red;
-  margin: 3%;
 `;
 
-export const StyledLate = styled.div`
-  font-family: 'NexonBo';
+export const StyledLate = styled(StyledTextBase)`
   color: red;
-  margin: 3%;
 `;

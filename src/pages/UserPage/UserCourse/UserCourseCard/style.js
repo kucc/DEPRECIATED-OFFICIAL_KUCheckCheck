@@ -15,8 +15,15 @@ export const StyledCourseCardContainer = styled.div`
 export const StyledCourseItemContainer = styled.div`
   display: grid;
   grid-template-columns: 50px auto;
+  @media (max-width: 1224px) {
+    grid-template-columns: 30px auto;
+  }
 `;
 
 export const StyledCourseSemester = styled.div`
   margin-top: -3px;
+  @media (max-width: 1224px) {
+    margin-top: -1px;
+    font-size: 10px;
+  }
 `;

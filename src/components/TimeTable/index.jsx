@@ -45,10 +45,10 @@ export const TimeTable = ({
         return specificTime[key].value.slice(0, 7) + '..';
       }
     } else {
-      if (specificTime[key].value.length < 10) {
+      if (specificTime[key].value.length < 9) {
         return specificTime[key].value;
       } else {
-        return specificTime[key].value.slice(0, 10) + '...';
+        return specificTime[key].value.slice(0, 9) + '...';
       }
     }
   };

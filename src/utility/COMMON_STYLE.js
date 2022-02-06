@@ -11,11 +11,19 @@ export const StyledBackground = styled.div`
 export const StyledSideMargin = styled.div`
   margin-left: 14.21%;
   margin-right: 14.21%;
+  @media (max-width: 1224px) {
+    margin-left: 5.64%;
+    margin-right: 5.64%;
+  }
 `;
 
 export const StyledSidePadding = styled.div`
   padding-left: 14.21%;
   padding-right: 14.21%;
+  @media (max-width: 1224px) {
+    padding-left: 5.64%;
+    padding-right: 5.64%;
+  }
 `;
 
 export const StyledVerticalLine = styled.div`

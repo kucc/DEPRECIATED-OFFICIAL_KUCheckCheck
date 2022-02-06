@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const StyledTableContainer = styled.div`
-  margin-top: 45px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 45px 2%;
+
   .table-drag-select td {
     line-height: 2rem;
     border: 7px solid rgba(0, 0, 0, 0);
   }
 
   .table-drag-select td.cell-disabled {
+    font-size: 13px;
+    padding: 3px;
     @media (max-width: 1224px) {
       font-size: 10px !important;
       padding: 0px;
     }
-    padding: 3px;
   }
 
   .table-drag-select td.cell-selected {

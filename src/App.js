@@ -22,7 +22,6 @@ import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { ALREADY_LOGGED_IN } from '@utility/ALERT_MESSAGE';
 
 import './App.css';
 

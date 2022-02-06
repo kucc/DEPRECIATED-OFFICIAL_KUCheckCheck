@@ -29,6 +29,7 @@ export const StyledTag = styled(CheckableTag)`
     margin-left: 5px;
   }
 `;
+
 export const StyledSearchContainer = styled.div`
   margin-top: 2em;
   display: flex;
@@ -54,9 +55,7 @@ export const StyledSearchBar = styled.input`
   ${({ screenWidth }) => {
     if (screenWidth < 450) {
       return `
-      @media (max-width: 1224px) {
         min-width: ${screenWidth - 120}px;
-      }
       `;
     } else {
       return `
@@ -82,6 +81,9 @@ export const StyledSearchBtn = styled.div`
     font-size: 2em;
     color: white;
     font-weight: 900;
+  }
+  @media (max-width: 1224px) {
+    width: 5em;
   }
 `;
 

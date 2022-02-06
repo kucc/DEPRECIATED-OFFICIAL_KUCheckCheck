@@ -19,8 +19,9 @@ const MNavBar = ({ user, logout, myPage }) => {
             <DefaultLogo
               isPointer={true}
               logoName='type-1-3'
-              width={90}
-              height={90}
+              width={80}
+              height={80}
+              style={{ marginTop: '3px' }}
             />
           </S.NavBarLogoConatiner>
         </Link>
