@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { authService } from '@/firebase';
 
-import { DefaultLogo } from '../DefaultLogo';
 import MNavBar from './MNavBar';
 import PNavBar from './PNavBar';
 import * as S from './style';

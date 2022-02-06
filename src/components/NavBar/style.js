@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { MAIN_COLOR } from '@utility/COLORS';
 import { StyledSidePadding } from '@utility/COMMON_STYLE';
 
 export const NavBarBackground = styled.div`
@@ -9,17 +10,16 @@ export const NavBarBackground = styled.div`
 export const NavBarContainer = styled(StyledSidePadding)`
   display: flex;
   justify-content: space-between;
-  height: 90px;
+  height: 80px;
   background-color: white;
+  border-top: 5px solid rgb(194, 32, 31);
   @media (max-width: 1224px) {
-    padding-left: 5.64%;
-    padding-right: 5.64%;
     height: 65px;
   }
 `;
 
 export const NavBarLogoConatiner = styled.div`
-  margin-top: -7px;
+  margin-top: -4px;
   margin-right: 5px;
 `;
 
@@ -30,13 +30,14 @@ export const NavBarTextContainer = styled.div`
 export const NavBarText = styled.div`
   cursor: pointer;
   color: ${props =>
-    props.hoverState && props.hoverState !== props.text ? 'gray' : 'black'};
+    props.hoverState && props.hoverState === props.text ? MAIN_COLOR : 'black'};
   font-size: 15px;
   font-family: 'NexonBo';
   padding: 20px;
+  padding-top: 25px;
   @media (max-width: 1224px) {
     font-size: 12px;
-    padding: 10px;
+    padding: 8px;
     padding-top: 25px;
   }
 `;

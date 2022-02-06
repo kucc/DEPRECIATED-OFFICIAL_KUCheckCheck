@@ -1,15 +1,19 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { BiRightArrowAlt } from 'react-icons/bi';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
 import { BlackIcon } from '@components/BlackIcon';
 
+import useWindowDimensions from '@hooks/useWindowDimensions';
+
 import {
+  StyledArrow,
   StyledArrowContainer,
+  StyledArrowTextContainer,
   StyledDetailCommentBox,
   StyledInfoBottom,
   StyledInfoBottomContainer,
@@ -37,25 +41,25 @@ const UserCard = ({
   const goToUserpage = () => {
     history.push(`/userpage/${userId}`);
   };
+  const { width } = useWindowDimensions();
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   return (
     <StyledInfoCardContainer
       className='out-shadow-strong border-radius-all'
       isDetail={isDetail}>
-      <StyledInfoCardEmoji>{emoji}</StyledInfoCardEmoji>
+      <StyledInfoCardEmoji screenWidth={width}>{emoji}</StyledInfoCardEmoji>
       <StyledInfoCardContour />
       <StyledInfoDetailContainer>
         {!isDetail ? (
           <StyledArrowContainer>
-            <div>
+            <StyledArrowTextContainer>
               <StyledInfoDetailName>{name}</StyledInfoDetailName>
               <StyledInfoDetailText>{comment}</StyledInfoDetailText>
-            </div>
-
-            <BiRightArrowAlt
+            </StyledArrowTextContainer>
+            <StyledArrow
               onClick={goToUserpage}
               color='black'
-              size={60}
-              style={{ marginTop: '40px', cursor: 'pointer' }}
+              size={isMobile ? 40 : 60}
             />
           </StyledArrowContainer>
         ) : (

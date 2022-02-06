@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -11,6 +10,7 @@ import { firestoreService } from '@/firebase';
 
 import {
   StyledBackButton,
+  StyledBackButtonIcon,
   StyledBackground,
   StyledEditButton,
   StyledLeftBox,
@@ -64,8 +64,10 @@ function CourseAttendanceTop({
       <NavBar />
       <StyledTopContainer>
         <StyledTopBox>
-          <StyledBackButton onClick={() => history.goBack()}>
-            <AiOutlineLeft style={{ strokeWidth: '50', fontSize: '20px' }} />
+          <StyledBackButton
+            className='out-shadow-weak border-radius-all-half'
+            onClick={() => history.goBack()}>
+            <StyledBackButtonIcon />
           </StyledBackButton>
           <StyledLeftBox>
             <div>

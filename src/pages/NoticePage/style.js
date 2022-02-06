@@ -6,9 +6,6 @@ import { StyledSideMargin } from '@utility/COMMON_STYLE';
 export const StyledRulesBox = styled(StyledSideMargin)`
   display: grid;
   grid-template-rows: 100px auto;
-  @media (max-width: 1224px) {
-    margin: 0px 5%;
-  }
 `;
 
 export const StyledRulesTitle = styled.div`

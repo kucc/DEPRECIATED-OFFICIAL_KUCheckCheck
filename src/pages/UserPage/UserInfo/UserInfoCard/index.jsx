@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { BlackIcon } from '@components';
 import UserCard from '@components/UserCard';
 import { StyledInfoCardContainer } from '@components/UserCard/style';
 

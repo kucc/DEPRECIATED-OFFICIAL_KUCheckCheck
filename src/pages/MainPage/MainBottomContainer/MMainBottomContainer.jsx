@@ -4,7 +4,7 @@ import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { CourseContainer, EmptyBox, WhiteShadowButton } from '@components';
+import { CourseContainer, EmptyBox } from '@components';
 
 import { firestoreService } from '@/firebase';
 import useWindowDimensions from '@hooks/useWindowDimensions';
@@ -14,7 +14,6 @@ import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 import {
   StyledMainBottomBtnCont,
   StyledMainBottomWrapper,
-  StyledMainSessRig,
   StyledMainSessTab,
 } from './style';
 

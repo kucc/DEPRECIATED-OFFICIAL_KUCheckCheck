@@ -10,7 +10,7 @@ export const StyledMainBottomWrapper = styled(StyledSideMargin)`
     flex-direction: column;
     padding-bottom: 30px;
     justify-content: center;
-    margin: 70px 5%;
+    margin-top: 70px;
     margin-bottom: 0px;
   }
 `;
@@ -35,14 +35,12 @@ export const StyledMainSessTab = styled.div`
   ${({ screenWidth }) => {
     if (screenWidth < 740) {
       return `
-      @media (max-width: 1224px) {
         font-size: ${screenWidth / 45}px;
         margin-left: 20px;
         justify-content: center;
         grid-template-columns: ${screenWidth / 7}px 1px ${
         screenWidth / 7
       }px 1px ${screenWidth / 6.5}px 1px ${screenWidth / 6.5}px !important;
-      }
     `;
     } else {
       return `
