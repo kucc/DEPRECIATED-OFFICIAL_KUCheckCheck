@@ -2,20 +2,19 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { NavBar, WhiteShadowButton } from '@components';
+import { WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
 
 import {
   StyledBackButton,
   StyledBackButtonIcon,
-  StyledBackground,
   StyledEditButton,
   StyledLeftBox,
   StyledTopBox,
-  StyledTopContainer,
   StyledTopDesc,
   StyledTopTitle,
   StyledWeekBox,
@@ -32,6 +31,8 @@ function CourseAttendanceTop({
 }) {
   const user = useSelector(state => state.user.currentUser);
   const history = useHistory();
+
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const handleClick = async () => {
     toggleEditMode();
@@ -60,23 +61,20 @@ function CourseAttendanceTop({
   };
 
   return (
-    <StyledBackground>
-      <NavBar />
-      <StyledTopContainer>
-        <StyledTopBox>
-          <StyledBackButton
-            className='out-shadow-weak border-radius-all-half'
-            onClick={() => history.goBack()}>
-            <StyledBackButtonIcon />
-          </StyledBackButton>
-          <StyledLeftBox>
-            <div>
-              <StyledTopTitle>출결 확인하기</StyledTopTitle>
-              <StyledTopDesc>{courseName && courseName}</StyledTopDesc>
-            </div>
-            {renderEditButton()}
-          </StyledLeftBox>
-        </StyledTopBox>
+    <>
+      <StyledTopBox>
+        <StyledBackButton
+          className='out-shadow-weak border-radius-all-half'
+          onClick={() => history.goBack()}>
+          <StyledBackButtonIcon />
+        </StyledBackButton>
+        <StyledLeftBox>
+          <StyledTopTitle>출결 확인하기</StyledTopTitle>
+          <StyledTopDesc>{courseName && courseName}</StyledTopDesc>
+        </StyledLeftBox>
+        {renderEditButton()}
+      </StyledTopBox>
+      {!isMobile && (
         <StyledWeekBox>
           <StyledWeekTextBox>1주차</StyledWeekTextBox>
           <StyledWeekTextBox>2주차</StyledWeekTextBox>
@@ -87,8 +85,8 @@ function CourseAttendanceTop({
           <StyledWeekTextBox>7주차</StyledWeekTextBox>
           <StyledWeekTextBox>8주차</StyledWeekTextBox>
         </StyledWeekBox>
-      </StyledTopContainer>
-    </StyledBackground>
+      )}
+    </>
   );
 }
 

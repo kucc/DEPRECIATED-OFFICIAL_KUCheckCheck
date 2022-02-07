@@ -101,6 +101,11 @@ const GlobalStyle = createGlobalStyle`
   .out-shadow-weak{
     box-shadow: 0px 3px 1.5px lightgrey !important;
   }
+  .in-shadow-middle{
+    box-shadow: inset 0 6px 5px 2px lightgrey !important; 
+    background-color: white;
+    transition: all 0.1s;
+  }
   .in-shadow-weak{
     box-shadow: inset 0px 3px 1.5px lightgrey !important;
     background-color: white;

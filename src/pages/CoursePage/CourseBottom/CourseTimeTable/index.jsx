@@ -73,7 +73,14 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
         <ul>
           <li>동방을 사용하는 활동만 시간표 등록을 해주세요!</li>
           <li>최대한 다양한 색깔로 선택해주세요.</li>
-          <li>저장 버튼을 누르셔야 저장이 됩니다.</li>
+          <li>
+            시간표는 한번 등록시 수정이 어렵습니다. 만약 잘못 등록하셨다면,
+            jjs01hwang@gmail(이희준)으로 메일이나 갠톡 주시면
+            해결해드리겠습니다!
+          </li>
+          <li style={{ fontFamily: 'NexonBo' }}>
+            저장 버튼을 누르셔야 저장이 됩니다.
+          </li>
         </ul>
         <CirclePicker
           color={selectedColor}
