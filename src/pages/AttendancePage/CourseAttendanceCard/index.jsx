@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import { Select } from 'antd';
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { firestoreService } from '@/firebase';
+import { word } from '@utility/CONSTANTS';
 
-import {
-  StyledAbsent,
-  StyledAttend,
-  StyledAttendanceBox,
-  StyledBox,
-  StyledContainer,
-  StyledEmoji,
-  StyledLate,
-} from './style';
-
-const { Option } = Select;
+import MCourseAttendanceCard from './MCourseAttendanceCard';
+import PCourseAttendanceCard from './PCourseAttendanceCard';
 
 function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
   const [userName, setuserName] = useState();
   const [userEmoji, setuserEmoji] = useState();
   const [courseAttendanceData, setCourseAttendanceData] = useState(userData);
-  const history = useHistory();
-  const word = { absent: '결석', attend: '출석', late: '지각' };
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   useEffect(() => {
     async function fetchUserData() {
@@ -37,7 +27,7 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
       setuserEmoji(userRef.data().emoji);
     }
     fetchUserData();
-  }, []);
+  }, [userData.id]);
 
   const handleSelected = (value, key) => {
     // selected 했을 때 Object를 만들어 Data를 바꿔줌
@@ -71,47 +61,27 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
 
   return (
     <>
-      <StyledContainer>
-        <StyledBox
-          className='out-shadow-middle'
-          onClick={() => history.push(`/userpage/${userData.id}`)}>
-          <StyledEmoji>{userEmoji}</StyledEmoji>
-          <p>{userName}</p>
-        </StyledBox>
-        <StyledAttendanceBox className='in-shadow-weak'>
-          {courseAttendanceData &&
-            courseAttendanceData.attendance.map((state, index) => {
-              if (isEditMode === false) {
-                //출석 수정 모드가 아닐 때
-                if (state === 0)
-                  return <StyledAttend key={index}>{word.attend}</StyledAttend>;
-                else if (state === 1)
-                  return <StyledAbsent key={index}>{word.absent}</StyledAbsent>;
-                else if (state === 2)
-                  return <StyledLate key={index}>{word.late}</StyledLate>;
-              } else {
-                //출석 수정 모드일 때
-                return (
-                  <Select
-                    key={index}
-                    defaultValue={setDefaultValue(state)}
-                    style={{ width: 100 }}
-                    onChange={handleSelected}>
-                    <Option key={`0_${index}`} value={word.attend}>
-                      {word.attend}
-                    </Option>
-                    <Option key={`1_${index}`} value={word.absent}>
-                      {word.absent}
-                    </Option>
-                    <Option key={`2_${index}`} value={word.late}>
-                      {word.late}
-                    </Option>
-                  </Select>
-                );
-              }
-            })}
-        </StyledAttendanceBox>
-      </StyledContainer>
+      {isMobile ? (
+        <MCourseAttendanceCard
+          userId={userData.userId}
+          userEmoji={userEmoji}
+          userName={userName}
+          courseAttendanceData={courseAttendanceData}
+          isEditMode={isEditMode}
+          setDefaultValue={setDefaultValue}
+          handleSelected={handleSelected}
+        />
+      ) : (
+        <PCourseAttendanceCard
+          userId={userData.userId}
+          userEmoji={userEmoji}
+          userName={userName}
+          courseAttendanceData={courseAttendanceData}
+          isEditMode={isEditMode}
+          setDefaultValue={setDefaultValue}
+          handleSelected={handleSelected}
+        />
+      )}
     </>
   );
 }

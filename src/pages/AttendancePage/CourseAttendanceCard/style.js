@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 import { BASE_COLOR } from '@utility/COLORS';
-import { StyledSidePadding } from '@utility/COMMON_STYLE';
 
-export const StyledContainer = styled(StyledSidePadding)`
+export const StyledContainer = styled.div`
   background-color: ${BASE_COLOR};
   display: grid;
   grid-template-columns: 200px auto;
@@ -15,6 +14,7 @@ export const StyledContainer = styled(StyledSidePadding)`
 `;
 
 export const StyledBox = styled.div`
+  position: relative;
   background-color: white;
   border-radius: 50%;
   text-align: center;
@@ -25,6 +25,7 @@ export const StyledBox = styled.div`
   display: grid;
   place-items: center;
   cursor: pointer;
+  z-index: 10;
   &:hover {
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
@@ -58,12 +59,14 @@ export const StyledAttendanceBox = styled.div`
   }
 `;
 
-const StyledTextBase = styled.div`
+export const StyledTextBase = styled.div`
   font-family: 'NexonBo';
-  margin: 3%;
+  width: 80px;
+  text-align: center;
   @media (max-width: 1224px) {
     font-family: 'NexonRe';
-    margin: 1%;
+    height: 45px;
+    font-size: 12px;
   }
 `;
 
@@ -77,4 +80,17 @@ export const StyledAbsent = styled(StyledTextBase)`
 
 export const StyledLate = styled(StyledTextBase)`
   color: red;
+`;
+
+///////////// 모바일용 스타일
+
+export const StyledRoundBox = styled.div`
+  position: relative;
+  background-color: white;
+  z-index: 0;
+  width: 80px;
+  height: 505px;
+  margin-top: -80px;
+  padding-top: 119px;
+  border-radius: 40px;
 `;

@@ -8,7 +8,6 @@ export const FullWidthButton = ({ htmlType, text, loading, style }) => {
   return (
     <StyledButton
       style={style}
-      type='danger'
       htmlType={htmlType}
       shape='round'
       loading={loading}>

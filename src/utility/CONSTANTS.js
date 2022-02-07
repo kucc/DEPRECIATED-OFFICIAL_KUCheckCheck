@@ -144,3 +144,5 @@ export const timeTableTimeList = [
     Minute: '30',
   },
 ];
+
+export const word = { absent: '결석', attend: '출석', late: '지각' };
