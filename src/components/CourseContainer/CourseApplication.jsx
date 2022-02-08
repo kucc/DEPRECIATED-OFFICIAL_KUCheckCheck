@@ -5,6 +5,7 @@ import Modal from 'antd/lib/modal/Modal';
 import PropTypes from 'prop-types';
 import { AiFillLock, AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { firestoreService } from '@/firebase';
 import {
@@ -31,6 +32,7 @@ export const CourseApplication = ({ course, courseId }) => {
   const [enrollmentTerm, setenrollmentTerm] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [hoverState, sethoverState] = useState(false);
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const today = new Date();
 
   const showModal = () => {
@@ -208,7 +210,12 @@ export const CourseApplication = ({ course, courseId }) => {
     if (!currentUser) {
       return (
         <StyledCourseApplyLock>
-          <AiFillLock style={{ fontSize: '22px' }} />
+          <AiFillLock
+            style={{
+              fontSize: isMobile ? '18px' : '22px',
+              marginBottom: isMobile && '7px',
+            }}
+          />
           <div
             style={{
               display: 'flex',
@@ -232,7 +239,7 @@ export const CourseApplication = ({ course, courseId }) => {
     ) {
       return (
         <StyledCourseApplyLock>
-          <AiOutlineClose style={{ fontSize: '22px' }} />
+          <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '22px' }} />
           <div
             style={{
               display: 'flex',
@@ -276,8 +283,8 @@ export const CourseApplication = ({ course, courseId }) => {
     // 가득 참
     else if (courseMemberArr.length >= maxMemberNum) {
       return (
-        <StyledCourseApplyOff>
-          인원 마감{' '}
+        <StyledCourseApplyOff disabled>
+          인원 마감
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </StlyedHeadCountText>
