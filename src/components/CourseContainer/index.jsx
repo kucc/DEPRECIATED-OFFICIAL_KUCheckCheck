@@ -106,12 +106,6 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
     }
   };
 
-  // const courseClassName = () => {
-  //   if (isCourseSpread) return 'border-radius-all';
-  //   else if (onCourseHover) return 'out-shadow-strong border-radius-all';
-  //   else return 'out-shadow-middle border-radius-all';
-  // };
-
   return (
     <animated.div
       className={

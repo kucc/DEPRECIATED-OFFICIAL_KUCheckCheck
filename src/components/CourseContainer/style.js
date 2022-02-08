@@ -19,7 +19,6 @@ export const StyledCourseImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   @media (max-width: 1224px) {
     width: 80%;
     margin-left: 30px;
@@ -114,8 +113,8 @@ export const StyledCourseApplyOn = styled(StyledCourseApply)`
 `;
 
 export const StyledCourseApplyOff = styled(StyledCourseApply)`
-  background-color: #656565;
-  color: white;
+  background-color: #656565 !important;
+  color: white !important;
   cursor: not-allowed;
 `;
 
@@ -131,9 +130,13 @@ export const StyledCourseApplyMy = styled(StyledCourseApply)`
 `;
 
 export const StyledCourseApplyLock = styled(StyledCourseApply)`
+  display: flex;
   background-color: #3f3f3f;
   color: white;
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
+  @media (max-width: 1224px) {
+    font-size: 10px;
+  }
 `;
