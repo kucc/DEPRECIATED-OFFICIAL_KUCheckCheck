@@ -14,6 +14,7 @@ import {
 } from '@utility/ALERT_MESSAGE';
 
 import {
+  StlyedHeadCountText,
   StyledCourseApplyLock,
   StyledCourseApplyMy,
   StyledCourseApplyOff,
@@ -252,9 +253,9 @@ export const CourseApplication = ({ course, courseId }) => {
           onMouseLeave={handleMouseHover}
           onClick={showModal}>
           {hoverState ? '수강 취소' : '수강 중'}
-          <div style={{ fontSize: '14px' }}>
+          <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
-          </div>
+          </StlyedHeadCountText>
         </StyledCourseApplyMy>
       );
     }
@@ -266,9 +267,9 @@ export const CourseApplication = ({ course, courseId }) => {
           onClick={applicationHandler}
           loading={Loading}>
           신청하기
-          <div style={{ fontSize: '14px' }}>
+          <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
-          </div>
+          </StlyedHeadCountText>
         </StyledCourseApplyOn>
       );
     }
@@ -277,9 +278,9 @@ export const CourseApplication = ({ course, courseId }) => {
       return (
         <StyledCourseApplyOff>
           인원 마감{' '}
-          <div style={{ fontSize: '14px' }}>
+          <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
-          </div>
+          </StlyedHeadCountText>
         </StyledCourseApplyOff>
       );
     }

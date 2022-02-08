@@ -40,7 +40,8 @@ export const StyledCourseExplainWrapper = styled.div`
       `;
     } else {
       return `
-        grid-template-columns: auto;
+        margin-top: 0px;
+        grid-template-columns: auto 40px;
       `;
     }
   }};
@@ -59,6 +60,7 @@ export const StyledCourseTitle = styled.div`
     font-size: 26px;
     margin-bottom: 5px;
     @media (max-width: 1224px) {
+      margin-top: 25px;
       font-size: 20px;
     }
   }
@@ -86,6 +88,25 @@ export const StyledCourseApply = styled(Button)`
   place-items: center;
   font-size: 16px;
   width: 100%;
+  @media (max-width: 1224px) {
+    margin-right: 0px;
+    width: 50%;
+    height: 80px;
+    display: flex;
+    gap: 10px;
+    border-radius: 0px;
+    border-bottom-right-radius: 30px;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 10px;
+  }
+`;
+
+export const StlyedHeadCountText = styled.div`
+  font-size: 14px;
+  @media (max-width: 1224px) {
+    font-size: 10px;
+  }
 `;
 
 export const StyledCourseApplyOn = styled(StyledCourseApply)`

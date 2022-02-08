@@ -12,6 +12,15 @@ export const StyledCourseDifficulty = styled.div`
   display: flex;
   place-content: center;
   gap: 3px;
+  @media (max-width: 1224px) {
+    margin-top: 0px;
+    margin-right: 0px;
+    width: 50%;
+    height: 80px;
+    padding: 5.111px;
+    align-items: flex-end;
+    font-size: 10px;
+  }
 `;
 
 export const StyledCourseLevel = styled.div`
@@ -20,6 +29,7 @@ export const StyledCourseLevel = styled.div`
 
 export const StyledRedText = styled.div`
   color: red;
+  font-family: 'NexonBo';
 `;
 
 export const StyledGradeText = styled.div`
