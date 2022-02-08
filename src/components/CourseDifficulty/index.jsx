@@ -12,11 +12,11 @@ import {
 const CourseDifficulty = ({ onClick, difficulty, requireTime, style }) => {
   return (
     <StyledCourseDifficulty
-      className='in-shadow-weak'
+      // className='in-shadow-weak'
       onClick={onClick}
       style={style}>
       <StyledCourseLevel>
-        <div>난이도 : &nbsp;</div>
+        <div>난이도 :&nbsp;</div>
         <StyledRedText>{difficulty}</StyledRedText>
         <div>&nbsp;/</div>
       </StyledCourseLevel>
