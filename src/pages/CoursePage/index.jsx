@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
 import { FullWidthButton } from '@components/Buttons';
@@ -24,6 +25,7 @@ export const CoursePage = ({ courseData }) => {
   const [leaderData, setLeaderData] = useState({});
   const history = useHistory();
   const { courseId } = courseData;
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   useEffect(() => {
     // courseLeader setUp
@@ -63,14 +65,18 @@ export const CoursePage = ({ courseData }) => {
             <FullWidthButton
               text='출결보기'
               style={{
-                height: '64px',
+                height: isMobile ? '48px' : '64px',
                 backgroundColor: MAIN_COLOR,
                 cursor: 'pointer',
               }}
             />
           </StyledAttendanceButton>
           <StyledRegisterButton className='out-shadow-middle'>
-            <CourseApplication course={courseData} courseId={courseId} />
+            <CourseApplication
+              isMainScreen={false}
+              course={courseData}
+              courseId={courseId}
+            />
           </StyledRegisterButton>
         </>
       )}

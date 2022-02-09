@@ -9,4 +9,7 @@ export const StyledButton = styled(Button)`
   background-color: ${MAIN_COLOR};
   color: white;
   font-size: 16px;
+  @media (max-width: 1224px) {
+    font-size: 12px;
+  }
 `;

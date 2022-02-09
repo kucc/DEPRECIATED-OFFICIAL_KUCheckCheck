@@ -22,7 +22,7 @@ import {
   StyledCourseApplyOn,
 } from './style';
 
-export const CourseApplication = ({ course, courseId }) => {
+export const CourseApplication = ({ course, courseId, isMainScreen }) => {
   const { maxMemberNum, semester } = course;
   const currentUser = useSelector(state => state.user.currentUser);
   const [Loading, setLoading] = useState(false);
@@ -121,7 +121,7 @@ export const CourseApplication = ({ course, courseId }) => {
         // 현재 학기 등록
         setcurrentSemester(doc.data().currentSemester);
       });
-  }, []);
+  }, [course.courseMember, courseId]);
 
   const applicationHandler = async () => {
     // loading이 false라면
@@ -209,7 +209,7 @@ export const CourseApplication = ({ course, courseId }) => {
     // 로그인된 유저가 아닐 경우
     if (!currentUser) {
       return (
-        <StyledCourseApplyLock>
+        <StyledCourseApplyLock isMobile={isMobile} isMainScreen={isMainScreen}>
           <AiFillLock
             style={{
               fontSize: isMobile ? '18px' : '22px',
@@ -238,7 +238,7 @@ export const CourseApplication = ({ course, courseId }) => {
       semester !== currentSemester
     ) {
       return (
-        <StyledCourseApplyLock>
+        <StyledCourseApplyLock isMobile={isMobile} isMainScreen={isMainScreen}>
           <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '22px' }} />
           <div
             style={{
@@ -258,7 +258,9 @@ export const CourseApplication = ({ course, courseId }) => {
         <StyledCourseApplyMy
           onMouseEnter={handleMouseHover}
           onMouseLeave={handleMouseHover}
-          onClick={showModal}>
+          onClick={showModal}
+          isMainScreen={isMainScreen}
+          isMobile={isMobile}>
           {hoverState ? '수강 취소' : '수강 중'}
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -272,7 +274,9 @@ export const CourseApplication = ({ course, courseId }) => {
         <StyledCourseApplyOn
           type='danger'
           onClick={applicationHandler}
-          loading={Loading}>
+          loading={Loading}
+          isMainScreen={isMainScreen}
+          isMobile={isMobile}>
           신청하기
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -283,7 +287,10 @@ export const CourseApplication = ({ course, courseId }) => {
     // 가득 참
     else if (courseMemberArr.length >= maxMemberNum) {
       return (
-        <StyledCourseApplyOff disabled>
+        <StyledCourseApplyOff
+          disabled
+          isMainScreen={isMainScreen}
+          isMobile={isMobile}>
           인원 마감
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -310,4 +317,5 @@ CourseApplication.propTypes = {
   course: PropTypes.object,
   currentUser: PropTypes.object,
   courseId: PropTypes.string,
+  isMainScreen: PropTypes.bool,
 };

@@ -8,7 +8,11 @@ import { TimeTable } from '@components';
 
 import { MAIN_COLOR } from '@utility/COLORS';
 
-import { StyledColorContainer, StyledTimeTableContainer } from './style';
+import {
+  StyledColorContainer,
+  StyledTimeTable,
+  StyledTimeTableContainer,
+} from './style';
 
 function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
   const [selectedData, setselectedData] = useState([]);
@@ -87,12 +91,14 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
           onChangeComplete={color => setSelectedColor(color.hex)}
         />
       </StyledColorContainer>
-      <TimeTable
-        editable={true}
-        selectedData={selectedData => setselectedData(selectedData)}
-        cellData={cellData => setcellData(cellData)}
-        selectedColor={selectedColor}
-      />
+      <StyledTimeTable>
+        <TimeTable
+          editable={true}
+          selectedData={selectedData => setselectedData(selectedData)}
+          cellData={cellData => setcellData(cellData)}
+          selectedColor={selectedColor}
+        />
+      </StyledTimeTable>
     </StyledTimeTableContainer>
   );
 }

@@ -18,7 +18,6 @@ export const StyledMainBottomWrapper = styled(StyledSideMargin)`
 export const StyledMainBottomBtnCont = styled.div`
   display: grid;
   grid-template-columns: 11.25% auto 10.52%;
-  min-width: 1100px;
   @media (max-width: 1224px) {
     display: flex;
     min-width: 0px;

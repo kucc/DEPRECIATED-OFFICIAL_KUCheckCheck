@@ -6,7 +6,6 @@ import { WhiteShadowButton } from '@components/Buttons';
 import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService, firestoreService } from '@/firebase';
-import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
 import { renderWord } from '@utility/COMMON_FUNCTION';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
@@ -159,6 +158,7 @@ const CourseBottom = ({ courseData }) => {
             difficulty={difficulty}
             requireTime={requireTime}
             style={{ marginTop: '0px', cursor: 'auto' }}
+            isMainScreen={false}
           />
         </StyledCourseHeaderTop>
         {renderCourseBottom()}

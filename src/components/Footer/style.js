@@ -29,7 +29,6 @@ export const StyledFooterDesc = styled.div`
   font-size: 12px;
   @media (max-width: 1224px) {
     font-size: 7px;
-    margin-left: -5px;
   }
 `;
 

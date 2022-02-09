@@ -9,3 +9,10 @@ export const StyledColorContainer = styled.div`
   justify-content: center;
   gap: 30px;
 `;
+
+export const StyledTimeTable = styled.div`
+  @media (max-width: 1224px) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+`;
