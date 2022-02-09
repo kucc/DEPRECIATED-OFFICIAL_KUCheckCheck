@@ -60,6 +60,9 @@ export const StyledTextArea = styled(TextArea)`
   &:focus {
     outline: none;
   }
+  @media (max-width: 1224px) {
+    font-size: 12px;
+  }
 `;
 
 export const StyledInputNumber = styled(InputNumber)`
@@ -74,6 +77,10 @@ export const StyledInputNumber = styled(InputNumber)`
   outline: none;
   &:focus {
     outline: none;
+  }
+  @media (max-width: 1224px) {
+    width: 100%;
+    font-size: 12px;
   }
 `;
 

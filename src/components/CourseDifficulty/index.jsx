@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   StyledCourseDifficulty,
@@ -9,14 +10,24 @@ import {
   StyledRedText,
 } from './style';
 
-const CourseDifficulty = ({ onClick, difficulty, requireTime, style }) => {
+const CourseDifficulty = ({
+  onClick,
+  difficulty,
+  requireTime,
+  style,
+  isMainScreen,
+}) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
   return (
     <StyledCourseDifficulty
       // className='in-shadow-weak'
       onClick={onClick}
-      style={style}>
+      style={style}
+      isMainScreen={isMainScreen}
+      isMobile={isMobile}>
       <StyledCourseLevel>
-        <div>난이도 :&nbsp;</div>
+        {(isMainScreen || !isMobile) && <div>난이도 :&nbsp;</div>}
         <StyledRedText>{difficulty}</StyledRedText>
         <div>&nbsp;/</div>
       </StyledCourseLevel>
@@ -32,4 +43,5 @@ CourseDifficulty.propTypes = {
   difficulty: PropTypes.string,
   requireTime: PropTypes.string,
   style: PropTypes.object,
+  isMainScreen: PropTypes.bool,
 };

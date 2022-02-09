@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useMediaQuery } from 'react-responsive';
 
 import { NavBar } from '@components/NavBar';
@@ -63,10 +64,9 @@ export const AttendacePage = ({ courseData }) => {
           courseAttendance={courseAttendance}
           courseCheckAdmin={courseCheckAdmin}
         />
-        {/* 모바일일때는 왼쪽에 text 표시 */}
         {isMobile ? (
-          <>
-            <div style={{ display: 'flex', gap: '6px' }}>
+          <ScrollMenu>
+            <div style={{ display: 'flex', gap: '6px', paddingRight: '10px' }}>
               <StyledRoundBox
                 style={{
                   backgroundColor: BASE_COLOR,
@@ -84,10 +84,12 @@ export const AttendacePage = ({ courseData }) => {
               </StyledRoundBox>
               {renderCourseAttendanceCard()}
             </div>
-          </>
+          </ScrollMenu>
         ) : (
           renderCourseAttendanceCard()
         )}
+
+        {/* 모바일일때는 왼쪽에 text 표시 */}
       </StyledSidePadding>
     </StyledBackground>
   );

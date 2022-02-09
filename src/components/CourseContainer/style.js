@@ -40,7 +40,7 @@ export const StyledCourseExplainWrapper = styled.div`
     } else {
       return `
         margin-top: 0px;
-        grid-template-columns: auto 40px;
+        grid-template-columns: auto 70px;
       `;
     }
   }};
@@ -51,6 +51,9 @@ export const StyledCourseText = styled.div`
   padding-left: 20px;
   padding-top: 5px;
   cursor: pointer;
+  @media (max-width: 1224px) {
+    padding-right: 0px;
+  }
 `;
 
 export const StyledCourseTitle = styled.div`
@@ -97,7 +100,7 @@ export const StyledCourseApply = styled(Button)`
     border-bottom-right-radius: 30px;
     justify-content: center;
     align-items: flex-end;
-    font-size: 10px;
+    font-size: 10px !important;
   }
 `;
 
@@ -108,14 +111,29 @@ export const StlyedHeadCountText = styled.div`
   }
 `;
 
+const mainScreenStyle = (isMobile, isMainScreen) => {
+  if (isMobile && !isMainScreen) {
+    return `
+      display: grid;
+      place-items: center;
+      width: 100%;
+      border-radius: 30px;
+      height: 48px;
+      gap: 0px;
+  `;
+  }
+};
+
 export const StyledCourseApplyOn = styled(StyledCourseApply)`
   background-color: #c32020;
+  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
 `;
 
 export const StyledCourseApplyOff = styled(StyledCourseApply)`
   background-color: #656565 !important;
   color: white !important;
   cursor: not-allowed;
+  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
 `;
 
 export const StyledCourseApplyMy = styled(StyledCourseApply)`
@@ -127,16 +145,15 @@ export const StyledCourseApplyMy = styled(StyledCourseApply)`
   }
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
+  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
 `;
 
 export const StyledCourseApplyLock = styled(StyledCourseApply)`
-  display: flex;
+  display: flex !important;
   background-color: #3f3f3f;
   color: white;
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
-  @media (max-width: 1224px) {
-    font-size: 10px;
-  }
+  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
 `;

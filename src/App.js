@@ -90,6 +90,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
   }
+  .out-shadow-extra-strong{
+    box-shadow: 0 15px 14px 3px lightgrey !important;
+    transition: all 0.15s;
+  }
   .out-shadow-strong{
     box-shadow: 0 11px 10px 2px lightgrey !important;
     transition: all 0.15s;

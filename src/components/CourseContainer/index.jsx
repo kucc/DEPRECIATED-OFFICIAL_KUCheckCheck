@@ -40,16 +40,12 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
     marginTop: isCourseSpread ? -50 : -100,
   });
 
-  const marginBottomProps = useSpring({
-    marginBottom: isCourseSpread ? 30 : 10,
-  });
-
   const handleOnClick = () => {
-    if (isMobile) {
-      setIsCourseSpread(prev => !prev);
-    } else {
-      history.push(`/course/${course.id}`);
-    }
+    history.push(`/course/${course.id}`);
+  };
+
+  const handleCourseSpread = () => {
+    setIsCourseSpread(prev => !prev);
   };
 
   const renderCouresImage = () => {
@@ -110,10 +106,10 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
     <animated.div
       className={
         onCourseHover
-          ? 'out-shadow-strong border-radius-all'
-          : 'out-shadow-middle border-radius-all'
+          ? 'out-shadow-extra-strong border-radius-all'
+          : 'out-shadow-strong border-radius-all'
       }
-      style={{ position: 'relative', ...marginBottomProps }}>
+      style={{ position: 'relative', marginBottom: '10px' }}>
       <StyledCourseContainer
         screenWidth={width}
         onMouseEnter={toggleHover}
@@ -146,8 +142,11 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                marginRight: '5px',
-              }}>
+                justifyContent: 'center',
+                width: '100%',
+                height: '120px',
+              }}
+              onClick={handleCourseSpread}>
               <animated.div
                 style={{
                   height: 20,
@@ -187,8 +186,13 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             difficulty={course.difficulty}
             requireTime={course.requireTime}
             style={{ marginTop: '0px' }}
+            isMainScreen={true}
           />
-          <CourseApplication courseId={course.id} course={course} />
+          <CourseApplication
+            courseId={course.id}
+            course={course}
+            isMainScreen={true}
+          />
         </animated.div>
       )}
     </animated.div>
