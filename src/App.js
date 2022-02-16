@@ -18,6 +18,7 @@ import {
   NoticePage,
   TimeTablePage,
 } from '@pages';
+import GetCSVPage from '@pages/GetCSVPage';
 import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
@@ -41,7 +42,7 @@ function App() {
         dispatch(clearUser());
       }
     });
-  }, []);
+  }, [dispatch, history]);
 
   return (
     // TODO
@@ -75,6 +76,7 @@ function App() {
           path='/course/:id/attendance'
           component={CourseHoc(AttendacePage, 1)}
         />
+        <Route exact path='/getCSV' component={GetCSVPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />

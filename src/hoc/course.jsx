@@ -37,7 +37,7 @@ export const CourseHoc = (SpecificComponent, option) => {
         }
       }
       fetchCourseData();
-    }, []);
+    }, [props.history, props.match.params.id]);
     // 해당 Component로 courseData prop을 보내줌.
     // courseLeader 정보도 함께 보내주기
     return <SpecificComponent {...props} courseData={courseData} />;

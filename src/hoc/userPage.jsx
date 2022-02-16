@@ -35,7 +35,7 @@ export const UserPageHoc = () => {
         }
       }
       fetchUserData();
-    }, []);
+    }, [props.history, props.match.params.id]);
 
     return <UserPage {...props} userData={userData} />;
   };

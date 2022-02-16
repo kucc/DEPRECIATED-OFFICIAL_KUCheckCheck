@@ -23,7 +23,7 @@ function UserInfoCard({ userData }) {
             .get();
           setfirebaseUser(newUserData.data());
         } catch (error) {
-          console.log('error', error);
+          alert('error', error);
         }
       }
     }

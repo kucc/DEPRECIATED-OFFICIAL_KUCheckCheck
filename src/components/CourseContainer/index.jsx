@@ -145,6 +145,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
                 justifyContent: 'center',
                 width: '100%',
                 height: '120px',
+                cursor: 'pointer',
               }}
               onClick={handleCourseSpread}>
               <animated.div
