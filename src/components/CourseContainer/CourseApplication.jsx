@@ -276,9 +276,7 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
     else if (!courseMemberArr || courseMemberArr.length < maxMemberNum) {
       return (
         <StyledCourseApplyOn
-          type='danger'
           onClick={applicationHandler}
-          loading={Loading}
           $isMainScreen={isMainScreen}
           $isMobile={isMobile}>
           신청하기
