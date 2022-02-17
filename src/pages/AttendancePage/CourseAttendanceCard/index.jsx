@@ -63,7 +63,6 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
     <>
       {isMobile ? (
         <MCourseAttendanceCard
-          userId={userData.userId}
           userEmoji={userEmoji}
           userName={userName}
           courseAttendanceData={courseAttendanceData}
@@ -73,7 +72,6 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
         />
       ) : (
         <PCourseAttendanceCard
-          userId={userData.userId}
           userEmoji={userEmoji}
           userName={userName}
           courseAttendanceData={courseAttendanceData}

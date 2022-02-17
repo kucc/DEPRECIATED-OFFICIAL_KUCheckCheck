@@ -18,7 +18,6 @@ import {
 const { Option } = Select;
 
 const MCourseAttendanceCard = ({
-  userId,
   userEmoji,
   userName,
   courseAttendanceData,
@@ -31,7 +30,7 @@ const MCourseAttendanceCard = ({
     <div style={{ marginTop: '30px' }}>
       <StyledBox
         className='out-shadow-middle'
-        onClick={() => history.push(`/userpage/${userId}`)}>
+        onClick={() => history.push(`/userpage/${courseAttendanceData.id}`)}>
         <StyledEmoji>{userEmoji}</StyledEmoji>
         <p>{userName}</p>
       </StyledBox>
@@ -80,7 +79,6 @@ const MCourseAttendanceCard = ({
 export default MCourseAttendanceCard;
 
 MCourseAttendanceCard.propTypes = {
-  userId: PropTypes.string,
   userEmoji: PropTypes.string,
   userName: PropTypes.string,
   courseAttendanceData: PropTypes.object,

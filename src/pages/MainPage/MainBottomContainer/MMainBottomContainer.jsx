@@ -35,7 +35,6 @@ export const MMainBottomContainer = () => {
   const history = useHistory();
   const today = new Date();
   const { width } = useWindowDimensions();
-  // console.log(width);
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
   const escapeRegExp = searchTerm => {

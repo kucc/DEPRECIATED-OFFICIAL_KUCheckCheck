@@ -12,7 +12,6 @@ export const StyledCourseDifficulty = styled.div`
   gap: 3px;
   @media (max-width: 1224px) {
     ${({ isMobile, isMainScreen }) => {
-      console.log(isMainScreen);
       if (isMobile) {
         if (isMainScreen) {
           return `    

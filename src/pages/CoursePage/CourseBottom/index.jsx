@@ -141,6 +141,7 @@ const CourseBottom = ({ courseData }) => {
               onClick={() => {
                 if (isEdit) {
                   handleSubmit();
+                  alert('수정 완료! 새로고침시 변경사항이 적용됩니다.');
                 }
                 setIsEdit(prev => !prev);
               }}

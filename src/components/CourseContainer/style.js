@@ -1,6 +1,8 @@
 import { Button } from 'antd';
 import styled from 'styled-components';
 
+import { MAIN_COLOR } from '@utility/COLORS';
+
 export const StyledCourseContainer = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
@@ -28,12 +30,12 @@ export const StyledCourseImgContainer = styled.div`
 export const StyledCourseExplainWrapper = styled.div`
   display: grid;
   margin-top: 25px;
-  ${({ CourseApplicationState, isMobile }) => {
-    if (!isMobile && CourseApplicationState) {
+  ${({ CourseApplicationState, $isMobile }) => {
+    if (!$isMobile && CourseApplicationState) {
       return `
         grid-template-columns: auto 250px 150px 30px;
       `;
-    } else if (!isMobile && !CourseApplicationState) {
+    } else if (!$isMobile && !CourseApplicationState) {
       return `
         grid-template-columns: auto 250px;
       `;
@@ -82,14 +84,18 @@ export const StyledCourseExplain = styled.div`
 
 export const StyledCourseFavorite = styled.div``;
 
-export const StyledCourseApply = styled(Button)`
+export const StyledCourseApply = styled.button`
   margin-right: 25px;
   border-radius: 30px;
   height: 64px;
   display: grid;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   width: 100%;
+  cursor: pointer;
+  border: none;
+  padding-top: 3px;
   @media (max-width: 1224px) {
     margin-right: 0px;
     width: 50%;
@@ -97,6 +103,7 @@ export const StyledCourseApply = styled(Button)`
     display: flex;
     gap: 10px;
     border-radius: 0px;
+    padding-top: 0px;
     border-bottom-right-radius: 30px;
     justify-content: center;
     align-items: flex-end;
@@ -125,15 +132,20 @@ const mainScreenStyle = (isMobile, isMainScreen) => {
 };
 
 export const StyledCourseApplyOn = styled(StyledCourseApply)`
-  background-color: #c32020;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  background-color: ${MAIN_COLOR};
+  color: white;
+  &:hover {
+    background-color: #e8463a;
+  }
+  transition: background-color 0.3s ease;
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyOff = styled(StyledCourseApply)`
   background-color: #656565 !important;
   color: white !important;
   cursor: not-allowed;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyMy = styled(StyledCourseApply)`
@@ -145,7 +157,7 @@ export const StyledCourseApplyMy = styled(StyledCourseApply)`
   }
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyLock = styled(StyledCourseApply)`
@@ -155,5 +167,5 @@ export const StyledCourseApplyLock = styled(StyledCourseApply)`
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;

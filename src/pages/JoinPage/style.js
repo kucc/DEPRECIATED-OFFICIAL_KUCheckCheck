@@ -9,12 +9,13 @@ export const StyledRow = styled(Row)`
 `;
 
 export const StyledCol = styled(Col)`
-  padding: 0 100px;
+  padding: 0px 100px;
   min-width: 600px;
   background-color: white;
   border-radius: 25px;
   @media (max-width: 1224px) {
     min-width: 0;
+    padding: 0px 50px;
   }
 `;
 

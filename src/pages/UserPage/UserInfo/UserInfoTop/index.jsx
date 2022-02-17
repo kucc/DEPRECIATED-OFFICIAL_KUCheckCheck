@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { Input, Modal } from 'antd';
+import { Button, Input, Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import { WhiteShadowButton } from '@components';
 
-import { firestoreService } from '@/firebase';
+import { authService, firestoreService } from '@/firebase';
+import { MAIN_COLOR } from '@utility/COLORS';
 import { RandomEmoji } from '@utility/COMMON_FUNCTION';
 
 import {
@@ -75,6 +76,55 @@ function UserInfoTop({ onChangeFunc, userData }) {
     setuserDetailComment(event.target.value);
   };
 
+  const userQuitHandler = async () => {
+    if (
+      !confirm(
+        '정말 탈퇴하시겠습니까? 회원 정보는 즉시 삭제되고, 현재 등록 중인 세션/스터디/프로젝트에사는 자동으로 등록 취소됩니다. 만약 세션장일 경우에는 세션이 삭제되게 됩니다. 삭제된 회원 정보는 복구할 수 없습니다.',
+      )
+    ) {
+      // alert('취소(아니오)를 누르셨습니다.');
+    } else {
+      const user = authService.currentUser;
+      // 코스에서 해당 유저 관련 모두 삭제
+      const coursesResult = await firestoreService.collection('courses').get();
+      coursesResult.forEach(doc => {
+        // 만약 세션장일 경우
+        if (doc.data().courseLeader.id === user.uid) {
+          firestoreService.collection('courses').doc(doc.id).delete();
+        }
+        // 해당 세션에 현재 유저가 들어가 있으면
+        else if (doc.data().courseMember.includes(user.uid)) {
+          // courseMember에서 해당 member를 제거
+          const courseMember = doc.data().courseMember;
+          const newcourseMember = courseMember.filter(
+            element => element !== user.uid,
+          );
+          // courseAttendance에서 해당 member를 제거
+          const courseAttendance = doc.data().courseAttendance;
+          const newcourseAttendance = courseAttendance.filter(
+            element => element.id !== user.uid,
+          );
+          // firestore 압데이트
+          firestoreService.collection('courses').doc(doc.id).update({
+            courseMember: newcourseMember,
+            courseAttendance: newcourseAttendance,
+          });
+        }
+      });
+
+      // 데이터베이스에서 유저 삭제
+      await firestoreService.collection('users').doc(user.uid).delete();
+
+      // 유저 삭제
+      await user.delete();
+
+      // 유저 로그아웃
+      await authService.signOut();
+
+      alert('이용해주셔서 감사합니다.');
+    }
+  };
+
   return (
     <StyledUserInfoTopContainer>
       <StyledUserInfoTopTitle>
@@ -130,6 +180,15 @@ function UserInfoTop({ onChangeFunc, userData }) {
           style={{ width: '100%', marginBottom: '20px' }}
           defaultValue={userLink}
         />
+        <StyledUserInfoModalText style={{ color: MAIN_COLOR }}>
+          탈퇴하기
+        </StyledUserInfoModalText>
+        <Button
+          danger
+          style={{ backgroundColor: MAIN_COLOR, color: 'white' }}
+          onClick={userQuitHandler}>
+          탈퇴하기
+        </Button>
       </Modal>
     </StyledUserInfoTopContainer>
   );

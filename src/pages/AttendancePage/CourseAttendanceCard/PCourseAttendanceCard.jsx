@@ -19,7 +19,6 @@ import {
 const { Option } = Select;
 
 const PCourseAttendanceCard = ({
-  userId,
   userEmoji,
   userName,
   courseAttendanceData,
@@ -33,7 +32,7 @@ const PCourseAttendanceCard = ({
     <StyledContainer>
       <StyledBox
         className='out-shadow-middle'
-        onClick={() => history.push(`/userpage/${userId}`)}>
+        onClick={() => history.push(`/userpage/${courseAttendanceData.id}`)}>
         <StyledEmoji>{userEmoji}</StyledEmoji>
         <p>{userName}</p>
       </StyledBox>
@@ -79,7 +78,6 @@ const PCourseAttendanceCard = ({
 export default PCourseAttendanceCard;
 
 PCourseAttendanceCard.propTypes = {
-  userId: PropTypes.string,
   userEmoji: PropTypes.string,
   userName: PropTypes.string,
   courseAttendanceData: PropTypes.object,

@@ -30,7 +30,7 @@ export const CourseRegisterHoc = SpecificComponent => {
           props.history.push('/login');
         }
       });
-    }, []);
+    }, [props.history]);
 
     return <SpecificComponent {...props} />;
   };
