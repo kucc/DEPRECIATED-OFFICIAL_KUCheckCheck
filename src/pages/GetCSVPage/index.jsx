@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { NavBar } from '@components/NavBar';
 
 import { authService, firestoreService } from '@/firebase';
-import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
 
 const GetCSVPage = () => {
   const [data, setData] = useState('');
@@ -36,6 +35,7 @@ const GetCSVPage = () => {
     async function getCSVData() {
       const userObject = {};
       const attendanceObject = {};
+      // userName - userId match object
       const userResult = await firestoreService.collection('users').get();
       userResult.forEach(doc => {
         userObject[doc.id] = doc.data().name;
@@ -69,8 +69,6 @@ const GetCSVPage = () => {
           }
           csv += attendance;
           csv += '\n';
-
-          // csv += `${await getUserName(user.id)}`;
         });
       });
       setData(csv);

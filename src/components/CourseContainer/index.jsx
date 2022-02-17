@@ -124,7 +124,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
           {renderCouresImage()}
         </StyledCourseImgContainer>
         <StyledCourseExplainWrapper
-          isMobile={isMobile}
+          $isMobile={isMobile}
           CourseApplicationState={CourseApplicationState}>
           <StyledCourseText onClick={handleOnClick}>
             <StyledCourseTitle>

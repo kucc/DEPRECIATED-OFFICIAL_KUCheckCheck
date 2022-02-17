@@ -28,12 +28,12 @@ export const StyledCourseImgContainer = styled.div`
 export const StyledCourseExplainWrapper = styled.div`
   display: grid;
   margin-top: 25px;
-  ${({ CourseApplicationState, isMobile }) => {
-    if (!isMobile && CourseApplicationState) {
+  ${({ CourseApplicationState, $isMobile }) => {
+    if (!$isMobile && CourseApplicationState) {
       return `
         grid-template-columns: auto 250px 150px 30px;
       `;
-    } else if (!isMobile && !CourseApplicationState) {
+    } else if (!$isMobile && !CourseApplicationState) {
       return `
         grid-template-columns: auto 250px;
       `;
@@ -126,14 +126,14 @@ const mainScreenStyle = (isMobile, isMainScreen) => {
 
 export const StyledCourseApplyOn = styled(StyledCourseApply)`
   background-color: #c32020;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyOff = styled(StyledCourseApply)`
   background-color: #656565 !important;
   color: white !important;
   cursor: not-allowed;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyMy = styled(StyledCourseApply)`
@@ -145,7 +145,7 @@ export const StyledCourseApplyMy = styled(StyledCourseApply)`
   }
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;
 
 export const StyledCourseApplyLock = styled(StyledCourseApply)`
@@ -155,5 +155,5 @@ export const StyledCourseApplyLock = styled(StyledCourseApply)`
   font-size: 14px;
   gap: 7px;
   cursor: not-allowed;
-  ${({ isMobile, isMainScreen }) => mainScreenStyle(isMobile, isMainScreen)}
+  ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
 `;

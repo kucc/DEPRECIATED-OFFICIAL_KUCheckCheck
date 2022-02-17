@@ -209,7 +209,9 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
     // 로그인된 유저가 아닐 경우
     if (!currentUser) {
       return (
-        <StyledCourseApplyLock isMobile={isMobile} isMainScreen={isMainScreen}>
+        <StyledCourseApplyLock
+          $isMobile={isMobile}
+          $isMainScreen={isMainScreen}>
           <AiFillLock
             style={{
               fontSize: isMobile ? '18px' : '22px',
@@ -238,7 +240,9 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
       semester !== currentSemester
     ) {
       return (
-        <StyledCourseApplyLock isMobile={isMobile} isMainScreen={isMainScreen}>
+        <StyledCourseApplyLock
+          $isMobile={isMobile}
+          $isMainScreen={isMainScreen}>
           <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '22px' }} />
           <div
             style={{
@@ -259,8 +263,8 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
           onMouseEnter={handleMouseHover}
           onMouseLeave={handleMouseHover}
           onClick={showModal}
-          isMainScreen={isMainScreen}
-          isMobile={isMobile}>
+          $isMainScreen={isMainScreen}
+          $isMobile={isMobile}>
           {hoverState ? '수강 취소' : '수강 중'}
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -275,8 +279,8 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
           type='danger'
           onClick={applicationHandler}
           loading={Loading}
-          isMainScreen={isMainScreen}
-          isMobile={isMobile}>
+          $isMainScreen={isMainScreen}
+          $isMobile={isMobile}>
           신청하기
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
@@ -289,8 +293,8 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
       return (
         <StyledCourseApplyOff
           disabled
-          isMainScreen={isMainScreen}
-          isMobile={isMobile}>
+          $isMainScreen={isMainScreen}
+          $isMobile={isMobile}>
           인원 마감
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
