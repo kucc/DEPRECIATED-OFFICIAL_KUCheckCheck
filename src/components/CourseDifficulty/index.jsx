@@ -21,7 +21,7 @@ const CourseDifficulty = ({
 
   return (
     <StyledCourseDifficulty
-      // className='in-shadow-weak'
+      className='in-shadow-weak'
       onClick={onClick}
       style={style}
       isMainScreen={isMainScreen}

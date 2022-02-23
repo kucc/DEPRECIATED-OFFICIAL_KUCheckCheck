@@ -71,7 +71,7 @@ export const StyledInputNumber = styled(InputNumber)`
   border: none;
   box-shadow: inset rgba(0, 0, 0, 0.15) 0px 3px 1.5px;
   width: 300px;
-  padding-left: 30px;
+  padding-left: 19px;
   padding-top: 14px;
   padding-bottom: 14px;
   outline: none;
@@ -100,7 +100,7 @@ export const StyledSelect = styled(Select)`
 export const StyledTagSelect = styled(Select)`
   .ant-select-selector {
     border-radius: 20px !important;
-    height: 61px !important;
+    min-height: 61px !important;
     background-color: ${BASE_COLOR} !important;
     box-shadow: inset 0px 3px 1.5px lightgrey !important;
   }

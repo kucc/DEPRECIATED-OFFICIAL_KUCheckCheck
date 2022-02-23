@@ -1,7 +1,5 @@
-import { Select } from 'antd';
 import styled from 'styled-components';
 
-import { BASE_COLOR } from '@utility/COLORS';
 import { StyledSideMargin, StyledSidePadding } from '@utility/COMMON_STYLE';
 
 export const StyledBackground = styled.div`
@@ -48,7 +46,7 @@ export const StyledText = styled.div`
 
 export const StyledInputBox = styled.div`
   display: grid;
-  grid-template-columns: 130px auto;
+  grid-template-columns: 150px auto;
   align-items: center;
   margin-bottom: 30px;
 `;

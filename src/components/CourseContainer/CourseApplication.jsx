@@ -11,8 +11,8 @@ import { firestoreService } from '@/firebase';
 import {
   ALREADY_APPLIED_COURSE,
   NOT_ENROLLMENT_TERM,
-  SUCCESS_APPLIED_COURSE,
 } from '@utility/ALERT_MESSAGE';
+import { defaultUserAttendance } from '@utility/CONSTANTS';
 
 import {
   StlyedHeadCountText,
@@ -141,7 +141,7 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
                 ...courseAttendanceArr,
                 {
                   id: currentUser.uid,
-                  attendance: [0, 0, 0, 0, 0, 0, 0, 0],
+                  attendance: defaultUserAttendance,
                 },
               ];
               // course에 유저 정보를 등록

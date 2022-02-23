@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';

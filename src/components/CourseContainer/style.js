@@ -108,6 +108,7 @@ export const StyledCourseApply = styled.button`
     justify-content: center;
     align-items: flex-end;
     font-size: 10px !important;
+    padding: 5.111px;
   }
 `;
 
