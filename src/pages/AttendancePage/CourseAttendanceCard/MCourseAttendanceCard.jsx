@@ -11,7 +11,6 @@ import {
   StyledAttend,
   StyledBox,
   StyledEmoji,
-  StyledLate,
   StyledRoundBox,
 } from './style';
 
@@ -44,7 +43,9 @@ const MCourseAttendanceCard = ({
               else if (state === 1)
                 return <StyledAbsent key={index}>{word.absent}</StyledAbsent>;
               else if (state === 2)
-                return <StyledLate key={index}>{word.late}</StyledLate>;
+                return <StyledAbsent key={index}>{word.late}</StyledAbsent>;
+              else if (state === 3)
+                return <StyledAttend key={index}>{word.null}</StyledAttend>;
             } else {
               //출석 수정 모드일 때
               return (
@@ -65,6 +66,9 @@ const MCourseAttendanceCard = ({
                     {word.absent}
                   </Option>
                   <Option key={`2_${index}`} value={word.late}>
+                    {word.late}
+                  </Option>
+                  <Option key={`3_${index}`} value={word.null}>
                     {word.late}
                   </Option>
                 </Select>

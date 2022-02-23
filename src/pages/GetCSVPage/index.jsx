@@ -26,9 +26,7 @@ const GetCSVPage = () => {
         history.push('/');
       }
     }
-    if (userInfo) {
-      checkUser();
-    }
+    if (userInfo) checkUser();
   }, [history, userInfo]);
 
   useEffect(() => {
@@ -58,6 +56,8 @@ const GetCSVPage = () => {
           attendance = attendance.replace(/0/gi, '출석');
           attendance = attendance.replace(/1/gi, '지각');
           attendance = attendance.replace(/2/gi, '결석');
+          // 미입력은 지각으로 처리??
+          attendance = attendance.replace(/3/gi, '미입력');
           if (attendanceObject[userName]) {
             attendanceObject[userName].push(
               userName + ',' + doc.data().courseName + ',' + attendance,

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { firestoreService } from '@/firebase';
 import { SUCCESS_APPLICATION } from '@utility/ALERT_MESSAGE';
+import { defaultUserAttendance } from '@utility/CONSTANTS';
 
 import CourseRegisterBox from './CourseRegisterBox';
 
@@ -63,8 +64,8 @@ export default function CourseUpdate() {
       courseAttendance: [
         {
           id: currentUser.uid,
-          // number로 attendance 구현, 0 : 출석, 1 : 지각, 2 : 결석
-          attendance: [0, 0, 0, 0, 0, 0, 0, 0],
+          // number로 attendance 구현, 0 : 출석, 1 : 지각, 2 : 결석, 3: 미입력
+          attendance: defaultUserAttendance,
         },
       ],
       semester: currentSemester,

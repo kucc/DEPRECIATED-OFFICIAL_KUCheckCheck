@@ -41,6 +41,8 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
       stateNum = 1;
     } else if (value === word.late) {
       stateNum = 2;
+    } else if (value === word.null) {
+      stateNum = 3;
     }
     newArray[key.key[2]] = stateNum;
     newCourseAttendanceData.attendance = newArray;
@@ -56,6 +58,8 @@ function CourseAttendanceCard({ userData, isEditMode, editedAttendance }) {
       return word.absent;
     } else if (state === 2) {
       return word.late;
+    } else if (state === 3) {
+      return word.null;
     }
   };
 

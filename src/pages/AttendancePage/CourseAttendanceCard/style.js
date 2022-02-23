@@ -78,10 +78,6 @@ export const StyledAbsent = styled(StyledTextBase)`
   color: red;
 `;
 
-export const StyledLate = styled(StyledTextBase)`
-  color: red;
-`;
-
 ///////////// 모바일용 스타일
 
 export const StyledRoundBox = styled.div`

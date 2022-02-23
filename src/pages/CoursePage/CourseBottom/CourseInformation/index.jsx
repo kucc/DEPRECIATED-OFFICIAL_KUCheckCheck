@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
 import { Select } from 'antd';
@@ -23,9 +24,9 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     maxMemberNum,
     coursePlace,
     courseNotice,
-    courseId,
     courseType,
     courseMember,
+    courseCheckAdmin,
   } = courseData;
   const [newCourseInfo, setNewCourseInfo] = useState('');
   const [newCourseGoal, setNewCourseGoal] = useState('');
@@ -36,33 +37,31 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const [newCourseMember, setNewCourseMember] = useState([]);
   const [newCourseCheckAdmin, setNewCourseCheckAdmin] = useState([]);
 
-  //한 user의 정보를 가져옴
-  async function fetchUserData(memberId) {
-    const userRef = await firestoreService
-      .collection('users')
-      .doc(memberId)
-      .get();
-    return userRef.data();
-  }
-
-  //member들의 정보를 가져옴
-  async function fetchUserArray() {
-    let newCourseMemberArr = [];
-    await Promise.all(
-      courseMember.map(async memberId => {
-        const memberInfo = await fetchUserData(memberId);
-        newCourseMemberArr.push({
-          id: memberId,
-          name: memberInfo.name,
-          email: memberInfo.email,
-        });
-      }),
-    );
-    setNewCourseMember(newCourseMemberArr);
-  }
-
   // fetch CourseMember Array
   useEffect(() => {
+    //한 user의 정보를 가져옴
+    async function fetchUserData(memberId) {
+      const userRef = await firestoreService
+        .collection('users')
+        .doc(memberId)
+        .get();
+      return userRef.data();
+    }
+    //member들의 정보를 가져옴
+    async function fetchUserArray() {
+      let newCourseMemberArr = [];
+      await Promise.all(
+        courseMember.map(async memberId => {
+          const memberInfo = await fetchUserData(memberId);
+          newCourseMemberArr.push({
+            id: memberId,
+            name: memberInfo.name,
+            email: memberInfo.email,
+          });
+        }),
+      );
+      setNewCourseMember(newCourseMemberArr);
+    }
     if (courseMember) {
       fetchUserArray();
     }
@@ -98,6 +97,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
       setNewMaxMemberNum(maxMemberNum);
       setNewCoursePlace(coursePlace);
       setNewCourseNotice(courseNotice);
+      setNewCourseCheckAdmin(courseCheckAdmin);
     }
   }, [courseData]);
 
@@ -193,6 +193,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
             placeholder='출석체크 담당자를 선택해주세요! (복수 선택 가능)'
             // width={calc(100% - 150px)}
             style={{ width: '100%' }}
+            defaultValue={newCourseCheckAdmin}
             onChange={onChangeCourseCheckAdmin}>
             {newCourseMember &&
               newCourseMember.map((member, index) => (
