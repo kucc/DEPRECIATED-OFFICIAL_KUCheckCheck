@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Select } from 'antd';
+import { Button, Select, Tooltip } from 'antd';
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
 
@@ -30,7 +30,7 @@ import {
   StyledRegisterRequireTopLeft,
   StyledRegisterRequireTopRight,
   StyledText,
-} from '../style';
+} from './style';
 
 function CourseRegisterBox({ enrollHandler }) {
   //하나의 객체로..?
@@ -38,6 +38,7 @@ function CourseRegisterBox({ enrollHandler }) {
   const [courseInfo, setcourseInfo] = useState('');
   const [courseGoal, setcourseGoal] = useState('');
   const [language, setlanguage] = useState([]);
+  const [courseStack, setCourseStack] = useState([]);
   const [difficulty, setdifficulty] = useState('');
   const [requireTime, setrequireTime] = useState('');
   const [courseType, setCourseType] = useState(1);
@@ -74,6 +75,10 @@ function CourseRegisterBox({ enrollHandler }) {
     setlanguage(value);
   };
 
+  const onChangeStack = value => {
+    setCourseStack(value);
+  };
+
   const onChangeDifficult = value => {
     setdifficulty(value);
   };
@@ -99,7 +104,6 @@ function CourseRegisterBox({ enrollHandler }) {
     setcourseNotice(event.target.value);
   };
   const onChangeMember = value => {
-    // antd의 input number로 유효성 검사 완료.
     setcourseMember(value);
   };
 
@@ -176,7 +180,9 @@ function CourseRegisterBox({ enrollHandler }) {
             </StyledRegisterRequireTopRight>
           </StyledRegisterRequireTop>
           <StyledInputBox style={{ marginTop: '10px' }}>
-            <StyledText style={{ marginTop: '30px' }}>사용언어</StyledText>
+            <StyledText style={{ marginTop: '30px' }}>
+              사용언어 및 주요기술 스택
+            </StyledText>
             <div>
               <StyledLaguageImg src={`/img/icon/${selectedImg}.svg`} />
               <StyledTagSelect
@@ -207,6 +213,25 @@ function CourseRegisterBox({ enrollHandler }) {
                 <Option value='Etc'>기타</Option>
               </StyledTagSelect>
             </div>
+          </StyledInputBox>
+          <StyledInputBox style={{ marginTop: '10px' }}>
+            <StyledText style={{ marginTop: '30px' }}>
+              <Tooltip title='상세기술 스택에는 주요기술 스택 이외의 더 상세한 기술 스택들을 자유롭게 넣어주시면 됩니다. ex) Typescript, Next.js, TailwindCSS, AWS, Spring MVC, Numpy, Pandas...'>
+                <span style={{ fontFamily: 'NexonBo' }}>상세기술 스택</span>
+              </Tooltip>
+            </StyledText>
+            <StyledTagSelect
+              mode='tags'
+              placeholder='필요한 상세기술 스택을 입력해주세요. Enter시 입력됩니다.'
+              onChange={onChangeStack}>
+              <Option value='Github'>Github</Option>
+              <Option value='Typescript'>Typescript</Option>
+              <Option value='Express'>Express</Option>
+              <Option value='NextJS'>NextJS</Option>
+              <Option value='Antd'>Antd</Option>
+              <Option value='AWS'>AWS</Option>
+              <Option value='DevOps'>DevOps</Option>
+            </StyledTagSelect>
           </StyledInputBox>
           <StyledInputBox>
             <StyledText style={{ marginTop: '30px' }}>활동 제목</StyledText>
@@ -339,6 +364,7 @@ function CourseRegisterBox({ enrollHandler }) {
                 courseInfo,
                 courseGoal,
                 language,
+                courseStack,
                 difficulty,
                 requireTime,
                 courseType,

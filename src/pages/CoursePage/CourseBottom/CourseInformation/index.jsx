@@ -12,7 +12,13 @@ import {
   StyledTextArea,
 } from '@utility/COMMON_STYLE';
 
-import { StyledInfoDesc, StyledInfoText, StyledInfoTitle } from './style';
+import {
+  StyledInfoContainer,
+  StyledInfoDesc,
+  StyledInfoStack,
+  StyledInfoText,
+  StyledInfoTitle,
+} from './style';
 
 const { Option } = Select;
 
@@ -27,7 +33,9 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     courseType,
     courseMember,
     courseCheckAdmin,
+    courseStack,
   } = courseData;
+
   const [newCourseInfo, setNewCourseInfo] = useState('');
   const [newCourseGoal, setNewCourseGoal] = useState('');
   const [newCourseDate, setNewCourseDate] = useState('');
@@ -105,108 +113,116 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     setNewCourseCheckAdmin(value);
   };
   return (
-    <div>
-      <StyledInfoText>
-        <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
-        {isEdit ? (
-          <StyledTextArea
-            defaultValue={courseInfo}
-            onChange={e => setNewCourseInfo(e.target.value)}
-            maxLength={200}
-            placeholder='200자 이내'
-          />
-        ) : (
-          <StyledInfoDesc>{courseInfo}</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      <StyledInfoText>
-        <StyledInfoTitle>{renderWord(courseType)} 목표</StyledInfoTitle>
-        {isEdit ? (
-          <StyledTextArea
-            defaultValue={courseGoal}
-            onChange={e => setNewCourseGoal(e.target.value)}
-            maxLength={200}
-            placeholder='200자 이내'
-          />
-        ) : (
-          <StyledInfoDesc>{courseGoal}</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      <StyledInfoText>
-        <StyledInfoTitle>진행 요일</StyledInfoTitle>
-        {isEdit ? (
-          <StyledTextArea
-            defaultValue={courseDate}
-            onChange={e => setNewCourseDate(e.target.value)}
-            maxLength={200}
-            placeholder='200자 이내'
-          />
-        ) : (
-          <StyledInfoDesc>{courseDate}</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      <StyledInfoText>
-        <StyledInfoTitle>참여 인원</StyledInfoTitle>
-        {isEdit ? (
-          <StyledInputNumber
-            defaultValue={maxMemberNum}
-            onChange={value => setNewMaxMemberNum(value)}
-            min={1}
-            max={100}
-            placeholder='숫자만 적어주세요. ex) 6'
-          />
-        ) : (
-          <StyledInfoDesc>최대 {maxMemberNum}명</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      <StyledInfoText>
-        <StyledInfoTitle>진행 장소 및 방법</StyledInfoTitle>
-        {isEdit ? (
-          <StyledTextArea
-            defaultValue={coursePlace}
-            onChange={e => setNewCoursePlace(e.target.value)}
-            maxLength={200}
-            placeholder='200자 이내'
-          />
-        ) : (
-          <StyledInfoDesc>{coursePlace}</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      <StyledInfoText>
-        <StyledInfoTitle>유의 사항</StyledInfoTitle>
-        {isEdit ? (
-          <StyledTextArea
-            defaultValue={courseNotice}
-            onChange={e => setNewCourseNotice(e.target.value)}
-            maxLength={200}
-            placeholder='200자 이내'
-          />
-        ) : (
-          <StyledInfoDesc>{courseNotice}</StyledInfoDesc>
-        )}
-      </StyledInfoText>
-      {isEdit && (
+    <StyledInfoContainer>
+      <div>
         <StyledInfoText>
-          <StyledInfoTitle>출석체크 담당자 선택</StyledInfoTitle>
-          <StyledTagSelect
-            mode='tags'
-            placeholder='출석체크 담당자를 선택해주세요! (복수 선택 가능)'
-            // width={calc(100% - 150px)}
-            style={{ width: '100%' }}
-            defaultValue={newCourseCheckAdmin}
-            onChange={onChangeCourseCheckAdmin}>
-            {newCourseMember &&
-              newCourseMember.map((member, index) => (
-                <Option
-                  key={index}
-                  value={
-                    member.id
-                  }>{`${member.name} (${member.email})`}</Option>
-              ))}
-          </StyledTagSelect>
+          <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
+          {isEdit ? (
+            <StyledTextArea
+              defaultValue={courseInfo}
+              onChange={e => setNewCourseInfo(e.target.value)}
+              maxLength={200}
+              placeholder='200자 이내'
+            />
+          ) : (
+            <StyledInfoDesc>{courseInfo}</StyledInfoDesc>
+          )}
         </StyledInfoText>
-      )}
-    </div>
+        <StyledInfoText>
+          <StyledInfoTitle>{renderWord(courseType)} 목표</StyledInfoTitle>
+          {isEdit ? (
+            <StyledTextArea
+              defaultValue={courseGoal}
+              onChange={e => setNewCourseGoal(e.target.value)}
+              maxLength={200}
+              placeholder='200자 이내'
+            />
+          ) : (
+            <StyledInfoDesc>{courseGoal}</StyledInfoDesc>
+          )}
+        </StyledInfoText>
+        <StyledInfoText>
+          <StyledInfoTitle>진행 요일</StyledInfoTitle>
+          {isEdit ? (
+            <StyledTextArea
+              defaultValue={courseDate}
+              onChange={e => setNewCourseDate(e.target.value)}
+              maxLength={200}
+              placeholder='200자 이내'
+            />
+          ) : (
+            <StyledInfoDesc>{courseDate}</StyledInfoDesc>
+          )}
+        </StyledInfoText>
+        <StyledInfoText>
+          <StyledInfoTitle>참여 인원</StyledInfoTitle>
+          {isEdit ? (
+            <StyledInputNumber
+              defaultValue={maxMemberNum}
+              onChange={value => setNewMaxMemberNum(value)}
+              min={1}
+              max={100}
+              placeholder='숫자만 적어주세요. ex) 6'
+            />
+          ) : (
+            <StyledInfoDesc>최대 {maxMemberNum}명</StyledInfoDesc>
+          )}
+        </StyledInfoText>
+        <StyledInfoText>
+          <StyledInfoTitle>진행 장소 및 방법</StyledInfoTitle>
+          {isEdit ? (
+            <StyledTextArea
+              defaultValue={coursePlace}
+              onChange={e => setNewCoursePlace(e.target.value)}
+              maxLength={200}
+              placeholder='200자 이내'
+            />
+          ) : (
+            <StyledInfoDesc>{coursePlace}</StyledInfoDesc>
+          )}
+        </StyledInfoText>
+        <StyledInfoText>
+          <StyledInfoTitle>유의 사항</StyledInfoTitle>
+          {isEdit ? (
+            <StyledTextArea
+              defaultValue={courseNotice}
+              onChange={e => setNewCourseNotice(e.target.value)}
+              maxLength={200}
+              placeholder='200자 이내'
+            />
+          ) : (
+            <StyledInfoDesc>{courseNotice}</StyledInfoDesc>
+          )}
+        </StyledInfoText>
+        {isEdit && (
+          <StyledInfoText>
+            <StyledInfoTitle>출석체크 담당자 선택</StyledInfoTitle>
+            <StyledTagSelect
+              mode='tags'
+              placeholder='출석체크 담당자를 선택해주세요! (복수 선택 가능)'
+              // width={calc(100% - 150px)}
+              style={{ width: '100%' }}
+              defaultValue={newCourseCheckAdmin}
+              onChange={onChangeCourseCheckAdmin}>
+              {newCourseMember &&
+                newCourseMember.map((member, index) => (
+                  <Option
+                    key={index}
+                    value={
+                      member.id
+                    }>{`${member.name} (${member.email})`}</Option>
+                ))}
+            </StyledTagSelect>
+          </StyledInfoText>
+        )}
+      </div>
+      <StyledInfoStack>
+        기술 스택
+        {courseStack?.map((stack, key) => (
+          <div key={key}>- {stack}</div>
+        ))}
+      </StyledInfoStack>
+    </StyledInfoContainer>
   );
 };
 
