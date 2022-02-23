@@ -83,8 +83,16 @@ const GetCSVPage = () => {
       '이름,세션,1주차,2주차,3주차,4주차,5주차,6주차,7주차,8주차\n';
     keys.map(key => {
       const arr = attendanceData[key];
-      memberData += arr.join('\n');
-      memberData += '\n\n';
+      const courseNum = arr.length;
+      const curretMemberStr = arr.join('\n');
+      memberData += curretMemberStr;
+      const absentNum = (curretMemberStr.match(/결석/g) || []).length;
+      const lateNum = (curretMemberStr.match(/지각/g) || []).length;
+      const totalMoney =
+        20000 * courseNum - 5000 * absentNum - 3000 * lateNum > 0
+          ? 20000 * courseNum - 5000 * absentNum - 3000 * lateNum
+          : 0;
+      memberData += `\n총금액,세션수:${courseNum} / 결석:${absentNum} / 지각:${lateNum}, , , , , , , , ,${totalMoney}\n\n`;
     });
     saveAs(
       new Blob(['\uFEFF' + memberData], { type: 'text/csv;charset=utf-8' }),

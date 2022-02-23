@@ -33,7 +33,6 @@ const CourseBottom = ({ courseData }) => {
   const currentUser = authService.currentUser;
   const [selected, setSelected] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
   const [newCourseDataInfo, setNewCourseDataInfo] = useState({});
   const [newCourseDataCurri, setNewCourseDataCurri] = useState([]);
   const [newCourseDataTime, setNewCourseDataTime] = useState({});
@@ -82,7 +81,6 @@ const CourseBottom = ({ courseData }) => {
         <CourseInformation
           courseData={newCourseData}
           isEdit={isEdit}
-          isSubmit={isSubmit}
           newCourseDataInfo={data => setNewCourseDataInfo(data)}
         />
       );
@@ -91,7 +89,6 @@ const CourseBottom = ({ courseData }) => {
         <CourseCurriculum
           curriculum={newCourseData.courseCurriculum}
           isEdit={isEdit}
-          isSubmit={isSubmit}
           newCourseDataCurri={data => setNewCourseDataCurri(data)}
         />
       );
