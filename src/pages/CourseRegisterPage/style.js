@@ -44,6 +44,12 @@ export const StyledText = styled.div`
   margin-top: 0px;
 `;
 
+export const StyledTooltipText = styled.div`
+  display: flex;
+  font-family: 'NexonBo';
+  margin-right: -20px;
+`;
+
 export const StyledInputBox = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
