@@ -9,6 +9,7 @@ import {
   MMainBottomContainer,
   PMainBottomContainer,
 } from './MainBottomContainer';
+import MainPeriodNotice from './MainPeriodNotice';
 import { MMainTopContainer, PMainTopContainer } from './MainTopContainer';
 
 export const MainPage = () => {
@@ -25,6 +26,7 @@ export const MainPage = () => {
       ) : (
         <>
           <PMainTopContainer />
+          <MainPeriodNotice />
           <PMainBottomContainer />
         </>
       )}

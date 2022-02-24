@@ -25,15 +25,9 @@ export const MMainBottomContainer = () => {
   const [currentSemester, setcurrentSemester] = useState('');
   // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
-  // registerTerm : course 등록 기간
-  const [registerTerm, setRegisterTerm] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // user, searchTerm, searchCategory : from redux
-  const user = useSelector(state => state.user);
   const searchTerm = useSelector(state => state.search.searchTerm);
   const searchCategory = useSelector(state => state.search.category);
-  const history = useHistory();
-  const today = new Date();
   const { width } = useWindowDimensions();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
@@ -179,10 +173,6 @@ export const MMainBottomContainer = () => {
       setcurrentSemester(commonInfoData.data().currentSemester);
       // 배열을 역순으로 저장해줌
       setpastSemester(commonInfoData.data().pastSemester.reverse());
-      let newRegisterTerm = [];
-      newRegisterTerm.push(commonInfoData.data().registerTerm.start.toDate());
-      newRegisterTerm.push(commonInfoData.data().registerTerm.end.toDate());
-      setRegisterTerm(newRegisterTerm);
     }
     fetchSemesterData();
   }, []);
@@ -310,16 +300,6 @@ export const MMainBottomContainer = () => {
               프로젝트
             </StyledSelectItem>
           </StyledMainSessTab>
-          {/* <StyledMainSessRig>
-            {registerTerm[0] <= today &&
-              today <= registerTerm[1] &&
-              user.currentUser && (
-                <WhiteShadowButton
-                  text='등록하기'
-                  onClick={() => history.push('/course/register')}
-                />
-              )}
-          </StyledMainSessRig> */}
         </StyledMainBottomBtnCont>
         {renderCourse()}
       </StyledMainBottomWrapper>
