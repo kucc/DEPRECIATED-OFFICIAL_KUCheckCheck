@@ -15,12 +15,18 @@ import {
   StyledCourseContainer,
   StyledCourseExplain,
   StyledCourseExplainWrapper,
+  StyledCourseImg,
   StyledCourseImgContainer,
   StyledCourseText,
   StyledCourseTitle,
+  StyledDirectionIcon,
 } from './style';
 
 export const CourseContainer = ({ course, CourseApplicationState }) => {
+  // CourseApplicationState
+  // active : 수강 신청 할 수 있는 상태
+  // cancel : 취소할 수 있는 상태
+  // nonActive : 없는 상태
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const { width } = useWindowDimensions();
 
@@ -57,17 +63,9 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
       // 첫 번째 이미지를 hover 했을 때 이미지가 펼쳐짐.
       if (key === 0) {
         return (
-          <img
+          <StyledCourseImg
             onMouseEnter={() => set({ x: 1 })}
             onMouseLeave={() => set({ x: 0 })}
-            style={{
-              position: 'absolute',
-              backgroundColor: 'white',
-              borderRadius: '50%',
-              width: '60px',
-              zIndex: 100,
-              cursor: 'pointer',
-            }}
             key={key}
             src={`/img/icon/${image}.svg`}
             onClick={handleOnClick}
@@ -137,17 +135,9 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>
-          {isMobile && CourseApplicationState && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                height: '120px',
-                cursor: 'pointer',
-              }}
-              onClick={handleCourseSpread}>
+          {/* 모바일이면서 courseApplication이 활성화 => 돌아가는 ">" 버튼 활성화*/}
+          {isMobile && CourseApplicationState !== 'nonActive' && (
+            <StyledDirectionIcon onClick={handleCourseSpread}>
               <animated.div
                 style={{
                   height: 20,
@@ -156,8 +146,9 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
                 }}>
                 <AiOutlineRight size={20} />
               </animated.div>
-            </div>
+            </StyledDirectionIcon>
           )}
+          {/* PC모드 */}
           {!isMobile && (
             <>
               <CourseDifficulty
@@ -166,13 +157,18 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
                 requireTime={course.requireTime}
                 style={{ marginTop: '0px' }}
               />
-              {CourseApplicationState && (
-                <CourseApplication courseId={course.id} course={course} />
+              {CourseApplicationState !== 'nonActive' && (
+                <CourseApplication
+                  CourseApplicationState={CourseApplicationState}
+                  courseId={course.id}
+                  course={course}
+                />
               )}
             </>
           )}
         </StyledCourseExplainWrapper>
       </StyledCourseContainer>
+      {/* 모바일일 때 */}
       {isMobile && CourseApplicationState && (
         <animated.div
           style={{
@@ -191,6 +187,7 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
           />
           <CourseApplication
             courseId={course.id}
+            CourseApplicationState={CourseApplicationState}
             course={course}
             isMainScreen={true}
           />
@@ -202,5 +199,5 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
 
 CourseContainer.propTypes = {
   course: PropTypes.object.isRequired,
-  CourseApplicationState: PropTypes.bool,
+  CourseApplicationState: PropTypes.string,
 };

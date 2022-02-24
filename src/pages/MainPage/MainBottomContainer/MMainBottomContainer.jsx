@@ -232,7 +232,7 @@ export const MMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });
@@ -246,7 +246,7 @@ export const MMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });

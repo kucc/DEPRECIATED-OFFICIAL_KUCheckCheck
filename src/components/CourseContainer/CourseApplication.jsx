@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { AiFillLock, AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+import { useHistory } from 'react-router-dom';
 
 import { firestoreService } from '@/firebase';
 import {
@@ -16,13 +17,20 @@ import { defaultUserAttendance } from '@utility/CONSTANTS';
 
 import {
   StlyedHeadCountText,
+  StyledCourseApplyCancel,
   StyledCourseApplyLock,
   StyledCourseApplyMy,
   StyledCourseApplyOff,
   StyledCourseApplyOn,
-} from './style';
+  StyledCourseLockText,
+} from './courseApplicationStyle';
 
-export const CourseApplication = ({ course, courseId, isMainScreen }) => {
+export const CourseApplication = ({
+  course,
+  courseId,
+  isMainScreen,
+  CourseApplicationState,
+}) => {
   const { maxMemberNum, semester } = course;
   const currentUser = useSelector(state => state.user.currentUser);
   const [Loading, setLoading] = useState(false);
@@ -31,8 +39,8 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
   const [currentSemester, setcurrentSemester] = useState('');
   const [enrollmentTerm, setenrollmentTerm] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [hoverState, sethoverState] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const history = useHistory();
   const today = new Date();
 
   const showModal = () => {
@@ -82,18 +90,14 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
     });
 
     setcourseMemberArr(newcourseMember);
+    alert('취소했습니다!');
     setIsModalVisible(false);
+    // 취소 후 새로고침하기
+    history.go(0);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
-  };
-
-  const handleMouseHover = () => {
-    // hover하면 수강 취소로 text 바꾸기
-    setTimeout(() => {
-      sethoverState(!hoverState);
-    }, 100);
   };
 
   useEffect(() => {
@@ -230,6 +234,17 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
         </StyledCourseApplyLock>
       );
     }
+    // 취소 상태인 경우
+    else if (CourseApplicationState && CourseApplicationState === 'cancel') {
+      return (
+        <StyledCourseApplyCancel
+          onClick={showModal}
+          $isMainScreen={isMainScreen}
+          $isMobile={isMobile}>
+          수강 취소
+        </StyledCourseApplyCancel>
+      );
+    }
     // 수강 신청 기간가 아닐경우 ( 등록 기간이 아니거나 현재 학기와 맞지 않을 경우 )
     else if (
       !(
@@ -244,28 +259,18 @@ export const CourseApplication = ({ course, courseId, isMainScreen }) => {
           $isMobile={isMobile}
           $isMainScreen={isMainScreen}>
           <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '22px' }} />
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-            }}>
+          <StyledCourseLockText>
             <div>수강 신청</div>
             <div>기간이 아닙니다.</div>
-          </div>
+          </StyledCourseLockText>
         </StyledCourseApplyLock>
       );
     }
     // 수강 중
     else if (courseMemberArr && courseMemberArr.indexOf(currentUser.uid) >= 0) {
       return (
-        <StyledCourseApplyMy
-          onMouseEnter={handleMouseHover}
-          onMouseLeave={handleMouseHover}
-          onClick={showModal}
-          $isMainScreen={isMainScreen}
-          $isMobile={isMobile}>
-          {hoverState ? '수강 취소' : '수강 중'}
+        <StyledCourseApplyMy $isMainScreen={isMainScreen} $isMobile={isMobile}>
+          수강 중
           <StlyedHeadCountText>
             {courseMemberArr.length} / {maxMemberNum ? maxMemberNum : 0}
           </StlyedHeadCountText>
@@ -320,4 +325,5 @@ CourseApplication.propTypes = {
   currentUser: PropTypes.object,
   courseId: PropTypes.string,
   isMainScreen: PropTypes.bool,
+  CourseApplicationState: PropTypes.string,
 };

@@ -242,7 +242,7 @@ export const PMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });
@@ -256,7 +256,7 @@ export const PMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });

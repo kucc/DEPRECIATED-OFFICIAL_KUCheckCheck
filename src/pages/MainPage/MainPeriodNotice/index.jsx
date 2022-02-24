@@ -23,10 +23,6 @@ const MainPeriodNotice = () => {
       const { registerTerm, enrollmentTerm, activeTerm } =
         commonInfoData.data();
 
-      console.log(
-        activeTerm.start.toDate() < today && today < activeTerm.end.toDate(),
-      );
-
       const alertText = `세션 등록 기간 : ${registerTerm.start
         .toDate()
         .toLocaleDateString('ko-KR')} ~ ${registerTerm.end
@@ -101,7 +97,7 @@ const MainPeriodNotice = () => {
 
   return (
     <StyledPeriodContainer>
-      <StyledPeriod className='in-shadow-middle border-radius-all'>
+      <StyledPeriod className='in-shadow-weak border-radius-all'>
         {text}
       </StyledPeriod>
     </StyledPeriodContainer>
