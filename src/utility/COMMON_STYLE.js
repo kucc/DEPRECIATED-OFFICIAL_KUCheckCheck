@@ -117,3 +117,11 @@ export const StyledTagSelect = styled(Select)`
   }
   border-radius: 20px;
 `;
+
+export const StyledLaguageImg = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: contain;
+`;

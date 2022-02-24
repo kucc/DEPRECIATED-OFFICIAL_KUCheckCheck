@@ -12,6 +12,7 @@ import {
 } from '@utility/ALERT_MESSAGE';
 import {
   StyledInputNumber,
+  StyledLaguageImg,
   StyledSelect,
   StyledSelectItem,
   StyledTagSelect,
@@ -25,7 +26,6 @@ import {
   StyledBottomContainer,
   StyledCourseRegisterText,
   StyledInputBox,
-  StyledLaguageImg,
   StyledRegisterRequireTop,
   StyledRegisterRequireTopLeft,
   StyledRegisterRequireTopRight,

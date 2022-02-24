@@ -69,11 +69,3 @@ export const StyledRegisterRequireTopRight = styled.div`
   grid-template-columns: 130px auto auto;
   align-items: center;
 `;
-
-export const StyledLaguageImg = styled.img`
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin-right: 20px;
-  object-fit: contain;
-`;
