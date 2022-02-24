@@ -6,6 +6,7 @@ import { WhiteShadowButton } from '@components/Buttons';
 import CourseDifficulty from '@components/CourseDifficulty';
 
 import { authService, firestoreService } from '@/firebase';
+import { MAIN_COLOR } from '@utility/COLORS';
 import { renderWord } from '@utility/COMMON_FUNCTION';
 import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
 
@@ -133,7 +134,7 @@ const CourseBottom = ({ courseData }) => {
           courseData.courseLeader &&
           currentUser.uid === courseData.courseLeader.id && (
             <WhiteShadowButton
-              type={isEdit ? 'danger' : 'default'}
+              bgColor={isEdit ? MAIN_COLOR : 'white'}
               text={isEdit ? '수정완료' : '수정하기'}
               onClick={() => {
                 if (isEdit) {

@@ -9,3 +9,4 @@ export * from './Footer';
 export * from './InputBoxWithLabel';
 export * from './NavBar';
 export * from './TimeTable';
+export * from './ImageContainer';

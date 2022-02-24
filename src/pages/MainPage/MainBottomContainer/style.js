@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { StyledSideMargin } from '@utility/COMMON_STYLE';
 
 export const StyledMainBottomWrapper = styled(StyledSideMargin)`
-  margin-top: 100px;
+  margin-top: 30px;
   padding-bottom: 30px;
   @media (max-width: 1224px) {
     display: flex;
     flex-direction: column;
     padding-bottom: 30px;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 20px;
     margin-bottom: 0px;
   }
 `;

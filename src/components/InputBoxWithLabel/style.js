@@ -7,6 +7,9 @@ export const Wrapper = styled.div``;
 export const StyledLabel = styled.label`
   margin-left: 20px;
   font-size: 15px;
+  @media (max-width: 1224px) {
+    font-size: 12px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -20,5 +23,8 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: rgb(204, 204, 204);
     font-size: 12px;
+    @media (max-width: 1224px) {
+      font-size: 11px;
+    }
   }
 `;

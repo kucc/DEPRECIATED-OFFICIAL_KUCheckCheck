@@ -12,6 +12,7 @@ import {
 } from '@utility/ALERT_MESSAGE';
 import {
   StyledInputNumber,
+  StyledLaguageImg,
   StyledSelect,
   StyledSelectItem,
   StyledTagSelect,
@@ -25,11 +26,11 @@ import {
   StyledBottomContainer,
   StyledCourseRegisterText,
   StyledInputBox,
-  StyledLaguageImg,
   StyledRegisterRequireTop,
   StyledRegisterRequireTopLeft,
   StyledRegisterRequireTopRight,
   StyledText,
+  StyledTooltipText,
 } from './style';
 
 function CourseRegisterBox({ enrollHandler }) {
@@ -115,11 +116,11 @@ function CourseRegisterBox({ enrollHandler }) {
       <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
-          <StyledBlackButton
-            // width='500px'
-            className='border-radius-all'>
-            필수 정보
-            {/* ( 필수 정보는 수정이 불가하니 신중히 입력해주세요! ) */}
+          <StyledBlackButton className='border-radius-all'>
+            <Tooltip title='필수 정보는 수정이 불가능하니 신중히 입력해주세요!'>
+              필수 정보&nbsp;
+              <img src='/img/common/moreDetailWhite.svg' />
+            </Tooltip>
           </StyledBlackButton>
 
           <StyledRegisterRequireTop>
@@ -186,7 +187,7 @@ function CourseRegisterBox({ enrollHandler }) {
             <div>
               <StyledLaguageImg src={`/img/icon/${selectedImg}.svg`} />
               <StyledTagSelect
-                mode='tags'
+                mode='multiple'
                 placeholder='사용 언어를 선택해주세요! (복수 선택 가능). 중요한 순서대로 선택해주세요.'
                 // width={calc(100% - 150px)}
                 style={{ width: 'calc(100% - 90px)' }}
@@ -216,20 +217,24 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledInputBox>
           <StyledInputBox style={{ marginTop: '10px' }}>
             <StyledText style={{ marginTop: '30px' }}>
-              <Tooltip title='상세기술 스택에는 주요기술 스택 이외의 더 상세한 기술 스택들을 자유롭게 넣어주시면 됩니다. ex) Typescript, Next.js, TailwindCSS, AWS, Spring MVC, Numpy, Pandas...'>
-                <span style={{ fontFamily: 'NexonBo' }}>상세기술 스택</span>
+              <Tooltip title='세부기술 스택에는 주요기술 스택 이외의 더 상세한 기술 스택들을 자유롭게 넣어주시면 됩니다. ex) Git, Typescript, Express, NextJS, Antd, AWS, Pandas, DevOps...'>
+                <StyledTooltipText>
+                  세부기술 스택&nbsp;
+                  <img src='/img/common/moreDetail.svg' />
+                </StyledTooltipText>
               </Tooltip>
             </StyledText>
             <StyledTagSelect
               mode='tags'
-              placeholder='필요한 상세기술 스택을 입력해주세요. Enter시 입력됩니다.'
+              placeholder='필요한 세부기술 스택을 입력해주세요. Enter시 입력됩니다.'
               onChange={onChangeStack}>
-              <Option value='Github'>Github</Option>
+              <Option value='Git'>Git</Option>
               <Option value='Typescript'>Typescript</Option>
               <Option value='Express'>Express</Option>
               <Option value='NextJS'>NextJS</Option>
               <Option value='Antd'>Antd</Option>
               <Option value='AWS'>AWS</Option>
+              <Option value='Pandas'>Pandas</Option>
               <Option value='DevOps'>DevOps</Option>
             </StyledTagSelect>
           </StyledInputBox>
@@ -271,7 +276,14 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledInputBox>
 
           <StyledInputBox>
-            <StyledText>진행 요일</StyledText>
+            <StyledText>
+              <Tooltip title='형식은 자율롭게 작성해주시면 됩니다. 아직 정해지지 않은 경우 "미정"이라고 작성해주세요. ex) 매주 월 7시~9시'>
+                <StyledTooltipText>
+                  진행 요일&nbsp;
+                  <img src='/img/common/moreDetail.svg' />
+                </StyledTooltipText>
+              </Tooltip>
+            </StyledText>
             <StyledTextArea
               maxLength={200}
               onChange={onChangeCourseDate}
@@ -291,7 +303,14 @@ function CourseRegisterBox({ enrollHandler }) {
           </StyledInputBox>
 
           <StyledInputBox>
-            <StyledText>진행 장소 및 방법</StyledText>
+            <StyledText>
+              <Tooltip title='만약 동방에서 오프라인으로 진행하실 경우, 등록을 하시고 상세 페이지로 이동하셔서 "수정하기"를 통해 시간표 또한 등록해주세요!'>
+                <StyledTooltipText>
+                  진행 장소 및 방법
+                  <img src='/img/common/moreDetail.svg' />
+                </StyledTooltipText>
+              </Tooltip>
+            </StyledText>
             <StyledTextArea
               maxLength={200}
               onChange={onChangePlace}

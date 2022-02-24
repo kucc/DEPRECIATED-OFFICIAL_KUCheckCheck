@@ -2,12 +2,25 @@ import styled from 'styled-components';
 
 export const StyledInfoContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 230px;
+  grid-template-columns: ${props => (props.isEdit ? 'auto' : 'auto 30%')};
 `;
 
 export const StyledInfoStack = styled.div`
   border-left: 1px solid #b6b6b6;
   margin-top: 80px;
+  padding: 50px;
+  padding-right: 0px;
+`;
+
+export const StyledStackPrimary = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  margin-top: 30px;
+`;
+
+export const StyledStackDetail = styled.div`
+  margin-top: 30px;
 `;
 
 export const StyledInfoText = styled.div`

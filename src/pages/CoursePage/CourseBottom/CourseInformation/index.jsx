@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
 
+import { ImageContainer } from '@components/ImageContainer';
+
 import { firestoreService } from '@/firebase';
 import { renderWord } from '@utility/COMMON_FUNCTION';
 import {
@@ -18,6 +20,8 @@ import {
   StyledInfoStack,
   StyledInfoText,
   StyledInfoTitle,
+  StyledStackDetail,
+  StyledStackPrimary,
 } from './style';
 
 const { Option } = Select;
@@ -34,6 +38,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     courseMember,
     courseCheckAdmin,
     courseStack,
+    language,
   } = courseData;
 
   const [newCourseInfo, setNewCourseInfo] = useState('');
@@ -113,7 +118,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     setNewCourseCheckAdmin(value);
   };
   return (
-    <StyledInfoContainer>
+    <StyledInfoContainer isEdit={isEdit}>
       <div>
         <StyledInfoText>
           <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
@@ -216,12 +221,26 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
           </StyledInfoText>
         )}
       </div>
-      <StyledInfoStack>
-        기술 스택
-        {courseStack?.map((stack, key) => (
-          <div key={key}>- {stack}</div>
-        ))}
-      </StyledInfoStack>
+      {!isEdit && (
+        <StyledInfoStack>
+          <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
+          <StyledStackPrimary>
+            {language?.map((lan, key) => (
+              <ImageContainer courseName={lan} key={key} />
+            ))}
+          </StyledStackPrimary>
+          <StyledInfoTitle style={{ marginTop: '50px' }}>
+            세부 기술 스택
+          </StyledInfoTitle>
+          <StyledStackDetail>
+            {courseStack?.map((stack, key) => (
+              <div style={{ fontSize: '18px' }} key={key}>
+                - {stack}
+              </div>
+            ))}
+          </StyledStackDetail>
+        </StyledInfoStack>
+      )}
     </StyledInfoContainer>
   );
 };

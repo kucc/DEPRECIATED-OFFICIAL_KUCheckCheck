@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
+import { MAIN_COLOR } from '@utility/COLORS';
 
 import {
   StyledBackButton,
@@ -51,7 +52,7 @@ function CourseAttendanceTop({
       return (
         <StyledEditButton>
           <WhiteShadowButton
-            type={isEditMode ? 'danger' : ''}
+            bgColor={isEditMode ? MAIN_COLOR : 'white'}
             text={isEditMode ? '수정완료' : '수정하기'}
             onClick={handleClick}
           />

@@ -242,7 +242,7 @@ export const PMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });
@@ -256,7 +256,7 @@ export const PMainBottomContainer = () => {
             <CourseContainer
               key={course.id}
               course={course}
-              CourseApplicationState={true}
+              CourseApplicationState='active'
             />
           );
         });
@@ -313,6 +313,7 @@ export const PMainBottomContainer = () => {
               today <= registerTerm[1] &&
               user.currentUser && (
                 <WhiteShadowButton
+                  bgColor='white'
                   text='등록하기'
                   onClick={() => history.push('/course/register')}
                 />

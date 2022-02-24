@@ -34,6 +34,7 @@ function LoginForm() {
       history.push('/');
     } catch (error) {
       const { code, message } = error;
+      console.log(code);
       switch (code) {
         case 'auth/user-not-found':
           alert('가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.');
@@ -41,6 +42,9 @@ function LoginForm() {
           break;
         case 'auth/wrong-password':
           alert('잘못된 비밀번호입니다.');
+          break;
+        case 'auth/invalid-email':
+          alert('양식을 제대로 입력해주세요.');
           break;
         default:
           alert(message);

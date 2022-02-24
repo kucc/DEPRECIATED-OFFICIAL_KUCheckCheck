@@ -12,6 +12,7 @@ import { authService, firestoreService } from '@/firebase';
 const GetCSVPage = () => {
   const [data, setData] = useState('');
   const [attendanceData, setAttendanceData] = useState({});
+  const [currentSemester, setCurrentSemester] = useState('');
   const history = useHistory();
   const userInfo = useSelector(state => state.user.currentUser);
 
@@ -31,6 +32,13 @@ const GetCSVPage = () => {
 
   useEffect(() => {
     async function getCSVData() {
+      const commonInfoData = await firestoreService
+        .collection('common')
+        .doc('commonInfo')
+        .get();
+      const { currentSemester } = commonInfoData.data();
+      setCurrentSemester(currentSemester);
+
       const userObject = {};
       const attendanceObject = {};
       // userName - userId match object
@@ -42,34 +50,37 @@ const GetCSVPage = () => {
       var csv = '';
       const courseResult = await firestoreService.collection('courses').get();
       courseResult.forEach(doc => {
+        console.log(doc.data().semester, currentSemester);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        csv += '\n';
-        csv += `${
-          doc.data().courseName
-        },1주차,2주차,3주차,4주차,5주차,6주차,7주차,8주차`;
-        csv += '\n';
-        const attendanceArr = doc.data().courseAttendance;
-        attendanceArr.map(user => {
-          const userName = userObject[user.id];
-          csv += `${userName},`;
-          var attendance = user.attendance.join(',');
-          attendance = attendance.replace(/0/gi, '출석');
-          attendance = attendance.replace(/1/gi, '지각');
-          attendance = attendance.replace(/2/gi, '결석');
-          // 미입력은 지각으로 처리??
-          attendance = attendance.replace(/3/gi, '미입력');
-          if (attendanceObject[userName]) {
-            attendanceObject[userName].push(
-              userName + ',' + doc.data().courseName + ',' + attendance,
-            );
-          } else {
-            attendanceObject[userName] = [
-              userName + ',' + doc.data().courseName + ',' + attendance,
-            ];
-          }
-          csv += attendance;
+        if (doc.data().semester === currentSemester) {
           csv += '\n';
-        });
+          csv += `${
+            doc.data().courseName
+          },1주차,2주차,3주차,4주차,5주차,6주차,7주차,8주차`;
+          csv += '\n';
+          const attendanceArr = doc.data().courseAttendance;
+          attendanceArr.map(user => {
+            const userName = userObject[user.id];
+            csv += `${userName},`;
+            var attendance = user.attendance.join(',');
+            attendance = attendance.replace(/0/gi, '출석');
+            attendance = attendance.replace(/1/gi, '지각');
+            attendance = attendance.replace(/2/gi, '결석');
+            // 미입력은 지각으로 처리??
+            attendance = attendance.replace(/3/gi, '미입력');
+            if (attendanceObject[userName]) {
+              attendanceObject[userName].push(
+                userName + ',' + doc.data().courseName + ',' + attendance,
+              );
+            } else {
+              attendanceObject[userName] = [
+                userName + ',' + doc.data().courseName + ',' + attendance,
+              ];
+            }
+            csv += attendance;
+            csv += '\n';
+          });
+        }
       });
       setData(csv);
       setAttendanceData(attendanceObject);
@@ -88,15 +99,16 @@ const GetCSVPage = () => {
       memberData += curretMemberStr;
       const absentNum = (curretMemberStr.match(/결석/g) || []).length;
       const lateNum = (curretMemberStr.match(/지각/g) || []).length;
+      const nullNum = (curretMemberStr.match(/미입력/g) || []).length;
       const totalMoney =
-        20000 * courseNum - 5000 * absentNum - 3000 * lateNum > 0
-          ? 20000 * courseNum - 5000 * absentNum - 3000 * lateNum
+        20000 * courseNum - 5000 * (absentNum + nullNum) - 3000 * lateNum > 0
+          ? 20000 * courseNum - 5000 * (absentNum + nullNum) - 3000 * lateNum
           : 0;
-      memberData += `\n총금액,세션수:${courseNum} / 결석:${absentNum} / 지각:${lateNum}, , , , , , , , ,${totalMoney}\n\n`;
+      memberData += `\n총금액,세션수:${courseNum} / 결석:${absentNum} / 지각:${lateNum} / 미입력:${nullNum}, , , , , , , , ,${totalMoney}\n\n`;
     });
     saveAs(
       new Blob(['\uFEFF' + memberData], { type: 'text/csv;charset=utf-8' }),
-      'kucc_attendance_member.csv',
+      `${currentSemester}_kucc_attendance_member.csv`,
     );
   };
 
@@ -112,7 +124,7 @@ const GetCSVPage = () => {
                 new Blob(['\uFEFF' + data], {
                   type: 'text/csv;charset=utf-8',
                 }),
-                'kucc_attendance_session.csv',
+                `${currentSemester}_kucc_attendance_session.csv`,
               )
             }>
             세션별
