@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledInfoContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 30%;
+  grid-template-columns: ${props => (props.isEdit ? 'auto' : 'auto 30%')};
 `;
 
 export const StyledInfoStack = styled.div`

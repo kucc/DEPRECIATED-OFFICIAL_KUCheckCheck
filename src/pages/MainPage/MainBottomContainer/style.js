@@ -10,7 +10,7 @@ export const StyledMainBottomWrapper = styled(StyledSideMargin)`
     flex-direction: column;
     padding-bottom: 30px;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 20px;
     margin-bottom: 0px;
   }
 `;

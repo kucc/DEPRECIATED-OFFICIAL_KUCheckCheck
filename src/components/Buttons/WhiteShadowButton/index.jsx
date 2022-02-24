@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 
 import { StyledWhiteShadowButton } from './style';
 
-export const WhiteShadowButton = ({ text, onClick, type = 'default' }) => {
+export const WhiteShadowButton = ({ text, onClick, bgColor = 'white' }) => {
   // width가 100%이므로 사용시 부모 컨테이너의 width를 조정해서 사용
   return (
     <StyledWhiteShadowButton
-      type={type}
       onClick={onClick}
-      shape='round'
-      className='out-shadow-weak'>
+      bgColor={bgColor}
+      className='out-shadow-middle border-radius-all'>
       {text}
     </StyledWhiteShadowButton>
   );
@@ -20,5 +19,5 @@ export const WhiteShadowButton = ({ text, onClick, type = 'default' }) => {
 WhiteShadowButton.propTypes = {
   text: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.string,
+  bgColor: PropTypes.string,
 };

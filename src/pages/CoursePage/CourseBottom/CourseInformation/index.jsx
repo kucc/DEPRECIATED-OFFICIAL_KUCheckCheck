@@ -118,7 +118,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     setNewCourseCheckAdmin(value);
   };
   return (
-    <StyledInfoContainer>
+    <StyledInfoContainer isEdit={isEdit}>
       <div>
         <StyledInfoText>
           <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
@@ -221,24 +221,26 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
           </StyledInfoText>
         )}
       </div>
-      <StyledInfoStack>
-        <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
-        <StyledStackPrimary>
-          {language?.map((lan, key) => (
-            <ImageContainer courseName={lan} key={key} />
-          ))}
-        </StyledStackPrimary>
-        <StyledInfoTitle style={{ marginTop: '50px' }}>
-          세부 기술 스택
-        </StyledInfoTitle>
-        <StyledStackDetail>
-          {courseStack?.map((stack, key) => (
-            <div style={{ fontSize: '18px' }} key={key}>
-              - {stack}
-            </div>
-          ))}
-        </StyledStackDetail>
-      </StyledInfoStack>
+      {!isEdit && (
+        <StyledInfoStack>
+          <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
+          <StyledStackPrimary>
+            {language?.map((lan, key) => (
+              <ImageContainer courseName={lan} key={key} />
+            ))}
+          </StyledStackPrimary>
+          <StyledInfoTitle style={{ marginTop: '50px' }}>
+            세부 기술 스택
+          </StyledInfoTitle>
+          <StyledStackDetail>
+            {courseStack?.map((stack, key) => (
+              <div style={{ fontSize: '18px' }} key={key}>
+                - {stack}
+              </div>
+            ))}
+          </StyledStackDetail>
+        </StyledInfoStack>
+      )}
     </StyledInfoContainer>
   );
 };

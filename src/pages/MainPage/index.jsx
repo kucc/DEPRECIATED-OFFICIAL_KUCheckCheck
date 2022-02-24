@@ -21,6 +21,7 @@ export const MainPage = () => {
       {isMobile ? (
         <>
           <MMainTopContainer />
+          <MainPeriodNotice />
           <MMainBottomContainer />
         </>
       ) : (

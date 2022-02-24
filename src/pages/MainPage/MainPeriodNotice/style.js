@@ -15,6 +15,11 @@ export const StyledPeriod = styled.div`
   background-color: #ffffff;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1224px) {
+    width: 300px;
+    height: 50px;
+    font-size: 12px;
+  }
 `;
 
 export const StyledPeriodTitle = styled.span`

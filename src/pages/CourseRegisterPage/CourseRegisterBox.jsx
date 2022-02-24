@@ -116,11 +116,11 @@ function CourseRegisterBox({ enrollHandler }) {
       <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
-          <StyledBlackButton
-            // width='500px'
-            className='border-radius-all'>
-            필수 정보
-            {/* ( 필수 정보는 수정이 불가하니 신중히 입력해주세요! ) */}
+          <StyledBlackButton className='border-radius-all'>
+            <Tooltip title='필수 정보는 수정이 불가능하니 신중히 입력해주세요!'>
+              필수 정보&nbsp;
+              <img src='/img/common/moreDetailWhite.svg' />
+            </Tooltip>
           </StyledBlackButton>
 
           <StyledRegisterRequireTop>
@@ -187,7 +187,7 @@ function CourseRegisterBox({ enrollHandler }) {
             <div>
               <StyledLaguageImg src={`/img/icon/${selectedImg}.svg`} />
               <StyledTagSelect
-                mode='tags'
+                mode='multiple'
                 placeholder='사용 언어를 선택해주세요! (복수 선택 가능). 중요한 순서대로 선택해주세요.'
                 // width={calc(100% - 150px)}
                 style={{ width: 'calc(100% - 90px)' }}
@@ -219,7 +219,8 @@ function CourseRegisterBox({ enrollHandler }) {
             <StyledText style={{ marginTop: '30px' }}>
               <Tooltip title='세부기술 스택에는 주요기술 스택 이외의 더 상세한 기술 스택들을 자유롭게 넣어주시면 됩니다. ex) Git, Typescript, Express, NextJS, Antd, AWS, Pandas, DevOps...'>
                 <StyledTooltipText>
-                  세부기술 스택<img src='/img/common/moreDetail.svg'></img>
+                  세부기술 스택&nbsp;
+                  <img src='/img/common/moreDetail.svg' />
                 </StyledTooltipText>
               </Tooltip>
             </StyledText>
@@ -278,8 +279,8 @@ function CourseRegisterBox({ enrollHandler }) {
             <StyledText>
               <Tooltip title='형식은 자율롭게 작성해주시면 됩니다. 아직 정해지지 않은 경우 "미정"이라고 작성해주세요. ex) 매주 월 7시~9시'>
                 <StyledTooltipText>
-                  진행 요일
-                  <img src='/img/common/moreDetail.svg'></img>
+                  진행 요일&nbsp;
+                  <img src='/img/common/moreDetail.svg' />
                 </StyledTooltipText>
               </Tooltip>
             </StyledText>
@@ -305,7 +306,8 @@ function CourseRegisterBox({ enrollHandler }) {
             <StyledText>
               <Tooltip title='만약 동방에서 오프라인으로 진행하실 경우, 등록을 하시고 상세 페이지로 이동하셔서 "수정하기"를 통해 시간표 또한 등록해주세요!'>
                 <StyledTooltipText>
-                  진행 장소 및 방법<img src='/img/common/moreDetail.svg'></img>
+                  진행 장소 및 방법
+                  <img src='/img/common/moreDetail.svg' />
                 </StyledTooltipText>
               </Tooltip>
             </StyledText>

@@ -313,6 +313,7 @@ export const PMainBottomContainer = () => {
               today <= registerTerm[1] &&
               user.currentUser && (
                 <WhiteShadowButton
+                  bgColor='white'
                   text='등록하기'
                   onClick={() => history.push('/course/register')}
                 />
