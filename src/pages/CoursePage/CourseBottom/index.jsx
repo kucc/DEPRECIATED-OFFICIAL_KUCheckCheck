@@ -52,7 +52,6 @@ const CourseBottom = ({ courseData }) => {
     try {
       // update courseData
       if (Object.keys(newCourseDataInfo).length !== 0) {
-        console.log(newCourseDataInfo);
         if (courseMember.length > newCourseDataInfo.maxMemberNum) {
           throw new Error(
             'Error : 현재 인원보다 더 작은 수를 최대 참여 인원으로 정할 수 없습니다.',

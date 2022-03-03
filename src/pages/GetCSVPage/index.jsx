@@ -112,6 +112,51 @@ const GetCSVPage = () => {
     );
   };
 
+  const defaultArray = [
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+    { color: '', courseId: '', value: '' },
+  ];
+
+  const handleTimeTableReset = async () => {
+    const timeTable = {
+      time_9_00: defaultArray,
+      time_9_30: defaultArray,
+      time_10_00: defaultArray,
+      time_10_30: defaultArray,
+      time_11_00: defaultArray,
+      time_11_30: defaultArray,
+      time_12_00: defaultArray,
+      time_12_30: defaultArray,
+      time_13_00: defaultArray,
+      time_13_30: defaultArray,
+      time_14_00: defaultArray,
+      time_14_30: defaultArray,
+      time_15_00: defaultArray,
+      time_15_30: defaultArray,
+      time_16_00: defaultArray,
+      time_16_30: defaultArray,
+      time_17_00: defaultArray,
+      time_17_30: defaultArray,
+      time_18_00: defaultArray,
+      time_18_30: defaultArray,
+      time_19_00: defaultArray,
+      time_19_30: defaultArray,
+      time_20_00: defaultArray,
+      time_20_30: defaultArray,
+      time_21_00: defaultArray,
+      time_21_30: defaultArray,
+      time_22_00: defaultArray,
+      time_22_30: defaultArray,
+    };
+    await firestoreService.collection('common').doc('timeTable').set(timeTable);
+    alert('초기화를 완료하였습니다!');
+  };
+
   return (
     <div>
       <NavBar />
@@ -133,6 +178,11 @@ const GetCSVPage = () => {
             style={{ width: '100px', height: '50px' }}
             onClick={handleMemberClick}>
             인원별
+          </Button>
+          <Button
+            style={{ width: '100px', height: '50px' }}
+            onClick={handleTimeTableReset}>
+            시간표 초기화
           </Button>
         </>
       )}

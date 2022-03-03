@@ -50,8 +50,6 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const [newCourseMember, setNewCourseMember] = useState([]);
   const [newCourseCheckAdmin, setNewCourseCheckAdmin] = useState([]);
 
-  console.log(courseMember);
-
   // fetch CourseMember Array
   useEffect(() => {
     //한 user의 정보를 가져옴
