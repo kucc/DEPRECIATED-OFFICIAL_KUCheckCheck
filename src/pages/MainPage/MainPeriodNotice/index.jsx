@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Tooltip } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 
 import { firestoreService } from '@/firebase';
 
@@ -11,6 +12,12 @@ import {
 } from './style';
 
 const MainPeriodNotice = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const toolTipOverlayStyle = {
+    maxWidth: '400px',
+    whiteSpace: 'pre-line',
+    fontSize: isMobile ? '11px' : '13px',
+  };
   const [text, setText] = useState('');
   useEffect(() => {
     const today = new Date();
@@ -45,8 +52,7 @@ const MainPeriodNotice = () => {
         today < registerTerm.end.toDate()
       ) {
         setText(
-          <Tooltip title={alertText} overlayStyle={{ maxWidth: '300px' }}>
-            📌&nbsp;&nbsp;
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
             <StyledPeriodTitle>세션 등록 기간</StyledPeriodTitle>
             &nbsp;&nbsp;
             {registerTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
@@ -59,8 +65,7 @@ const MainPeriodNotice = () => {
         today < enrollmentTerm.end.toDate()
       ) {
         setText(
-          <Tooltip title={alertText} overlayStyle={{ maxWidth: '300px' }}>
-            📌&nbsp;&nbsp;
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
             <StyledPeriodTitle>수강 신청 기간</StyledPeriodTitle>
             &nbsp;&nbsp;
             {enrollmentTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
@@ -73,8 +78,7 @@ const MainPeriodNotice = () => {
         today < activeTerm.end.toDate()
       ) {
         setText(
-          <Tooltip title={alertText} overlayStyle={{ maxWidth: '300px' }}>
-            📌&nbsp;&nbsp;
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
             <StyledPeriodTitle>활동 기간</StyledPeriodTitle>
             &nbsp;&nbsp;
             {activeTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
@@ -84,7 +88,6 @@ const MainPeriodNotice = () => {
       } else {
         setText(
           <>
-            📌&nbsp;&nbsp;
             <StyledPeriodTitle>
               지금은 휴식 기간입니다. 다음 학기에 봬요!
             </StyledPeriodTitle>
@@ -98,7 +101,7 @@ const MainPeriodNotice = () => {
   return (
     <StyledPeriodContainer>
       <StyledPeriod className='in-shadow-weak border-radius-all'>
-        {text}
+        📌&nbsp;&nbsp;{text}
       </StyledPeriod>
     </StyledPeriodContainer>
   );

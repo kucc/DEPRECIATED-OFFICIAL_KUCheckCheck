@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledCourseDifficulty = styled.div`
-  height: 64px;
+  height: 56px;
   background-color: rgb(245, 245, 245) !important;
   text-align: center;
   border-radius: 30px;

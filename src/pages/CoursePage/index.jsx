@@ -65,7 +65,7 @@ export const CoursePage = ({ courseData }) => {
             <FullWidthButton
               text='출결보기'
               style={{
-                height: isMobile ? '48px' : '64px',
+                height: isMobile ? '48px' : '56px',
                 backgroundColor: MAIN_COLOR,
                 cursor: 'pointer',
               }}

@@ -278,6 +278,7 @@ export const PMainBottomContainer = () => {
                   borderRadius: '25px',
                   backgroundColor: MAIN_COLOR,
                   borderColor: MAIN_COLOR,
+                  fontSize: '13px',
                 }}>
                 {currentSemester} 학기
               </Button>

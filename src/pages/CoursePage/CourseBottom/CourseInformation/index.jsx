@@ -17,6 +17,7 @@ import {
 import {
   StyledInfoContainer,
   StyledInfoDesc,
+  StyledInfoDetail,
   StyledInfoStack,
   StyledInfoText,
   StyledInfoTitle,
@@ -119,7 +120,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   };
   return (
     <StyledInfoContainer isEdit={isEdit}>
-      <div>
+      <StyledInfoDetail>
         <StyledInfoText>
           <StyledInfoTitle>{renderWord(courseType)} 소개</StyledInfoTitle>
           {isEdit ? (
@@ -220,7 +221,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
             </StyledTagSelect>
           </StyledInfoText>
         )}
-      </div>
+      </StyledInfoDetail>
       {!isEdit && (
         <StyledInfoStack>
           <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
@@ -234,7 +235,7 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
           </StyledInfoTitle>
           <StyledStackDetail>
             {courseStack?.map((stack, key) => (
-              <div style={{ fontSize: '18px' }} key={key}>
+              <div style={{ fontSize: '15px' }} key={key}>
                 - {stack}
               </div>
             ))}
