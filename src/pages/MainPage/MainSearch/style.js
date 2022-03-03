@@ -16,7 +16,7 @@ export const StyledTag = styled(CheckableTag)`
   background-color: #f5f5f5;
   border: none;
   padding: 3px 14px;
-  font-size: 14px;
+  font-size: 12px;
   &.ant-tag-checkable-checked {
     background-color: #212121 !important;
     color: white;
@@ -46,6 +46,7 @@ export const StyledSearchBar = styled.input`
   border: none;
   z-index: 0;
   padding-left: 50px;
+  font-size: 12px;
   &::placeholder {
     color: rgb(204, 204, 204);
   }
@@ -71,7 +72,7 @@ export const StyledSearchBtn = styled.div`
   margin-right: -30px;
   z-index: 1;
   justify-content: center;
-  height: 3.5em;
+  height: 3em;
   display: flex;
   align-items: center;
   background: ${MAIN_COLOR};
@@ -89,7 +90,7 @@ export const StyledSearchBtn = styled.div`
 
 export const StyledQuickSearchContainer = styled.div`
   display: grid;
-  grid-template-columns: 120px auto;
+  grid-template-columns: 100px auto;
   margin-top: 20px;
   align-items: start;
   @media (max-width: 1224px) {
@@ -102,7 +103,7 @@ export const StyledQuickSearchContainer = styled.div`
 export const StyledQuickSearchText = styled.div`
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'NexonBo';
   margin-top: 10px;
   @media (max-width: 1224px) {

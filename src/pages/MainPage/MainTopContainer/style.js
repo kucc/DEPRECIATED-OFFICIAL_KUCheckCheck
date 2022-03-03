@@ -7,7 +7,7 @@ export const StyledMainTopWrapper = styled.div`
   padding: 3.5em 21em 2em;
   height: 30em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   background-color: white;
 
   @media (max-width: 1224px) {
@@ -30,8 +30,7 @@ export const StyledMainTitle1 = styled.div`
         `;
       }
     }}
-    font-size: 4em;
-    font-weight: 700;
+    font-size: 3.5em;
     font-family: NexonBo;
     color: ${MAIN_COLOR};
     @media (max-width: 1224px) {
@@ -41,7 +40,7 @@ export const StyledMainTitle1 = styled.div`
 `;
 
 export const StyledMainTitle2 = styled.div`
-  margin: -90px 0px 15px;
+  margin: -80px 0px 15px;
   & > p {
     ${({ screenWidth }) => {
       if (screenWidth < 1224) {
@@ -50,8 +49,7 @@ export const StyledMainTitle2 = styled.div`
         `;
       }
     }}
-    font-size: 4em;
-    font-weight: 700;
+    font-size: 3.5em;
     font-family: NexonBo;
     padding: 10px 0;
     @media (max-width: 1224px) {
@@ -66,7 +64,7 @@ export const StyledMainTitle2 = styled.div`
 export const StyledMainExplain = styled.div`
   margin: -60px 0px 15px;
   & > p {
-    font-size: 17px;
+    font-size: 15px;
     word-spacing: 1.2px;
     font-family: NexonRe;
   }
@@ -74,7 +72,7 @@ export const StyledMainExplain = styled.div`
   @media (max-width: 1224px) {
     margin: -60px 90px 20px;
     & > p {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 `;

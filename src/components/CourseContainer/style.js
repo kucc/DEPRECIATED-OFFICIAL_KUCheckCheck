@@ -39,7 +39,7 @@ export const StyledCourseImg = styled.img`
 
 export const StyledCourseExplainWrapper = styled.div`
   display: grid;
-  margin-top: 25px;
+  align-items: center;
   gap: 25px;
   ${({ CourseApplicationState, $isMobile }) => {
     if (!$isMobile && CourseApplicationState !== 'nonActive') {
@@ -80,7 +80,7 @@ export const StyledCourseText = styled.div`
 export const StyledCourseTitle = styled.div`
   & > div {
     font-family: 'NexonBo';
-    font-size: 26px;
+    font-size: 22px;
     margin-bottom: 5px;
     @media (max-width: 1224px) {
       margin-top: 25px;

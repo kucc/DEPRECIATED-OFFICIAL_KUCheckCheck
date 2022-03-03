@@ -9,6 +9,7 @@ export const StyledInfoStack = styled.div`
   border-left: 1px solid #b6b6b6;
   margin-top: 80px;
   padding: 50px;
+  padding-top: 10px;
   padding-right: 0px;
 `;
 
@@ -23,13 +24,16 @@ export const StyledStackDetail = styled.div`
   margin-top: 30px;
 `;
 
+export const StyledInfoDetail = styled.div`
+  padding-right: 20px;
+`;
+
 export const StyledInfoText = styled.div`
   margin-top: 80px;
   display: grid;
   grid-template-columns: 130px auto;
   gap: 20px;
-  margin-left: 60px;
-  align-items: center;
+  margin-left: 20px;
   @media (max-width: 1224px) {
     grid-template-columns: 50px auto;
     margin-left: 10px;
@@ -45,7 +49,7 @@ export const StyledInfoTitle = styled.div`
   }
 `;
 export const StyledInfoDesc = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   @media (max-width: 1224px) {
     font-size: 12px;
   }

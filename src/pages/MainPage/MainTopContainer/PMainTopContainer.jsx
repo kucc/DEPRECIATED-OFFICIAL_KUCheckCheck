@@ -24,7 +24,7 @@ export const PMainTopContainer = () => {
         logoName='type-3-2'
         width={'500%'}
         height={'auto'}
-        style={{ marginTop: '0px', marginLeft: '40px', maxWidth: '450px' }}
+        style={{ marginTop: '30px', marginLeft: '40px', maxWidth: '400px' }}
       />
     </S.StyledMainTopWrapper>
   );

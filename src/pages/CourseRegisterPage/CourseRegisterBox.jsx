@@ -332,7 +332,10 @@ function CourseRegisterBox({ enrollHandler }) {
 
         <div>
           <StyledBlackButton className='border-radius-all'>
-            커리큘럼
+            <Tooltip title='이전 세션들의 커리큘럼에 대한 정보는 https://study.kucc.co.kr/ 참고하면 좋을 거 같습니다!'>
+              커리큘럼&nbsp;
+              <img src='/img/common/moreDetailWhite.svg' />
+            </Tooltip>
           </StyledBlackButton>
           {curriculumArray.map((item, index) => (
             <StyledInputBox key={`${index}주차`} style={{ marginTop: '20px' }}>

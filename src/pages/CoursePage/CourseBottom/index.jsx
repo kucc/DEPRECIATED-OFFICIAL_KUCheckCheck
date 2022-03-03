@@ -30,6 +30,7 @@ const CourseBottom = ({ courseData }) => {
     requireTime,
     courseId,
     courseType,
+    courseMember,
   } = courseData;
   const currentUser = authService.currentUser;
   const [selected, setSelected] = useState(0);
@@ -51,6 +52,11 @@ const CourseBottom = ({ courseData }) => {
     try {
       // update courseData
       if (Object.keys(newCourseDataInfo).length !== 0) {
+        if (courseMember.length > newCourseDataInfo.maxMemberNum) {
+          throw new Error(
+            'Error : 현재 인원보다 더 작은 수를 최대 참여 인원으로 정할 수 없습니다.',
+          );
+        }
         await firestoreService
           .collection('courses')
           .doc(courseId)
@@ -69,8 +75,9 @@ const CourseBottom = ({ courseData }) => {
           .doc('timeTable')
           .update(newCourseDataTime);
       }
+      alert('수정 완료! 새로고침시 변경사항이 적용됩니다.');
     } catch (error) {
-      alert('Error updating document: ', error);
+      alert(error.message);
     }
     setSelected(0);
     // 새로고침 함수 추가.
@@ -139,7 +146,6 @@ const CourseBottom = ({ courseData }) => {
               onClick={() => {
                 if (isEdit) {
                   handleSubmit();
-                  alert('수정 완료! 새로고침시 변경사항이 적용됩니다.');
                 }
                 setIsEdit(prev => !prev);
               }}

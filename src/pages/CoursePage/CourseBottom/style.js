@@ -29,10 +29,10 @@ export const StyledBottomBackground = styled.div`
 
 export const StyledCourseHeaderTop = styled.div`
   display: grid;
-  grid-template-columns: 150px 1px auto 250px;
+  grid-template-columns: 130px 1px auto 200px;
   align-items: center;
   @media (max-width: 1224px) {
-    grid-template-columns: 60px 1px auto 100px;
+    grid-template-columns: 60px 1px auto 120px;
   }
 `;
 
@@ -47,7 +47,7 @@ export const StyledCourseHeaderImg = styled.img`
 export const StyledCourseHeaderTitle = styled.div`
   font-family: 'NexonBo';
   margin-left: 30px;
-  font-size: 50px;
+  font-size: 40px;
   @media (max-width: 1224px) {
     margin-left: 5px;
     font-size: 17px;

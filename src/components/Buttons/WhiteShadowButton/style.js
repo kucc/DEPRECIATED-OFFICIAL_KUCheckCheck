@@ -7,6 +7,7 @@ export const StyledWhiteShadowButton = styled.button`
   color: ${props => (props.bgColor === 'white' ? 'black' : 'white')};
   border: none;
   cursor: pointer;
+  font-size: 13px;
   @media (max-width: 1224px) {
     font-size: 12px;
   }

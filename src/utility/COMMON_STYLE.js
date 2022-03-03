@@ -40,6 +40,7 @@ export const StyledSelectItem = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 13px;
   @media (max-width: 1224px) {
     margin: 0px 7%;
     font-size: 9px;

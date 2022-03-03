@@ -52,15 +52,15 @@ export const StyledRulesCollapse = styled(Collapse)`
 export const StyledRulesPanel = styled(Collapse.Panel)`
   .ant-collapse-header {
     color: white !important;
-    height: 100px;
+    height: 80px;
     display: flex;
     align-items: center !important;
     margin-left: 100px;
-    font-size: 28px;
+    font-size: 21px;
     @media (max-width: 1224px) {
       margin-left: 30px;
       height: 100%;
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
@@ -68,7 +68,7 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     & > .ant-collapse-content-box {
-      font-size: 20px;
+      font-size: 16px;
       @media (max-width: 1224px) {
         font-size: 12px;
       }

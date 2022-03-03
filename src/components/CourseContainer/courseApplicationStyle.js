@@ -5,7 +5,7 @@ import { MAIN_COLOR } from '@utility/COLORS';
 export const StyledCourseApply = styled.button`
   margin-right: 25px;
   border-radius: 30px;
-  height: 64px;
+  height: 56px;
   display: grid;
   justify-content: center;
   align-items: center;

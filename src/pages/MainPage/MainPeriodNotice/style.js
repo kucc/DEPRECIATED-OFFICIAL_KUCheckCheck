@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR } from '@utility/COLORS';
-
 export const StyledPeriodContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -11,14 +9,15 @@ export const StyledPeriodContainer = styled.div`
 export const StyledPeriod = styled.div`
   display: flex;
   width: 450px;
-  height: 60px;
+  height: 50px;
   background-color: #ffffff;
   justify-content: center;
   align-items: center;
+  font-size: 13px;
   @media (max-width: 1224px) {
     width: 300px;
     height: 50px;
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 
