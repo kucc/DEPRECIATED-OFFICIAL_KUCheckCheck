@@ -45,12 +45,30 @@ export const CourseApplication = ({
 
   const showModal = () => {
     // 세션 취소하기 modal
-    if (currentUser.uid === course.courseLeader.id) {
-      alert('세션장은 취소할 수 없습니다!');
-    } else {
-      setIsModalVisible(true);
-    }
+    setIsModalVisible(true);
   };
+
+  async function removeUserHistory(userId) {
+    const userData = await firestoreService
+      .collection('users')
+      .doc(userId)
+      .get();
+    // 유저 데이터에서 courseHistory에 해당 course를 삭제
+    const newCourseHistory = userData
+      .data()
+      .courseHistory.filter(course => course.id !== courseId);
+    await firestoreService.collection('users').doc(userId).update({
+      courseHistory: newCourseHistory,
+    });
+  }
+
+  async function deleteCourse(courseMember) {
+    await Promise.all(
+      courseMember.map(userId => {
+        return removeUserHistory(userId);
+      }),
+    );
+  }
 
   const handleRemoveCourse = async () => {
     // courseData 가져오기
@@ -58,39 +76,48 @@ export const CourseApplication = ({
       .collection('courses')
       .doc(courseId)
       .get();
-    // courseMember에서 해당 member를 제거
     const courseMember = courseData.data().courseMember;
-    const newcourseMember = courseMember.filter(
-      element => element !== currentUser.uid,
-    );
-    // courseAttendance에서 해당 member를 제거
-    const courseAttendance = courseData.data().courseAttendance;
-    const newcourseAttendance = courseAttendance.filter(
-      element => element.id !== currentUser.uid,
-    );
+    // 만약 세션장일 경우
+    if (currentUser.uid === course.courseLeader.id) {
+      deleteCourse(courseMember);
+      await firestoreService.collection('courses').doc(courseId).delete();
+      alert('삭제했습니다!');
+    }
+    // 일반 유저
+    else {
+      // courseMember에서 해당 member를 제거
+      const newcourseMember = courseMember.filter(
+        element => element !== currentUser.uid,
+      );
+      // courseAttendance에서 해당 member를 제거
+      const courseAttendance = courseData.data().courseAttendance;
+      const newcourseAttendance = courseAttendance.filter(
+        element => element.id !== currentUser.uid,
+      );
 
-    //userData 기져오기
-    const useData = await firestoreService
-      .collection('users')
-      .doc(currentUser.uid)
-      .get();
-    // userHistory에서 해당 course를 제거
-    const courseHistory = useData.data().courseHistory;
-    const newcourseHistory = courseHistory.filter(
-      element => element.id !== courseId,
-    );
+      //userData 기져오기
+      const useData = await firestoreService
+        .collection('users')
+        .doc(currentUser.uid)
+        .get();
+      // userHistory에서 해당 course를 제거
+      const courseHistory = useData.data().courseHistory;
+      const newcourseHistory = courseHistory.filter(
+        element => element.id !== courseId,
+      );
 
-    // firebase update
-    await firestoreService.collection('courses').doc(courseId).update({
-      courseMember: newcourseMember,
-      courseAttendance: newcourseAttendance,
-    });
-    await firestoreService.collection('users').doc(currentUser.uid).update({
-      courseHistory: newcourseHistory,
-    });
+      // firebase update
+      await firestoreService.collection('courses').doc(courseId).update({
+        courseMember: newcourseMember,
+        courseAttendance: newcourseAttendance,
+      });
+      await firestoreService.collection('users').doc(currentUser.uid).update({
+        courseHistory: newcourseHistory,
+      });
 
-    setcourseMemberArr(newcourseMember);
-    alert('취소했습니다!');
+      setcourseMemberArr(newcourseMember);
+      alert('취소했습니다!');
+    }
     setIsModalVisible(false);
     // 취소 후 새로고침하기
     history.go(0);
@@ -314,7 +341,10 @@ export const CourseApplication = ({
         visible={isModalVisible}
         onOk={handleRemoveCourse}
         onCancel={handleCancel}>
-        <p>정말로 신청한 과목을 취소할까요?</p>
+        <p>
+          정말로 신청한 과목을 취소할까요? 만약 세션장일 경우 과목이 삭제되게
+          됩니다.
+        </p>
       </Modal>
     </>
   );
