@@ -34,7 +34,6 @@ function LoginForm() {
       history.push('/');
     } catch (error) {
       const { code, message } = error;
-      console.log(code);
       switch (code) {
         case 'auth/user-not-found':
           alert('가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.');
