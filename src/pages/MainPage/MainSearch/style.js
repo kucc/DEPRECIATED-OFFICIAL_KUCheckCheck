@@ -21,6 +21,9 @@ export const StyledTag = styled(CheckableTag)`
     background-color: #212121 !important;
     color: white;
   }
+  &:hover {
+    color: ${MAIN_COLOR} !important;
+  }
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;

@@ -19,8 +19,8 @@ export const StyledInfoCardContainer = styled.div`
 
 export const StyledInfoCardEmoji = styled.div`
   height: 50px;
-  font-size: 170px;
-  margin-top: -70px;
+  font-size: 140px;
+  margin-top: -50px;
   @media (max-width: 1224px) {
     margin-top: 0px;
     font-size: 70px;

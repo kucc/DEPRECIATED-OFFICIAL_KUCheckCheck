@@ -10,6 +10,7 @@ import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
 } from '@utility/ALERT_MESSAGE';
+import { MAIN_COLOR } from '@utility/COLORS';
 import {
   StyledInputNumber,
   StyledLaguageImg,
@@ -357,9 +358,8 @@ function CourseRegisterBox({ enrollHandler }) {
           shape='round'
           size={'large'}
           style={{
-            backgroundColor: 'red',
+            backgroundColor: MAIN_COLOR,
             border: '0px',
-            width: 'rgba(195,33,31)',
             height: '50px',
           }}
           onClick={async e => {

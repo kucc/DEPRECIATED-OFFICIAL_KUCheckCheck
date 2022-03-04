@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 
 import { ImageContainer } from '@components/ImageContainer';
 
@@ -22,6 +23,7 @@ import {
   StyledInfoText,
   StyledInfoTitle,
   StyledStackDetail,
+  StyledStackDetailText,
   StyledStackPrimary,
 } from './style';
 
@@ -41,6 +43,8 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
     courseStack,
     language,
   } = courseData;
+
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const [newCourseInfo, setNewCourseInfo] = useState('');
   const [newCourseGoal, setNewCourseGoal] = useState('');
@@ -118,6 +122,31 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
   const onChangeCourseCheckAdmin = value => {
     setNewCourseCheckAdmin(value);
   };
+
+  const renderPrimaryStack = () => (
+    <>
+      <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
+      <StyledStackPrimary>
+        {language?.map((lan, key) => (
+          <ImageContainer courseName={lan} key={key} />
+        ))}
+      </StyledStackPrimary>
+    </>
+  );
+
+  const renderDetailStack = () => (
+    <>
+      <StyledInfoTitle style={{ marginTop: isMobile ? '0px' : '50px' }}>
+        세부 기술 스택
+      </StyledInfoTitle>
+      <StyledStackDetail>
+        {courseStack?.map((stack, key) => (
+          <StyledStackDetailText key={key}>- {stack}</StyledStackDetailText>
+        ))}
+      </StyledStackDetail>
+    </>
+  );
+
   return (
     <StyledInfoContainer isEdit={isEdit}>
       <StyledInfoDetail>
@@ -224,22 +253,17 @@ const CourseInformation = ({ courseData, isEdit, newCourseDataInfo }) => {
       </StyledInfoDetail>
       {!isEdit && (
         <StyledInfoStack>
-          <StyledInfoTitle>주요 기술 스택</StyledInfoTitle>
-          <StyledStackPrimary>
-            {language?.map((lan, key) => (
-              <ImageContainer courseName={lan} key={key} />
-            ))}
-          </StyledStackPrimary>
-          <StyledInfoTitle style={{ marginTop: '50px' }}>
-            세부 기술 스택
-          </StyledInfoTitle>
-          <StyledStackDetail>
-            {courseStack?.map((stack, key) => (
-              <div style={{ fontSize: '15px' }} key={key}>
-                - {stack}
-              </div>
-            ))}
-          </StyledStackDetail>
+          {isMobile ? (
+            <>
+              <StyledInfoText>{renderPrimaryStack()}</StyledInfoText>
+              <StyledInfoText>{renderDetailStack()}</StyledInfoText>
+            </>
+          ) : (
+            <>
+              {renderPrimaryStack()}
+              {renderDetailStack()}
+            </>
+          )}
         </StyledInfoStack>
       )}
     </StyledInfoContainer>
