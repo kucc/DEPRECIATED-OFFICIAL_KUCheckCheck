@@ -59,9 +59,9 @@ export const StyledCourseExplainWrapper = styled.div`
       `;
     } else {
       return `
-      gap: 0px;
+        gap: 0px;
         margin-top: 0px;
-        grid-template-columns: auto 70px;
+        grid-template-columns: auto 60px;
       `;
     }
   }};
@@ -84,7 +84,7 @@ export const StyledCourseTitle = styled.div`
     margin-bottom: 5px;
     @media (max-width: 1224px) {
       margin-top: 25px;
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 `;
