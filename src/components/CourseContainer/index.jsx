@@ -128,9 +128,9 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
             <StyledCourseTitle>
               <div>
                 {/* courseTitle이 너무 길면 18자까지만 출력 */}
-                {course.courseName.length < 18
+                {course.courseName.length < 22
                   ? course.courseName
-                  : course.courseName.slice(0, 18) + '...'}
+                  : course.courseName.slice(0, 21) + '...'}
               </div>
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
