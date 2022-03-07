@@ -23,10 +23,19 @@ function JoinForm() {
     name: '',
     link: '',
     comment: '',
+    detailComment: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const history = useHistory();
-  const { email, password, passwordConfirm, name, link, comment } = inputs;
+  const {
+    email,
+    password,
+    passwordConfirm,
+    name,
+    link,
+    comment,
+    detailComment,
+  } = inputs;
 
   const onChange = e => {
     const { value, name } = e.target;
@@ -61,10 +70,10 @@ function JoinForm() {
         name,
         comment,
         link,
+        detailComment,
         role: '준회원',
         emoji: RandomEmoji(),
         courseHistory: [],
-        detailComment: '',
       };
       await firestoreService
         .collection('users')
@@ -119,12 +128,21 @@ function JoinForm() {
           value={link}
           onChange={onChange}
         />
+
         <InputBoxWithLabel
-          labelTitle='소개'
+          labelTitle='소개(간단한 소개)'
           inputName='comment'
           inputType='text'
-          placeholder='50자 이내'
+          placeholder='100자 이내'
           value={comment}
+          onChange={onChange}
+        />
+        <InputBoxWithLabel
+          labelTitle='세부 코멘트(자세한 소개)'
+          inputName='detailComment'
+          inputType='text'
+          placeholder='200자 이내'
+          value={detailComment}
           onChange={onChange}
         />
         <FullWidthButton htmlType='submit' text='JOIN' loading={isSubmitted} />

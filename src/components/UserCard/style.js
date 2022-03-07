@@ -11,8 +11,9 @@ export const StyledInfoCardContainer = styled.div`
   margin-top: 5px;
   margin-bottom: 20px;
   @media (max-width: 1224px) {
-    grid-template-columns: 90px 1px auto;
+    grid-template-columns: 80px 1px auto;
     padding: 30px;
+    padding-right: 10px;
     height: 100%;
   }
 `;
@@ -33,7 +34,6 @@ export const StyledInfoCardContour = styled.div`
   margin-top: 30px;
   @media (max-width: 1224px) {
     height: 70px;
-    margin-top: 10px;
   }
 `;
 
@@ -42,6 +42,7 @@ export const StyledInfoDetailContainer = styled.div`
   display: grid;
   gap: 20px;
   @media (max-width: 1224px) {
+    margin-left: 20px;
     gap: 10px;
   }
 `;
@@ -51,13 +52,14 @@ export const StyledInfoDetailName = styled.div`
   font-family: 'NexonBo';
   @media (max-width: 1224px) {
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 22px;
   }
 `;
 
 export const StyledInfoDetailText = styled.div`
   @media (max-width: 1224px) {
     margin-top: -10px;
+    font-size: 12px;
   }
 `;
 
@@ -112,7 +114,7 @@ export const StyledArrowContainer = styled.div`
 export const StyledArrowTextContainer = styled.div`
   @media (max-width: 1224px) {
     display: grid;
-    gap: 5px;
+    gap: 10px;
   }
 `;
 

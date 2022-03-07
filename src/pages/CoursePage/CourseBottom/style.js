@@ -32,7 +32,7 @@ export const StyledCourseHeaderTop = styled.div`
   grid-template-columns: 130px 1px auto 200px;
   align-items: center;
   @media (max-width: 1224px) {
-    grid-template-columns: 60px 1px auto 120px;
+    grid-template-columns: 55px 1px auto 100px;
   }
 `;
 
@@ -40,16 +40,17 @@ export const StyledCourseHeaderImg = styled.img`
   width: 100px;
   background-color: 'white' !important;
   @media (max-width: 1224px) {
-    width: 55px;
+    width: 45px;
   }
 `;
 
 export const StyledCourseHeaderTitle = styled.div`
   font-family: 'NexonBo';
   margin-left: 30px;
-  font-size: 40px;
+  font-size: 37px;
   @media (max-width: 1224px) {
-    margin-left: 5px;
-    font-size: 17px;
+    margin-left: 0px;
+    padding: 0px 10px;
+    font-size: 16px;
   }
 `;
