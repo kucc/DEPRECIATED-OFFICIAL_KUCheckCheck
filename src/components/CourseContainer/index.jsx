@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Controller, animated, useSpring } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 import PropTypes from 'prop-types';
 import { AiOutlineRight } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
@@ -126,12 +126,10 @@ export const CourseContainer = ({ course, CourseApplicationState }) => {
           CourseApplicationState={CourseApplicationState}>
           <StyledCourseText onClick={handleOnClick}>
             <StyledCourseTitle>
-              <div>
-                {/* courseTitle이 너무 길면 18자까지만 출력 */}
-                {course.courseName.length < 22
-                  ? course.courseName
-                  : course.courseName.slice(0, 21) + '...'}
-              </div>
+              {/* courseTitle이 너무 길면 18자까지만 출력 */}
+              {course.courseName.length < 22
+                ? course.courseName
+                : course.courseName.slice(0, 21) + '...'}
             </StyledCourseTitle>
             <StyledCourseExplain>{renderCourseLeader()}</StyledCourseExplain>
           </StyledCourseText>

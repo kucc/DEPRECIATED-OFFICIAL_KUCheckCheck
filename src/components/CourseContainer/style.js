@@ -9,6 +9,7 @@ export const StyledCourseContainer = styled.div`
   background-color: white;
   @media (max-width: 1224px) {
     grid-template-columns: 60px auto;
+    height: 100%;
     margin: 10px 0px;
   }
 `;
@@ -73,25 +74,25 @@ export const StyledCourseText = styled.div`
   padding-top: 5px;
   cursor: pointer;
   @media (max-width: 1224px) {
+    padding-top: 0px;
     padding-right: 0px;
   }
 `;
 
 export const StyledCourseTitle = styled.div`
-  & > div {
-    font-family: 'NexonBo';
-    font-size: 22px;
-    margin-bottom: 5px;
-    @media (max-width: 1224px) {
-      margin-top: 25px;
-      font-size: 18px;
-    }
+  font-family: 'NexonBo';
+  font-size: 20px;
+  margin-bottom: 8px;
+  @media (max-width: 1224px) {
+    margin-top: 5px;
+    font-size: 16px;
   }
 `;
 
 export const StyledCourseExplain = styled.div`
   & > p {
     font-family: 'NexonRe';
+    margin-bottom: 0px;
   }
   font-size: 13.3px;
   margin-top: -10px;
