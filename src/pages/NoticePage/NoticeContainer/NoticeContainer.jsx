@@ -38,7 +38,7 @@ function NoticeContainer() {
           {Notices &&
             Notices.map((item, key) => (
               <StyledRulesPanel header={item.title} key={key}>
-                <p>{item.content}</p>
+                <p>{item.content.replaceAll('\\n', '\n')}</p>
               </StyledRulesPanel>
             ))}
         </StyledRulesCollapse>

@@ -68,6 +68,7 @@ export const StyledRulesPanel = styled(Collapse.Panel)`
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     & > .ant-collapse-content-box {
+      white-space: pre-line;
       font-size: 16px;
       @media (max-width: 1224px) {
         font-size: 12px;
