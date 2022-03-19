@@ -46,21 +46,8 @@ const MainPeriodNotice = () => {
         .toLocaleDateString('ko-KR')}
       `;
 
-      // 세션 등록 기간
+      // 수강 신청 기간
       if (
-        registerTerm.start.toDate() < today &&
-        today < registerTerm.end.toDate()
-      ) {
-        setText(
-          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
-            <StyledPeriodTitle>세션 등록 기간</StyledPeriodTitle>
-            &nbsp;&nbsp;
-            {registerTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
-            {registerTerm.end.toDate().toLocaleDateString('ko-KR')}
-          </Tooltip>,
-        );
-        // 수강 신청 기간
-      } else if (
         enrollmentTerm.start.toDate() < today &&
         today < enrollmentTerm.end.toDate()
       ) {
@@ -72,8 +59,23 @@ const MainPeriodNotice = () => {
             {enrollmentTerm.end.toDate().toLocaleDateString('ko-KR')}
           </Tooltip>,
         );
-        // 활동 기간
-      } else if (
+      }
+      // 세션 등록 기간
+      else if (
+        registerTerm.start.toDate() < today &&
+        today < registerTerm.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>세션 등록 기간</StyledPeriodTitle>
+            &nbsp;&nbsp;
+            {registerTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
+            {registerTerm.end.toDate().toLocaleDateString('ko-KR')}
+          </Tooltip>,
+        );
+      }
+      // 활동 기간
+      else if (
         activeTerm.start.toDate() < today &&
         today < activeTerm.end.toDate()
       ) {
