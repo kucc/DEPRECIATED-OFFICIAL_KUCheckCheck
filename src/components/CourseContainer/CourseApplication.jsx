@@ -285,7 +285,7 @@ export const CourseApplication = ({
         <StyledCourseApplyLock
           $isMobile={isMobile}
           $isMainScreen={isMainScreen}>
-          <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '22px' }} />
+          <AiOutlineClose style={{ fontSize: isMobile ? '18px' : '20px' }} />
           <StyledCourseLockText>
             <div>수강 신청</div>
             <div>기간이 아닙니다.</div>

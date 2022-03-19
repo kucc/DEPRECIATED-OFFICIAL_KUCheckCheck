@@ -27,6 +27,22 @@ const MainPeriodNotice = () => {
         .doc('commonInfo')
         .get();
 
+      const weekData = await firestoreService
+        .collection('common')
+        .doc('weekInfo')
+        .get();
+
+      const {
+        firstWeek,
+        secondWeek,
+        thirdWeek,
+        fourthWeek,
+        fifthWeek,
+        sixthWeek,
+        seventhWeek,
+        eighthWeek,
+      } = weekData.data();
+
       const { registerTerm, enrollmentTerm, activeTerm } =
         commonInfoData.data();
 
@@ -74,6 +90,102 @@ const MainPeriodNotice = () => {
           </Tooltip>,
         );
       }
+      // 1주차
+      else if (
+        firstWeek.start.toDate() < today &&
+        today < firstWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;1주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 2주차
+      else if (
+        secondWeek.start.toDate() < today &&
+        today < secondWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;2주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 3주차
+      else if (
+        thirdWeek.start.toDate() < today &&
+        today < thirdWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;3주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 4주차
+      else if (
+        fourthWeek.start.toDate() < today &&
+        today < fourthWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;4주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 5주차
+      else if (
+        fifthWeek.start.toDate() < today &&
+        today < fifthWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;5주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 6주차
+      else if (
+        sixthWeek.start.toDate() < today &&
+        today < sixthWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;6주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 7주치
+      else if (
+        seventhWeek.start.toDate() < today &&
+        today < seventhWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;7주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
+      // 8주차
+      else if (
+        eighthWeek.start.toDate() < today &&
+        today < eighthWeek.end.toDate()
+      ) {
+        setText(
+          <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
+            <StyledPeriodTitle>오늘은?</StyledPeriodTitle>
+            &nbsp;8주차입니다! 항상 화이팅하세요 :)
+          </Tooltip>,
+        );
+      }
       // 활동 기간
       else if (
         activeTerm.start.toDate() < today &&
@@ -81,19 +193,15 @@ const MainPeriodNotice = () => {
       ) {
         setText(
           <Tooltip title={alertText} overlayStyle={toolTipOverlayStyle}>
-            <StyledPeriodTitle>활동 기간</StyledPeriodTitle>
-            &nbsp;&nbsp;
-            {activeTerm.start.toDate().toLocaleDateString('ko-KR')} ~&nbsp;
-            {activeTerm.end.toDate().toLocaleDateString('ko-KR')}
+            <StyledPeriodTitle>휴식 & 시험 기간</StyledPeriodTitle>
+            &nbsp;&nbsp; 시험 기간으로 잠시 쉬어가는 기간입니다.
           </Tooltip>,
         );
       } else {
         setText(
-          <>
-            <StyledPeriodTitle>
-              지금은 휴식 기간입니다. 다음 학기에 봬요!
-            </StyledPeriodTitle>
-          </>,
+          <StyledPeriodTitle>
+            지금은 휴식 기간입니다. 다음 학기에 봬요!
+          </StyledPeriodTitle>,
         );
       }
     }
