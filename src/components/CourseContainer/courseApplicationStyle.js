@@ -80,7 +80,7 @@ export const StyledCourseApplyLock = styled(StyledCourseApply)`
   display: flex !important;
   background-color: #3f3f3f;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   gap: 7px;
   cursor: not-allowed;
   ${({ $isMobile, $isMainScreen }) => mainScreenStyle($isMobile, $isMainScreen)}
