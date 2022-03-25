@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import AddUser from '@components/AddUser';
 import { NavBar } from '@components/NavBar';
 
 import { authService, firestoreService } from '@/firebase';
@@ -50,7 +51,6 @@ const GetCSVPage = () => {
       var csv = '';
       const courseResult = await firestoreService.collection('courses').get();
       courseResult.forEach(doc => {
-        console.log(doc.data().semester, currentSemester);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         if (doc.data().semester === currentSemester) {
           csv += '\n';
@@ -186,6 +186,7 @@ const GetCSVPage = () => {
           </Button>
         </>
       )}
+      <AddUser />
     </div>
   );
 };
