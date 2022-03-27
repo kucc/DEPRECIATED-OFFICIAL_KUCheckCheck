@@ -12,8 +12,8 @@ import { firestoreService } from '@/firebase';
 import {
   ALREADY_APPLIED_COURSE,
   NOT_ENROLLMENT_TERM,
-} from '@utility/ALERT_MESSAGE';
-import { defaultUserAttendance } from '@utility/CONSTANTS';
+  defaultUserAttendance,
+} from '@utility';
 
 import {
   StlyedHeadCountText,
@@ -23,7 +23,7 @@ import {
   StyledCourseApplyOff,
   StyledCourseApplyOn,
   StyledCourseLockText,
-} from './courseApplicationStyle';
+} from './style';
 
 export const CourseApplication = ({
   course,

@@ -17,7 +17,9 @@
     "isolatedModules": true,
     "paths": {
       "@components/*": ["./src/components/*"],
+      "@components": ["./src/components"],
       "@pages/*": ["./src/pages/*"],
+      "@pages": ["./src/pages"],
       "@hoc/*": ["./src/hoc/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@redux/*": ["./src/redux/*"],
@@ -25,6 +27,7 @@
       "@reducer/*": ["./src/redux/reducer/*"],
       "@font/*": ["./src/font/*"],
       "@utility/*": ["./src/utility/*"],
+      "@utility": ["./src/utility"],
       "@/*": ["./src/*"]
     }
   },

@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { DefaultLogo } from '@components/DefaultLogo';
-import { NavBar } from '@components/NavBar';
+import { DefaultLogo, NavBar } from '@components';
 
-import { StyledBackground } from '@utility/COMMON_STYLE';
+import { StyledBackground } from '@utility';
 
 import { StyledNotFound } from './style';
 
-const NotFoundPage = () => {
+export const NotFoundPage = () => {
   const path = document.location.pathname.split('/')[1];
 
   const renderWord = () => {
@@ -25,5 +24,3 @@ const NotFoundPage = () => {
     </StyledBackground>
   );
 };
-
-export default NotFoundPage;

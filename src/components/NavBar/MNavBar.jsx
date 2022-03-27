@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { DefaultLogo } from '@components/DefaultLogo';
+import { DefaultLogo } from '@components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility';
 
 import * as S from './style';
 

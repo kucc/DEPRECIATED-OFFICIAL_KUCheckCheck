@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledSideMargin, StyledSidePadding } from '@utility/COMMON_STYLE';
+import { StyledSideMargin, StyledSidePadding } from '@utility';
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);

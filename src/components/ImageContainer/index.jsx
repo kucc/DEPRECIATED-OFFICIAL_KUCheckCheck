@@ -4,9 +4,9 @@ import { Tooltip } from 'antd';
 import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 
-import { StyledLaguageImg } from '@utility/COMMON_STYLE';
+import { StyledLaguageImg } from '@utility';
 
-export function ImageContainer({ courseName }) {
+export const ImageContainer = ({ courseName }) => {
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   return (
     <div>
@@ -23,7 +23,7 @@ export function ImageContainer({ courseName }) {
       </Tooltip>
     </div>
   );
-}
+};
 
 ImageContainer.propTypes = {
   courseName: PropTypes.string,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { NavBar } from '@components';
 
-import { StyledSideMargin } from '@utility/COMMON_STYLE';
+import { StyledSideMargin } from '@utility';
 
 import UserCourse from './UserCourse';
 import UserInfo from './UserInfo';

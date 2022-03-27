@@ -4,14 +4,10 @@ import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton } from '@components/Buttons';
-import { CourseApplication } from '@components/CourseContainer/CourseApplication';
-import { NavBar } from '@components/NavBar';
+import { CourseApplication, FullWidthButton, NavBar } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { FAILED_TO_LOAD_DATA } from '@utility/ALERT_MESSAGE';
-import { MAIN_COLOR } from '@utility/COLORS';
-import { StyledBackground } from '@utility/COMMON_STYLE';
+import { FAILED_TO_LOAD_DATA, MAIN_COLOR, StyledBackground } from '@utility';
 
 import CourseBottom from './CourseBottom';
 import CourseTop from './CourseTop';

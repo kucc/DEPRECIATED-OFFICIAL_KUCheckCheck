@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 
 import { firestoreService } from '@/firebase';
-import { word } from '@utility/CONSTANTS';
+import { word } from '@utility';
 
 import MCourseAttendanceCard from './MCourseAttendanceCard';
 import PCourseAttendanceCard from './PCourseAttendanceCard';

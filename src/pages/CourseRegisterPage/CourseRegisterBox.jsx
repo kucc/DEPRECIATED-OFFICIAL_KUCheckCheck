@@ -9,9 +9,7 @@ import { NavBar } from '@components';
 import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
-} from '@utility/ALERT_MESSAGE';
-import { MAIN_COLOR } from '@utility/COLORS';
-import {
+  MAIN_COLOR,
   StyledInputNumber,
   StyledLaguageImg,
   StyledSelect,
@@ -19,7 +17,7 @@ import {
   StyledTagSelect,
   StyledTextArea,
   StyledVerticalLine,
-} from '@utility/COMMON_STYLE';
+} from '@utility';
 
 import {
   StyledBackground,

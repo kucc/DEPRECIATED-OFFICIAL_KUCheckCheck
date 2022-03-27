@@ -10,7 +10,7 @@ import {
   StyledRedText,
 } from './style';
 
-const CourseDifficulty = ({
+export const CourseDifficulty = ({
   onClick,
   difficulty,
   requireTime,
@@ -35,8 +35,6 @@ const CourseDifficulty = ({
     </StyledCourseDifficulty>
   );
 };
-
-export default CourseDifficulty;
 
 CourseDifficulty.propTypes = {
   onClick: PropTypes.func,

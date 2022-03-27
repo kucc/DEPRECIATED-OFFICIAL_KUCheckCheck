@@ -6,11 +6,11 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router';
 
-import CourseDifficulty from '@components/CourseDifficulty';
+import { CourseDifficulty } from '@components';
 
 import useWindowDimensions from '@hooks/useWindowDimensions';
 
-import { CourseApplication } from './CourseApplication';
+import { CourseApplication } from '../CourseApplication';
 import {
   StyledCourseContainer,
   StyledCourseExplain,

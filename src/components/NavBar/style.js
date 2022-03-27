@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
-import { StyledSidePadding } from '@utility/COMMON_STYLE';
+import { MAIN_COLOR, StyledSidePadding } from '@utility';
 
 export const NavBarBackground = styled.div`
   background-color: rgb(245, 245, 245);

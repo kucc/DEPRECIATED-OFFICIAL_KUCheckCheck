@@ -12,14 +12,14 @@ import {
   AttendacePage,
   CoursePage,
   CourseRegisterPage,
+  GetCSVPage,
   JoinPage,
   LoginPage,
   MainPage,
+  NotFoundPage,
   NoticePage,
   TimeTablePage,
 } from '@pages';
-import GetCSVPage from '@pages/GetCSVPage';
-import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';

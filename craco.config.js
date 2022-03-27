@@ -8,7 +8,7 @@ module.exports = {
       options: {
         source: 'jsconfig',
         baseUrl: '.',
-        tsConfigPath: 'jsconfig.paths.json',
+        jsConfigPath: 'jsconfig.paths.json',
         debug: false,
       },
     },
