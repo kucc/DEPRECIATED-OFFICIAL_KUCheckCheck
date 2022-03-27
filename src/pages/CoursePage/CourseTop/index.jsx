@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import UserCard from '@components/UserCard';
+import { UserCard } from '@components';
 
 import { StyledCourseTopContainer } from './style';
 

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { WhiteShadowButton } from '@components/Buttons';
-import CourseDifficulty from '@components/CourseDifficulty';
+import { CourseDifficulty, WhiteShadowButton } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
-import { MAIN_COLOR } from '@utility/COLORS';
-import { renderWord } from '@utility/COMMON_FUNCTION';
-import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
+import {
+  MAIN_COLOR,
+  StyledSelectItem,
+  StyledVerticalLine,
+  renderWord,
+} from '@utility';
 
 import CourseCurriculum from './CourseCurriculum';
 import CourseInformation from './CourseInformation';

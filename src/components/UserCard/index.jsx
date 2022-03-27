@@ -6,7 +6,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { BlackIcon } from '@components/BlackIcon';
+import { BlackIcon } from '@components';
 
 import useWindowDimensions from '@hooks/useWindowDimensions';
 
@@ -27,7 +27,7 @@ import {
   StyledInfoLink,
 } from './style';
 
-const UserCard = ({
+export const UserCard = ({
   isDetail,
   emoji,
   name,
@@ -87,8 +87,6 @@ const UserCard = ({
     </StyledInfoCardContainer>
   );
 };
-
-export default UserCard;
 
 UserCard.propTypes = {
   isDetail: PropTypes.bool,

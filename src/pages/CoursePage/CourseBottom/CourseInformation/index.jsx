@@ -5,15 +5,15 @@ import { Select } from 'antd';
 import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 
-import { ImageContainer } from '@components/ImageContainer';
+import { ImageContainer } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { renderWord } from '@utility/COMMON_FUNCTION';
 import {
   StyledInputNumber,
   StyledTagSelect,
   StyledTextArea,
-} from '@utility/COMMON_STYLE';
+  renderWord,
+} from '@utility';
 
 import {
   StyledInfoContainer,

@@ -52,6 +52,7 @@ function MainSearch() {
     // redux 값을 초기화
     dispatch(setSearch(''));
     dispatch(setCategory(''));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeSearch = e => {

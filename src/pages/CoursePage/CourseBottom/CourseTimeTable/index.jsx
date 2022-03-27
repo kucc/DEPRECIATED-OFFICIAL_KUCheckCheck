@@ -6,7 +6,7 @@ import { CirclePicker } from 'react-color';
 
 import { TimeTable } from '@components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility';
 
 import {
   StyledColorContainer,
@@ -16,6 +16,7 @@ import {
 
 function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
   const [selectedData, setselectedData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [cellData, setcellData] = useState([]);
   const [selectedColor, setSelectedColor] = useState(MAIN_COLOR);
 

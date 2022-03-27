@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';
 
 import { CourseContainer, EmptyBox } from '@components';
-
-import { firestoreService } from '@/firebase';
 
 import {
   StyledCourseCardContainer,

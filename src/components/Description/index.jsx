@@ -3,7 +3,7 @@ import React from 'react';
 import { Typography } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { DefaultLogo } from '@components/DefaultLogo';
+import { DefaultLogo } from '@components';
 
 import { DescriptionForm } from './style';
 

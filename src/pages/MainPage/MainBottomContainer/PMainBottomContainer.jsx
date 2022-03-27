@@ -7,8 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { CourseContainer, EmptyBox, WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { MAIN_COLOR } from '@utility/COLORS';
-import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
+import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,

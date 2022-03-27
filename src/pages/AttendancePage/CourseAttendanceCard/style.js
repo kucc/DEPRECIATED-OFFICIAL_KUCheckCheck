@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR } from '@utility/COLORS';
+import { BASE_COLOR } from '@utility';
 
 export const StyledContainer = styled.div`
   background-color: ${BASE_COLOR};

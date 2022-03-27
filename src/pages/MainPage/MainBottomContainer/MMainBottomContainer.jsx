@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import { CourseContainer, EmptyBox } from '@components';
 
 import { firestoreService } from '@/firebase';
 import useWindowDimensions from '@hooks/useWindowDimensions';
-import { MAIN_COLOR } from '@utility/COLORS';
-import { StyledSelectItem, StyledVerticalLine } from '@utility/COMMON_STYLE';
+import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,

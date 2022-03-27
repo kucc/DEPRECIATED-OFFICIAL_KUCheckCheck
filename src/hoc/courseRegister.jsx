@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { authService, firestoreService } from '@/firebase';
-import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
+import { NEED_TO_LOGIN } from '@utility';
 
 export const CourseRegisterHoc = SpecificComponent => {
   const CourseCheck = props => {

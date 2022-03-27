@@ -4,7 +4,7 @@ import { Select } from 'antd';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-import { word } from '@utility/CONSTANTS';
+import { word } from '@utility';
 
 import {
   StyledAbsent,

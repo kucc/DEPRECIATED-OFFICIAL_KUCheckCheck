@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';
 
-import { StyledTextArea } from '@utility/COMMON_STYLE';
+import { StyledTextArea } from '@utility';
 
 import { StyledContainer, StyledTimeline } from './style';
 

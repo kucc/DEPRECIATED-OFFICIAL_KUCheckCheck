@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { UserPage } from '@pages';
 
 import { authService, firestoreService } from '@/firebase';
-import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
+import { NEED_TO_LOGIN } from '@utility';
 
 export const UserPageHoc = () => {
   // userpage는 로그인이 필요한 페이지

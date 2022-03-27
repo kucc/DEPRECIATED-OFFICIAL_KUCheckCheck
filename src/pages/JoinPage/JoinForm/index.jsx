@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton } from '@components';
-import { InputBoxWithLabel } from '@components/InputBoxWithLabel';
+import { FullWidthButton, InputBoxWithLabel } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
 import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
   PASSWORD_DOSE_NOT_MATCH,
-} from '@utility/ALERT_MESSAGE';
-import { RandomEmoji } from '@utility/COMMON_FUNCTION';
+  RandomEmoji,
+} from '@utility';
 
 import { StyledForm } from './style';
 
