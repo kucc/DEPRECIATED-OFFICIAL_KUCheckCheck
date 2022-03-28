@@ -53,14 +53,16 @@ export const Footer = () => {
         <StyledHorizontalLine />
         <StyledFooterBox>
           <StyledFooterTitle>Github</StyledFooterTitle>
-          <StyledFooterLink href='https://github.com/kucc/KUCheckCheck'>
+          <StyledFooterLink
+            href='https://github.com/kucc/KUCheckCheck'
+            target='_blank'>
             https://github.com/kucc/KUCheckCheck
           </StyledFooterLink>
         </StyledFooterBox>
         <>
           <StyledFooterBox>
             <StyledFooterTitle>KUCC</StyledFooterTitle>
-            <StyledFooterLink href='https://kucc.co.kr/'>
+            <StyledFooterLink href='https://kucc.co.kr/' target='_blank'>
               https://kucc.co.kr/
             </StyledFooterLink>
           </StyledFooterBox>

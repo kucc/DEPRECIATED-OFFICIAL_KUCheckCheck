@@ -74,7 +74,9 @@ export const UserCard = ({
             <StyledInfoBottomContainer>
               <StyledInfoBottom>
                 <BlackIcon IconComponent={<FiPaperclip color='white' />} />
-                <StyledInfoLink href={link}>{link}</StyledInfoLink>
+                <StyledInfoLink href={link} target='_blank'>
+                  {link}
+                </StyledInfoLink>
               </StyledInfoBottom>
               <StyledInfoBottom>
                 <BlackIcon IconComponent={<HiOutlineMail color='white' />} />
