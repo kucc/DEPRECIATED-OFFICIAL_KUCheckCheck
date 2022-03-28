@@ -183,12 +183,13 @@ function UserInfoTop({ onChangeFunc, userData }) {
           style={{ width: '100%', marginBottom: '20px' }}
           defaultValue={userLink}
         />
-        <StyledUserInfoModalText style={{ color: MAIN_COLOR }}>
-          탈퇴하기
-        </StyledUserInfoModalText>
         <Button
           danger
-          style={{ backgroundColor: MAIN_COLOR, color: 'white' }}
+          style={{
+            color: 'white',
+            borderColor: MAIN_COLOR,
+            backgroundColor: MAIN_COLOR,
+          }}
           onClick={userQuitHandler}>
           탈퇴하기
         </Button>
