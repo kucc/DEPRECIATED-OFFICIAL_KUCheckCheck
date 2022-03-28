@@ -85,6 +85,7 @@ export const StyledInfoBottom = styled.div`
 export const StyledInfoLink = styled.a`
   margin-left: 10px;
   margin-top: 4px;
+  color: #1890ff;
 `;
 
 export const StyledInfoEmail = styled.div`
