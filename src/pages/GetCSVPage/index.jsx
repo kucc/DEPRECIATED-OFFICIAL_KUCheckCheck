@@ -5,12 +5,8 @@ import { saveAs } from 'file-saver';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-<<<<<<< HEAD
-import AddUser from '@components/AddUser';
-import { NavBar } from '@components/NavBar';
-=======
 import { NavBar } from '@components';
->>>>>>> a11cb5b89e9b6ff49a3be02fb683735d65e81446
+import AddUser from '@components/AddUser';
 
 import { authService, firestoreService } from '@/firebase';
 

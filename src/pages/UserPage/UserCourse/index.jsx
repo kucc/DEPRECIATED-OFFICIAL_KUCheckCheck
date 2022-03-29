@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { firestoreService } from '@/firebase';
 
@@ -12,7 +13,7 @@ function UserCourse({ userData }) {
   const [currentCourses, setCurrentCourses] = useState([]);
   const [pastCourses, setPastCourses] = useState([]);
   const currentUser = useSelector(state => state.user.currentUser);
-  console.log(currentUser);
+  console.log(userData);
   useEffect(() => {
     async function fetchCurrentSemester() {
       const commonInfoData = await firestoreService
@@ -43,18 +44,24 @@ function UserCourse({ userData }) {
   // nonActive : 없는 상태
   return (
     <>
-      <UserCourseTop mode='current' />
-      <UserCourseCard
-        courses={currentCourses}
-        option='cancel'
-        userData={userData}
-      />
-      <UserCourseTop mode='past' />
-      <UserCourseCard
-        courses={pastCourses}
-        option='nonActive'
-        userData={userData}
-      />
+      {currentUser && (
+        <>
+          <UserCourseTop mode='current' />
+          <UserCourseCard
+            courses={currentCourses}
+            option={
+              currentUser.uid === userData.userId ? 'cancel' : 'nonActive'
+            }
+            userData={userData}
+          />
+          <UserCourseTop mode='past' />
+          <UserCourseCard
+            courses={pastCourses}
+            option='nonActive'
+            userData={userData}
+          />
+        </>
+      )}
     </>
   );
 }
