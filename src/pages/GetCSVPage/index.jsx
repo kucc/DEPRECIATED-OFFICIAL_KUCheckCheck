@@ -52,7 +52,11 @@ const GetCSVPage = () => {
       const courseResult = await firestoreService.collection('courses').get();
       courseResult.forEach(doc => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        if (doc.data().semester === currentSemester) {
+        if (
+          doc.data().courseType === 1 &&
+          doc.id !== 'osfsJTMXKCORhqjsVX6s' &&
+          doc.data().semester === currentSemester
+        ) {
           csv += '\n';
           csv += `${
             doc.data().courseName
@@ -104,7 +108,10 @@ const GetCSVPage = () => {
         20000 * courseNum - 5000 * (absentNum + nullNum) - 3000 * lateNum > 0
           ? 20000 * courseNum - 5000 * (absentNum + nullNum) - 3000 * lateNum
           : 0;
-      memberData += `\n총금액,세션수:${courseNum} / 결석:${absentNum} / 지각:${lateNum} / 미입력:${nullNum}, , , , , , , , ,${totalMoney}\n\n`;
+      memberData += `\n총금액,세션수:${courseNum}, , , , , , , , ,${
+        20000 * courseNum
+      }`;
+      memberData += `\n반환금액,세션수:${courseNum} / 결석:${absentNum} / 지각:${lateNum} / 미입력:${nullNum}, , , , , , , , ,${totalMoney}\n\n`;
     });
     saveAs(
       new Blob(['\uFEFF' + memberData], { type: 'text/csv;charset=utf-8' }),

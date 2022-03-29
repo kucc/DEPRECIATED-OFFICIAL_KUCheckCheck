@@ -11,6 +11,8 @@ function UserCourse({ userData }) {
   const [currentSemester, setCurrentSemester] = useState('');
   const [currentCourses, setCurrentCourses] = useState([]);
   const [pastCourses, setPastCourses] = useState([]);
+  const currentUser = useSelector(state => state.user.currentUser);
+  console.log(currentUser);
   useEffect(() => {
     async function fetchCurrentSemester() {
       const commonInfoData = await firestoreService
