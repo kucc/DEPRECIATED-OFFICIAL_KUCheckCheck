@@ -6,10 +6,7 @@ import TableDragSelect from 'react-table-drag-select';
 import 'react-table-drag-select/style.css';
 
 import { firestoreService } from '@/firebase';
-import {
-  timeTableSelectedDefault,
-  timeTableTimeList,
-} from '@utility/CONSTANTS';
+import { timeTableSelectedDefault, timeTableTimeList } from '@utility';
 
 import { StyledTableContainer } from './style';
 
@@ -35,6 +32,7 @@ export const TimeTable = ({
       cellData && cellData(timeTableData.data());
     }
     fetchTimeTable();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderText = (specificTime, key) => {

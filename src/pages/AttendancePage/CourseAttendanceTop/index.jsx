@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { MAIN_COLOR } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility';
 
 import {
   StyledBackButton,

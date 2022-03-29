@@ -7,8 +7,7 @@ import { useSelector } from 'react-redux';
 import { WhiteShadowButton } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
-import { MAIN_COLOR } from '@utility/COLORS';
-import { RandomEmoji } from '@utility/COMMON_FUNCTION';
+import { MAIN_COLOR, RandomEmoji } from '@utility';
 
 import {
   StyledUserInfoModalEmoji,
@@ -184,12 +183,13 @@ function UserInfoTop({ onChangeFunc, userData }) {
           style={{ width: '100%', marginBottom: '20px' }}
           defaultValue={userLink}
         />
-        <StyledUserInfoModalText style={{ color: MAIN_COLOR }}>
-          탈퇴하기
-        </StyledUserInfoModalText>
         <Button
           danger
-          style={{ backgroundColor: MAIN_COLOR, color: 'white' }}
+          style={{
+            color: 'white',
+            borderColor: MAIN_COLOR,
+            backgroundColor: MAIN_COLOR,
+          }}
           onClick={userQuitHandler}>
           탈퇴하기
         </Button>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
@@ -12,19 +12,19 @@ import {
   AttendacePage,
   CoursePage,
   CourseRegisterPage,
+  GetCSVPage,
   JoinPage,
   LoginPage,
   MainPage,
+  NotFoundPage,
   NoticePage,
   TimeTablePage,
 } from '@pages';
-import GetCSVPage from '@pages/GetCSVPage';
-import NotFoundPage from '@pages/NotFoundPage';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
 
-import './App.css';
+import './App.less';
 
 function App() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledSidePadding } from '@utility/COMMON_STYLE';
+import { StyledSidePadding } from '@utility';
 
 export const StyledCoursePageContainer = styled(StyledSidePadding)``;
 

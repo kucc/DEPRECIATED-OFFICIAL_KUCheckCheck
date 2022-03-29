@@ -52,6 +52,7 @@ function MainSearch() {
     // redux 값을 초기화
     dispatch(setSearch(''));
     dispatch(setCategory(''));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeSearch = e => {
@@ -86,7 +87,7 @@ function MainSearch() {
           <BlackIcon IconComponent={<FaHashtag color='white' />} />
           &ensp;빠른 검색
         </StyledQuickSearchText>
-        <div>
+        <div className='top-margin'>
           {randomCategory.map(tag => (
             <StyledTag
               key={tag}

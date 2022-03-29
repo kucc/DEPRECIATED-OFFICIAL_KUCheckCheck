@@ -1,33 +1,35 @@
-import CheckableTag from 'antd/lib/tag/CheckableTag';
 import styled from 'styled-components';
 
-import { BASE_COLOR, MAIN_COLOR } from '@utility/COLORS';
+import { BASE_COLOR, MAIN_COLOR } from '@utility';
 
-export const StyledTag = styled(CheckableTag)`
+export const StyledTag = styled.div`
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: inline;
+  width: 100%;
   height: 30px;
   margin-left: 10px;
   margin-top: 10px;
   background-color: #f5f5f5;
   border: none;
-  padding: 3px 14px;
+  padding: 8px 14px;
   font-size: 12px;
-  &.ant-tag-checkable-checked {
-    background-color: #212121 !important;
+  cursor: pointer;
+  &:hover {
+    background-color: #000000;
     color: white;
   }
-  &:hover {
-    color: ${MAIN_COLOR} !important;
-  }
+  transition: all 0.3s ease;
+  ${({ checked }) =>
+    checked && `background-color: #000000; color: #fff;pointer-events: none;`}
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;
-    padding: 3px 7px;
+    padding: 7px 9px;
     font-size: 12px;
     margin-left: 5px;
   }
@@ -96,6 +98,9 @@ export const StyledQuickSearchContainer = styled.div`
   grid-template-columns: 100px auto;
   margin-top: 20px;
   align-items: start;
+  .top-margin {
+    margin-top: 10px;
+  }
   @media (max-width: 1224px) {
     display: flex;
     gap: 10px;

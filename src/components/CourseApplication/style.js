@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility';
 
 export const StyledCourseApply = styled.button`
   margin-right: 25px;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import UserCard from '@components/UserCard';
+import { UserCard } from '@components';
 import { StyledInfoCardContainer } from '@components/UserCard/style';
 
 import { firestoreService } from '@/firebase';

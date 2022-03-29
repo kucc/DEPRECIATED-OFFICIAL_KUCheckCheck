@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
-import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { useMediaQuery } from 'react-responsive';
 
-import { NavBar } from '@components/NavBar';
+import { NavBar } from '@components';
 
-import { BASE_COLOR } from '@utility/COLORS';
-import { StyledBackground, StyledSidePadding } from '@utility/COMMON_STYLE';
+import { BASE_COLOR, StyledBackground, StyledSidePadding } from '@utility';
 
 import CourseAttendanceCard from './CourseAttendanceCard';
 import { StyledRoundBox, StyledTextBase } from './CourseAttendanceCard/style';

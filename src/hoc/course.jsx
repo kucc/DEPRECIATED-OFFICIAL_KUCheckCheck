@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
+// TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
 import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-// TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
 import { authService, firestoreService } from '@/firebase';
-import { NEED_TO_LOGIN } from '@utility/ALERT_MESSAGE';
+import { NEED_TO_LOGIN } from '@utility';
 
 export const CourseHoc = (SpecificComponent, option) => {
   // option : 0 => 모든 사람이 출입할 수 있음

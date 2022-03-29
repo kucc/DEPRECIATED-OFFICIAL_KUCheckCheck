@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility/COLORS';
+import { MAIN_COLOR } from '@utility';
 
 export const StyledButton = styled(Button)`
   width: 100%;

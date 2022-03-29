@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { firestoreService } from '@/firebase';
-import { SUCCESS_APPLICATION } from '@utility/ALERT_MESSAGE';
-import { defaultUserAttendance } from '@utility/CONSTANTS';
+import { SUCCESS_APPLICATION, defaultUserAttendance } from '@utility';
 
 import CourseRegisterBox from './CourseRegisterBox';
 

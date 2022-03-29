@@ -6,7 +6,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { BlackIcon } from '@components/BlackIcon';
+import { BlackIcon } from '@components';
 
 import useWindowDimensions from '@hooks/useWindowDimensions';
 
@@ -27,7 +27,7 @@ import {
   StyledInfoLink,
 } from './style';
 
-const UserCard = ({
+export const UserCard = ({
   isDetail,
   emoji,
   name,
@@ -74,7 +74,9 @@ const UserCard = ({
             <StyledInfoBottomContainer>
               <StyledInfoBottom>
                 <BlackIcon IconComponent={<FiPaperclip color='white' />} />
-                <StyledInfoLink href={link}>{link}</StyledInfoLink>
+                <StyledInfoLink href={link} target='_blank'>
+                  {link}
+                </StyledInfoLink>
               </StyledInfoBottom>
               <StyledInfoBottom>
                 <BlackIcon IconComponent={<HiOutlineMail color='white' />} />
@@ -87,8 +89,6 @@ const UserCard = ({
     </StyledInfoCardContainer>
   );
 };
-
-export default UserCard;
 
 UserCard.propTypes = {
   isDetail: PropTypes.bool,

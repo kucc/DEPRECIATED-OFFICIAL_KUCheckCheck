@@ -5,12 +5,16 @@ import { saveAs } from 'file-saver';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+<<<<<<< HEAD
 import AddUser from '@components/AddUser';
 import { NavBar } from '@components/NavBar';
+=======
+import { NavBar } from '@components';
+>>>>>>> a11cb5b89e9b6ff49a3be02fb683735d65e81446
 
 import { authService, firestoreService } from '@/firebase';
 
-const GetCSVPage = () => {
+export const GetCSVPage = () => {
   const [data, setData] = useState('');
   const [attendanceData, setAttendanceData] = useState({});
   const [currentSemester, setCurrentSemester] = useState('');
@@ -197,5 +201,3 @@ const GetCSVPage = () => {
     </div>
   );
 };
-
-export default GetCSVPage;
