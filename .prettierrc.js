@@ -1,4 +1,4 @@
-var jsOption = {
+var tsOption = {
   arrowParens: 'avoid',
   jsxSingleQuote: true,
   bracketSameLine: true,
@@ -18,6 +18,7 @@ var jsOption = {
     '^@(?:hoc|hooks|utility|/)(.*)$',
     '^[./]',
   ],
+  plugins: [require.resolve('@trivago/prettier-plugin-sort-imports')],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };
@@ -27,13 +28,13 @@ module.exports = {
     {
       files: '*.{ts,tsx}',
       options: {
-        ...jsOption,
+        ...tsOption,
       },
     },
     {
       files: '*.{js,jsx}',
       options: {
-        ...jsOption,
+        ...tsOption,
         printWidth: 80,
       },
     },

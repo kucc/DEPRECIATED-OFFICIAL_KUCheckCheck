@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const CracoLessPlugin = require('craco-less');
 const CracoAlias = require('craco-alias');
 
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-typescript',
+    '@babel/preset-react',
+  ],
   plugins: [
     {
       plugin: CracoLessPlugin,
@@ -20,9 +25,9 @@ module.exports = {
     {
       plugin: CracoAlias,
       options: {
-        source: 'jsconfig',
+        source: 'tsconfig',
         baseUrl: '.',
-        jsConfigPath: 'jsconfig.paths.json',
+        tsConfigPath: 'tsconfig.paths.json',
         debug: false,
       },
     },

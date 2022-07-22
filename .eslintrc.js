@@ -2,12 +2,13 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
-  parser: '@babel/eslint-parser',
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   parserOptions: {
-    babelOptions: {
-      presets: ['@babel/preset-react'],
-    },
+    parser: '@babel/eslint-parser',
     ecmaFeatures: {
       jsx: true,
     },
@@ -21,6 +22,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-undef': 'off',
     'no-unused-vars': 'warn',
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     react: {
