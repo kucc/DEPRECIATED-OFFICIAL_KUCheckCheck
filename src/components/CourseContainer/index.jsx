@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { animated, useSpring } from '@react-spring/web';
 import PropTypes from 'prop-types';
 import { AiOutlineRight } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import { CourseDifficulty } from '@components';
 
