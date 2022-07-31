@@ -25,7 +25,7 @@ export const StyledTag = styled.div`
   }
   transition: all 0.3s ease;
   ${({ checked }) =>
-    checked && `background-color: #000000; color: #fff;pointer-events: none;`}
+    checked && `background-color: #000000; color: #fff;`}
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;
