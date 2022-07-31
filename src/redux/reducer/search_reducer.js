@@ -2,7 +2,8 @@
 import { SET_CATEGORY, SET_SEARCH } from '../actions/types';
 
 const initialSearchState = {
-  searchTerm: '',
+  searchTerm: '', // 검색 문자열
+  category: '', // 빠른검색 태크
 };
 
 export default function (state = initialSearchState, action) {
