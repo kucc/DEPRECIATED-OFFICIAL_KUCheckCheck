@@ -240,7 +240,6 @@ function CourseRegisterBox({ enrollHandler }) {
           <StyledInputBox>
             <StyledText style={{ marginTop: '30px' }}>활동 제목</StyledText>
             <StyledTextArea
-              allowClear={true}
               maxLength={50}
               onChange={onChangeTitle}
               placeholder='50자 이내'
