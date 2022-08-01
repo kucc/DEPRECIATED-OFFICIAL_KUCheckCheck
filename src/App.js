@@ -49,6 +49,47 @@ function App() {
     });
   }, [dispatch, history]);
 
+  const singlePageRouter = () => {
+    return (
+      <Switch>
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={JoinPage} />
+      </Switch>
+    )
+  }
+
+  const navFooterPageRouter = () => {
+    return (
+      <Switch>
+        <Route exact path='/' component={MainPage} />
+        <Route path='/rules' component={NoticePage} />
+        <Route path='/timetable' component={TimeTablePage} />
+        {/* userPage */}
+        <Route exact path='/userpage/not-found' component={NotFoundPage} />
+        <Route path='/userpage/:id' component={UserPageHoc()} />
+        {/* coursePage */}
+        <Route exact path='/course/not-found' component={NotFoundPage} />
+        <Route
+          exact
+          path='/course/register'
+          component={CourseRegisterHoc(CourseRegisterPage)}
+        />
+        {/* 
+                  option : 0 => 모든 사람이 출입할 수 있음
+                  option : 1 => 로그인된 사람만이 출입할 수 있음
+                */}
+        <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
+        <Route
+          exact
+          path='/course/:id/attendance'
+          component={CourseHoc(AttendacePage, 1)}
+        />
+        <Route exact path='/getCSV' component={GetCSVPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    )
+  }
+
   return (
     // TODO
     // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
@@ -58,41 +99,12 @@ function App() {
       {SINGLE_PATHNAMES_LIST.includes(pathname) ?
         (
           // NavBar, footer remove
-          <Switch> 
-            <Route path='/login' component={LoginPage} />
-            <Route path='/signup' component={JoinPage} />
-          </Switch>
+          singlePageRouter()
         ) : (
           <>
             <NavBar />
             <StyledMain className='main-background-color'>
-              <Switch>
-                <Route exact path='/' component={MainPage} />
-                <Route path='/rules' component={NoticePage} />
-                <Route path='/timetable' component={TimeTablePage} />
-                {/* userPage */}
-                <Route exact path='/userpage/not-found' component={NotFoundPage} />
-                <Route path='/userpage/:id' component={UserPageHoc()} />
-                {/* coursePage */}
-                <Route exact path='/course/not-found' component={NotFoundPage} />
-                <Route
-                  exact
-                  path='/course/register'
-                  component={CourseRegisterHoc(CourseRegisterPage)}
-                />
-                {/* 
-                  option : 0 => 모든 사람이 출입할 수 있음
-                  option : 1 => 로그인된 사람만이 출입할 수 있음
-                */}
-                <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
-                <Route
-                  exact
-                  path='/course/:id/attendance'
-                  component={CourseHoc(AttendacePage, 1)}
-                />
-                <Route exact path='/getCSV' component={GetCSVPage} />
-                <Route component={NotFoundPage} />
-              </Switch>
+              {navFooterPageRouter()}
             </StyledMain>
             <Footer />
           </>
