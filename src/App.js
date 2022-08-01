@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 
 import 'antd/dist/antd.less';
 import { useDispatch } from 'react-redux';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
 import { clearUser, setUser } from '@redux/actions/user_action';
 
-import { Footer } from '@components';
+import { NavBar, Footer } from '@components';
 import {
   AttendacePage,
   CoursePage,
@@ -23,18 +23,23 @@ import {
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
+import { SINGLE_PATHNAMES_LIST, StyledMain } from './utility';
 
 import './App.less';
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { pathname } = useLocation();
+
+  useEffect(() => { // Link로 이동 시 스크롤 top
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
-    const path = document.location.pathname;
     authService.onAuthStateChanged(user => {
       if (user) {
-        if (path === '/login' || path === '/signup') {
+        if (pathname === '/login' || pathname === '/signup') {
           history.push('/');
         }
         dispatch(setUser(user));
@@ -50,36 +55,49 @@ function App() {
     // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
     <>
       <GlobalStyle />
-      <Switch>
-        <Route exact path='/' component={MainPage} />
-        <Route path='/login' component={LoginPage} />
-        <Route path='/signup' component={JoinPage} />
-        <Route path='/rules' component={NoticePage} />
-        <Route path='/timetable' component={TimeTablePage} />
-        {/* userPage */}
-        <Route exact path='/userpage/not-found' component={NotFoundPage} />
-        <Route path='/userpage/:id' component={UserPageHoc()} />
-        {/* coursePage */}
-        <Route exact path='/course/not-found' component={NotFoundPage} />
-        <Route
-          exact
-          path='/course/register'
-          component={CourseRegisterHoc(CourseRegisterPage)}
-        />
-        {/* 
-          option : 0 => 모든 사람이 출입할 수 있음
-          option : 1 => 로그인된 사람만이 출입할 수 있음
-        */}
-        <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
-        <Route
-          exact
-          path='/course/:id/attendance'
-          component={CourseHoc(AttendacePage, 1)}
-        />
-        <Route exact path='/getCSV' component={GetCSVPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <Footer />
+      {SINGLE_PATHNAMES_LIST.includes(pathname) ?
+        (
+          // NavBar, footer remove
+          <Switch> 
+            <Route path='/login' component={LoginPage} />
+            <Route path='/signup' component={JoinPage} />
+          </Switch>
+        ) : (
+          <>
+            <NavBar />
+            <StyledMain className='main-background-color'>
+              <Switch>
+                <Route exact path='/' component={MainPage} />
+                <Route path='/rules' component={NoticePage} />
+                <Route path='/timetable' component={TimeTablePage} />
+                {/* userPage */}
+                <Route exact path='/userpage/not-found' component={NotFoundPage} />
+                <Route path='/userpage/:id' component={UserPageHoc()} />
+                {/* coursePage */}
+                <Route exact path='/course/not-found' component={NotFoundPage} />
+                <Route
+                  exact
+                  path='/course/register'
+                  component={CourseRegisterHoc(CourseRegisterPage)}
+                />
+                {/* 
+                  option : 0 => 모든 사람이 출입할 수 있음
+                  option : 1 => 로그인된 사람만이 출입할 수 있음
+                */}
+                <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
+                <Route
+                  exact
+                  path='/course/:id/attendance'
+                  component={CourseHoc(AttendacePage, 1)}
+                />
+                <Route exact path='/getCSV' component={GetCSVPage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </StyledMain>
+            <Footer />
+          </>
+        )
+      }
     </>
   );
 }
@@ -91,6 +109,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
     font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+  }
+  .main-background-color {
+    background-color: rgb(245, 245, 245);
   }
   .out-shadow-extra-strong{
     box-shadow: 0 15px 14px 3px lightgrey !important;

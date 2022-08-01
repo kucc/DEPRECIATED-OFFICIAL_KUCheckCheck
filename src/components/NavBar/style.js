@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 import { MAIN_COLOR, StyledSidePadding } from '@utility';
 
-export const NavBarBackground = styled.div`
-  background-color: rgb(245, 245, 245);
-`;
-
 export const NavBarContainer = styled(StyledSidePadding)`
+  position: fixed;
+  width: 100%;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   height: 80px;

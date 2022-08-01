@@ -4,6 +4,13 @@ import styled from 'styled-components';
 
 import { BASE_COLOR } from './COLORS';
 
+export const StyledMain = styled.div`
+  padding-top: 80px;
+  @media (max-width: 1224px) {
+    padding-top: 65px;
+  }
+`;
+
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
 `;

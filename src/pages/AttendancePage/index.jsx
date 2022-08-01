@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { useMediaQuery } from 'react-responsive';
 
-import { NavBar } from '@components';
 
 import { BASE_COLOR, StyledBackground, StyledSidePadding } from '@utility';
 
@@ -53,7 +52,6 @@ export const AttendacePage = ({ courseData }) => {
 
   return (
     <StyledBackground>
-      <NavBar />
       <StyledSidePadding>
         <CourseAttendanceTop
           courseName={courseName}

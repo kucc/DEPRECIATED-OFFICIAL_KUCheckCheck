@@ -1,3 +1,5 @@
+export const SINGLE_PATHNAMES_LIST = ['/login', '/signup'];
+
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];
 };

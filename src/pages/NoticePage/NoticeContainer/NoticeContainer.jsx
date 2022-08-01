@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavBar } from '@components';
-
 import { firestoreService } from '@/firebase';
 
 import {
@@ -29,7 +27,6 @@ function NoticeContainer() {
 
   return (
     <StyledBackground>
-      <NavBar />
       <StyledRulesBox>
         <StyledRulesTitle>공지사항</StyledRulesTitle>
         <StyledRulesCollapse

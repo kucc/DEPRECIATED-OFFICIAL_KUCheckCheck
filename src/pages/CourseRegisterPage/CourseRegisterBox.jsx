@@ -4,8 +4,6 @@ import { Button, Select, Tooltip } from 'antd';
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
 
-import { NavBar } from '@components';
-
 import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
@@ -111,7 +109,6 @@ function CourseRegisterBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <NavBar />
       <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
