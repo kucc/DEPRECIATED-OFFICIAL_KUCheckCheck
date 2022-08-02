@@ -10,6 +10,7 @@ import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
   PASSWORD_DOSE_NOT_MATCH,
   RandomEmoji,
+  FORM_IS_NOT_FULL
 } from '@utility';
 
 function JoinForm() {
@@ -50,7 +51,7 @@ function JoinForm() {
       !passwordConfirm ||
       !name
     ) {
-      alert('모두 입력해주세요.');
+      alert(FORM_IS_NOT_FULL);
       return false;
     }
     if(password !== passwordConfirm) {

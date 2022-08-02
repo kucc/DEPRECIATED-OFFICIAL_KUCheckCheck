@@ -7,6 +7,7 @@ import { FullWidthButton, InputBoxWithLabel } from '@components';
 import { authService } from '@/firebase';
 
 import { StyledForm } from './style';
+import { FORM_IS_NOT_FULL } from '@utility';
 
 function LoginForm() {
   const history = useHistory();
@@ -25,10 +26,22 @@ function LoginForm() {
     });
   };
 
+  const validationLogin = () => {
+    if(!email || !password) {
+      alert(FORM_IS_NOT_FULL);
+      return false
+    }
+    return true
+  }
+
   const submitHandler = async event => {
+    event.preventDefault();
+
+    if(!validationLogin()) {
+      return false
+    }
     try {
       setIsSubmitted(true);
-      event.preventDefault();
       await authService.signInWithEmailAndPassword(email, password);
       history.push('/');
     } catch (error) {
