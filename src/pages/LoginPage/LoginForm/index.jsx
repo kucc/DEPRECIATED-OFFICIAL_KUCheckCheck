@@ -5,9 +5,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { FullWidthButton, InputBoxWithLabel } from '@components';
 
 import { authService } from '@/firebase';
+import { FORM_IS_NOT_FULL } from '@utility';
 
 import { StyledForm } from './style';
-import { FORM_IS_NOT_FULL } from '@utility';
 
 function LoginForm() {
   const history = useHistory();
@@ -27,18 +27,18 @@ function LoginForm() {
   };
 
   const validationLogin = () => {
-    if(!email || !password) {
-      alert(FORM_IS_NOT_FULL);
-      return false
+    if (!email || !password) {
+      return false;
     }
-    return true
-  }
+    return true;
+  };
 
   const submitHandler = async event => {
     event.preventDefault();
 
-    if(!validationLogin()) {
-      return false
+    if (!validationLogin()) {
+      alert(FORM_IS_NOT_FULL);
+      return false;
     }
     try {
       setIsSubmitted(true);
@@ -83,14 +83,15 @@ function LoginForm() {
         onChange={onChange}
       />
       <FullWidthButton
+        width={220}
+        height={60}
         style={{
-          width: '220px',
-          height: '60px',
           marginTop: '18%',
         }}
         htmlType='submit'
         text='LOGIN'
-        loading={isSubmitted}
+        isLoading={isSubmitted}
+        isActive={validationLogin()}
       />
       <Link to='/signup' className='signupButton'>
         JOIN

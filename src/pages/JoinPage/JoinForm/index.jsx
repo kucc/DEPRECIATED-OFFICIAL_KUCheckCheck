@@ -8,9 +8,9 @@ import { StyledForm } from '@pages/LoginPage/LoginForm/style';
 import { authService, firestoreService } from '@/firebase';
 import {
   CAN_NOT_CREATE_USER_IN_FIREBASE,
+  FORM_IS_NOT_FULL,
   PASSWORD_DOSE_NOT_MATCH,
   RandomEmoji,
-  FORM_IS_NOT_FULL
 } from '@utility';
 
 function JoinForm() {
@@ -45,16 +45,10 @@ function JoinForm() {
   };
 
   const validationSignUp = () => {
-    if (
-      !email ||
-      !password ||
-      !passwordConfirm ||
-      !name
-    ) {
-      alert(FORM_IS_NOT_FULL);
+    if (!email || !password || !passwordConfirm || !name) {
       return false;
     }
-    if(password !== passwordConfirm) {
+    if (password !== passwordConfirm) {
       alert(PASSWORD_DOSE_NOT_MATCH);
       return false;
     }
@@ -66,11 +60,12 @@ function JoinForm() {
     event.preventDefault();
 
     if (!validationSignUp()) {
+      alert(FORM_IS_NOT_FULL);
       return false;
     }
     try {
       setIsSubmitted(true);
- 
+
       const createdUser = await authService.createUserWithEmailAndPassword(
         email,
         password,
@@ -166,14 +161,15 @@ function JoinForm() {
       /> */}
 
       <FullWidthButton
+        width={220}
+        height={60}
         style={{
-          width: '220px',
-          height: '60px',
           margin: '18% auto',
         }}
         htmlType='submit'
         text='JOIN'
-        loading={isSubmitted}
+        isLoading={isSubmitted}
+        isActive={validationSignUp()}
       />
     </StyledForm>
   );

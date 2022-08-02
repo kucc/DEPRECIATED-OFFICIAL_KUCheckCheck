@@ -60,10 +60,11 @@ export const CoursePage = ({ courseData }) => {
             <FullWidthButton
               text='출결보기'
               style={{
+                width: '100%',
                 height: isMobile ? '48px' : '56px',
-                backgroundColor: MAIN_COLOR,
-                cursor: 'pointer',
               }}
+              isActive={true}
+              isLoading={false}
             />
           </StyledAttendanceButton>
           <StyledRegisterButton className='out-shadow-middle'>
