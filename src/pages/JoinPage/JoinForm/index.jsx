@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import { FullWidthButton, InputBoxWithLabel } from '@components';
+import { StyledForm } from '@pages/LoginPage/LoginForm/style';
 
 import { authService, firestoreService } from '@/firebase';
 import {
@@ -43,13 +43,33 @@ function JoinForm() {
     });
   };
 
+  const validationSignUp = () => {
+    if (
+      !email ||
+      !password ||
+      !passwordConfirm ||
+      !name
+    ) {
+      alert('모두 입력해주세요.');
+      return false;
+    }
+    if(password !== passwordConfirm) {
+      alert(PASSWORD_DOSE_NOT_MATCH);
+      return false;
+    }
+
+    return true;
+  };
+
   const submitHandler = async event => {
+    event.preventDefault();
+
+    if (!validationSignUp()) {
+      return false;
+    }
     try {
       setIsSubmitted(true);
-      event.preventDefault();
-      if (password !== passwordConfirm)
-        throw new Error(PASSWORD_DOSE_NOT_MATCH);
-
+ 
       const createdUser = await authService.createUserWithEmailAndPassword(
         email,
         password,
@@ -72,6 +92,7 @@ function JoinForm() {
         emoji: RandomEmoji(),
         courseHistory: [],
       };
+
       await firestoreService
         .collection('users')
         .doc(createdUser.user.uid)
