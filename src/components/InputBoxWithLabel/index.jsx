@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { StyledInput, StyledLabel, Wrapper } from './style';
+import { StyledInput, StyledLabel, Wrapper, StyledRequiredText } from './style';
 
 export const InputBoxWithLabel = ({
   labelTitle,
@@ -11,14 +11,17 @@ export const InputBoxWithLabel = ({
   placeholder,
   value,
   onChange,
+  isRequired = false
 }) => {
   return (
-    <Wrapper>
+    <Wrapper isLabelTitle={labelTitle}>
       {labelTitle && (
         <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
       )}
+      {isRequired && (
+        <StyledRequiredText>(선택)</StyledRequiredText>
+      )}
       <StyledInput
-        className='in-shadow-weak'
         name={inputName}
         type={inputType}
         placeholder={placeholder}
@@ -36,4 +39,5 @@ InputBoxWithLabel.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  isRequired: PropTypes.bool,
 };

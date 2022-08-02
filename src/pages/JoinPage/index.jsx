@@ -1,19 +1,27 @@
 import React from 'react';
 
-import { Description } from '@components';
+import { useHistory } from 'react-router-dom';
+
+import { AuthDescription } from '@components';
+
+import {
+  StyledAuthContainer,
+  StyledAuthMainImg,
+  StyledCenterContainer,
+} from '@pages/LoginPage/style';
 
 import JoinForm from './JoinForm';
-import { StyledCol, StyledRow, Wrapper } from './style';
 
 export const JoinPage = () => {
+  const history = useHistory();
+
   return (
-    <StyledRow>
-      <StyledCol>
-        <Wrapper>
-          <Description />
-          <JoinForm />
-        </Wrapper>
-      </StyledCol>
-    </StyledRow>
+    <StyledCenterContainer>
+      <StyledAuthContainer>
+        <AuthDescription />
+        <JoinForm />
+        <StyledAuthMainImg alt='KUCC' onClick={() => history.push('/')} />
+      </StyledAuthContainer>
+    </StyledCenterContainer>
   );
 };

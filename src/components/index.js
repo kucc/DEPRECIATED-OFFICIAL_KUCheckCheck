@@ -5,7 +5,7 @@ export * from './CourseApplication';
 export * from './CourseContainer';
 export * from './CourseDifficulty';
 export * from './DefaultLogo';
-export * from './Description';
+export * from './AuthDescription';
 export * from './EmptyBox';
 export * from './Footer';
 export * from './ImageContainer';

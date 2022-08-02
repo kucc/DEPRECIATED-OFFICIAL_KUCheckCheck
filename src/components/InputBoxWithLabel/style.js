@@ -1,30 +1,46 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR } from '@utility';
+import { TEXT_COLOR } from '@utility';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  margin-top: ${(props) => (props.isLabelTitle ? '38px' : '20px')};
+  &:first-child {
+    margin: 0;
+  }
+`;
 
 export const StyledLabel = styled.label`
-  margin-left: 20px;
-  font-size: 15px;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'NexonBo';
+  color: ${TEXT_COLOR};
+  margin: 0 6px 8px 30px;
   @media (max-width: 1224px) {
     font-size: 12px;
   }
 `;
 
 export const StyledInput = styled.input`
-  padding-left: 20px;
-  height: 3em;
+  color: ${TEXT_COLOR};
   width: 100%;
-  border-radius: 29px;
-  background-color: ${BASE_COLOR} !important;
-  border: none;
+  height: 60px;
+  padding: 20px 34px;
+  background-color: #F5F5F5;
+  border-radius: 39px;
+  border: 1px solid #DEDEDE;
   outline: none;
   &::placeholder {
-    color: rgb(204, 204, 204);
-    font-size: 12px;
-    @media (max-width: 1224px) {
-      font-size: 11px;
-    }
+    color: #B6B6B6;
   }
+  @media (max-width: 1224px) {
+    height: 48px;
+    padding: 12px 20px;
+
+  }
+`;
+
+export const StyledRequiredText = styled.span`
+  color: #B6B6B6;
+  font-size: 12px;
+  font-family: 'NexonBo';
 `;

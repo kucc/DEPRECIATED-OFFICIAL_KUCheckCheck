@@ -12,8 +12,6 @@ import {
   RandomEmoji,
 } from '@utility';
 
-import { StyledForm } from './style';
-
 function JoinForm() {
   const [inputs, setInputs] = useState({
     email: '',
@@ -21,8 +19,8 @@ function JoinForm() {
     passwordConfirm: '',
     name: '',
     link: '',
-    comment: '',
-    detailComment: '',
+    // comment: '',
+    // detailComment: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const history = useHistory();
@@ -32,8 +30,8 @@ function JoinForm() {
     passwordConfirm,
     name,
     link,
-    comment,
-    detailComment,
+    // comment,
+    // detailComment,
   } = inputs;
 
   const onChange = e => {
@@ -67,9 +65,9 @@ function JoinForm() {
       const userData = {
         email,
         name,
-        comment,
         link,
-        detailComment,
+        // comment,
+        // detailComment,
         role: '준회원',
         emoji: RandomEmoji(),
         courseHistory: [],
@@ -89,63 +87,72 @@ function JoinForm() {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <Space direction='vertical' size='large'>
-        <InputBoxWithLabel
-          labelTitle='이메일'
-          inputName='email'
-          inputType='email'
-          value={email}
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          labelTitle='비밀번호'
-          inputName='password'
-          inputType='password'
-          value={password}
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          labelTitle='비밀번호 확인'
-          inputName='passwordConfirm'
-          inputType='password'
-          value={passwordConfirm}
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          labelTitle='이름'
-          inputName='name'
-          inputType='text'
-          placeholder='ex) 정인아'
-          value={name}
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          labelTitle='링크 (https://까지 포함)'
-          inputName='link'
-          inputType='text'
-          placeholder='ex) https://github.com/'
-          value={link}
-          onChange={onChange}
-        />
+      <InputBoxWithLabel
+        labelTitle='이메일'
+        inputName='email'
+        inputType='email'
+        value={email}
+        onChange={onChange}
+      />
+      <InputBoxWithLabel
+        labelTitle='비밀번호'
+        inputName='password'
+        inputType='password'
+        value={password}
+        onChange={onChange}
+      />
+      <InputBoxWithLabel
+        labelTitle='비밀번호 확인'
+        inputName='passwordConfirm'
+        inputType='password'
+        value={passwordConfirm}
+        onChange={onChange}
+      />
+      <InputBoxWithLabel
+        labelTitle='이름'
+        inputName='name'
+        inputType='text'
+        value={name}
+        onChange={onChange}
+      />
+      <InputBoxWithLabel
+        labelTitle='소개 링크'
+        inputName='link'
+        inputType='text'
+        placeholder='ex) https://github.com/'
+        value={link}
+        onChange={onChange}
+        isRequired={true}
+      />
 
-        <InputBoxWithLabel
-          labelTitle='소개(간단한 소개)'
-          inputName='comment'
-          inputType='text'
-          placeholder='100자 이내'
-          value={comment}
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          labelTitle='세부 코멘트(자세한 소개)'
-          inputName='detailComment'
-          inputType='text'
-          placeholder='200자 이내'
-          value={detailComment}
-          onChange={onChange}
-        />
-        <FullWidthButton htmlType='submit' text='JOIN' loading={isSubmitted} />
-      </Space>
+      {/* <InputBoxWithLabel
+        labelTitle='소개(간단한 소개)'
+        inputName='comment'
+        inputType='text'
+        placeholder='100자 이내'
+        value={comment}
+        onChange={onChange}
+      /> */}
+
+      {/* <InputBoxWithLabel
+        labelTitle='세부 코멘트(자세한 소개)'
+        inputName='detailComment'
+        inputType='text'
+        placeholder='200자 이내'
+        value={detailComment}
+        onChange={onChange}
+      /> */}
+
+      <FullWidthButton
+        style={{
+          width: '220px',
+          height: '60px',
+          margin: '18% auto',
+        }}
+        htmlType='submit'
+        text='JOIN'
+        loading={isSubmitted}
+      />
     </StyledForm>
   );
 }

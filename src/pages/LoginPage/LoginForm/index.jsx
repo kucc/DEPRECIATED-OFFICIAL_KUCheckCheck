@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { Space } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { FullWidthButton, InputBoxWithLabel } from '@components';
 
@@ -56,23 +55,33 @@ function LoginForm() {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <Space direction='vertical' size='large'>
-        <InputBoxWithLabel
-          inputName='email'
-          inputType='email'
-          value={email}
-          placeholder='Email'
-          onChange={onChange}
-        />
-        <InputBoxWithLabel
-          inputName='password'
-          inputType='password'
-          value={password}
-          placeholder='Pw'
-          onChange={onChange}
-        />
-        <FullWidthButton htmlType='submit' text='LOGIN' loading={isSubmitted} />
-      </Space>
+      <InputBoxWithLabel
+        inputName='email'
+        inputType='email'
+        value={email}
+        placeholder='이메일'
+        onChange={onChange}
+      />
+      <InputBoxWithLabel
+        inputName='password'
+        inputType='password'
+        value={password}
+        placeholder='비밀번호'
+        onChange={onChange}
+      />
+      <FullWidthButton
+        style={{
+          width: '220px',
+          height: '60px',
+          marginTop: '18%',
+        }}
+        htmlType='submit'
+        text='LOGIN'
+        loading={isSubmitted}
+      />
+      <Link to='/signup' className='signupButton'>
+        JOIN
+      </Link>
     </StyledForm>
   );
 }
