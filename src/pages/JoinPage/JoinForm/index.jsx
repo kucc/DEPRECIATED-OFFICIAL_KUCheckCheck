@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
 import { FullWidthButton, InputBoxWithLabel } from '@components';
@@ -14,6 +15,8 @@ import {
 } from '@utility';
 
 function JoinForm() {
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -161,9 +164,10 @@ function JoinForm() {
       /> */}
 
       <FullWidthButton
-        width={220}
-        height={60}
         style={{
+          width: '220px',
+          height: isMobile ? '52px' : '60px',
+          fontSize: isMobile ? '16px' : '20px',
           margin: '18% auto',
         }}
         htmlType='submit'

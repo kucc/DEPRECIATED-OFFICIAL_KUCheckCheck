@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { FullWidthButton, InputBoxWithLabel } from '@components';
 
@@ -10,6 +11,8 @@ import { FORM_IS_NOT_FULL } from '@utility';
 import { StyledForm } from './style';
 
 function LoginForm() {
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
   const history = useHistory();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [inputs, setInputs] = useState({
@@ -82,10 +85,11 @@ function LoginForm() {
         placeholder='비밀번호'
         onChange={onChange}
       />
-      <FullWidthButton
-        width={220}
-        height={60}
+      <FullWidthButton       
         style={{
+          width: '220px',
+          height: isMobile ? '52px' : '60px',
+          fontSize: isMobile ? '16px' : '20px',
           marginTop: '18%',
         }}
         htmlType='submit'

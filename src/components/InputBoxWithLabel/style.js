@@ -24,6 +24,7 @@ export const StyledInput = styled.input`
   color: ${TEXT_COLOR};
   width: 100%;
   height: 60px;
+  font-size: 18px;
   padding: 20px 34px;
   background-color: #F5F5F5;
   border-radius: 39px;
@@ -33,9 +34,10 @@ export const StyledInput = styled.input`
     color: #B6B6B6;
   }
   @media (max-width: 1224px) {
-    height: 48px;
-    padding: 12px 20px;
-
+    font-size: 14px;
+    height: 52px;
+    padding: 12px 34px;
+    border-radius: 25px;
   }
 `;
 

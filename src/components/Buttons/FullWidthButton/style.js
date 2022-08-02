@@ -3,16 +3,15 @@ import styled, { keyframes } from 'styled-components';
 import { MAIN_COLOR, TEXT_COLOR } from '@utility';
 
 export const StyledButton = styled.button`
-  width: ${(props) => `${props.width}px`};
-  height: ${(props) => `${props.height}px`};
   color: ${TEXT_COLOR};
   background-color: #F5F5F5;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'tmoneyBo';
   border: none;
   border-radius: 30px;
   cursor: 'pointer';
   @media (max-width: 1224px) {
-    font-size: 12px;
+    font-size: 16px;
   }
   &.active {
     color: white;
