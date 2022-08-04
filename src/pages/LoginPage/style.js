@@ -11,7 +11,7 @@ export const StyledCenterContainer = styled.div`
 
 export const StyledAuthContainer = styled.div`
   width: 660px;
-  height: ${(props) => props.isLogin ? '100vh' : '100%'};
+  height: ${(props) => props.isLogin && '100vh'};
   padding: 0 104px 100px 104px;
   background-color: white;
   @media (max-width: 1224px) {
@@ -20,6 +20,9 @@ export const StyledAuthContainer = styled.div`
   }
   @media (max-height: 900px) {
     padding: 10%;
+  }
+  @media (min-height: 1200px) {
+    height: ${(props) => !props.isLogin && '100vh'};
   }
 `;
 
