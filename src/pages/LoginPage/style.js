@@ -18,9 +18,6 @@ export const StyledAuthContainer = styled.div`
     width: 100%;
     padding: 10%;
   }
-  @media (max-height: 900px) {
-    padding: 10%;
-  }
   @media (min-height: 1200px) {
     height: ${(props) => !props.isLogin && '100vh'};
   }
