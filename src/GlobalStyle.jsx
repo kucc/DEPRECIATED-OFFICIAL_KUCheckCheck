@@ -5,6 +5,10 @@ html, body, #root {
   width: 100%;
   height: 100%;
 }
+main {
+  /* box-shadow: -5px 5px 5px -5px #EBEBEB; */
+  height: 800px;
+}
 * {
   padding: 0px;
   margin: 0px;

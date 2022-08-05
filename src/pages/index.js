@@ -10,3 +10,4 @@ export * from './NotFoundPage';
 export * from './NoticePage';
 export * from './TimeTablePage';
 export * from './UserPage';
+export * from './RenewalMainPage';

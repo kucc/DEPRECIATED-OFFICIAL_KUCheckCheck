@@ -19,11 +19,13 @@ import {
   NotFoundPage,
   NoticePage,
   TimeTablePage,
+  RenewalMainPage
 } from '@pages';
+import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { SINGLE_PATHNAMES_LIST, StyledMain } from './utility';
+import { SINGLE_PATHNAMES_LIST, StyledBody, StyledMainContainer, RENEWAL_PATH_LIST, StyledMain } from './utility';
 
 import './App.less';
 
@@ -58,7 +60,9 @@ function App() {
     )
   }
 
-  const NavFooterPageRouter = () => {
+  const NavFooterPageRouter = () => {    // TODO
+    // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
+    // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
     return (
       <Switch>
         <Route exact path='/' component={MainPage} />
@@ -90,15 +94,33 @@ function App() {
     )
   }
 
+  const RenewalPageRouter = () => {
+    return (
+      <Switch>
+        <Route path='/main' component={RenewalMainPage} />
+        <Route path='/test' component={RenewalMainPage} />
+      </Switch>
+    )
+  }
+
+
   return (
-    // TODO
-    // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
-    // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
     <>
       <GlobalStyle />
       {SINGLE_PATHNAMES_LIST.includes(pathname) ?
         (
           SinglePageRouter()
+        ) : RENEWAL_PATH_LIST.includes(pathname) ? (
+          <StyledBody>
+            <RenewalHeader pathname={pathname} />
+            <RenewalTopHeader />
+            <StyledMainContainer>
+              <main>
+                {RenewalPageRouter()}
+              </main>
+              <RenewalFooter />
+            </StyledMainContainer>
+          </StyledBody>
         ) : (
           <>
             <NavBar />
@@ -107,8 +129,7 @@ function App() {
             </StyledMain>
             <Footer />
           </>
-        )
-      }
+        )}
     </>
   );
 }

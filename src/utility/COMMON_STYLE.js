@@ -4,6 +4,22 @@ import styled from 'styled-components';
 
 import { BASE_COLOR } from './COLORS';
 
+export const StyledBody = styled.div`
+  width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  @media (max-width: 1920px) {
+    width: 100%;
+  }
+`;
+
+export const StyledMainContainer = styled.div`
+  width: 100%;
+  padding-top: 96px;
+  padding-left: 285px;
+`;
+
 export const StyledMain = styled.div`
   padding-top: 80px;
   @media (max-width: 1224px) {
