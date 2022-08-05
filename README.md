@@ -10,5 +10,3 @@ https://lms.kucc.co.kr/
 ### Developers KUCHECKCHECK
 
 강태웅 김세진 김채린 명재위 이희준 정인아
-
-edit test
