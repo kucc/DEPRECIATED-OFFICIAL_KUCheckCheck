@@ -46,9 +46,9 @@ export const StyledCourseLevel = styled.div`
 
 export const StyledRedText = styled.div`
   color: ${MAIN_COLOR};
-  font-family: 'NexonBo';
-`;
+  font-weight: 700;
+  `;
 
 export const StyledGradeText = styled.div`
-  font-family: 'NexonBo';
+font-weight: 700;
 `;

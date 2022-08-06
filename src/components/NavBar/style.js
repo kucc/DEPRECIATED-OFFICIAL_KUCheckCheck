@@ -30,7 +30,7 @@ export const NavBarText = styled.div`
   color: ${props =>
     props.hoverState && props.hoverState === props.text ? MAIN_COLOR : 'black'};
   font-size: 15px;
-  font-family: 'NexonBo';
+  font-weight: 700;
   padding: 20px;
   padding-top: 25px;
   @media (max-width: 1224px) {

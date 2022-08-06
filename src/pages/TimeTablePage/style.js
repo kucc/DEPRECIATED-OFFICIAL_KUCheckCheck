@@ -18,7 +18,7 @@ export const StyledTimeTableBackground = styled.div`
 
 export const StyledTimeTableText = styled.div`
   margin-left: 5%;
-  font-family: 'NexonBo';
+  font-weight: 700;
   margin-top: 50px;
   font-size: 26px;
 `;

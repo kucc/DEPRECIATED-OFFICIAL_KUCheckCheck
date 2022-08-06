@@ -13,7 +13,7 @@ export const StyledTopBox = styled.div`
 
 export const StyledTopTitle = styled.div`
   font-size: 24px;
-  font-family: 'NexonBo';
+  font-weight: 700;
   @media (max-width: 1224px) {
     font-size: 14px;
   }

@@ -66,7 +66,7 @@ export const StyledInfoText = styled.div`
 `;
 
 export const StyledInfoTitle = styled.div`
-  font-family: 'NexonBo';
+  font-weight: 700;
   font-size: 20px;
   @media (max-width: 1224px) {
     font-size: 12px;

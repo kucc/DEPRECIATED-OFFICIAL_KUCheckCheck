@@ -13,7 +13,8 @@ main {
 * {
   padding: 0px;
   margin: 0px;
-  font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+  font-family: "sfPro", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
+  font-weight: 500;
 }
 .main-background-color {
   background-color: rgb(245, 245, 245);

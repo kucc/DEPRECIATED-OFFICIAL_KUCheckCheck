@@ -31,7 +31,7 @@ export const StyledMainTitle1 = styled.div`
       }
     }}
     font-size: 3.5em;
-    font-family: NexonBo;
+    font-weight: 700;
     color: ${MAIN_COLOR};
     @media (max-width: 1224px) {
       margin-bottom: -55px;
@@ -50,7 +50,7 @@ export const StyledMainTitle2 = styled.div`
       }
     }}
     font-size: 3.5em;
-    font-family: NexonBo;
+    font-weight: 700;
     padding: 10px 0;
     @media (max-width: 1224px) {
       padding: 30px 0px;
@@ -66,7 +66,6 @@ export const StyledMainExplain = styled.div`
   & > p {
     font-size: 15px;
     word-spacing: 1.2px;
-    font-family: NexonRe;
   }
 
   @media (max-width: 1224px) {

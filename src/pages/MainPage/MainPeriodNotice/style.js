@@ -22,5 +22,5 @@ export const StyledPeriod = styled.div`
 `;
 
 export const StyledPeriodTitle = styled.span`
-  font-family: 'NexonBo';
+  font-weight: 700;
 `;

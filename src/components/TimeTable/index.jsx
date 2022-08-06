@@ -102,7 +102,7 @@ export const TimeTable = ({
             setselected(selected);
             selectedData && selectedData(selected);
           }}>
-          <tr style={{ fontFamily: 'NexonBo', fontSize: '18px' }}>
+          <tr style={{ fontWeight: 700, fontSize: '18px' }}>
             <td disabled />
             <td disabled>일</td>
             <td disabled>월</td>

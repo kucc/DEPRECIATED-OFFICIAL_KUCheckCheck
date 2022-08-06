@@ -18,7 +18,6 @@ export const StyledBox = styled.div`
   background-color: white;
   border-radius: 50%;
   text-align: center;
-  font-family: 'NexonRe';
   font-size: 10px;
   width: 130px;
   height: 130px;
@@ -60,11 +59,10 @@ export const StyledAttendanceBox = styled.div`
 `;
 
 export const StyledTextBase = styled.div`
-  font-family: 'NexonBo';
+  font-weight: 700;
   width: 80px;
   text-align: center;
   @media (max-width: 1224px) {
-    font-family: 'NexonRe';
     height: 45px;
     font-size: 12px;
   }

@@ -112,7 +112,7 @@ export const StyledQuickSearchText = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-  font-family: 'NexonBo';
+  font-weight: 700;
   margin-top: 10px;
   @media (max-width: 1224px) {
     justify-content: center;

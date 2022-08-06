@@ -45,7 +45,7 @@ export const StyledCourseHeaderImg = styled.img`
 `;
 
 export const StyledCourseHeaderTitle = styled.div`
-  font-family: 'NexonBo';
+  font-weight: 700;
   margin-left: 30px;
   font-size: 37px;
   @media (max-width: 1224px) {

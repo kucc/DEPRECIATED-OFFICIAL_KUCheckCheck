@@ -94,9 +94,9 @@ export const StyledCourseLockText = styled.div`
 export const StyledCourseApplyCancel = styled(StyledCourseApply)`
   background-color: #f5f5f5;
   color: black;
-  font-family: 'NexonBo'
-    ${({ $isMobile, $isMainScreen }) =>
-      mainScreenStyle($isMobile, $isMainScreen)};
+  font-weight: 700;
+  ${({ $isMobile, $isMainScreen }) =>
+    mainScreenStyle($isMobile, $isMainScreen)};
   &:hover {
     color: ${MAIN_COLOR};
   }

@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 export const StyledLabel = styled.label`
   display: inline-block;
   font-size: 16px;
-  font-family: 'NexonBo';
+  font-weight: 700;
   color: ${TEXT_COLOR};
   margin: 0 6px 8px 30px;
   @media (max-width: 1224px) {
@@ -44,5 +44,5 @@ export const StyledInput = styled.input`
 export const StyledRequiredText = styled.span`
   color: #B6B6B6;
   font-size: 12px;
-  font-family: 'NexonBo';
-`;
+  font-weight: 700;
+  `;
