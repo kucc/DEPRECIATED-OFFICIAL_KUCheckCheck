@@ -8,7 +8,7 @@ import {
   StyledAuthContainer,
   StyledAuthMainImg,
   StyledCenterContainer,
-} from '@pages/LoginPage/style';
+} from '@pages/RenewalLoginPage/style';
 
 import JoinForm from './JoinForm';
 

@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
 import { LoadingButton, InputBoxWithLabel } from '@components';
-import { StyledForm } from '@pages/LoginPage/LoginForm/style';
+import { StyledForm } from '@pages/RenewalLoginPage/LoginForm/style';
 
 import { authService, firestoreService } from '@/firebase';
 import {
