@@ -4,9 +4,10 @@ const GlobalStyle = createGlobalStyle`
 html, body, #root {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 main {
-  /* box-shadow: -5px 5px 5px -5px #EBEBEB; */
+  padding: 0 5%;
   height: 800px;
 }
 * {

@@ -3,7 +3,8 @@ import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
 
 export const StyledTopContainer = styled.div`
     width: 550px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin: 0 15% 0 35%;
     text-align: center;
     position: relative;
     padding: 34px 0 60px 0;
@@ -22,6 +23,7 @@ export const StyledMainText = styled.div`
 export const StyledContentText = styled.div`
     font-size: 26px;
     color: ${TEXT_COLOR};
+    margin-top: 22px;
 `;
 
 export const StyledPeriodToolTip = styled.div`
