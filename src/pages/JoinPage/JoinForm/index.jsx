@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton, InputBoxWithLabel } from '@components';
+import { LoadingButton, InputBoxWithLabel } from '@components';
 import { StyledForm } from '@pages/LoginPage/LoginForm/style';
 
 import { authService, firestoreService } from '@/firebase';
@@ -163,7 +163,7 @@ function JoinForm() {
         onChange={onChange}
       /> */}
 
-      <FullWidthButton
+      <LoadingButton
         style={{
           width: '220px',
           height: isMobile ? '52px' : '60px',

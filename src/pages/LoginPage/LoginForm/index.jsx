@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import { FullWidthButton, InputBoxWithLabel } from '@components';
+import { LoadingButton, InputBoxWithLabel } from '@components';
 
 import { authService } from '@/firebase';
 import { FORM_IS_NOT_FULL } from '@utility';
@@ -85,7 +85,7 @@ function LoginForm() {
         placeholder='비밀번호'
         onChange={onChange}
       />
-      <FullWidthButton       
+      <LoadingButton       
         style={{
           width: '220px',
           height: isMobile ? '52px' : '60px',
