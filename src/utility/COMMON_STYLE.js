@@ -17,7 +17,7 @@ export const StyledBody = styled.div`
 export const StyledMainContainer = styled.div`
   width: 100%;
   padding-top: 96px;
-  padding-left: 285px;
+  padding-left: 280px;
 `;
 
 export const StyledMain = styled.div`
