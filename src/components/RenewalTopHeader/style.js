@@ -7,7 +7,8 @@ export const StyledTopHeaderContainer = styled.div`
   position: fixed;
   border-top: 8px solid ${MAIN_COLOR};
   background-color: white;
-  padding-left: 285px;
+  padding-left: 280px;
+  z-index: 1;
   @media (max-width: 1920px) {
     width: 100%;
   }

@@ -112,8 +112,8 @@ function App() {
           SinglePageRouter()
         ) : RENEWAL_PATH_LIST.includes(pathname) ? (
           <StyledBody>
-            <RenewalHeader pathname={pathname} />
             <RenewalTopHeader />
+            <RenewalHeader pathname={pathname} />
             <StyledMainContainer>
               <main>
                 {RenewalPageRouter()}

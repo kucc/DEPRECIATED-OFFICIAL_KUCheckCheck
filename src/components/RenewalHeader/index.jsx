@@ -10,6 +10,8 @@ import { DefaultLogo } from '..';
 import { StyledHeaderContainer, StyledLinkButton } from './style';
 
 export const RenewalHeader = ({ pathname }) => {
+  const isMainActive = pathname === '/main';
+  const isTestActive = pathname === '/test';
   return (
     <StyledHeaderContainer>
       <Link to='/'>
@@ -20,15 +22,11 @@ export const RenewalHeader = ({ pathname }) => {
           height={114}
         />
       </Link>
-      <StyledLinkButton
-        to='/main'
-        className={cx({ active: pathname === '/main' })}>
-        <HomeIcon fill={pathname === '/main' ? 'white' : 'black'} />
+      <StyledLinkButton to='/main' className={cx({ active: isMainActive })}>
+        <HomeIcon fill={isMainActive ? 'white' : 'black'} />
         <span>홈 화면</span>
       </StyledLinkButton>
-      <StyledLinkButton
-        to='/test'
-        className={cx({ active: pathname === '/test' })}>
+      <StyledLinkButton to='/test' className={cx({ active: isTestActive })}>
         <span>등록하기</span>
       </StyledLinkButton>
     </StyledHeaderContainer>

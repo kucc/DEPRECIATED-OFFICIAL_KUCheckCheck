@@ -8,8 +8,10 @@ export const StyledHeaderContainer = styled.div`
     position: fixed;
     text-align: center;
     background-color: white;
-    padding: 62px 36px;
+    padding: 16px 36px;
     margin-top: 8px;
+    z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 8px 32px;
 `;
 
 export const StyledLinkButton = styled(Link)`

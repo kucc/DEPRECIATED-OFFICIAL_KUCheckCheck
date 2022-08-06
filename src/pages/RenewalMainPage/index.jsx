@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MainTopContainer } from './MainTopContainer';
+
 export const RenewalMainPage = () => {
-  return <div>d</div>;
+  return <MainTopContainer />;
 };
