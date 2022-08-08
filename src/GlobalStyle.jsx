@@ -8,7 +8,6 @@ html, body, #root {
 }
 main {
   padding: 0 5%;
-  height: 800px;
 }
 * {
   padding: 0px;

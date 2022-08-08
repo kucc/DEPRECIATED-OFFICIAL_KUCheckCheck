@@ -19,3 +19,4 @@ export * from './RenewalTopHeader';
 export * from './RenewalFooter';
 export * from './RenewalAuthDescription';
 export * from './RenewalButtons';
+export * from './RenewalMainCourse';
