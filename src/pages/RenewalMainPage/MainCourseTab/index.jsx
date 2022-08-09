@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
 
 import { RenewalMainCourse } from '@components/RenewalMainCourse';
-
-import { firestoreService } from '@/firebase';
 
 import {
   StyledCourseContainer,
@@ -24,60 +23,14 @@ export const MainCourseTab = () => {
   // registerTerm : course 등록 기간 => Array [startDate, endDate]
   const [registerTerm, setRegisterTerm] = useState([]);
 
-  // 학기 정보 불러오기
-  useEffect(() => {
-    async function fetchSemesterData() {
-      await firestoreService
-        .collection('common')
-        .doc('commonInfo')
-        .get()
-        .then(response => {
-          const responseData = response.data();
+  const { status: mainCourseStatus, data: mainCourseData } = useSelector(
+    state => ({
+      status: state.course.mainCourse.status,
+      data: state.course.mainCourse.data,
+    }),
+  );
 
-          setCurrentSemester(responseData.currentSemester);
-          setPastSemester(responseData.pastSemester.reverse());
-
-          let registerTermArray = [];
-          registerTermArray.push(responseData.registerTerm.start.toDate());
-          registerTermArray.push(responseData.registerTerm.end.toDate());
-          setRegisterTerm(registerTermArray);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-
-    fetchSemesterData();
-  }, []);
-
-  // 학기에 맞춰 코스 불러오기
-  useEffect(() => {
-    async function fetchCourseData() {
-      await firestoreService
-        .collection('courses')
-        .where('semester', '==', currentSemester)
-        .get()
-        .then(response => {
-          let courseArray = [];
-
-          response.forEach(doc => {
-            const courseData = {
-              id: doc.id,
-              ...doc.data(),
-            };
-
-            courseArray.push(courseData);
-          });
-
-          setCourseData(courseArray);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-
-    fetchCourseData();
-  }, [currentSemester]);
+  console.log(mainCourseStatus, mainCourseData);
 
   return (
     <StyledCourseContainer>
@@ -103,12 +56,13 @@ export const MainCourseTab = () => {
           </StyledTabText>
         </StyledTab>
       </StyledCourseTab>
-      {courseData.map(res => {
-        if (courseTab === 0)
-          return <RenewalMainCourse course={res} key={res.id} />;
-        else if (courseTab === res.courseType)
-          return <RenewalMainCourse course={res} key={res.id} />;
-      })}
+      {mainCourseData.length > 0 &&
+        mainCourseData.map(res => {
+          if (courseTab === 0)
+            return <RenewalMainCourse course={res} key={res.id} />;
+          else if (courseTab === res.courseType)
+            return <RenewalMainCourse course={res} key={res.id} />;
+        })}
     </StyledCourseContainer>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const RenewalMainCourse = ({ key, course }) => {
-  console.log(course);
+  // console.log(course);
 
   return (
     <>

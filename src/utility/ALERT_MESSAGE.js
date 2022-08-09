@@ -1,3 +1,8 @@
+// redux message
+export const INIT = 'INIT'; // 진입
+export const SUCCESS = 'SUCCESS'; // 성공
+export const FAILURE = 'FAILURE'; // 실패
+
 // success message
 export const SUCCESS_APPLICATION = '등록에 성공하였습니다!';
 export const SUCCESS_APPLIED_COURSE = '신청이 완료되었습니다.';
