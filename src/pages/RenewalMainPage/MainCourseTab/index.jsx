@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
 
+import { RenewalEmptyBox } from '@components/RenewalEmptyBox';
 import { RenewalMainCourse } from '@components/RenewalMainCourse';
 
 import {
@@ -30,8 +31,6 @@ export const MainCourseTab = () => {
     }),
   );
 
-  console.log(mainCourseStatus, mainCourseData);
-
   return (
     <StyledCourseContainer>
       <StyledCourseTab>
@@ -56,6 +55,7 @@ export const MainCourseTab = () => {
           </StyledTabText>
         </StyledTab>
       </StyledCourseTab>
+      {mainCourseData.length === 0 && <RenewalEmptyBox />}
       {mainCourseData.length > 0 &&
         mainCourseData.map(res => {
           if (courseTab === 0)

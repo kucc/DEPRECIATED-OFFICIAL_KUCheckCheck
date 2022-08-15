@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 
-import { CourseContainer, EmptyBox } from '@components';
+import { CourseContainer, RenewalEmptyBox } from '@components';
 
 import { firestoreService } from '@/firebase';
 import useWindowDimensions from '@hooks/useWindowDimensions';
@@ -223,7 +223,7 @@ export const MMainBottomContainer = () => {
     // if filetring is On
     if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filteredCourseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return filteredCourseArray.map(course => {
           return (
@@ -237,7 +237,7 @@ export const MMainBottomContainer = () => {
       }
     } else {
       if (courseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return courseArray.map(course => {
           return (
