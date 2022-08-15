@@ -1,18 +1,6 @@
-import { GET_COMMON_INFO } from './types';
+import { generateKeys, generateActions, GET_COMMON_INFO } from './types';
 import { firestoreService } from '@/firebase';
 
-
-const generateKeys = (key) => ({
-    request: key,
-    success: `${key}_SUCCESS`,
-    failure: `${key}_FAILURE`,
-});
-
-const generateActions = (generatedKeys) => ({
-    request: () => ({ type: generatedKeys.request }),
-    success: (data) => ({ type: generatedKeys.success, data }),
-    failure: () => ({ type: generatedKeys.failure }),
-});
 
 export const getCommonInfoKeys = generateKeys(GET_COMMON_INFO);
 const getCommonInfoActions = generateActions(getCommonInfoKeys);

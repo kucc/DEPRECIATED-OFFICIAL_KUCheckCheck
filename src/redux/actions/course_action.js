@@ -1,21 +1,8 @@
-import { GET_MAIN_COURSE } from './types';
+import { generateKeys, generateActions, GET_MAIN_COURSE } from './types';
 import { firestoreService } from '@/firebase';
-
-const generateKeys = (key) => ({
-    request: key,
-    success: `${key}_SUCCESS`,
-    failure: `${key}_FAILURE`,
-});
-
-const generateActions = (generatedKeys) => ({
-    request: () => ({ type: generatedKeys.request }),
-    success: (data) => ({ type: generatedKeys.success, data }),
-    failure: () => ({ type: generatedKeys.failure }),
-});
 
 export const getMainCourseKeys = generateKeys(GET_MAIN_COURSE);
 const getMainCourseActions = generateActions(getMainCourseKeys);
-
 
 export function getMainCourseRequest(currentSemester) {
     return async (dispatch) => {
