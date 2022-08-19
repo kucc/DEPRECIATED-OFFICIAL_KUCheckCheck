@@ -66,7 +66,7 @@ export const StyledInfoText = styled.div`
 `;
 
 export const StyledInfoTitle = styled.div`
-  font-weight: 700;
+  font-family: "sdBo";
   font-size: 20px;
   @media (max-width: 1224px) {
     font-size: 12px;

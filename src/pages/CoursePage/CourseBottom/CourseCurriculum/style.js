@@ -15,7 +15,7 @@ export const StyledTimeline = styled(Timeline)`
 
   .ant-timeline-item-label {
     width: 181px !important;
-    font-weight: 700;
+    font-family: "sdBo";
     font-size: 20px;
     @media (max-width: 1224px) {
       width: 51px !important;

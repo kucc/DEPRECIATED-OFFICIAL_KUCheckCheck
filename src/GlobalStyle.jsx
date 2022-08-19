@@ -9,8 +9,7 @@ html, body, #root {
 * {
   padding: 0px;
   margin: 0px;
-  font-family: "sfPro", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
-  font-weight: 500;
+  font-family: "sdMe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
 }
 .main-background-color {
   background-color: rgb(245, 245, 245);

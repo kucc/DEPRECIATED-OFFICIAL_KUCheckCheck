@@ -16,7 +16,7 @@ export const StyledFooterBox = styled.div`
 `;
 
 export const StyledFooterTitle = styled.div`
-  font-weight: 700;
+  font-family: "sdBo";
   font-size: 14px;
   width: 200px;
   @media (max-width: 1224px) {

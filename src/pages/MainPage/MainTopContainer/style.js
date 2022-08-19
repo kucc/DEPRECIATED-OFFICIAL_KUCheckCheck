@@ -31,7 +31,7 @@ export const StyledMainTitle1 = styled.div`
       }
     }}
     font-size: 3.5em;
-    font-weight: 700;
+    font-family: "sdBo";
     color: ${MAIN_COLOR};
     @media (max-width: 1224px) {
       margin-bottom: -55px;
@@ -50,7 +50,7 @@ export const StyledMainTitle2 = styled.div`
       }
     }}
     font-size: 3.5em;
-    font-weight: 700;
+    font-family: "sdBo";
     padding: 10px 0;
     @media (max-width: 1224px) {
       padding: 30px 0px;

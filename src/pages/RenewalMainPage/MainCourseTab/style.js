@@ -23,7 +23,7 @@ export const StyledTab = styled.button`
 export const StyledTabText = styled.span`
     color: #B6B6B6;
     font-size: 24px;
-    font-weight: 700;
+    font-family: "sdBo";
     padding: 14px 12px;
     &.active {
         color: ${TEXT_COLOR};

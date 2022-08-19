@@ -12,7 +12,7 @@ export const StyledUserInfoTopContainer = styled.div`
 
 export const StyledUserInfoTopTitle = styled.div`
   font-size: 26px;
-  font-weight: 700;
+  font-family: "sdBo";
   @media (max-width: 1224px) {
     font-size: 20px;
   }

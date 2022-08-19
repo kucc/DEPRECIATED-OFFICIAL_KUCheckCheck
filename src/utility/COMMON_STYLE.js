@@ -67,7 +67,7 @@ export const StyledSelectItem = styled.div`
   @media (max-width: 1224px) {
     margin: 0px 7%;
     font-size: 9px;
-    font-weight: 700;
+    font-family: "sdBo";
     padding: 0px 5px;
   }
 `;

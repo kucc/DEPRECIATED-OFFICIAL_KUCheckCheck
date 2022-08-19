@@ -49,7 +49,7 @@ export const StyledInfoDetailContainer = styled.div`
 
 export const StyledInfoDetailName = styled.div`
   font-size: 32px;
-  font-weight: 700;
+  font-family: "sdBo";
   @media (max-width: 1224px) {
     margin-top: 20px;
     font-size: 22px;

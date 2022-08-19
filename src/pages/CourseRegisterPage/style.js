@@ -8,7 +8,7 @@ export const StyledBackground = styled.div`
 
 export const StyledCourseRegisterText = styled(StyledSidePadding)`
   margin-left: 5%;
-  font-weight: 700;
+  font-family: "sdBo";
   margin-top: 50px;
   margin-bottom: 10px;
   font-size: 26px;
@@ -39,14 +39,14 @@ export const StyledBlackButton = styled.button`
 
 export const StyledText = styled.div`
   font-size: 15px;
-  font-weight: 700;
+  font-family: "sdBo";
   margin: 30px;
   margin-top: 0px;
 `;
 
 export const StyledTooltipText = styled.div`
   display: flex;
-  font-weight: 700;
+  font-family: "sdBo";
   margin-right: -20px;
 `;
 

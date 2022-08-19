@@ -7,7 +7,7 @@ export const UserCourseTopContainer = styled.div`
 
 export const UserCourseTopText = styled.div`
   font-size: 20px;
-  font-weight: 700;
+  font-family: "sdBo";
   margin-left: 20px;
   margin-top: 50px;
 `;

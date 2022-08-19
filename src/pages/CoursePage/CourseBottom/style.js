@@ -12,7 +12,7 @@ export const StyledSelectContainer = styled.div`
 export const StyledSelect = styled.div`
   display: grid;
   grid-template-columns: 120px 1px 120px 1px 120px;
-  font-weight: 700;
+  font-family: "sdBo";
   @media (max-width: 1224px) {
     grid-template-columns: 85px 1px 70px 1px 75px;
   }
@@ -45,7 +45,7 @@ export const StyledCourseHeaderImg = styled.img`
 `;
 
 export const StyledCourseHeaderTitle = styled.div`
-  font-weight: 700;
+  font-family: "sdBo";
   margin-left: 30px;
   font-size: 37px;
   @media (max-width: 1224px) {
