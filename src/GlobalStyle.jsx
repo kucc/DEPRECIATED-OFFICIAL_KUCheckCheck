@@ -6,9 +6,6 @@ html, body, #root {
   height: 100%;
   overflow-x: hidden;
 }
-main {
-  padding: 0 5%;
-}
 * {
   padding: 0px;
   margin: 0px;

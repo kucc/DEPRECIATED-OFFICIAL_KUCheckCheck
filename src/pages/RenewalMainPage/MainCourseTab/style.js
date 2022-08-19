@@ -9,6 +9,7 @@ export const StyledCourseTab = styled.div`
 `;
 
 export const StyledTab = styled.button`
+    font-size: 24px;
     padding: 0 42px;
     border: none;
     background-color: white;

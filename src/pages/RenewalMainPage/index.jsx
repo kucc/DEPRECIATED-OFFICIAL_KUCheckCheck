@@ -11,6 +11,7 @@ import { SUCCESS } from '@utility/ALERT_MESSAGE';
 import { MainCourseTab } from './MainCourseTab';
 import { MainSearch } from './MainSearch';
 import { MainTopContainer } from './MainTopContainer';
+import { StyledMainContainer, StyledCourseContainer, StyledUserContainer } from './style';
 
 export const RenewalMainPage = () => {
   const dispatch = useDispatch();
@@ -32,25 +33,35 @@ export const RenewalMainPage = () => {
   // // 학기에 맞춰 코스 불러오기
   useEffect(() => {
     if (commonInfoStatus === SUCCESS) {
-      handleCurrentSemester(commonInfoData.currentSemester)
+      handleCurrentSemester(commonInfoData.currentSemester);
     }
   }, [commonInfoData, commonInfoStatus]);
 
   const handleCurrentSemester = semester => {
     setCurrentSemester(semester);
-  
+
     dispatch(getMainCourseRequest(semester));
   };
-  
+
   return (
-    <>
-      <MainTopContainer />
-      <MainSearch
-        currentSemester={currentSemester}
-        handleCurrentSemester={handleCurrentSemester}
-      />
-      <MainCourseTab />
-    </>
+    <StyledMainContainer>
+      <StyledCourseContainer>
+        <MainTopContainer />
+        <MainSearch
+          currentSemester={currentSemester}
+          handleCurrentSemester={handleCurrentSemester}
+        />
+        <MainCourseTab />
+      </StyledCourseContainer>
+      <StyledUserContainer>
+        <div>
+          유저
+        </div>
+        <div>
+          시간표 
+        </div>
+      </StyledUserContainer>
+    </StyledMainContainer>
   );
 };
 

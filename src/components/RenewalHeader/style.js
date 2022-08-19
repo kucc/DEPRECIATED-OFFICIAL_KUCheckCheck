@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
 
 export const StyledHeaderContainer = styled.div`
-    width: 280px;
+    width: 238px;
     height: 100%;
     position: fixed;
     text-align: center;
     background-color: white;
-    padding: 16px 36px;
+    padding: 32px 30px;
     margin-top: 8px;
     z-index: 2;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 8px 32px;
@@ -19,7 +19,7 @@ export const StyledLinkButton = styled(Link)`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 54px;
+    height: 50px;
     font-size: 20px;
     color: ${TEXT_COLOR};
     background-color: white;

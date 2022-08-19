@@ -3,15 +3,15 @@ import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
 
 export const StyledTopContainer = styled.div`
     width: 550px;
-    /* margin: 0 auto; */
-    margin: 0 15% 0 35%;
+    margin: 0 auto;
+    /* margin: 0 15% 0 35%; */
     text-align: center;
     position: relative;
     padding: 34px 0 60px 0;
 `;
 
 export const StyledMainText = styled.div`
-    font-size: 70px;
+    font-size: 72px;
     font-family: "tmoneyBo";
     line-height: 80px;
     color: ${TEXT_COLOR};
@@ -21,25 +21,7 @@ export const StyledMainText = styled.div`
 `;
 
 export const StyledContentText = styled.div`
-    font-size: 26px;
+    font-size: 22px;
     color: ${TEXT_COLOR};
     margin-top: 22px;
-`;
-
-export const StyledPeriodToolTip = styled.div`
-    width: 460px;
-    font-size: 18px;
-    font-family: "tmoneyBo";
-    background: white;
-    padding: 18px 54px;   
-    border-radius: 45px;
-    box-shadow: 0px 0px 8px #DEDEDE;
-    position: absolute;
-    top: 31%;
-    right: -68%;
-`;
-
-export const StyledHighLightText = styled.span`
-    font-family: "tmoneyBo";
-    color: ${MAIN_COLOR};
 `;

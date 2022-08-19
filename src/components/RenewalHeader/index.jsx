@@ -18,8 +18,8 @@ export const RenewalHeader = ({ pathname }) => {
         <DefaultLogo
           isPointer={true}
           logoName='type-1-3'
-          width={114}
-          height={114}
+          width={122}
+          height={122}
         />
       </Link>
       <StyledLinkButton to='/main' className={cx({ active: isMainActive })}>
