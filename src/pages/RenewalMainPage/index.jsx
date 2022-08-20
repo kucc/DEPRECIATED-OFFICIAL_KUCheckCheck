@@ -11,7 +11,11 @@ import { SUCCESS } from '@utility/ALERT_MESSAGE';
 import { MainCourseTab } from './MainCourseTab';
 import { MainSearch } from './MainSearch';
 import { MainTopContainer } from './MainTopContainer';
-import { StyledMainContainer, StyledCourseContainer, StyledUserContainer } from './style';
+import {
+  StyledUserContainer,
+  MainBottomContainer,
+  StyledMainCourse
+} from './style';
 
 export const RenewalMainPage = () => {
   const dispatch = useDispatch();
@@ -44,24 +48,22 @@ export const RenewalMainPage = () => {
   };
 
   return (
-    <StyledMainContainer>
-      <StyledCourseContainer>
-        <MainTopContainer />
-        <MainSearch
-          currentSemester={currentSemester}
-          handleCurrentSemester={handleCurrentSemester}
-        />
-        <MainCourseTab />
-      </StyledCourseContainer>
-      <StyledUserContainer>
-        <div>
-          유저
-        </div>
-        <div>
-          시간표 
-        </div>
-      </StyledUserContainer>
-    </StyledMainContainer>
+    <>
+      <MainTopContainer />
+      <MainBottomContainer>
+        <StyledMainCourse>
+          <MainSearch
+            currentSemester={currentSemester}
+            handleCurrentSemester={handleCurrentSemester}
+          />
+          <MainCourseTab />
+        </StyledMainCourse>
+        <StyledUserContainer>
+          <div>유저</div>
+          <div>시간표</div>
+        </StyledUserContainer>
+      </MainBottomContainer>
+    </>
   );
 };
 

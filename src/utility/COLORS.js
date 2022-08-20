@@ -3,6 +3,7 @@ export const RED = '#c32020'; // red color
 export const BLACK = '#212121'; // black color
 export const GRAY = '#B6B6B6'; 
 export const BACKGROUND_GRAY = '#F5F5F5'; 
+export const BACKGROUND_FOOTER = '#F8F8F8';
 export const LINE_GRAY = '#DEDEDE'; 
 export const YELLOW = '#FFE65D';
 

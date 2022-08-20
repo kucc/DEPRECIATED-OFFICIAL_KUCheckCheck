@@ -8,12 +8,13 @@ export const StyledCourseContainer = styled.div`
 
 export const StyledCourseTab = styled.div`
     padding: 12px 0;
+    margin-bottom: 24px;
     border-bottom: 1px solid ${LINE_GRAY};
 `;
 
 export const StyledTab = styled.button`
     font-size: 24px;
-    padding: 0 42px;
+    padding: 0 36px;
     border: none;
     background-color: white;
     cursor: pointer;
@@ -25,7 +26,7 @@ export const StyledTab = styled.button`
 
 export const StyledTabText = styled.span`
     color: ${GRAY};
-    font-size: 24px;
+    font-size: 18px;
     font-family: "sdBo";
     padding: 14px 12px;
     &.active {

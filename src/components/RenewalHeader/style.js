@@ -1,36 +1,33 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { RED, BLACK } from '@utility/COLORS';
 
 export const StyledHeaderContainer = styled.div`
-    width: 238px;
+    width: 124px;
     height: 100%;
     position: fixed;
     text-align: center;
-    background-color: white;
-    padding: 32px 30px;
-    margin-top: 8px;
-    z-index: 2;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 8px 32px;
+    padding-right: 28px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 `;
 
-export const StyledLinkButton = styled(Link)`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
+export const StyledLinkButton = styled.span`
+    margin-bottom: 33px;
+    text-align: left;
+    cursor: pointer;
+`;
+
+export const StyleActive = styled.span`
     color: ${BLACK};
-    background-color: white;
-    border: none;
-    border-radius: 35px;
-    margin-bottom: 16px;
+    padding: 2px 5px;    
     &.active {
-        color: white;
-        background-color: ${RED};
+        color: ${RED};
+        border-bottom: 2px solid ${RED};
     }
+
     svg {
-        margin-right: 18px;
+        width: 20px;
+       margin-right: 12px;
     }
 `;

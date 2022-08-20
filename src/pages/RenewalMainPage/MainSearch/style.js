@@ -9,27 +9,27 @@ export const StyledMainSearchContainer = styled.div`
 `;
 
 export const StyledDropDown = styled.div`
-    width: 203px;
+    width: 154px;
     display: inline-block;
 `;
 
 export const StyledSearchButton = styled(Button)`
     width: 100%;
-    height: 60px;
+    height: 54px;
     color: ${BLACK};
     background-color: white;
     border-radius: 30px;
     border: 1px solid ${LINE_GRAY};
     span {
         font-family: 'sdBo';
-        font-size: 20px;
+        font-size: 18px;
     }
 `;
 
 export const StyledSearchInput = styled.input`
-    width: 604px;
-    height: 60px;
-    margin: 0 16px;
+    width: 474px;
+    height: 54px;
+    margin: 0 10px;
     border: 1px solid ${LINE_GRAY};
     border-radius: 39px;
     background-color: ${BACKGROUND_GRAY};

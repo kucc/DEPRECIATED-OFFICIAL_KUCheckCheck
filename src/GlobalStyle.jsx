@@ -1,10 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { LINE_GRAY } from './utility';
+
 const GlobalStyle = createGlobalStyle`
 html, body, #root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+}
+main {
+  margin-left: 124px;
+  border-left: 1.5px solid ${LINE_GRAY};
 }
 * {
   padding: 0px;

@@ -5,14 +5,11 @@ export const StyledMainCourseContainer = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 28px 60px 20px 45px;
+    padding: 22px 32px;
     border: 2px solid ${LINE_GRAY};
     border-radius: 26px;
     margin-top: 12px;
     cursor: pointer;
-    &:first-child {
-        margin-top: 24px;
-    }
     &:hover {
         box-shadow: 0px 0px 10px ${LINE_GRAY};
     }
@@ -42,7 +39,7 @@ export const StyledEmoji = styled.span`
 
 export const StyledLeaderName = styled.div`
     font-family: 'sdSb';
-    margin-top: 8px;
+    margin-top: 2px;
 `;
 
 export const StyledLeaderType = styled.span`
@@ -57,7 +54,7 @@ export const StyledCourseTop = styled.div`
 
 export const StyledCourseTitle = styled.div`
     font-family: 'sdBo';
-    font-size: 30px;
+    font-size: 28px;
     color: ${BLACK};
     margin-right: 8px;
     ${props => props.isEllipsis && css`
@@ -94,6 +91,8 @@ export const StyledCourseCaseValue = styled.span`
 export const StyledCourseButton = styled.button`
     width: 192px;
     height: 50px;
+    font-size: 18px;
+    font-family: 'sdBo';
     margin-left: auto;
     border-radius: 25px;
     border: none;

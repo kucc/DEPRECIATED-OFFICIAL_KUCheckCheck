@@ -25,7 +25,7 @@ import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { SINGLE_PATHNAMES_LIST, StyledBody, StyledMainContainer, RENEWAL_PATH_LIST, StyledMain } from './utility';
+import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH_LIST, StyledMain } from './utility';
 
 import './App.less';
 
@@ -79,9 +79,9 @@ function App() {
           component={CourseRegisterHoc(CourseRegisterPage)}
         />
         {/* 
-                  option : 0 => 모든 사람이 출입할 수 있음
-                  option : 1 => 로그인된 사람만이 출입할 수 있음
-                */}
+          option : 0 => 모든 사람이 출입할 수 있음
+          option : 1 => 로그인된 사람만이 출입할 수 있음
+        */}
         <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
         <Route
           exact
@@ -111,16 +111,16 @@ function App() {
         (
           SinglePageRouter()
         ) : RENEWAL_PATH_LIST.includes(pathname) ? (
-          <StyledBody>
+          <>
             <RenewalTopHeader />
-            <RenewalHeader pathname={pathname} />
             <StyledMainContainer>
-              {/* <main> */}
-              {RenewalPageRouter()}
-              {/* </main> */}
-              <RenewalFooter />
+              <RenewalHeader pathname={pathname} />
+              <main>
+                {RenewalPageRouter()}
+              </main>
             </StyledMainContainer>
-          </StyledBody>
+            <RenewalFooter />
+          </>
         ) : (
           <>
             <NavBar />

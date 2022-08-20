@@ -4,20 +4,14 @@ import styled from 'styled-components';
 
 import { BASE_COLOR } from './COLORS';
 
-export const StyledBody = styled.div`
-  width: 1920px;
-  height: 100%;
-  margin: 0 auto;
-  position: relative;
-  @media (max-width: 1920px) {
-    width: 100%;
-  }
-`;
 
 export const StyledMainContainer = styled.div`
-  width: 100%;
-  padding-top: 96px;
-  padding-left: 238px;
+  width: 1280px;
+  padding-top: 128px;
+  margin: 0 auto;
+  @media (max-width: 1279px) {
+    width: 100%;
+  }
 `;
 
 export const StyledMain = styled.div`

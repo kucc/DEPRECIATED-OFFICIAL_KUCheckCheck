@@ -1,33 +1,36 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { HomeIcon } from '@/svg';
+import { BLACK, RED } from '@utility/COLORS';
 
-import { DefaultLogo } from '..';
-import { StyledHeaderContainer, StyledLinkButton } from './style';
+import { StyleActive, StyledHeaderContainer, StyledLinkButton } from './style';
 
 export const RenewalHeader = ({ pathname }) => {
+  const history = useHistory();
+
   const isMainActive = pathname === '/main';
   const isTestActive = pathname === '/test';
+
+  const handleLink = (path) => {
+    history.push(path);
+  }
   return (
     <StyledHeaderContainer>
-      <Link to='/'>
-        <DefaultLogo
-          isPointer={true}
-          logoName='type-1-3'
-          width={122}
-          height={122}
-        />
-      </Link>
-      <StyledLinkButton to='/main' className={cx({ active: isMainActive })}>
-        <HomeIcon fill={isMainActive ? 'white' : 'black'} />
-        <span>홈 화면</span>
+      <StyledLinkButton onClick={() => {handleLink('/main')}}>
+        <StyleActive className={cx({ active: isMainActive })}>
+          <HomeIcon fill={isMainActive ? RED : BLACK} />
+          <span>홈 화면</span>
+        </StyleActive>
       </StyledLinkButton>
-      <StyledLinkButton to='/test' className={cx({ active: isTestActive })}>
-        <span>등록하기</span>
+      <StyledLinkButton onClick={() => {handleLink('/test')}}>
+        <StyleActive className={cx({ active: isTestActive })}>
+          <HomeIcon fill={isTestActive ? RED : BLACK} />
+          <span>활동 개설</span>
+        </StyleActive>
       </StyledLinkButton>
     </StyledHeaderContainer>
   );
