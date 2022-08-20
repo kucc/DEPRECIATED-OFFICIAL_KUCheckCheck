@@ -24,6 +24,7 @@ export const MainCourseTab = () => {
   useEffect(() => {
     let searchArray = mainCourseData;
     if (searchStringInput) {
+      // 문자열 검색
       const regex = new RegExp(searchStringInput, 'gi');
 
       searchArray = mainCourseData.filter(
@@ -31,7 +32,9 @@ export const MainCourseTab = () => {
           res.courseName.match(regex) || res.courseLeader.name.match(regex),
       );
     }
+
     if (searchLanguage) {
+      // 사용언어
       const regex = new RegExp(searchLanguage, 'gi');
 
       searchArray = mainCourseData.filter(res =>
@@ -68,7 +71,7 @@ export const MainCourseTab = () => {
       </StyledCourseTab>
       {courseList.length === 0 && <RenewalEmptyBox />}
       {courseList.length > 0 &&
-        courseList.map(res => {
+        courseList.map((res) => {
           if (courseTab === 0)
             return <RenewalMainCourse course={res} key={res.id} />;
           else if (courseTab === res.courseType)

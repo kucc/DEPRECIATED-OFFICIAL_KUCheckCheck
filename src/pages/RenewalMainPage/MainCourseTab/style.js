@@ -3,6 +3,7 @@ import { BLACK, LINE_GRAY, GRAY } from '@utility/COLORS';
 
 export const StyledCourseContainer = styled.div`
     min-height: 700px;
+    margin-bottom: 92px;
 `;
 
 export const StyledCourseTab = styled.div`
