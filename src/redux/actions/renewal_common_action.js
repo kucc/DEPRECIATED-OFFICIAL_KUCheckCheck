@@ -12,6 +12,7 @@ export function getCommonInfoRequest() {
             .doc('commonInfo')
             .get()
             .then((response) => {
+                console.log('common action')
                 const responseData = response.data();
 
                 let commonInfoData = {

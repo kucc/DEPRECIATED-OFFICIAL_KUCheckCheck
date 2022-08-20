@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCommonInfoRequest } from '@redux/actions/common_action';
-import { getMainCourseRequest } from '@redux/actions/course_action';
+import { getCommonInfoRequest } from '@redux/actions/renewal_common_action';
+import { getMainCourseRequest } from '@redux/actions/renewal_course_action';
 
 import { SUCCESS } from '@utility/ALERT_MESSAGE';
 

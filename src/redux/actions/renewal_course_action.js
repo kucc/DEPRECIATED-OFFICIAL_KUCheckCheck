@@ -13,6 +13,7 @@ export function getMainCourseRequest(currentSemester) {
             .get()
             .then(response => {
                 let courseArray = [];
+                console.log('course action')
 
                 response.forEach(doc => {
                     const courseData = {

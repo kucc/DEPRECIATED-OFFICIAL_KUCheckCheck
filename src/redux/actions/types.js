@@ -6,6 +6,8 @@ export const CLEAR_USER = 'clear_user';
 export const SET_SEARCH = 'set_search';
 export const SET_CATEGORY = 'set_category';
 
+
+// 아래로 리뉴얼
 export const generateKeys = (key) => ({
     request: key,
     success: `${key}_SUCCESS`,
