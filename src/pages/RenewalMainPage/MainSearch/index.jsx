@@ -4,7 +4,7 @@ import { Dropdown, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCategory, setSearch } from '@redux/actions/search_action';
+import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_search_action';
 
 import {
   StyledDropDown,
@@ -17,8 +17,8 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
   const dispatch = useDispatch();
 
   const { pastSemester } = useSelector(state => state.common.commonInfo.data);
-  const searchTerm = useSelector(state => state.search.searchTerm);
-  const selectedCategory = useSelector(state => state.search.category);
+  const searchStringInput = useSelector(state => state.search.stringInput);
+  const searchLanguage = useSelector(state => state.search.language);
 
   const [languageList, setLanguageList] = useState([
     'Database',
@@ -30,15 +30,15 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
   ]);
 
   const handleSearch = e => {
-    dispatch(setCategory(''));
+    dispatch(setSearchLanguage(''));
 
-    dispatch(setSearch(e.target.value));
+    dispatch(setSearchStringInput(e.target.value));
   };
 
   const handleLanguage = language => {
-    dispatch(setSearch(''));
+    dispatch(setSearchStringInput(''));
 
-    dispatch(setCategory(language));
+    dispatch(setSearchLanguage(language));
   };
 
   const SemesterMenu = (
@@ -78,12 +78,12 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
       </StyledDropDown>
       <StyledSearchInput
         placeholder='세션명, 세션장, 사용 언어를 검색해보세요!'
-        value={searchTerm}
+        value={searchStringInput}
         onChange={handleSearch}
       />
       <StyledDropDown>
         <Dropdown overlay={LanguageMenu} placement='bottomLeft'>
-          <StyledSemesterButton>{selectedCategory ? selectedCategory : <span>사용 언어</span>}</StyledSemesterButton>
+          <StyledSemesterButton>{searchLanguage ? searchLanguage : <span>사용 언어</span>}</StyledSemesterButton>
         </Dropdown>
       </StyledDropDown>
     </StyledMainSearchContainer>

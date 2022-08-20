@@ -3,9 +3,6 @@
 export const SET_USER = 'set_user';
 export const CLEAR_USER = 'clear_user';
 
-export const SET_SEARCH = 'set_search';
-export const SET_CATEGORY = 'set_category';
-
 
 // 아래로 리뉴얼
 export const generateKeys = (key) => ({
@@ -19,6 +16,9 @@ export const generateActions = (generatedKeys) => ({
     success: (data) => ({ type: generatedKeys.success, data }),
     failure: () => ({ type: generatedKeys.failure }),
 });
+
+export const SET_STRING_INPUT = 'SET_STRING_INPUT';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export const GET_COMMON_INFO = 'GET_COMMON_INFO';
 export const GET_COMMON_INFO_SUCCESS = 'GET_COMMON_INFO_SUCCESS';

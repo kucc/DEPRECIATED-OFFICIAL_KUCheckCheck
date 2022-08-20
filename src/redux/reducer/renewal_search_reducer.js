@@ -1,22 +1,22 @@
 // reducer의 기능 구현
-import { SET_CATEGORY, SET_SEARCH } from '../actions/types';
+import { SET_STRING_INPUT, SET_LANGUAGE } from '../actions/types';
 
 const initialSearchState = {
-  searchTerm: '', // 검색 문자열
-  category: '', // 빠른검색 태크
+  stringInput: '', // 문자열 입력
+  language: '', // 사용 언어
 };
 
 export default function (state = initialSearchState, action) {
   switch (action.type) {
-    case SET_SEARCH:
+    case SET_STRING_INPUT:
       return {
         ...state,
-        searchTerm: action.payload,
+        stringInput: action.data,
       };
-    case SET_CATEGORY:
+    case SET_LANGUAGE:
       return {
         ...state,
-        category: action.payload,
+        language: action.data,
       };
     default:
       return state;

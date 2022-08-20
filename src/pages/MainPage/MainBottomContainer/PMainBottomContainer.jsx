@@ -30,8 +30,8 @@ export const PMainBottomContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   // user, searchTerm, searchCategory : from redux
   const user = useSelector(state => state.user);
-  const searchTerm = useSelector(state => state.search.searchTerm);
-  const searchCategory = useSelector(state => state.search.category);
+  const searchTerm = useSelector(state => state.search.stringInput);
+  const searchCategory = useSelector(state => state.search.language);
   const history = useHistory();
   const today = new Date();
 

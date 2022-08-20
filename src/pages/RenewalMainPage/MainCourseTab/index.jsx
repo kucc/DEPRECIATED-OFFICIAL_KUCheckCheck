@@ -15,24 +15,24 @@ import {
 
 export const MainCourseTab = () => {
   const mainCourseData = useSelector(state => state.course.mainCourse.data);
-  const searchTerm = useSelector(state => state.search.searchTerm); // 검색어
-  const searchCategory = useSelector(state => state.search.category); // 사용 언어
+  const searchStringInput = useSelector(state => state.search.stringInput); // 검색어
+  const searchLanguage = useSelector(state => state.search.language); // 사용 언어
 
   const [courseTab, setCourseTab] = useState(0);
   const [courseList, setCourseList] = useState([]);
 
   useEffect(() => {
     let searchArray = mainCourseData;
-    if (searchTerm) {
-      const regex = new RegExp(searchTerm, 'gi');
+    if (searchStringInput) {
+      const regex = new RegExp(searchStringInput, 'gi');
 
       searchArray = mainCourseData.filter(
         res =>
           res.courseName.match(regex) || res.courseLeader.name.match(regex),
       );
     }
-    if (searchCategory) {
-      const regex = new RegExp(searchCategory, 'gi');
+    if (searchLanguage) {
+      const regex = new RegExp(searchLanguage, 'gi');
 
       searchArray = mainCourseData.filter(res =>
         res.language.find(element => element.match(regex)),
@@ -40,7 +40,7 @@ export const MainCourseTab = () => {
     }
 
     setCourseList(searchArray);
-  }, [mainCourseData, searchTerm, searchCategory]);
+  }, [mainCourseData, searchStringInput, searchLanguage]);
 
   return (
     <StyledCourseContainer>

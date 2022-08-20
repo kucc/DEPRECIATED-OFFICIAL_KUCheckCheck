@@ -5,7 +5,7 @@ import { FaHashtag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { setCategory, setSearch } from '@redux/actions/search_action';
+import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_search_action';
 
 import { BlackIcon } from '@components';
 
@@ -23,16 +23,16 @@ import {
 function MainSearch() {
   const dispatch = useDispatch();
 
-  const selectedCategory = useSelector(state => state.search.category);
-  const searchTerm = useSelector(state => state.search.searchTerm);
+  const selectedCategory = useSelector(state => state.search.language);
+  const searchTerm = useSelector(state => state.search.stringInput);
   
   const [randomCategory, setrandomCategory] = useState([]);
   const { width } = useWindowDimensions();
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const searchValueClear = () => {
-    dispatch(setSearch(''));
-    dispatch(setCategory(''));
+    dispatch(setSearchStringInput(''));
+    dispatch(setSearchLanguage(''));
   };
 
   useEffect(() => {
@@ -63,16 +63,16 @@ function MainSearch() {
   }, []);
 
   const changeSearch = e => {
-    dispatch(setCategory(''));
+    dispatch(setSearchLanguage(''));
 
-    dispatch(setSearch(e.target.value));
+    dispatch(setSearchStringInput(e.target.value));
   };
 
   const handleCategory = tag => {
     if (tag !== selectedCategory) { // isChecked
-      dispatch(setSearch(''));
+      dispatch(setSearchStringInput(''));
 
-      dispatch(setCategory(tag));
+      dispatch(setSearchLanguage(tag));
     } else {                        // unChecked
       searchValueClear();
     }
