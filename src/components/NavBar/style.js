@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR, StyledSidePadding } from '@utility';
+import { RED, StyledSidePadding } from '@utility';
 
 export const NavBarContainer = styled(StyledSidePadding)`
   position: fixed;
@@ -28,7 +28,7 @@ export const NavBarTextContainer = styled.div`
 export const NavBarText = styled.div`
   cursor: pointer;
   color: ${props =>
-    props.hoverState && props.hoverState === props.text ? MAIN_COLOR : 'black'};
+    props.hoverState && props.hoverState === props.text ? RED : 'black'};
   font-size: 15px;
   font-family: "sdBo";
   padding: 20px;

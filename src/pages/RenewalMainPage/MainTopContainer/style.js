@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
+import { RED, BLACK } from '@utility/COLORS';
 
 export const StyledTopContainer = styled.div`
     width: 550px;
@@ -14,14 +14,14 @@ export const StyledMainText = styled.div`
     font-size: 72px;
     font-family: "tmoneyBo";
     line-height: 80px;
-    color: ${TEXT_COLOR};
+    color: ${BLACK};
     &.main {
-        color: ${MAIN_COLOR};
+        color: ${RED};
     }
 `;
 
 export const StyledContentText = styled.div`
     font-size: 22px;
-    color: ${TEXT_COLOR};
+    color: ${BLACK};
     margin-top: 22px;
 `;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { MAIN_COLOR } from '@utility/COLORS';
+import { RED } from '@utility/COLORS';
 import { Link } from 'react-router-dom';
 
 export const StyledTopHeaderContainer = styled.div`
   width: 1920px;
   position: fixed;
-  border-top: 8px solid ${MAIN_COLOR};
+  border-top: 8px solid ${RED};
   background-color: white;
   padding-left: 280px;
   z-index: 1;

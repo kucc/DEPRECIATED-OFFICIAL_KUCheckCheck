@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
-  MAIN_COLOR,
+  RED,
   StyledInputNumber,
   StyledLaguageImg,
   StyledSelect,
@@ -352,7 +352,7 @@ function CourseRegisterBox({ enrollHandler }) {
           shape='round'
           size={'large'}
           style={{
-            backgroundColor: MAIN_COLOR,
+            backgroundColor: RED,
             border: '0px',
             height: '50px',
           }}

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Dropdown, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_search_action';
+import {
+  setSearchLanguage,
+  setSearchStringInput,
+} from '@redux/actions/renewal_search_action';
 
 import {
   StyledDropDown,
   StyledMainSearchContainer,
   StyledSearchInput,
-  StyledSemesterButton,
+  StyledSearchButton,
 } from './style';
 
 export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
@@ -20,14 +23,7 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
   const searchStringInput = useSelector(state => state.search.stringInput);
   const searchLanguage = useSelector(state => state.search.language);
 
-  const [languageList, setLanguageList] = useState([
-    'Database',
-    'Html',
-    'Javascript',
-    'Node',
-    'React',
-    'C',
-  ]);
+  const languageList = ['Database', 'Html', 'Javascript', 'Node', 'React', 'C'];
 
   const handleSearch = e => {
     dispatch(setSearchLanguage(''));
@@ -73,7 +69,7 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
     <StyledMainSearchContainer>
       <StyledDropDown>
         <Dropdown overlay={SemesterMenu} placement='bottomLeft'>
-          <StyledSemesterButton>20{currentSemester}학기</StyledSemesterButton>
+          <StyledSearchButton>20{currentSemester}학기</StyledSearchButton>
         </Dropdown>
       </StyledDropDown>
       <StyledSearchInput
@@ -83,7 +79,9 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
       />
       <StyledDropDown>
         <Dropdown overlay={LanguageMenu} placement='bottomLeft'>
-          <StyledSemesterButton>{searchLanguage ? searchLanguage : <span>사용 언어</span>}</StyledSemesterButton>
+          <StyledSearchButton>
+            {searchLanguage ? searchLanguage : <span>사용 언어</span>}
+          </StyledSearchButton>
         </Dropdown>
       </StyledDropDown>
     </StyledMainSearchContainer>

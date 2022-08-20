@@ -6,7 +6,7 @@ import { CirclePicker } from 'react-color';
 
 import { TimeTable } from '@components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED } from '@utility';
 
 import {
   StyledColorContainer,
@@ -18,7 +18,7 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
   const [selectedData, setselectedData] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [cellData, setcellData] = useState([]);
-  const [selectedColor, setSelectedColor] = useState(MAIN_COLOR);
+  const [selectedColor, setSelectedColor] = useState(RED);
 
   const renderselectedData = (index, selectColor, timeHour, timeMin) => {
     return selectedData[index].slice(1).map((data, key) => {

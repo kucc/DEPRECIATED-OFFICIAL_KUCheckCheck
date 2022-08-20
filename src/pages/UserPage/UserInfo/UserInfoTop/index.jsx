@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { WhiteShadowButton } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
-import { MAIN_COLOR, RandomEmoji } from '@utility';
+import { RED, RandomEmoji } from '@utility';
 
 import {
   StyledUserInfoModalEmoji,
@@ -187,8 +187,8 @@ function UserInfoTop({ onChangeFunc, userData }) {
           danger
           style={{
             color: 'white',
-            borderColor: MAIN_COLOR,
-            backgroundColor: MAIN_COLOR,
+            borderColor: RED,
+            backgroundColor: RED,
           }}
           onClick={userQuitHandler}>
           탈퇴하기

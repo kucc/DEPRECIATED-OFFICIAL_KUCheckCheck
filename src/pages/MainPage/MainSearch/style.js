@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR, MAIN_COLOR } from '@utility';
+import { BASE_COLOR, RED, BACKGROUND_GRAY } from '@utility';
 
 export const StyledTag = styled.div`
   -webkit-touch-callout: none;
@@ -14,7 +14,7 @@ export const StyledTag = styled.div`
   height: 30px;
   margin-left: 10px;
   margin-top: 10px;
-  background-color: #f5f5f5;
+  background-color: ${BACKGROUND_GRAY};
   border: none;
   padding: 8px 14px;
   font-size: 12px;
@@ -80,7 +80,7 @@ export const StyledSearchBtn = styled.div`
   height: 3em;
   display: flex;
   align-items: center;
-  background: ${MAIN_COLOR};
+  background: ${RED};
   width: 7em;
   cursor: pointer;
   & > svg {

@@ -1,10 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 
-import { MAIN_COLOR, TEXT_COLOR } from '@utility';
+import { RED, BLACK, BACKGROUND_GRAY } from '@utility';
 
 export const StyledButton = styled.button`
-  color: ${TEXT_COLOR};
-  background-color: #F5F5F5;
+  color: ${BLACK};
+  background-color: ${BACKGROUND_GRAY};
   font-size: 18px;
   font-family: 'tmoneyBo';
   border: none;
@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
   &.active {
     color: white;
     border-color: white;
-    background: ${MAIN_COLOR};
+    background: ${RED};
   }
   opacity: ${(props) => props.isLoading && '0.6'};
 `;

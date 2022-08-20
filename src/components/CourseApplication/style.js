@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED, BACKGROUND_GRAY } from '@utility';
 
 export const StyledCourseApply = styled.button`
   margin-right: 25px;
@@ -51,7 +51,7 @@ const mainScreenStyle = (isMobile, isMainScreen) => {
 };
 
 export const StyledCourseApplyOn = styled(StyledCourseApply)`
-  background-color: ${MAIN_COLOR};
+  background-color: ${RED};
   color: white;
   &:hover {
     background-color: #e8463a;
@@ -92,13 +92,13 @@ export const StyledCourseLockText = styled.div`
   align-items: flex-start;
 `;
 export const StyledCourseApplyCancel = styled(StyledCourseApply)`
-  background-color: #f5f5f5;
+  background-color: ${BACKGROUND_GRAY};
   color: black;
   font-family: "sdBo";
   ${({ $isMobile, $isMainScreen }) =>
     mainScreenStyle($isMobile, $isMainScreen)};
   &:hover {
-    color: ${MAIN_COLOR};
+    color: ${RED};
   }
   @media (max-width: 1224px) {
     background-color: #212121;

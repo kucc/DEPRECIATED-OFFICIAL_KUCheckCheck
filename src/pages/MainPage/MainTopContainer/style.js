@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED } from '@utility';
 
 export const StyledMainTopWrapper = styled.div`
   min-height: 18em;
@@ -32,7 +32,7 @@ export const StyledMainTitle1 = styled.div`
     }}
     font-size: 3.5em;
     font-family: "sdBo";
-    color: ${MAIN_COLOR};
+    color: ${RED};
     @media (max-width: 1224px) {
       margin-bottom: -55px;
     }

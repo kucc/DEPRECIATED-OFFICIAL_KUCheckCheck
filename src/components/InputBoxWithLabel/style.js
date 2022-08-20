@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TEXT_COLOR } from '@utility';
+import { BLACK, BACKGROUND_GRAY, LINE_GRAY, GRAY } from '@utility';
 
 export const Wrapper = styled.div`
   margin-top: ${(props) => (props.isLabelTitle ? '38px' : '20px')};
@@ -13,7 +13,7 @@ export const StyledLabel = styled.label`
   display: inline-block;
   font-size: 16px;
   font-family: "sdBo";
-  color: ${TEXT_COLOR};
+  color: ${BLACK};
   margin: 0 6px 8px 30px;
   @media (max-width: 1224px) {
     font-size: 12px;
@@ -21,17 +21,17 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  color: ${TEXT_COLOR};
+  color: ${BLACK};
   width: 100%;
   height: 60px;
   font-size: 18px;
   padding: 20px 34px;
-  background-color: #F5F5F5;
+  background-color: ${BACKGROUND_GRAY};
   border-radius: 39px;
-  border: 1px solid #DEDEDE;
+  border: 1px solid ${LINE_GRAY};
   outline: none;
   &::placeholder {
-    color: #B6B6B6;
+    color: ${GRAY};
   }
   @media (max-width: 1224px) {
     font-size: 14px;
@@ -42,7 +42,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledRequiredText = styled.span`
-  color: #B6B6B6;
+  color: ${GRAY};
   font-size: 12px;
   font-family: "sdBo";
   `;

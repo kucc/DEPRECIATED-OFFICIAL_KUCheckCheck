@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
+import { RED, BLACK } from '@utility/COLORS';
 
 export const StyledHeaderContainer = styled.div`
     width: 238px;
@@ -21,14 +21,14 @@ export const StyledLinkButton = styled(Link)`
     width: 100%;
     height: 50px;
     font-size: 20px;
-    color: ${TEXT_COLOR};
+    color: ${BLACK};
     background-color: white;
     border: none;
     border-radius: 35px;
     margin-bottom: 16px;
     &.active {
         color: white;
-        background-color: ${MAIN_COLOR};
+        background-color: ${RED};
     }
     svg {
         margin-right: 18px;

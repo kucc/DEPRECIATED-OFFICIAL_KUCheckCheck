@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { CourseContainer, RenewalEmptyBox, WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
+import { RED, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,
@@ -275,8 +275,8 @@ export const PMainBottomContainer = () => {
                   width: '100%',
                   height: '40px',
                   borderRadius: '25px',
-                  backgroundColor: MAIN_COLOR,
-                  borderColor: MAIN_COLOR,
+                  backgroundColor: RED,
+                  borderColor: RED,
                   fontSize: '13px',
                 }}>
                 {currentSemester} 학기

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TEXT_COLOR } from '@utility/COLORS';
+import { BLACK } from '@utility/COLORS';
 
 export const StyledForm = styled.form`
   width: 100%;
@@ -11,7 +11,7 @@ export const StyledForm = styled.form`
   }
 
   .signupButton {
-    color: ${TEXT_COLOR};
+    color: ${BLACK};
     font-size: 16px;
     width: 40px;
     margin-top: 24px;

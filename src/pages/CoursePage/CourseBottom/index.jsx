@@ -6,7 +6,7 @@ import { CourseDifficulty, WhiteShadowButton } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
 import {
-  MAIN_COLOR,
+  RED,
   StyledSelectItem,
   StyledVerticalLine,
   renderWord,
@@ -143,7 +143,7 @@ const CourseBottom = ({ courseData }) => {
           courseData.courseLeader &&
           currentUser.uid === courseData.courseLeader.id && (
             <WhiteShadowButton
-              bgColor={isEdit ? MAIN_COLOR : 'white'}
+              bgColor={isEdit ? RED : 'white'}
               text={isEdit ? '수정완료' : '수정하기'}
               onClick={() => {
                 if (isEdit) {

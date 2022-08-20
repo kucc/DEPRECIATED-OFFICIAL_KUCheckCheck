@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { GRAY } from '@utility/COLORS';
 export const StyledInfoContainer = styled.div`
   display: grid;
   grid-template-columns: ${props => (props.isEdit ? 'auto' : 'auto 30%')};
@@ -10,7 +11,7 @@ export const StyledInfoContainer = styled.div`
 `;
 
 export const StyledInfoStack = styled.div`
-  border-left: 1px solid #b6b6b6;
+  border-left: 1px solid ${GRAY};
   margin-top: 80px;
   padding: 50px;
   padding-top: 10px;

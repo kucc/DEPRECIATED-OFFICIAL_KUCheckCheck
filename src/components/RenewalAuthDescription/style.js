@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MAIN_COLOR, TEXT_COLOR } from '@utility/COLORS';
+import { RED, BLACK } from '@utility/COLORS';
 
 export const DescriptionForm = styled.div`
   text-align: center;
@@ -17,7 +17,7 @@ export const StyledDescriptionTopText = styled.div`
   font-family: "tmoneyBo";
   font-size: 54px;
   line-height: 58px;
-  color: ${(props) => (props.color === 'red' ? MAIN_COLOR : TEXT_COLOR)};
+  color: ${(props) => (props.color === 'red' ? RED : BLACK)};
   margin-top: ${(props) => (props.color === 'red' ? '4px' : 0)};
   @media (max-width: 1224px) {
     font-size: 36px;
@@ -28,7 +28,7 @@ export const StyledDescriptionTopText = styled.div`
 export const StyledDescriptionBottomText = styled.div`
   font-size: 20px;
   line-height: 28px;
-  color: ${TEXT_COLOR};
+  color: ${BLACK};
   margin: 20px 0 84px 0;
   @media (max-width: 1224px) {
     font-size: 16px;

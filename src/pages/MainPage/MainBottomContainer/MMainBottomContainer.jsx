@@ -7,7 +7,7 @@ import { CourseContainer, RenewalEmptyBox } from '@components';
 
 import { firestoreService } from '@/firebase';
 import useWindowDimensions from '@hooks/useWindowDimensions';
-import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
+import { RED, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,
@@ -263,8 +263,8 @@ export const MMainBottomContainer = () => {
                 fontSize: `10px`,
                 height: '40px',
                 borderRadius: '25px',
-                backgroundColor: MAIN_COLOR,
-                borderColor: MAIN_COLOR,
+                backgroundColor: RED,
+                borderColor: RED,
               }}>
               {currentSemester} 학기
             </Button>
