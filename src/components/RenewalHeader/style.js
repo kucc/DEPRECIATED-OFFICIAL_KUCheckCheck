@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { RED, BLACK } from '@utility/COLORS';
 
 export const StyledHeaderContainer = styled.div`
-    width: 130px;
+    width: 136px;
     height: 100%;
     position: fixed;
     text-align: center;

@@ -9,7 +9,7 @@ html, body, #root {
 }
 main {
   min-height: 500px;
-  margin-left: 130px;
+  margin-left: 136px;
   border-left: 1.5px solid ${LINE_GRAY};
 }
 * {

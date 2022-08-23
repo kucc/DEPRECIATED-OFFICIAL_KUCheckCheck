@@ -16,7 +16,7 @@ export const StyledFooter = styled.div`
 `;
 
 export const StyledFooterMargin = styled.div`
-    margin: 0 302px 0 130px;
+    margin: 0 302px 0 136px;
 `;
 
 export const StyledRow = styled.div`
