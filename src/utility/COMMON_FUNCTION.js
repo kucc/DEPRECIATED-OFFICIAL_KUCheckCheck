@@ -1,6 +1,6 @@
 export const SINGLE_PATHNAMES_LIST = ['/login', '/signup'];
 
-export const RENEWAL_PATH_LIST = ['/main', '/course/create', '/attendance', '/notice', '/admin'];
+export const RENEWAL_PATH_LIST = ['/main', '/course/create', '/attendance', '/notice', '/admin', '/new/timetable'];
 
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];

@@ -16,3 +16,4 @@ export * from './RenewalNoticePage';
 export * from './RenewalAttendancePage';
 export * from './RenewalAdminPage';
 export * from './RenewalCourseCreatePage';
+export * from './RenewalTimeTablePage';

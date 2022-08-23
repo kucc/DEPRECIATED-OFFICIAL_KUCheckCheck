@@ -23,7 +23,8 @@ import {
   RenewalNoticePage,
   RenewalAttendancePage,
   RenewalAdminPage,
-  RenewalCourseCreatePage
+  RenewalCourseCreatePage,
+  RenewalTimeTablePage
 } from '@pages';
 import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
@@ -108,6 +109,7 @@ function App() {
         <Route path='/attendance' component={RenewalAttendancePage} />
         <Route path='/notice' component={RenewalNoticePage} />
         <Route path='/admin' component={RenewalAdminPage} />
+        <Route path='/new/timetable' component={RenewalTimeTablePage} />
       </Switch>
     )
   }
