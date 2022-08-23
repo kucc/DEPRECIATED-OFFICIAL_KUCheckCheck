@@ -19,7 +19,11 @@ import {
   NotFoundPage,
   NoticePage,
   TimeTablePage,
-  RenewalMainPage
+  RenewalMainPage,
+  RenewalNoticePage,
+  RenewalAttendancePage,
+  RenewalAdminPage,
+  RenewalCourseCreatePage
 } from '@pages';
 import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
@@ -60,6 +64,7 @@ function App() {
     )
   }
 
+  // 기존 페이지들
   const NavFooterPageRouter = () => {    // TODO
     // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
     // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
@@ -94,23 +99,26 @@ function App() {
     )
   }
 
+  // 리뉴얼 페이지들
   const RenewalPageRouter = () => {
     return (
       <Switch>
         <Route path='/main' component={RenewalMainPage} />
-        <Route path='/test' component={RenewalMainPage} />
+        <Route path='/course/create' component={RenewalCourseCreatePage} />
+        <Route path='/attendance' component={RenewalAttendancePage} />
+        <Route path='/notice' component={RenewalNoticePage} />
+        <Route path='/admin' component={RenewalAdminPage} />
       </Switch>
     )
   }
 
-
   return (
     <>
       <GlobalStyle />
-      {SINGLE_PATHNAMES_LIST.includes(pathname) ?
+      {SINGLE_PATHNAMES_LIST.includes(pathname) ? // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
         (
           SinglePageRouter()
-        ) : RENEWAL_PATH_LIST.includes(pathname) ? (
+        ) : RENEWAL_PATH_LIST.includes(pathname) ? ( // 리뉴얼 페이지
           <>
             <RenewalTopHeader />
             <StyledMainContainer>
@@ -121,7 +129,7 @@ function App() {
             </StyledMainContainer>
             <RenewalFooter />
           </>
-        ) : (
+        ) : ( // 기존 페이지
           <>
             <NavBar />
             <StyledMain className='main-background-color'>

@@ -2,8 +2,7 @@ import { InputNumber, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import styled from 'styled-components';
 
-import { BASE_COLOR } from './COLORS';
-
+import { BASE_COLOR, BLACK } from './COLORS';
 
 export const StyledMainContainer = styled.div`
   width: 1280px;
@@ -64,6 +63,26 @@ export const StyledSelectItem = styled.div`
     font-family: "sdBo";
     padding: 0px 5px;
   }
+`;
+
+export const StyledRightArrow = styled.i`
+  display: inline-block;
+  border: solid ${BLACK};
+  border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
+  margin-bottom: 2px;
+  padding: ${props => (props.width ? `${props.width}px` : '3px')};
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+`;
+
+export const StyledDownArrow = styled.i`
+  display: inline-block;
+  border: solid ${BLACK};
+  border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
+  margin-bottom: 2px;
+  padding: ${props => (props.width ? `${props.width}px` : '3px')};
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 `;
 
 export const StyledTextArea = styled(TextArea)`

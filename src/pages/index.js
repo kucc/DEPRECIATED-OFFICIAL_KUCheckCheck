@@ -12,3 +12,7 @@ export * from './UserPage';
 export * from './RenewalMainPage';
 export * from './RenewalJoinPage';
 export * from './RenewalLoginPage';
+export * from './RenewalNoticePage';
+export * from './RenewalAttendancePage';
+export * from './RenewalAdminPage';
+export * from './RenewalCourseCreatePage';

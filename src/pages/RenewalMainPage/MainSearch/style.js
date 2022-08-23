@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'antd';
-import { BLACK, LINE_GRAY, BACKGROUND_GRAY, GRAY } from '@utility/COLORS';
+import { BLACK, LINE_GRAY, BACKGROUND_GRAY, GRAY, RED } from '@utility/COLORS';
 
 export const StyledMainSearchContainer = styled.div`
     display: flex;
@@ -11,6 +11,15 @@ export const StyledMainSearchContainer = styled.div`
 export const StyledDropDown = styled.div`
     width: 154px;
     display: inline-block;
+    .ant-btn {
+        &:hover, &:focus {
+            color: ${RED};
+            border-color: ${RED};
+            i {
+                border-color: ${RED};
+            }
+        }
+    }
 `;
 
 export const StyledSearchButton = styled(Button)`
@@ -24,18 +33,30 @@ export const StyledSearchButton = styled(Button)`
         font-family: 'sdBo';
         font-size: 18px;
     }
+    i {
+        margin-right: 12px;
+    }
+`;
+
+export const StyledSearchContainer = styled.div`
+    position: relative;
+    margin: 0 10px;
+    svg {
+        position: absolute;
+        left: 37px;
+        top: 16px;
+    }
 `;
 
 export const StyledSearchInput = styled.input`
     width: 474px;
     height: 54px;
-    margin: 0 10px;
     border: 1px solid ${LINE_GRAY};
     border-radius: 39px;
     background-color: ${BACKGROUND_GRAY};
     font-family: 'sdLi';
     font-size: 20px;
-    padding-left: 82px;
+    padding-left: 76px;
     &::placeholder {
         color: ${GRAY};
     }

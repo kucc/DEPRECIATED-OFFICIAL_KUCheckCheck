@@ -9,11 +9,16 @@ import {
   setSearchStringInput,
 } from '@redux/actions/renewal_search_action';
 
+
+import { MagnifyingGlassIcon } from '@/svg';
+import { StyledDownArrow } from '@utility/COMMON_STYLE';
+
 import {
   StyledDropDown,
   StyledMainSearchContainer,
-  StyledSearchInput,
   StyledSearchButton,
+  StyledSearchInput,
+  StyledSearchContainer
 } from './style';
 
 export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
@@ -72,15 +77,25 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
           <StyledSearchButton>20{currentSemester}학기</StyledSearchButton>
         </Dropdown>
       </StyledDropDown>
-      <StyledSearchInput
-        placeholder='세션명, 세션장, 사용 언어를 검색해보세요!'
-        value={searchStringInput}
-        onChange={handleSearch}
-      />
+      <StyledSearchContainer>
+        <StyledSearchInput
+          placeholder='세션명, 세션장, 사용 언어를 검색해보세요!'
+          value={searchStringInput}
+          onChange={handleSearch}
+        />
+        <MagnifyingGlassIcon />
+      </StyledSearchContainer>
       <StyledDropDown>
         <Dropdown overlay={LanguageMenu} placement='bottomLeft'>
           <StyledSearchButton>
-            {searchLanguage ? searchLanguage : <span>사용 언어</span>}
+            {searchLanguage ? (
+              searchLanguage
+            ) : (
+              <>
+                <StyledDownArrow width='5' />
+                <span>사용 언어</span>
+              </>
+            )}
           </StyledSearchButton>
         </Dropdown>
       </StyledDropDown>

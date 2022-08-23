@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { RED } from '@utility/COLORS';
+import { RED, BLACK } from '@utility/COLORS';
 import { Link } from 'react-router-dom';
 
 export const StyledTopHeaderContainer = styled.div`
@@ -26,7 +26,32 @@ export const StyledLeftContainer = styled.div`
   margin-left: auto;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLoginLink = styled(Link)`
   font-family: "tmoneyBo";
-  font-size: 22px;
+  font-size: 28px;
 `
+
+export const StyledUserContainer = styled.span`
+  font-size: 18px;
+  font-family: 'tmoneyRe';
+  color: ${BLACK};
+  margin-right: 13px;
+`;
+
+export const StyledUserName = styled.span`
+  font-family: 'tmoneyBo';
+  margin-right: 4px;
+`;
+
+export const StyledMenuButton = styled.div`
+  cursor: pointer;
+`;
+
+export const StyledDropContent = styled.div`
+  display: ${props => (props.isOpen ? 'block' : 'none')};
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+`;

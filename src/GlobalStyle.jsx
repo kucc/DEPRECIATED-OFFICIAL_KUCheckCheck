@@ -8,7 +8,8 @@ html, body, #root {
   height: 100%;
 }
 main {
-  margin-left: 124px;
+  min-height: 500px;
+  margin-left: 130px;
   border-left: 1.5px solid ${LINE_GRAY};
 }
 * {
