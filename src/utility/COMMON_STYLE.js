@@ -162,3 +162,10 @@ export const StyledLaguageImg = styled.img`
   margin-right: 20px;
   object-fit: contain;
 `;
+
+
+export const StyledCommonTitle = styled.div`
+  font-size: 26px;
+  font-family: 'tmoneyBo';
+  color: ${BLACK}
+`;
