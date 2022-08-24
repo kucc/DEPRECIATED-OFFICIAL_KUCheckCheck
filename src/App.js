@@ -24,13 +24,15 @@ import {
   RenewalAttendancePage,
   RenewalAdminPage,
   RenewalCourseCreatePage,
-  RenewalTimeTablePage
+  RenewalTimeTablePage,
+  RenewalCourseDetailPage,
+  RenewalProfilePage
 } from '@pages';
 import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH_LIST, StyledMain } from './utility';
+import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH, StyledMain } from './utility';
 
 import './App.less';
 
@@ -104,23 +106,27 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
-        <Route path='/main' component={RenewalMainPage} />
-        <Route path='/course/create' component={RenewalCourseCreatePage} />
-        <Route path='/attendance' component={RenewalAttendancePage} />
-        <Route path='/notice' component={RenewalNoticePage} />
-        <Route path='/admin' component={RenewalAdminPage} />
-        <Route path='/new/timetable' component={RenewalTimeTablePage} />
+        <Route path={RENEWAL_PATH.main} component={RenewalMainPage} />
+        <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
+        <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
+        <Route path={RENEWAL_PATH.attendance} component={RenewalAttendancePage} />
+        <Route path={RENEWAL_PATH.timeTable} component={RenewalTimeTablePage} />
+        <Route path={RENEWAL_PATH.profile} component={RenewalProfilePage} />
+        <Route path={RENEWAL_PATH.notice} component={RenewalNoticePage} />
+        <Route path={RENEWAL_PATH.admin} component={RenewalAdminPage} />
       </Switch>
     )
   }
 
+  const pathSliced = pathname.split('/');
+  const path = pathSliced.length > 3 ? '/course/detail/:id' : pathname // 세션 소개 url 구분
   return (
     <>
       <GlobalStyle />
       {SINGLE_PATHNAMES_LIST.includes(pathname) ? // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
         (
           SinglePageRouter()
-        ) : RENEWAL_PATH_LIST.includes(pathname) ? ( // 리뉴얼 페이지
+        ) : Object.values(RENEWAL_PATH).includes(path) ? ( // 리뉴얼 페이지
           <>
             <RenewalTopHeader />
             <StyledMainContainer>

@@ -9,6 +9,7 @@ export * from './NoticePage';
 export * from './TimeTablePage';
 export * from './UserPage';
 
+// renewal
 export * from './RenewalMainPage';
 export * from './RenewalJoinPage';
 export * from './RenewalLoginPage';
@@ -17,3 +18,5 @@ export * from './RenewalAttendancePage';
 export * from './RenewalAdminPage';
 export * from './RenewalCourseCreatePage';
 export * from './RenewalTimeTablePage';
+export * from './RenewalCourseDetailPage';
+export * from './RenewalProfilePage';
