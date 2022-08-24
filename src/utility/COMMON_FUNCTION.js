@@ -1,6 +1,8 @@
 export const SINGLE_PATHNAMES_LIST = ['/login', '/signup'];
 
 export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
+  login: '/login', // 로그인
+  signup: '/signup', // 회원가입
   main: '/main', // 메인
   courseCreate: '/course/create', // 세션 등록
   courseDetail: '/course/detail/:id', // 세션 소개

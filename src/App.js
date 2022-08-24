@@ -48,7 +48,7 @@ function App() {
   useEffect(() => {
     authService.onAuthStateChanged(user => {
       if (user) {
-        if (pathname === '/login' || pathname === '/signup') {
+        if (pathname === RENEWAL_PATH.login || pathname === RENEWAL_PATH.signup) {
           history.push('/');
         }
         dispatch(setUser(user));
@@ -61,8 +61,8 @@ function App() {
   const SinglePageRouter = () => {
     return (
       <Switch>
-        <Route path='/login' component={LoginPage} />
-        <Route path='/signup' component={JoinPage} />
+        <Route path={RENEWAL_PATH.login} component={LoginPage} />
+        <Route path={RENEWAL_PATH.signup} component={JoinPage} />
       </Switch>
     )
   }

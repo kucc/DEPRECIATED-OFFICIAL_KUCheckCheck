@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import useDetectClose from '@hooks/useDetectClose';
 import { StyledDownArrow } from '@utility/COMMON_STYLE';
-
+import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 import { DefaultLogo } from '..';
 import {
   StyledDropContent,
@@ -54,7 +54,7 @@ export const RenewalTopHeader = () => {
               </StyledDropContent>
             </>
           ) : (
-            <StyledLoginLink to='/login'>LOGIN</StyledLoginLink>
+            <StyledLoginLink to={RENEWAL_PATH.login}>LOGIN</StyledLoginLink>
           )}
         </StyledLeftContainer>
       </StyledTopHeader>
