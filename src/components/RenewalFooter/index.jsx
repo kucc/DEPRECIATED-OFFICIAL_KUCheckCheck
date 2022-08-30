@@ -7,6 +7,7 @@ import {
   StyledFooter,
   StyledFooterContainer,
   StyledFooterGithubLink,
+  StyledFooterLogo,
   StyledFooterMargin,
   StyledHorizontalLine,
   StyledRow,
@@ -48,7 +49,7 @@ export const RenewalFooter = () => {
             </StyledContent>
           </StyledRow>
           <StyledHorizontalLine />
-          <DefaultLogo width={71} height={71} logoName='type-1-3' />
+          <StyledFooterLogo />
           <StyledCopyRight>
             Copyright <span>ⓒ KUCC</span> All Rights Reserved.
           </StyledCopyRight>
