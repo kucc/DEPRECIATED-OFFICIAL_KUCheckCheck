@@ -32,7 +32,7 @@ import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH, StyledMain } from './utility';
+import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH, StyledOldMain, StyledMain } from './utility';
 
 import './App.less';
 
@@ -131,18 +131,18 @@ function App() {
             <RenewalTopHeader />
             <StyledMainContainer>
               <RenewalHeader pathname={pathname} />
-              <main>
+              <StyledMain>
                 {RenewalPageRouter()}
-              </main>
+              </StyledMain>
             </StyledMainContainer>
             <RenewalFooter />
           </>
         ) : ( // 기존 페이지
           <>
             <NavBar />
-            <StyledMain className='main-background-color'>
+            <StyledOldMain className='main-background-color'>
               {NavFooterPageRouter()}
-            </StyledMain>
+            </StyledOldMain>
             <Footer />
           </>
         )}

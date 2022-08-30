@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SpeechBubble = () => {
+export const PcSpeechBubble = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="384" height="86" viewBox="0 0 384 86">
             <defs>

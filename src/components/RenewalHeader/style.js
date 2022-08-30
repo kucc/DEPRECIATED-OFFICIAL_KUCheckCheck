@@ -9,6 +9,9 @@ export const StyledHeaderContainer = styled.div`
     padding-right: 21px;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1279px) {
+        display: none;
+    }
 `;
 
 export const StyledLinkButton = styled.span`

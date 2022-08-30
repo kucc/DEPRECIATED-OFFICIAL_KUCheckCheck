@@ -9,16 +9,16 @@ import {
   setSearchStringInput,
 } from '@redux/actions/renewal_search_action';
 
-
-import { MagnifyingGlassIcon } from '@/svg';
 import { StyledDownArrow } from '@utility/COMMON_STYLE';
 
+import magnifyingGlassIcon from '../../../svg/main/magnifyingGlassIcon.svg';
 import {
   StyledDropDown,
+  StyledMagnifyingGlassIcon,
   StyledMainSearchContainer,
   StyledSearchButton,
+  StyledSearchContainer,
   StyledSearchInput,
-  StyledSearchContainer
 } from './style';
 
 export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
@@ -83,7 +83,7 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
           value={searchStringInput}
           onChange={handleSearch}
         />
-        <MagnifyingGlassIcon />
+        <StyledMagnifyingGlassIcon src={magnifyingGlassIcon} />
       </StyledSearchContainer>
       <StyledDropDown>
         <Dropdown overlay={LanguageMenu} placement='bottomLeft'>

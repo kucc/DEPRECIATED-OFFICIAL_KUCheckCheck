@@ -28,7 +28,7 @@ export const StyledLeftContainer = styled.div`
 
 export const StyledLoginLink = styled(Link)`
   font-family: "tmoneyBo";
-  font-size: 28px;
+  font-size: 18px;
 `
 
 export const StyledUserContainer = styled.span`

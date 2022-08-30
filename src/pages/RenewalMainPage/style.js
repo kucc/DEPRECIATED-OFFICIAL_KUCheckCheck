@@ -8,6 +8,10 @@ export const MainBottomContainer = styled.div`
 export const StyledMainCourse = styled.div`
     width: calc(100% - 302px);
     padding: 0 24px;
+    @media (max-width: 1279px) {
+        width: 100%;
+        padding: 0 18px;
+    }
 `;
 
 export const StyledUserContainer = styled.div`
@@ -15,4 +19,7 @@ export const StyledUserContainer = styled.div`
     border: 2px solid ${LINE_GRAY};
     border-radius: 17px;
     padding: 22px 26px;
+    @media (max-width: 1279px) {
+        display: none;
+    }
 `;

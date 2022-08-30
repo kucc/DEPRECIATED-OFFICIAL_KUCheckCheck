@@ -8,6 +8,7 @@ import {
   StyledCourseButton,
   StyledCourseCase,
   StyledCourseCaseValue,
+  StyledCourseInfo,
   StyledCourseLanguageImage,
   StyledCourseTitle,
   StyledCourseTop,
@@ -21,7 +22,7 @@ import {
 
 export const RenewalMainCourse = ({ course }) => {
   return (
-    <StyledMainCourseContainer>
+    <StyledMainCourseContainer onClick={() => console.log('전체 클릭')}>
       <StyledLeader>
         <StyledEmojiBackground>
           <StyledEmoji>🧑‍🎤</StyledEmoji>
@@ -30,7 +31,7 @@ export const RenewalMainCourse = ({ course }) => {
           {course.courseLeader.name} <StyledLeaderType>팀장</StyledLeaderType>
         </StyledLeaderName>
       </StyledLeader>
-      <div>
+      <StyledCourseInfo>
         <StyledCourseTop>
           <StyledCourseTitle isEllipsis={course.courseName.length > 14}>
             {course.courseName}
@@ -58,8 +59,15 @@ export const RenewalMainCourse = ({ course }) => {
             </StyledCourseCaseValue>
           </StyledCourseCase>
         </StyledCourseBottom>
-      </div>
-      <StyledCourseButton>신청하기 1/5</StyledCourseButton>
+      </StyledCourseInfo>
+      <StyledCourseButton
+        onClick={e => {
+          e.stopPropagation();
+
+          console.log('부분 클릭');
+        }}>
+        신청하기 1/5
+      </StyledCourseButton>
     </StyledMainCourseContainer>
   );
 };
