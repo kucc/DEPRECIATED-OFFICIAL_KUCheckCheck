@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BLACK, LINE_GRAY, GRAY } from '@utility/COLORS';
 
 export const StyledCourseContainer = styled.div`
@@ -29,8 +29,12 @@ export const StyledTabText = styled.span`
     font-size: 18px;
     font-family: "sdBo";
     padding: 14px 12px;
-    &.active {
+    ${props => props.active && css`
         color: ${BLACK};
         border-bottom: 3px solid ${BLACK};
+    `}
+    @media (max-width: 1279px) {
+        font-size: 12px;
+        padding: 8px 0;
     }
 `;

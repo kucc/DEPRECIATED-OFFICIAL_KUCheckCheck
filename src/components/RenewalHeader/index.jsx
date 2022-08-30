@@ -1,6 +1,5 @@
 import React from 'react';
 
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
@@ -29,7 +28,7 @@ export const RenewalHeader = ({ pathname }) => {
         onClick={() => {
           handleLink(RENEWAL_PATH.main);
         }}>
-        <StyleActive className={cx({ active: pathname === RENEWAL_PATH.main })}>
+        <StyleActive active={pathname === RENEWAL_PATH.main}>
           <HomeIcon fill={pathname === RENEWAL_PATH.main ? RED : BLACK} />
           <span>홈 화면</span>
         </StyleActive>
@@ -38,8 +37,7 @@ export const RenewalHeader = ({ pathname }) => {
         onClick={() => {
           handleLink(RENEWAL_PATH.courseCreate);
         }}>
-        <StyleActive
-          className={cx({ active: pathname === RENEWAL_PATH.courseCreate })}>
+        <StyleActive active={pathname === RENEWAL_PATH.courseCreate}>
           <EditIcon
             fill={pathname === RENEWAL_PATH.courseCreate ? RED : BLACK}
           />
@@ -50,8 +48,7 @@ export const RenewalHeader = ({ pathname }) => {
         onClick={() => {
           handleLink(RENEWAL_PATH.attendance);
         }}>
-        <StyleActive
-          className={cx({ active: pathname === RENEWAL_PATH.attendance })}>
+        <StyleActive active={pathname === RENEWAL_PATH.attendance}>
           <CheckCircleIcon
             fill={pathname === RENEWAL_PATH.attendance ? RED : BLACK}
           />
@@ -62,8 +59,7 @@ export const RenewalHeader = ({ pathname }) => {
         onClick={() => {
           handleLink(RENEWAL_PATH.notice);
         }}>
-        <StyleActive
-          className={cx({ active: pathname === RENEWAL_PATH.notice })}>
+        <StyleActive active={pathname === RENEWAL_PATH.notice}>
           <NoticeIcon fill={pathname === RENEWAL_PATH.notice ? RED : BLACK} />
           <span>공지사항</span>
         </StyleActive>
@@ -72,8 +68,7 @@ export const RenewalHeader = ({ pathname }) => {
         onClick={() => {
           handleLink(RENEWAL_PATH.admin);
         }}>
-        <StyleActive
-          className={cx({ active: pathname === RENEWAL_PATH.admin })}>
+        <StyleActive active={pathname === RENEWAL_PATH.admin}>
           <LockStatesIcon
             fill={pathname === RENEWAL_PATH.admin ? RED : BLACK}
           />

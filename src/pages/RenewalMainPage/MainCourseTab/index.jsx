@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import cx from 'classnames';
 import { useSelector } from 'react-redux';
 
 import { RenewalEmptyBox } from '@components/RenewalEmptyBox';
@@ -49,29 +48,21 @@ export const MainCourseTab = () => {
     <StyledCourseContainer>
       <StyledCourseTab>
         <StyledTab onClick={() => setCourseTab(0)}>
-          <StyledTabText className={cx({ active: courseTab === 0 })}>
-            전체
-          </StyledTabText>
+          <StyledTabText active={courseTab === 0}>전체</StyledTabText>
         </StyledTab>
         <StyledTab onClick={() => setCourseTab(1)}>
-          <StyledTabText className={cx({ active: courseTab === 1 })}>
-            세션
-          </StyledTabText>
+          <StyledTabText active={courseTab === 1}>세션</StyledTabText>
         </StyledTab>
         <StyledTab onClick={() => setCourseTab(2)}>
-          <StyledTabText className={cx({ active: courseTab === 2 })}>
-            스터디
-          </StyledTabText>
+          <StyledTabText active={courseTab === 2}>스터디</StyledTabText>
         </StyledTab>
         <StyledTab onClick={() => setCourseTab(3)}>
-          <StyledTabText className={cx({ active: courseTab === 3 })}>
-            프로젝트
-          </StyledTabText>
+          <StyledTabText active={courseTab === 3}>프로젝트</StyledTabText>
         </StyledTab>
       </StyledCourseTab>
       {courseList.length === 0 && <RenewalEmptyBox />}
       {courseList.length > 0 &&
-        courseList.map((res) => {
+        courseList.map(res => {
           if (courseTab === 0)
             return <RenewalMainCourse course={res} key={res.id} />;
           else if (courseTab === res.courseType)

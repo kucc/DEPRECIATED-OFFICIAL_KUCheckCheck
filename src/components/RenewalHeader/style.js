@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { RED, BLACK } from '@utility/COLORS';
 
 export const StyledHeaderContainer = styled.div`
@@ -21,11 +21,10 @@ export const StyleActive = styled.span`
     color: ${BLACK};
     font-size: 18px;
     padding: 2px 5px;    
-    &.active {
+    ${props => props.active && css`
         color: ${RED};
         border-bottom: 3px solid ${RED};
-    }
-
+    `}
     svg {
         width: 20px;
        margin-right: 12px;
