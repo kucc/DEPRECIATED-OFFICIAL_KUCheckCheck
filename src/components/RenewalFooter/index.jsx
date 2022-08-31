@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { DefaultLogo } from '../DefaultLogo';
 import {
   StyledContent,
   StyledCopyRight,

@@ -1,17 +1,23 @@
 import React, { useRef } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { setHamburgerRequest } from '@redux/actions/renewal_main_action';
+
 import useDetectClose from '@hooks/useDetectClose';
-import { StyledDownArrow } from '@utility/COMMON_STYLE';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
-import { DefaultLogo } from '..';
+import { StyledDownArrow } from '@utility/COMMON_STYLE';
+
+import HamburgerIcon from '../../svg/header/mobileHamburger.svg';
 import {
   StyledDropContent,
   StyledLeftContainer,
   StyledLoginLink,
+  StyledMainLogo,
   StyledMenuButton,
+  StyledMobileHamburgerButton,
+  StyledTimeTableLink,
   StyledTopHeader,
   StyledTopHeaderContainer,
   StyledUserContainer,
@@ -20,6 +26,7 @@ import {
 
 export const RenewalTopHeader = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const { isLogin, currentUser: user } = useSelector(state => ({
     isLogin: state.user.isLogin,
@@ -27,35 +34,53 @@ export const RenewalTopHeader = () => {
   }));
 
   const dropDownRef = useRef(null);
-  const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
+  const [isLoginOpen, setIsLoginOpen] = useDetectClose(dropDownRef, false);
+
+  const isHamburger = useSelector(state => state.main.isHamburger);
+
+  const handleHamburger = () => {
+    if (!isHamburger) {
+      document.body.classList.add('open-modal');
+    } else {
+      document.body.classList.remove('open-modal');
+    }
+    dispatch(setHamburgerRequest(!isHamburger));
+  };
 
   return (
     <StyledTopHeaderContainer>
       <StyledTopHeader>
-        <DefaultLogo
-          logoName='type-1-3'
-          width={103}
-          height={103}
-          onClick={() => history.push('/')}
-          isPointer={true}
+        <StyledMainLogo
+          src={'/img/logo/type-1-3.svg'}
+          alt='logo'
+          onClick={() => history.push(RENEWAL_PATH.main)}
+        />
+        <StyledMobileHamburgerButton
+          src={HamburgerIcon}
+          onClick={handleHamburger}
         />
         <StyledLeftContainer>
-          {isLogin ? (
-            <>
-              <StyledMenuButton onClick={() => setIsOpen(!isOpen)}>
-                <StyledUserContainer>
-                  <StyledUserName>{user.displayName}</StyledUserName>님
-                </StyledUserContainer>
-                <StyledDownArrow width='4' thin='2' />
-              </StyledMenuButton>
-              <StyledDropContent ref={dropDownRef} isOpen={isOpen}>
-                <div>내정보</div>
-                <div></div>
-              </StyledDropContent>
-            </>
-          ) : (
-            <StyledLoginLink to={RENEWAL_PATH.login}>LOGIN</StyledLoginLink>
-          )}
+          <span>
+            <StyledTimeTableLink to={RENEWAL_PATH.timeTable}>
+              동방 시간표
+            </StyledTimeTableLink>
+            {isLogin ? (
+              <>
+                <StyledMenuButton onClick={() => setIsLoginOpen(!isLoginOpen)}>
+                  <StyledUserContainer>
+                    <StyledUserName>{user.displayName}</StyledUserName>님
+                  </StyledUserContainer>
+                  <StyledDownArrow width='4' thin='2' />
+                </StyledMenuButton>
+                <StyledDropContent ref={dropDownRef} isLoginOpen={isLoginOpen}>
+                  <div>내정보</div>
+                  <div></div>
+                </StyledDropContent>
+              </>
+            ) : (
+              <StyledLoginLink to={RENEWAL_PATH.login}>LOGIN</StyledLoginLink>
+            )}
+          </span>
         </StyledLeftContainer>
       </StyledTopHeader>
     </StyledTopHeaderContainer>

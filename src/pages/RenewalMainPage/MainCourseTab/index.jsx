@@ -14,8 +14,8 @@ import {
 
 export const MainCourseTab = () => {
   const mainCourseData = useSelector(state => state.course.mainCourse.data);
-  const searchStringInput = useSelector(state => state.search.stringInput); // 검색어
-  const searchLanguage = useSelector(state => state.search.language); // 사용 언어
+  const searchStringInput = useSelector(state => state.main.stringInput); // 검색어
+  const searchLanguage = useSelector(state => state.main.language); // 사용 언어
 
   const [courseTab, setCourseTab] = useState(0);
   const [courseList, setCourseList] = useState([]);

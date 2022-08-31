@@ -5,7 +5,7 @@ import { FaHashtag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_search_action';
+import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_main_action';
 
 import { BlackIcon } from '@components';
 
@@ -23,8 +23,8 @@ import {
 function MainSearch() {
   const dispatch = useDispatch();
 
-  const selectedCategory = useSelector(state => state.search.language);
-  const searchTerm = useSelector(state => state.search.stringInput);
+  const selectedCategory = useSelector(state => state.main.language);
+  const searchTerm = useSelector(state => state.main.stringInput);
   
   const [randomCategory, setrandomCategory] = useState([]);
   const { width } = useWindowDimensions();

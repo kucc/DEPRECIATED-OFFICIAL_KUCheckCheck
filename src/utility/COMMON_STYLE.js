@@ -10,6 +10,7 @@ export const StyledMainContainer = styled.div`
   margin: 0 auto;
   @media (max-width: 1279px) {
     width: 100%;
+    padding-top: 76px;
   }
 `;
 

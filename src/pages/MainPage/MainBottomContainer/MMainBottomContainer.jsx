@@ -24,8 +24,8 @@ export const MMainBottomContainer = () => {
   // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const searchTerm = useSelector(state => state.search.stringInput);
-  const searchCategory = useSelector(state => state.search.language);
+  const searchTerm = useSelector(state => state.main.stringInput);
+  const searchCategory = useSelector(state => state.main.language);
   const { width } = useWindowDimensions();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++

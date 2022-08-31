@@ -14,7 +14,7 @@ export const StyledMainCourseContainer = styled.div`
         box-shadow: 0px 0px 10px ${LINE_GRAY};
     }
     @media (max-width: 1279px) {
-        padding: 16px 22px;
+        padding: 16px 18px 16px 22px;
         border-radius: 12px;
     }
 `;

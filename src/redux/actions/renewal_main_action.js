@@ -1,4 +1,4 @@
-import { SET_STRING_INPUT, SET_LANGUAGE } from './types';
+import { SET_STRING_INPUT, SET_LANGUAGE, SET_HAMBURGER } from './types';
 
 export function setSearchStringInput(stringInput) {
   return {
@@ -12,4 +12,11 @@ export function setSearchLanguage(language) {
     type: SET_LANGUAGE,
     data: language,
   };
+}
+
+export function setHamburgerRequest(isOpen) {
+  return {
+    type: SET_HAMBURGER,
+    data: isOpen
+  }
 }

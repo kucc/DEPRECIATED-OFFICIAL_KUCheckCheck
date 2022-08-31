@@ -17,13 +17,23 @@ export const generateActions = (generatedKeys) => ({
     failure: () => ({ type: generatedKeys.failure }),
 });
 
+/**
+ *  main
+ */
 export const SET_STRING_INPUT = 'SET_STRING_INPUT';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+export const SET_HAMBURGER = 'SET_HAMBURGER';
 
+/**
+ * common
+ */
 export const GET_COMMON_INFO = 'GET_COMMON_INFO';
 export const GET_COMMON_INFO_SUCCESS = 'GET_COMMON_INFO_SUCCESS';
 export const GET_COMMON_INFO_FAILURE = 'GET_COMMON_INFO_FAILURE';
 
+/**
+ * course
+ */
 export const GET_MAIN_COURSE = 'GET_MAIN_COURSE';
 export const GET_MAIN_COURSE_SUCCESS = 'GET_MAIN_COURSE_SUCCESS';
 export const GET_MAIN_COURSE_FAILURE = 'GET_COMMON_INFO_FAILURE';

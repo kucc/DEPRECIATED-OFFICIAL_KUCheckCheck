@@ -8,6 +8,10 @@ html, body, #root {
 
 body {
   overflow-x: hidden;
+
+  &.open-modal {
+    overflow-y: hidden;
+  }
 }
 
 * {

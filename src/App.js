@@ -106,7 +106,7 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
-        <Route path={RENEWAL_PATH.main} component={RenewalMainPage} />
+        <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
         <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
         <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
         <Route path={RENEWAL_PATH.attendance} component={RenewalAttendancePage} />

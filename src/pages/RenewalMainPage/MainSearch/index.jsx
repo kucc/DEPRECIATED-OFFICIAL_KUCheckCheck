@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setSearchLanguage,
   setSearchStringInput,
-} from '@redux/actions/renewal_search_action';
+} from '@redux/actions/renewal_main_action';
 
 import { StyledDownArrow } from '@utility/COMMON_STYLE';
 
@@ -25,8 +25,8 @@ export const MainSearch = ({ currentSemester, handleCurrentSemester }) => {
   const dispatch = useDispatch();
 
   const { pastSemester } = useSelector(state => state.common.commonInfo.data);
-  const searchStringInput = useSelector(state => state.search.stringInput);
-  const searchLanguage = useSelector(state => state.search.language);
+  const searchStringInput = useSelector(state => state.main.stringInput);
+  const searchLanguage = useSelector(state => state.main.language);
 
   const languageList = ['Database', 'Html', 'Javascript', 'Node', 'React', 'C'];
 

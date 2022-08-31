@@ -4,35 +4,75 @@ import { Link } from 'react-router-dom';
 
 export const StyledTopHeaderContainer = styled.div`
   width: 100%;
+  height: 84px;
   position: fixed;
   border-top: 8px solid ${RED};
   background-color: white;
   box-shadow: 0px 0px 10px #EBEBEB;
   z-index: 2;
+  @media (max-width: 1279px) {
+    height: 54px;
+    border-top: 3px solid ${RED};
+    box-shadow: 0px 0px 8px #EBEBEB;
+  }
 `;
 
 export const StyledTopHeader = styled.div`
   display: flex;
   width: 1280px;
-  height: 84px;
+  height: 100%;
   align-items: center;
   margin: 0 auto;
   @media (max-width: 1279px) {
     width: 100%;
+    padding: 0 16px;
+  }
+`;
+
+export const StyledMainLogo = styled.img`
+  width: 103px;
+  height: 103px;
+  cursor: pointer;
+  @media (max-width: 1279px) {
+    display: none;
+  }
+`;
+
+export const StyledMobileHamburgerButton = styled.img`
+  display: none;
+  cursor: pointer;
+   @media (max-width: 1279px) {
+    display: inline;
   }
 `;
 
 export const StyledLeftContainer = styled.div`
   margin-left: auto;
+  a {
+    font-family: "tmoneyBo";
+  }
+  font-size: 18px;
+  @media (max-width: 1279px) {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
 `
 
+export const StyledTimeTableLink = styled(Link)`
+  color: ${BLACK};
+  margin-right: 16px;
+  display: none;
+  @media (max-width: 1279px) {
+    display: inline;
+  }
+`;
+
 export const StyledLoginLink = styled(Link)`
-  font-family: "tmoneyBo";
-  font-size: 18px;
+  color: ${RED};
 `
 
 export const StyledUserContainer = styled.span`
-  font-size: 18px;
   font-family: 'tmoneyRe';
   color: ${BLACK};
   margin-right: 13px;
@@ -48,7 +88,7 @@ export const StyledMenuButton = styled.div`
 `;
 
 export const StyledDropContent = styled.div`
-  display: ${props => (props.isOpen ? 'block' : 'none')};
+  display: ${props => (props.isLoginOpen ? 'block' : 'none')};
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
