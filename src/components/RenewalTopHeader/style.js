@@ -85,6 +85,7 @@ export const StyledUserName = styled.span`
 
 export const StyledMenuButton = styled.div`
   cursor: pointer;
+  display: inline-block;
 `;
 
 export const StyledDropContent = styled.div`
