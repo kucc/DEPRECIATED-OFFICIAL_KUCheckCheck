@@ -16,6 +16,7 @@ export const StyledMainCourse = styled.div`
 
 export const StyledUserContainer = styled.div`
     width: 302px;
+    height: 666px;
     border: 2px solid ${LINE_GRAY};
     border-radius: 17px;
     padding: 22px 26px;
