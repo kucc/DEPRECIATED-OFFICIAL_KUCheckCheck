@@ -182,4 +182,5 @@ export const StyledCommonTitle = styled.div`
   font-size: 26px;
   font-family: 'tmoneyBo';
   color: ${BLACK}
+  padding-left: 49px;
 `;
