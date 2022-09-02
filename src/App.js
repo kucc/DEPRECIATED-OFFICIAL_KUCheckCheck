@@ -32,7 +32,7 @@ import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-import { SINGLE_PATHNAMES_LIST, StyledMainContainer, RENEWAL_PATH, StyledOldMain, StyledMain } from './utility';
+import { SINGLE_PATHNAMES_LIST, INCLUDE_HEADER_PATH_LIST, RENEWAL_PATH, StyledMainContainer, StyledOldMain, StyledIncludeHeaderMain, StyledUnIncludeHeaderMain } from './utility';
 
 import './App.less';
 
@@ -57,15 +57,6 @@ function App() {
       }
     });
   }, [dispatch, history]);
-
-  const SinglePageRouter = () => {
-    return (
-      <Switch>
-        <Route path={RENEWAL_PATH.login} component={LoginPage} />
-        <Route path={RENEWAL_PATH.signup} component={JoinPage} />
-      </Switch>
-    )
-  }
 
   // 기존 페이지들
   const NavFooterPageRouter = () => {    // TODO
@@ -106,6 +97,8 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
+        <Route path={RENEWAL_PATH.login} component={LoginPage} />
+        <Route path={RENEWAL_PATH.signup} component={JoinPage} />
         <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
         <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
         <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
@@ -125,15 +118,23 @@ function App() {
       <GlobalStyle />
       {SINGLE_PATHNAMES_LIST.includes(pathname) ? // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
         (
-          SinglePageRouter()
+          RenewalPageRouter()
         ) : Object.values(RENEWAL_PATH).includes(path) ? ( // 리뉴얼 페이지
           <>
             <RenewalTopHeader />
             <StyledMainContainer>
-              <RenewalHeader pathname={pathname} />
-              <StyledMain>
-                {RenewalPageRouter()}
-              </StyledMain>
+              {INCLUDE_HEADER_PATH_LIST.includes(pathname) ? (
+                <>
+                  <RenewalHeader pathname={pathname} />
+                  <StyledIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledIncludeHeaderMain>
+                </>
+              ) : (
+                <StyledUnIncludeHeaderMain>
+                  {RenewalPageRouter()}
+                </StyledUnIncludeHeaderMain>
+              )}
             </StyledMainContainer>
             <RenewalFooter />
           </>

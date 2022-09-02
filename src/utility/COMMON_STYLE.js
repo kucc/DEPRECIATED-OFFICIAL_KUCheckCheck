@@ -14,13 +14,16 @@ export const StyledMainContainer = styled.div`
   }
 `;
 
-export const StyledMain = styled.main`
+export const StyledIncludeHeaderMain = styled.main`
   min-height: 500px;
   margin-left: 136px;
   border-left: 1.5px solid ${LINE_GRAY};
   @media (max-width: 1279px) {
     margin: 0;
   }
+`;
+
+export const StyledUnIncludeHeaderMain = styled.main`
 `;
 
 export const StyledOldMain = styled.div`
