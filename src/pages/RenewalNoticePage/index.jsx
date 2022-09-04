@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { StyledCommonTitle } from '@utility/COMMON_STYLE';
-import { StyledSubTitle, StyledCollapse, StyledCollapseNo, StyledCollapseTitle, StyledCollapseDate, StyledLine, StyledCollapseBox, StyledCollapseBoxNo, StyledCollapseBoxTitle, StyledCollapseBoxDate } from './style';
+import { StyledCommonTitle, StyledBody, StyledSubTitle, StyledBar, StyledBarMenu1,  StyledBarMenu2, StyledBarMenu3 } from './style';
 
 export const RenewalNoticePage = () => {
   const noticeList = [
@@ -30,19 +29,15 @@ export const RenewalNoticePage = () => {
 
   return (
     <div>
-      <StyledCommonTitle>공지사항</StyledCommonTitle>
-      <StyledSubTitle>KUCC 내 활동 관련 운영 정책들을 확인해보세요!</StyledSubTitle>
-      <StyledCollapse>
-        <StyledCollapseNo>No</StyledCollapseNo>
-        <StyledCollapseTitle>제목</StyledCollapseTitle>
-        <StyledCollapseDate>작성일</StyledCollapseDate>
-      </StyledCollapse>
-      <StyledLine></StyledLine>
-      <StyledCollapseBox>
-        <StyledCollapseBoxNo>{noticeList[0].no}</StyledCollapseBoxNo>
-        <StyledCollapseBoxTitle>{noticeList[0].title}</StyledCollapseBoxTitle>
-        <StyledCollapseBoxDate>{noticeList[0].date}</StyledCollapseBoxDate>
-      </StyledCollapseBox>
+      <StyledBody>
+        <StyledCommonTitle>공지사항</StyledCommonTitle>
+        <StyledSubTitle>KUCC 내 활동 관련 운영 정책들을 확인해보세요!</StyledSubTitle>
+        <StyledBarMenu1>
+          <StyledBarMenu3>No</StyledBarMenu3>
+          <StyledBarMenu3>제목</StyledBarMenu3>
+          <StyledBarMenu3>작성일</StyledBarMenu3>
+        </StyledBarMenu1>
+      </StyledBody>
     </div>
   );
 };
