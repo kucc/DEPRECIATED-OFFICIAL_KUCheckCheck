@@ -25,6 +25,10 @@ export const StyledIncludeHeaderMain = styled.main`
 
 export const StyledUnIncludeHeaderMain = styled.main`
   width: 100%;
+  padding-left: 76px;
+  @media (max-width: 1279px) {
+    padding: 0 18px;
+  }
 `;
 
 export const StyledOldMain = styled.div`
