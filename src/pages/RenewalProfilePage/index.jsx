@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { LeftBackButton } from '@components/RenewalButtons';
+import { StyledUserInfoContainer } from './style';
 
 export const RenewalProfilePage = () => {
   return (
-    <div>
-      <LeftBackButton />
-      <span> 부탁해요 </span>
-    </div>
+    <>
+      <StyledUserInfoContainer>공통</StyledUserInfoContainer>
+    </>
   );
 };

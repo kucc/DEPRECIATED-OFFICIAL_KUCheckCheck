@@ -28,7 +28,7 @@ import {
   RenewalCourseDetailPage,
   RenewalProfilePage
 } from '@pages';
-import { RenewalHeader, RenewalTopHeader, RenewalFooter } from '@components';
+import { RenewalHeader, RenewalTopHeader, RenewalFooter, LeftBackButton } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
@@ -131,9 +131,12 @@ function App() {
                   </StyledIncludeHeaderMain>
                 </>
               ) : (
-                <StyledUnIncludeHeaderMain>
-                  {RenewalPageRouter()}
-                </StyledUnIncludeHeaderMain>
+                <>
+                  <LeftBackButton />
+                  <StyledUnIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledUnIncludeHeaderMain>
+                </>
               )}
             </StyledMainContainer>
             <RenewalFooter />
