@@ -8,6 +8,7 @@ html, body, #root {
 
 body {
   overflow-x: hidden;
+  font-family: "sdMe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
 
   &.open-modal {
     overflow-y: hidden;
@@ -21,7 +22,6 @@ button {
 * {
   padding: 0px;
   margin: 0px;
-  font-family: "sdMe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
 }
 .main-background-color {
   background-color: rgb(245, 245, 245);
