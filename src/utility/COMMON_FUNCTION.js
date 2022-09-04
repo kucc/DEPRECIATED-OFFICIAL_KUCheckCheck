@@ -13,7 +13,7 @@ export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
 
 export const SINGLE_PATHNAMES_LIST = [RENEWAL_PATH.login, RENEWAL_PATH.signup];
 
-export const INCLUDE_HEADER_PATH_LIST = [RENEWAL_PATH.main, RENEWAL_PATH.courseCreate, RENEWAL_PATH.attendance, RENEWAL_PATH.notice, RENEWAL_PATH.admin];
+export const INCLUDE_HEADER_PATH_LIST = [RENEWAL_PATH.main, RENEWAL_PATH.courseDetail, RENEWAL_PATH.attendance, RENEWAL_PATH.notice, RENEWAL_PATH.admin];
 
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];

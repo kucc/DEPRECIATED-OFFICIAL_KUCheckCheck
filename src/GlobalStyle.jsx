@@ -14,6 +14,10 @@ body {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 * {
   padding: 0px;
   margin: 0px;

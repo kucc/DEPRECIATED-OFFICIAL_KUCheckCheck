@@ -24,6 +24,7 @@ export const StyledIncludeHeaderMain = styled.main`
 `;
 
 export const StyledUnIncludeHeaderMain = styled.main`
+  width: 100%;
 `;
 
 export const StyledOldMain = styled.div`
@@ -78,28 +79,31 @@ export const StyledSelectItem = styled.div`
   }
 `;
 
-export const StyledRightArrow = styled.i`
+export const StyledArrow = styled.i`
   display: inline-block;
   border: solid ${BLACK};
   border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
   margin-bottom: 2px;
   padding: ${props => (props.width ? `${props.width}px` : '3px')};
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-`;
-
-export const StyledDownArrow = styled.i`
-  display: inline-block;
-  border: solid ${BLACK};
-  border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
-  margin-bottom: 2px;
-  padding: ${props => (props.width ? `${props.width}px` : '3px')};
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
   @media (max-width: 1279px) {
     border-width: ${props => (props.thin ? `0px ${props.thin / 2}px ${props.thin / 2}px 0px` : '0 1.5px 1.5px 0')};
     padding: ${props => (props.width ? `${props.width / 2}px` : '1.5px')};
   }
+`;
+
+export const StyledRightArrow = styled(StyledArrow)`
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+`;
+
+export const StyledLeftArrow = styled(StyledArrow)`
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+`;
+
+export const StyledDownArrow = styled(StyledArrow)`
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 `;
 
 export const StyledTextArea = styled(TextArea)`
@@ -180,10 +184,9 @@ export const StyledLaguageImg = styled.img`
   object-fit: contain;
 `;
 
-
 export const StyledCommonTitle = styled.div`
   font-size: 26px;
   font-family: 'tmoneyBo';
-  color: ${BLACK}
+  color: ${BLACK};
   padding-left: 49px;
 `;
