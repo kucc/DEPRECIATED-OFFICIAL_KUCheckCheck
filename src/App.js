@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
-import { clearUser, setUser } from '@redux/actions/user_action';
+import { clearUser, setUser } from '@redux/actions/renewal_auth_action';
 
 import { NavBar, Footer } from '@components';
 import {
@@ -123,7 +123,7 @@ function App() {
           <>
             <RenewalTopHeader />
             <StyledMainContainer>
-              {INCLUDE_HEADER_PATH_LIST.includes(pathname) ? (
+              {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
                 <>
                   <RenewalHeader pathname={pathname} />
                   <StyledIncludeHeaderMain>
