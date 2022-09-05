@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
+import { setLogoutRequest } from '@redux/actions/renewal_auth_action';
 import { setHamburgerRequest } from '@redux/actions/renewal_main_action';
 
 import useDetectClose from '@hooks/useDetectClose';
@@ -47,6 +48,16 @@ export const RenewalTopHeader = () => {
     dispatch(setHamburgerRequest(!isHamburger));
   };
 
+  const handleLogout = async () => {
+    try {
+      await setLogoutRequest();
+      window.alert('로그아웃이 되었습니다!');
+      history.push(RENEWAL_PATH.main);
+    } catch (e) {
+      alert(e.response.data.error.msg);
+    }
+  };
+
   return (
     <StyledTopHeaderContainer>
       <StyledTopHeader>
@@ -73,8 +84,8 @@ export const RenewalTopHeader = () => {
                   <StyledDownArrow width='4' thin='2' />
                 </StyledMenuButton>
                 <StyledDropContent ref={dropDownRef} isLoginOpen={isLoginOpen}>
-                  <div>내정보</div>
-                  <div></div>
+                  <Link to={RENEWAL_PATH.profile}>내정보</Link>
+                  <button onClick={handleLogout}>로그아웃</button>
                 </StyledDropContent>
               </>
             ) : (

@@ -89,7 +89,8 @@ export const StyledMenuButton = styled.div`
 `;
 
 export const StyledDropContent = styled.div`
-  display: ${props => (props.isLoginOpen ? 'block' : 'none')};
+  display: ${props => (props.isLoginOpen ? 'flex' : 'none')};
+  flex-direction: column;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
