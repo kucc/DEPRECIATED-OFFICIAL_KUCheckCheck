@@ -11,7 +11,7 @@ import {
   StyledCenterContainer,
 } from './style';
 
-export const LoginPage = () => {
+export const RenewalLoginPage = () => {
   const { pathname } = useLocation();
   const isLogin = pathname === RENEWAL_PATH.login; // true, false
   const history = useHistory();

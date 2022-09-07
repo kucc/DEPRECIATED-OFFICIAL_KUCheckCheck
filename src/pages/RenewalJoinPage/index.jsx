@@ -12,7 +12,7 @@ import {
 
 import JoinForm from './JoinForm';
 
-export const JoinPage = () => {
+export const RenewalJoinPage = () => {
   const history = useHistory();
 
   return (
