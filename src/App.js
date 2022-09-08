@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
-import { clearUser, setUser } from '@redux/actions/user_action';
+import { clearUser, setUser } from '@redux/actions/renewal_auth_action';
 
 import { NavBar, Footer } from '@components';
 import {
@@ -13,8 +13,10 @@ import {
   CoursePage,
   CourseRegisterPage,
   GetCSVPage,
-  JoinPage,
   LoginPage,
+  JoinPage,
+  RenewalJoinPage,
+  RenewalLoginPage,
   MainPage,
   NotFoundPage,
   NoticePage,
@@ -65,6 +67,8 @@ function App() {
     return (
       <Switch>
         <Route exact path='/' component={MainPage} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={JoinPage} />
         <Route path='/rules' component={NoticePage} />
         <Route path='/timetable' component={TimeTablePage} />
         {/* userPage */}
@@ -97,8 +101,8 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
-        <Route path={RENEWAL_PATH.login} component={LoginPage} />
-        <Route path={RENEWAL_PATH.signup} component={JoinPage} />
+        <Route path={RENEWAL_PATH.login} component={RenewalLoginPage} />
+        <Route path={RENEWAL_PATH.signup} component={RenewalJoinPage} />
         <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
         <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
         <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
@@ -123,7 +127,7 @@ function App() {
           <>
             <RenewalTopHeader />
             <StyledMainContainer>
-              {INCLUDE_HEADER_PATH_LIST.includes(pathname) ? (
+              {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
                 <>
                   <RenewalHeader pathname={pathname} />
                   <StyledIncludeHeaderMain>

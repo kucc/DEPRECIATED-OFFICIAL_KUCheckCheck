@@ -41,6 +41,25 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const StyledTextArea = styled.textarea`
+    width: 100%;
+    height: 117px;
+    padding: 20px 28px;
+    font-size: 16px;
+    color: ${BLACK};
+    background-color: ${BACKGROUND_GRAY};
+    border: 1px solid ${LINE_GRAY};
+    border-radius: 20px;
+    resize: none;
+    outline: none;
+    &::placeholder {
+        color: ${GRAY};
+    }
+    @media (max-width: 1224px) {
+        font-size: 14px;
+    }
+`;
+
 export const StyledRequiredText = styled.span`
   color: ${GRAY};
   font-size: 12px;

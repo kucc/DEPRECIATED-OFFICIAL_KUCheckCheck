@@ -11,7 +11,7 @@ import {
   StyledCenterContainer,
 } from './style';
 
-export const LoginPage = () => {
+export const RenewalLoginPage = () => {
   const { pathname } = useLocation();
   const isLogin = pathname === RENEWAL_PATH.login; // true, false
   const history = useHistory();
@@ -21,7 +21,7 @@ export const LoginPage = () => {
       <StyledAuthContainer isLogin={isLogin}>
         <AuthDescription isLogin={isLogin} />
         <LoginForm />
-        <StyledAuthMainImg alt='KUCC' onClick={() => history.push('/')} />
+        <StyledAuthMainImg alt='KUCC' onClick={() => history.push(RENEWAL_PATH.main)} />
       </StyledAuthContainer>
     </StyledCenterContainer>
   );

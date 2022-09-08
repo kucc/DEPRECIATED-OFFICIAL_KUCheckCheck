@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { BLACK } from '@utility/COLORS';
 
 export const StyledForm = styled.form`
@@ -9,12 +11,12 @@ export const StyledForm = styled.form`
     display: block;
     margin: 0 auto;
   }
+`;
 
-  .signupButton {
-    color: ${BLACK};
-    font-size: 16px;
-    width: 40px;
-    margin-top: 24px;
-    text-decoration: underline;
-  }
+export const StyledSignUpButton = styled(Link)`
+  color: ${BLACK};
+  font-size: 16px;
+  width: 40px;
+  margin: 24px auto 0 auto !important;
+  text-decoration: underline;
 `;

@@ -91,7 +91,6 @@ export const StyledCourseTitle = styled.div`
        white-space: nowrap;
     }
     ${props => props.isEllipsis && css`
-        width: 305px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;

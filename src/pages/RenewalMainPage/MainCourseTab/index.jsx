@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { RenewalEmptyBox } from '@components/RenewalEmptyBox';
-import { RenewalMainCourse } from '@components/RenewalMainCourse';
+import { RenewalEmptyBox, RenewalMainCourse } from '@components';
 
 import {
-  StyledCourseContainer,
   StyledCourseTab,
   StyledTab,
   StyledTabText,
-} from './style';
+} from '@utility/COMMON_STYLE';
+
+import { StyledCourseContainer } from './style';
 
 export const MainCourseTab = () => {
   const mainCourseData = useSelector(state => state.course.mainCourse.data);
