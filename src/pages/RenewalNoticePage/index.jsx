@@ -1,4 +1,6 @@
 import React from 'react';
+import { itemClassName } from 'react-horizontal-scrolling-menu/dist/types/constants';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 import { StyledCommonTitle, StyledBody, StyledSubTitle, StyledBar, StyledBarMenu1, CollapseBox, StyledBarMenu3, StyledBoxDate, StyledSubBar } from './style';
 
@@ -27,6 +29,32 @@ export const RenewalNoticePage = () => {
     }
   ];
 
+  const [activeIndex, setActiveIndex] = useState();
+  // const ListItem = ({
+  //   title,
+  //   list,
+  //   active,
+  //   activeIndex,
+  //   setActiveIndex,
+  //   idx,
+  // }) => {
+
+  //   const history = useHistory();
+  //   const [clickedIdx, setClickedIdx] = useState();
+
+  //   const handleClick = () => {
+  //     setActiveIndex(idx);
+  //     setClickedIdx(null);
+  //     history.push('/${title')
+  //   }
+
+  //   return (
+  //     <Li>
+
+  //     </Li>
+  //   )
+  // }
+
   return (
     <div>
       <StyledBody>
@@ -41,20 +69,33 @@ export const RenewalNoticePage = () => {
 
         <div>
           {
-            noticeList.map((res) => {
+            noticeList.map((res, idx) => {
+              const active = idx === activeIndex ? 'active' : '';
+
               return (
-                <div key={res.id}>
-                  <CollapseBox>
-                  <span>{res.no}</span>
-                  <span>{res.title}</span>
-                  <StyledBoxDate>{res.date}</StyledBoxDate>
-                  </CollapseBox>
-                  <StyledSubBar></StyledSubBar>
-                </div>
+                // <ListItem
+                //   title={item.title}
+                //   idx={idx}
+                //   list={item.list}
+                //   active={active}
+                //   activeIndex={activeIndex}
+                //   setActiveIndex={setActiveIndex}
+                // />
+                // <div key={res.id}>
+                //   <CollapseBox>
+                //   <span>{res.no}</span>
+                //   <span>{res.title}</span>
+                //   <StyledBoxDate>{res.date}</StyledBoxDate>
+                //   {activeIndex ? <AiOutlineMinus /> : <AiOutlinePlus />}
+                //   </CollapseBox>
+                //   {activeIndex && <p>{res.content}</p>}
+                //   <StyledSubBar></StyledSubBar>
+                // </div>
               );
             })
           }
         </div>
+      
       </StyledBody>
     </div>
   );
