@@ -62,3 +62,6 @@ export const StyledSubBar = styled.div`
     border-bottom: 1px solid ${LINE_GRAY};
 `
 
+export const StyledContentBox = styled.div`
+    display: ${props => props.isShow ? '' : 'none'};
+`;
