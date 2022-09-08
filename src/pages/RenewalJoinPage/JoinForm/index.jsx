@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { LoadingButton, InputBoxWithLabel } from '@components';
+import {
+  AuthInputWithLabel,
+  AuthTextAreaWithLabel,
+  LoadingButton,
+} from '@components';
 import { StyledForm } from '@pages/RenewalLoginPage/LoginForm/style';
 
 import { authService, firestoreService } from '@/firebase';
@@ -23,8 +27,8 @@ function JoinForm() {
     passwordConfirm: '',
     name: '',
     link: '',
-    // comment: '',
-    // detailComment: '',
+    comment: '',
+    detailComment: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const history = useHistory();
@@ -34,8 +38,8 @@ function JoinForm() {
     passwordConfirm,
     name,
     link,
-    // comment,
-    // detailComment,
+    comment,
+    detailComment,
   } = inputs;
 
   const onChange = e => {
@@ -85,8 +89,8 @@ function JoinForm() {
         email,
         name,
         link,
-        // comment,
-        // detailComment,
+        comment,
+        detailComment,
         role: '준회원',
         emoji: RandomEmoji(),
         courseHistory: [],
@@ -107,61 +111,71 @@ function JoinForm() {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         labelTitle='이메일'
         inputName='email'
         inputType='email'
         value={email}
         onChange={onChange}
       />
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         labelTitle='비밀번호'
         inputName='password'
         inputType='password'
         value={password}
         onChange={onChange}
       />
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         labelTitle='비밀번호 확인'
         inputName='passwordConfirm'
         inputType='password'
         value={passwordConfirm}
         onChange={onChange}
       />
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         labelTitle='이름'
         inputName='name'
         inputType='text'
         value={name}
         onChange={onChange}
       />
-      <InputBoxWithLabel
+
+      <AuthTextAreaWithLabel
+        labelTitle='한줄 소개'
+        inputName='comment'
+        inputType='text'
+        placeholder='최대 100자 이내로 작성해주세요.'
+        value={comment}
+        onChange={onChange}
+      />
+
+      <AuthTextAreaWithLabel
+        labelTitle='상세 소개'
+        inputName='detailComment'
+        inputType='text'
+        placeholder='최대 200자 이내로 작성해주세요.'
+        value={detailComment}
+        onChange={onChange}
+        isRequired={true}
+      />
+
+      <AuthInputWithLabel
         labelTitle='소개 링크'
         inputName='link'
         inputType='text'
-        placeholder='ex) https://github.com/'
+        placeholder='깃헙 주소 ex) https://github.com/'
         value={link}
         onChange={onChange}
         isRequired={true}
       />
 
-      {/* <InputBoxWithLabel
-        labelTitle='소개(간단한 소개)'
-        inputName='comment'
+      <AuthInputWithLabel
+        inputName='link'
         inputType='text'
-        placeholder='100자 이내'
-        value={comment}
+        placeholder='인스타그램 사용자이름 ex) @kucc_rlffkdlwkqdl'
+        value={link}
         onChange={onChange}
-      /> */}
-
-      {/* <InputBoxWithLabel
-        labelTitle='세부 코멘트(자세한 소개)'
-        inputName='detailComment'
-        inputType='text'
-        placeholder='200자 이내'
-        value={detailComment}
-        onChange={onChange}
-      /> */}
+      />
 
       <LoadingButton
         style={{

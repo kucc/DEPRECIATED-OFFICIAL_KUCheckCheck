@@ -2,9 +2,9 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { StyledInput, StyledLabel, Wrapper, StyledRequiredText } from './style';
+import { StyledTextArea, StyledLabel, Wrapper, StyledRequiredText } from '../AuthInputWithLabel/style';
 
-export const InputBoxWithLabel = ({
+export const AuthTextAreaWithLabel = ({
   labelTitle,
   inputName,
   inputType,
@@ -21,7 +21,7 @@ export const InputBoxWithLabel = ({
       {isRequired && (
         <StyledRequiredText>(선택)</StyledRequiredText>
       )}
-      <StyledInput
+      <StyledTextArea
         name={inputName}
         type={inputType}
         placeholder={placeholder}
@@ -32,7 +32,7 @@ export const InputBoxWithLabel = ({
   );
 };
 
-InputBoxWithLabel.propTypes = {
+AuthTextAreaWithLabel.propTypes = {
   labelTitle: PropTypes.string,
   inputName: PropTypes.string,
   inputType: PropTypes.string,

@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { AuthDescription } from '@components';
+import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 import {
   StyledAuthContainer,
@@ -20,7 +21,7 @@ export const RenewalJoinPage = () => {
       <StyledAuthContainer>
         <AuthDescription />
         <JoinForm />
-        <StyledAuthMainImg alt='KUCC' onClick={() => history.push('/')} />
+        <StyledAuthMainImg alt='KUCC' onClick={() => history.push(RENEWAL_PATH.main)} />
       </StyledAuthContainer>
     </StyledCenterContainer>
   );

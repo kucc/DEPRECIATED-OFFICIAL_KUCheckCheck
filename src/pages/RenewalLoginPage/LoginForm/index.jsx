@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
-import { Link, useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { useHistory } from 'react-router-dom';
 
-import { LoadingButton, InputBoxWithLabel } from '@components';
+import { AuthInputWithLabel, LoadingButton } from '@components';
 
 import { authService } from '@/firebase';
 import { FORM_IS_NOT_FULL } from '@utility';
+import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
-import { StyledForm } from './style';
+import { StyledForm, StyledSignUpButton } from './style';
 
 function LoginForm() {
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -71,21 +72,21 @@ function LoginForm() {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         inputName='email'
         inputType='email'
         value={email}
         placeholder='이메일'
         onChange={onChange}
       />
-      <InputBoxWithLabel
+      <AuthInputWithLabel
         inputName='password'
         inputType='password'
         value={password}
         placeholder='비밀번호'
         onChange={onChange}
       />
-      <LoadingButton       
+      <LoadingButton
         style={{
           width: '220px',
           height: isMobile ? '52px' : '60px',
@@ -97,9 +98,9 @@ function LoginForm() {
         isLoading={isSubmitted}
         isActive={validationLogin()}
       />
-      <Link to='/signup' className='signupButton'>
+      <StyledSignUpButton to={RENEWAL_PATH.signup}>
         JOIN
-      </Link>
+      </StyledSignUpButton>
     </StyledForm>
   );
 }

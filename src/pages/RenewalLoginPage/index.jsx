@@ -21,7 +21,7 @@ export const RenewalLoginPage = () => {
       <StyledAuthContainer isLogin={isLogin}>
         <AuthDescription isLogin={isLogin} />
         <LoginForm />
-        <StyledAuthMainImg alt='KUCC' onClick={() => history.push('/')} />
+        <StyledAuthMainImg alt='KUCC' onClick={() => history.push(RENEWAL_PATH.main)} />
       </StyledAuthContainer>
     </StyledCenterContainer>
   );
