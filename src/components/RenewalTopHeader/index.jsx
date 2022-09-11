@@ -3,8 +3,8 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import { setLogoutRequest } from '@redux/actions/renewal_auth_action';
 import { setHamburgerRequest } from '@redux/actions/renewal_main_action';
+import { logoutMember } from '@redux/actions/renewal_member_action';
 
 import useDetectClose from '@hooks/useDetectClose';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
@@ -29,10 +29,7 @@ export const RenewalTopHeader = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { isLogin, currentUser: user } = useSelector(state => ({
-    isLogin: state.user.isLogin,
-    currentUser: state.user.currentUser,
-  }));
+  const member = useSelector(state => state.member.currentMember);
 
   const dropDownRef = useRef(null);
   const [isLoginOpen, setIsLoginOpen] = useDetectClose(dropDownRef, false);
@@ -48,14 +45,11 @@ export const RenewalTopHeader = () => {
     dispatch(setHamburgerRequest(!isHamburger));
   };
 
-  const handleLogout = async () => {
-    try {
-      await setLogoutRequest();
-      window.alert('로그아웃이 되었습니다!');
-      history.push(RENEWAL_PATH.main);
-    } catch (e) {
-      alert(e.response.data.error.msg);
-    }
+  const handleLogout = () => {
+    dispatch(logoutMember());
+
+    window.alert('로그아웃이 되었습니다!');
+    history.push(RENEWAL_PATH.main);
   };
 
   return (
@@ -75,11 +69,11 @@ export const RenewalTopHeader = () => {
             <StyledTimeTableLink to={RENEWAL_PATH.timeTable}>
               동방 시간표
             </StyledTimeTableLink>
-            {isLogin ? (
+            {member ? (
               <>
                 <StyledMenuButton onClick={() => setIsLoginOpen(!isLoginOpen)}>
                   <StyledUserContainer>
-                    <StyledUserName>{user.displayName}</StyledUserName>님
+                    <StyledUserName>{member.name}</StyledUserName>님
                   </StyledUserContainer>
                   <StyledDownArrow width='4' thin='2' />
                 </StyledMenuButton>

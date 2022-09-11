@@ -1,7 +1,7 @@
 // reducer의 타입과 payload 서술
-import { CLEAR_USER, SET_USER } from './types';
-
+import { CLEAR_USER, SET_USER} from './types';
 import { authService } from '@/firebase';
+
 export function setUser(user) {
   return {
     type: SET_USER,

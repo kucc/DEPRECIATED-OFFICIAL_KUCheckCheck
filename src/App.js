@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+import 'moment/locale/ko';
 
 import 'antd/dist/antd.less';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
-import { clearUser, setUser } from '@redux/actions/renewal_auth_action';
+import { clearUser, setUser } from '@redux/actions/auth_action';
 
 import { NavBar, Footer } from '@components';
+import { getMember } from '@/api/TokenAction';
 import {
   AttendacePage,
   CoursePage,
@@ -37,6 +39,7 @@ import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
 import { SINGLE_PATHNAMES_LIST, INCLUDE_HEADER_PATH_LIST, RENEWAL_PATH, StyledMainContainer, StyledOldMain, StyledIncludeHeaderMain, StyledUnIncludeHeaderMain } from './utility';
 
 import './App.less';
+import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +48,15 @@ function App() {
 
   useEffect(() => { // Link로 이동 시 스크롤 top
     window.scrollTo(0, 0);
+
+    const member = getMember();
+    if (!member) return false
+
+    if (member.isLoggedIn) {
+      dispatch(setMember(member));
+    } else {
+      dispatch(logoutMember());
+    }
   }, [pathname]);
 
   useEffect(() => {

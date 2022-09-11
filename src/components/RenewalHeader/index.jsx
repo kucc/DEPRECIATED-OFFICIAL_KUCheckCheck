@@ -14,17 +14,18 @@ import {
   NoticeIcon,
 } from '@/svg/header';
 import { BLACK, RED } from '@utility/COLORS';
+import { MEMBER_ROLE } from '@utility/COMMON_FUNCTION';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 import { DefaultLogo } from '..';
 import {
   StyleActive,
   StyledHeaderContainer,
+  StyledHorizontalLine,
   StyledLinkButton,
+  StyledMobileHamburgerContainer,
   StyledMobileLogoContainer,
   StyledMobileOverlayContainer,
-  StyledHorizontalLine,
-  StyledMobileHamburgerContainer
 } from './style';
 
 export const RenewalHeader = ({ pathname }) => {
@@ -32,7 +33,8 @@ export const RenewalHeader = ({ pathname }) => {
   const dispatch = useDispatch();
 
   const isHamburger = useSelector(state => state.main.isHamburger);
-
+  const member = useSelector(state => state.member.currentMember);
+  console.log(member);
   const handleLink = path => {
     closeOverlay();
 
@@ -103,17 +105,19 @@ export const RenewalHeader = ({ pathname }) => {
             <span>공지사항</span>
           </StyleActive>
         </StyledLinkButton>
-        <StyledLinkButton
-          onClick={() => {
-            handleLink(RENEWAL_PATH.admin);
-          }}>
-          <StyleActive active={pathname === RENEWAL_PATH.admin}>
-            <LockStatesIcon
-              fill={pathname === RENEWAL_PATH.admin ? RED : BLACK}
-            />
-            <span>관리자</span>
-          </StyleActive>
-        </StyledLinkButton>
+        {member && member.role === MEMBER_ROLE.MANAGER && (
+          <StyledLinkButton
+            onClick={() => {
+              handleLink(RENEWAL_PATH.admin);
+            }}>
+            <StyleActive active={pathname === RENEWAL_PATH.admin}>
+              <LockStatesIcon
+                fill={pathname === RENEWAL_PATH.admin ? RED : BLACK}
+              />
+              <span>관리자</span>
+            </StyleActive>
+          </StyledLinkButton>
+        )}
       </StyledHeaderContainer>
     </StyledMobileHamburgerContainer>
   );

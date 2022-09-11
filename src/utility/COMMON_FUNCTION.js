@@ -24,6 +24,11 @@ export const INCLUDE_HEADER_PATH_LIST = [
   RENEWAL_PATH.admin
 ];
 
+export const MEMBER_ROLE = {
+  MEMBER: 'MEMBER',
+  MANAGER: 'MANAGER'
+}
+
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];
 };
