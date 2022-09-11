@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import 'moment/locale/ko';
+import PropTypes from 'prop-types';
 
 import 'antd/dist/antd.less';
-import { useDispatch } from 'react-redux';
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
 import { clearUser, setUser } from '@redux/actions/auth_action';
+import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
 
 import { NavBar, Footer } from '@components';
 import { getMember } from '@/api/TokenAction';
@@ -39,12 +41,14 @@ import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
 import { SINGLE_PATHNAMES_LIST, INCLUDE_HEADER_PATH_LIST, RENEWAL_PATH, StyledMainContainer, StyledOldMain, StyledIncludeHeaderMain, StyledUnIncludeHeaderMain } from './utility';
 
 import './App.less';
-import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { pathname } = useLocation();
+
+  const member = useSelector(state => state.member.currentMember);
+
 
   useEffect(() => { // Link로 이동 시 스크롤 top
     window.scrollTo(0, 0);
@@ -113,8 +117,8 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
-        <Route path={RENEWAL_PATH.login} component={RenewalLoginPage} />
-        <Route path={RENEWAL_PATH.signup} component={RenewalJoinPage} />
+        <NotForMemberRoute path={RENEWAL_PATH.login} component={RenewalLoginPage} />
+        <NotForMemberRoute path={RENEWAL_PATH.signup} component={RenewalJoinPage} />
         <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
         <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
         <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
@@ -124,6 +128,17 @@ function App() {
         <Route path={RENEWAL_PATH.notice} component={RenewalNoticePage} />
         <Route path={RENEWAL_PATH.admin} component={RenewalAdminPage} />
       </Switch>
+    )
+  }
+
+  // eslint-disable-next-line react/prop-types
+  const NotForMemberRoute = ({ component: Component, ...res }) => {
+    return (
+      <Route
+        {...res}
+        render={(props) => member
+          ? <Redirect to={RENEWAL_PATH.main} /> : <Component {...props} />}
+      />
     )
   }
 
