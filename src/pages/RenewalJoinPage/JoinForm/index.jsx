@@ -99,8 +99,19 @@ function JoinForm() {
       return false;
     }
 
+    const signUpData = {
+      email,
+      password,
+      name,
+      comment,
+      emoji,
+      detail_comment: detail_comment ? detail_comment : null,
+      github_id: github_id ? github_id : null,
+      instagram_id: instagram_id ? instagram_id : null,
+    };
+
     setIsSubmitted(true);
-    dispatch(signUpRequest(inputs));
+    dispatch(signUpRequest(signUpData));
   };
 
   return (
