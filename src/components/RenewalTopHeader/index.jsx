@@ -30,13 +30,12 @@ export const RenewalTopHeader = () => {
   const dispatch = useDispatch();
 
   const member = useSelector(state => state.member.currentMember);
+  const isHamburger = useSelector(state => state.main.isHamburger);
 
   const dropDownRef = useRef(null);
   const [isLoginOpen, setIsLoginOpen] = useDetectClose(dropDownRef, false);
 
-  const isHamburger = useSelector(state => state.main.isHamburger);
-
-  const handleHamburger = () => {
+  const handleMobileHamburger = () => {
     if (!isHamburger) {
       document.body.classList.add('open-modal');
     } else {
@@ -49,7 +48,7 @@ export const RenewalTopHeader = () => {
     dispatch(logoutMember());
 
     window.alert('로그아웃이 되었습니다!');
-    history.push(RENEWAL_PATH.main);
+    window.location.href = RENEWAL_PATH.main;
   };
 
   return (
@@ -62,7 +61,7 @@ export const RenewalTopHeader = () => {
         />
         <StyledMobileHamburgerButton
           src={HamburgerIcon}
-          onClick={handleHamburger}
+          onClick={handleMobileHamburger}
         />
         <StyledLeftContainer>
           <span>

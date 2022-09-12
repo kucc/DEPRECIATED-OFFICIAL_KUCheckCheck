@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
+import { loginRequest } from '@redux/actions/renewal_member_action';
+
 import { AuthInputWithLabel, LoadingButton } from '@components';
 
-import { loginRequest } from '@redux/actions/renewal_member_action';
-import { FORM_IS_NOT_FULL } from '@utility';
+import { FORM_IS_NOT_FULL, LOGIN_FAILURE, USER_NOT_FOUND } from '@utility';
 import { FAILURE, SUCCESS } from '@utility/ALERT_MESSAGE';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
@@ -25,7 +26,7 @@ function LoginForm() {
   });
   const { email, password } = inputs;
 
-  const loginStatus = useSelector(state => state.member.login.status);
+  const { status, error } = useSelector(state => state.member.login);
 
   const onChange = event => {
     const { value, name } = event.target;
@@ -42,40 +43,21 @@ function LoginForm() {
     return true;
   };
 
-  // const submitHandler = async event => {
-  //   event.preventDefault();
+  useEffect(() => {
+    if (status === SUCCESS) {
+      history.push(RENEWAL_PATH.main);
+    }
+    if (status === FAILURE) {
+      setIsSubmitted(false);
+      
+      if (error === 'user_not_found') {
+        alert(USER_NOT_FOUND);
+        window.location.href = RENEWAL_PATH.signUp;
+      } else alert(LOGIN_FAILURE);
+    }
+  }, [status, error, history]);
 
-  //   if (!validationLogin()) {
-  //     alert(FORM_IS_NOT_FULL);
-  //     return false;
-  //   }
-  //   try {
-  //     setIsSubmitted(true);
-  //     await authService.signInWithEmailAndPassword(email, password);
-  //     history.push('/');
-  //   } catch (error) {
-  //     const { code, message } = error;
-  //     switch (code) {
-  //       case 'auth/user-not-found':
-  //         alert('가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.');
-  //         history.push('/signup');
-  //         break;
-  //       case 'auth/wrong-password':
-  //         alert('잘못된 비밀번호입니다.');
-  //         break;
-  //       case 'auth/invalid-email':
-  //         alert('양식을 제대로 입력해주세요.');
-  //         break;
-  //       default:
-  //         alert(message);
-  //         break;
-  //     }
-  //   } finally {
-  //     setIsSubmitted(false);
-  //   }
-  // };
-
-  const handleLogin = async e => {
+  const handleLogin = e => {
     e.preventDefault();
 
     if (!validationLogin()) {
@@ -83,17 +65,9 @@ function LoginForm() {
       return false;
     }
 
-    await dispatch(loginRequest(inputs));
+    setIsSubmitted(true);
+    dispatch(loginRequest(inputs));
   };
-
-  useEffect(() => {
-    if (loginStatus === SUCCESS) {
-      history.push(RENEWAL_PATH.main);
-    }
-    if (loginStatus === FAILURE) {
-      alert('실패');
-    }
-  }, [loginStatus]);
 
   return (
     <StyledForm onSubmit={handleLogin}>
@@ -123,7 +97,7 @@ function LoginForm() {
         isLoading={isSubmitted}
         isActive={validationLogin()}
       />
-      <StyledSignUpButton to={RENEWAL_PATH.signup}>JOIN</StyledSignUpButton>
+      <StyledSignUpButton to={RENEWAL_PATH.signUp}>JOIN</StyledSignUpButton>
     </StyledForm>
   );
 }

@@ -1,8 +1,18 @@
 import jwt from "jwt-decode";
 import moment from "moment";
 
+const tokenKey = 'accessToken';
+
+export function getToken() {
+    return localStorage.getItem(tokenKey);
+}
+
+export function removeToken() {
+    localStorage.removeItem(tokenKey);
+}
+
 export function getMember() {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = getToken();
 
     if (!accessToken) {
         return null;

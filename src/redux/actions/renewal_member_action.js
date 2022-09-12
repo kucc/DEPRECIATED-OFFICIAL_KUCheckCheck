@@ -1,6 +1,6 @@
-import { generateKeys, generateActions, LOGIN, SET_MEMBER, REMOVE_MEMBER } from './types';
+import { generateKeys, generateActions, LOGIN, SET_MEMBER, REMOVE_MEMBER, SIGNUP } from './types';
 import axios from '@/api/apiBase';
-
+import { removeToken } from '@/api/TokenAction';
 
 export const getLoginKeys = generateKeys(LOGIN);
 const getLoginActions = generateActions(getLoginKeys);
@@ -13,7 +13,7 @@ export function loginRequest(data) {
                 localStorage.setItem('accessToken', response.data.accessToken);
                 dispatch(getLoginActions.success());
             }).catch((error) => {
-                console.log(error);
+                console.log(error)
                 dispatch(getLoginActions.failure(error));
             });
     }
@@ -27,8 +27,25 @@ export function setMember(data) {
 }
 
 export function logoutMember() {
-    localStorage.removeItem('accessToken');
+    removeToken();
+    
     return {
         type: REMOVE_MEMBER,
+    }
+}
+
+export const getSignupKeys = generateKeys(SIGNUP);
+const getSignupActions = generateActions(getSignupKeys);
+
+export function signUpRequest(data) {
+    return (dispatch) => {
+        dispatch(getSignupActions.request());
+        return axios.post('/auth/signup', data)
+            .then(() => {
+                dispatch(getSignupActions.success());
+            }).catch((error) => {
+                console.log(error);
+                dispatch(getSignupActions.failure(error));
+            })
     }
 }

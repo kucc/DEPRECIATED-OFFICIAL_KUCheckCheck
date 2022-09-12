@@ -1,6 +1,6 @@
 export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
   login: '/new/login', // 로그인
-  signup: '/new/signup', // 회원가입
+  signUp: '/new/signup', // 회원가입
   main: '/main', // 메인
   courseCreate: '/course/create', // 활동 개설
   courseDetail: '/course/detail/:id', // 세션 소개
@@ -13,7 +13,7 @@ export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
 
 export const SINGLE_PATHNAMES_LIST = [
   RENEWAL_PATH.login,
-  RENEWAL_PATH.signup
+  RENEWAL_PATH.signUp
 ];
 
 export const INCLUDE_HEADER_PATH_LIST = [

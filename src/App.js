@@ -49,7 +49,6 @@ function App() {
 
   const member = useSelector(state => state.member.currentMember);
 
-
   useEffect(() => { // Link로 이동 시 스크롤 top
     window.scrollTo(0, 0);
 
@@ -61,12 +60,12 @@ function App() {
     } else {
       dispatch(logoutMember());
     }
-  }, [pathname]);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     authService.onAuthStateChanged(user => {
       if (user) {
-        if (pathname === RENEWAL_PATH.login || pathname === RENEWAL_PATH.signup) {
+        if (pathname === RENEWAL_PATH.login || pathname === RENEWAL_PATH.signUp) {
           history.push('/');
         }
         dispatch(setUser(user));
@@ -118,7 +117,7 @@ function App() {
     return (
       <Switch>
         <NotForMemberRoute path={RENEWAL_PATH.login} component={RenewalLoginPage} />
-        <NotForMemberRoute path={RENEWAL_PATH.signup} component={RenewalJoinPage} />
+        <NotForMemberRoute path={RENEWAL_PATH.signUp} component={RenewalJoinPage} />
         <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
         <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
         <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />

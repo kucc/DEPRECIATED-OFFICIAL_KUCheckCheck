@@ -1,9 +1,14 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, SET_MEMBER, REMOVE_MEMBER } from '../actions/types';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, SET_MEMBER, REMOVE_MEMBER, SIGNUP, SIGNUP_FAILURE, SIGNUP_SUCCESS } from '../actions/types';
 import { INIT, SUCCESS, FAILURE } from "@utility/ALERT_MESSAGE";
 
 const initialUserState = {
     login: {
         status: INIT,
+        error: '',
+    },
+    signUp: {
+        status: INIT,
+        error: ''
     },
     currentMember: null,
 };
@@ -14,7 +19,8 @@ export default function (state = initialUserState, action) {
             return {
                 ...state,
                 login: {
-                    state: INIT
+                    status: INIT,
+                    error: ''
                 }
             }
         case LOGIN_SUCCESS:
@@ -22,6 +28,7 @@ export default function (state = initialUserState, action) {
                 ...state,
                 login: {
                     status: SUCCESS,
+                    error: ''
                 }
             };
         case LOGIN_FAILURE:
@@ -29,7 +36,7 @@ export default function (state = initialUserState, action) {
                 ...state,
                 login: {
                     status: FAILURE,
-                    data: action.error
+                    error: action.data
                 }
             };
         case SET_MEMBER:
@@ -42,6 +49,30 @@ export default function (state = initialUserState, action) {
                 ...state,
                 currentMember: null
             }
+        case SIGNUP:
+            return {
+                ...state,
+                signUp: {
+                    status: INIT,
+                    error: ''
+                }
+            }
+        case SIGNUP_SUCCESS:
+            return {
+                ...state,
+                signUp: {
+                    status: SUCCESS,
+                    error: ''
+                }
+            };
+        case SIGNUP_FAILURE:
+            return {
+                ...state,
+                signUp: {
+                    status: FAILURE,
+                    error: action.data
+                }
+            };
         default:
             return state;
     }

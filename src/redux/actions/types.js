@@ -14,7 +14,7 @@ export const generateKeys = (key) => ({
 export const generateActions = (generatedKeys) => ({
     request: () => ({ type: generatedKeys.request }),
     success: (data) => ({ type: generatedKeys.success, data }),
-    failure: () => ({ type: generatedKeys.failure }),
+    failure: (data) => ({ type: generatedKeys.failure, data }),
 });
 
 /**
@@ -25,6 +25,10 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const SET_MEMBER = 'SET_MEMBER';
 export const REMOVE_MEMBER = 'REMOVE_MEMBER';
+
+export const SIGNUP = 'SIGNUP';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
 /**
  *  main

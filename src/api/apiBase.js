@@ -1,11 +1,19 @@
 import axios from 'axios';
-import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_HOST_URL,
 })
 
-axiosInstance.interceptors.request.use((config) => config);
+axiosInstance.interceptors.request.use((config) => {
+    const token = localStorage.getItem('accessToken');
+    if(!token) {
+        return config
+    }
+
+    config.headers.Authorization = `Bearer ${token}`;
+
+    return config
+});
 
 axiosInstance.interceptors.response.use(
     (response) => {
@@ -13,15 +21,13 @@ axiosInstance.interceptors.response.use(
     },
     (error) => {
         const { response } = error;
-        console.log(response);
 
         if (response.status === 401 && response.config.url !== '/auth/signin') {
-            // logout 기능 구현 필요
-            // window.alert('logout');
-            window.location.href = RENEWAL_PATH.login;
+            // refreshToken 구현 필요
         }
 
-        throw error
+        // throw error message
+        throw response?.data?.message
     })
 
 export default axiosInstance;

@@ -34,7 +34,7 @@ export const RenewalHeader = ({ pathname }) => {
 
   const isHamburger = useSelector(state => state.main.isHamburger);
   const member = useSelector(state => state.member.currentMember);
-  console.log(member);
+
   const handleLink = path => {
     closeOverlay();
 
