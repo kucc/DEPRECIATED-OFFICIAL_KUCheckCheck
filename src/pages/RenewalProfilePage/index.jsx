@@ -74,7 +74,7 @@ export const RenewalProfilePage = () => {
 
       setIsMyProfile(true);
     }
-  }, [dispatch, history, member.id, selectUserId]);
+  }, [dispatch, history, member?.id, selectUserId]);
 
   return (
     <>
