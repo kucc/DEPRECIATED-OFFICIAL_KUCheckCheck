@@ -1,4 +1,4 @@
-import { generateKeys, generateActions, LOGIN, SET_MEMBER, REMOVE_MEMBER, SIGNUP } from './types';
+import { generateKeys, generateActions, LOGIN, SET_MEMBER, REMOVE_MEMBER, SIGNUP, SET_PROFILE_ID, GET_PROFILE } from './types';
 import axios from '@/api/apiBase';
 import { removeToken } from '@/api/TokenAction';
 
@@ -28,7 +28,7 @@ export function setMember(data) {
 
 export function logoutMember() {
     removeToken();
-    
+
     return {
         type: REMOVE_MEMBER,
     }
@@ -46,6 +46,30 @@ export function signUpRequest(data) {
             }).catch((error) => {
                 console.log(error);
                 dispatch(getSignupActions.failure(error));
+            })
+    }
+}
+
+export function setProfileId(user_id) {
+    return {
+        type: SET_PROFILE_ID,
+        data: user_id
+    }
+}
+
+export const getProfileKeys = generateKeys(GET_PROFILE);
+const getProfileActions = generateActions(getProfileKeys);
+
+export function getProfileRequest(user_id) {
+    return (dispatch) => {
+        dispatch(getProfileActions.request());
+        return axios.get(`/auth/user/${user_id}`)
+            .then((response) => {
+                dispatch(getProfileActions.success(response.data));
+            }).catch((error) => {
+                console.log(error);
+                alert('유저를 찾을 수 없습니다.')
+                dispatch(getProfileActions.failure(error));
             })
     }
 }

@@ -23,12 +23,19 @@ export const generateActions = (generatedKeys) => ({
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
 export const SET_MEMBER = 'SET_MEMBER';
 export const REMOVE_MEMBER = 'REMOVE_MEMBER';
 
 export const SIGNUP = 'SIGNUP';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+
+export const SET_PROFILE_ID = 'SET_PROFILE_ID';
+
+export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
+export const GET_PROFILE_FAILURE = 'GET_PROFILE_FAILURE';
 
 /**
  *  main

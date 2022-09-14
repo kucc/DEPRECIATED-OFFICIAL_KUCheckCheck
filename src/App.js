@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import 'moment/locale/ko';
-import PropTypes from 'prop-types';
 
 import 'antd/dist/antd.less';
 import { useDispatch, useSelector } from 'react-redux';
