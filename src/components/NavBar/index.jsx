@@ -1,6 +1,5 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
@@ -9,9 +8,9 @@ import { authService } from '@/firebase';
 
 import MNavBar from './MNavBar';
 import PNavBar from './PNavBar';
-import * as S from './style';
+import { NavBarContainer } from './style';
 
-export const NavBar = ({ isMain = false }) => {
+export const NavBar = () => {
   const user = useSelector(state => state.user);
   const history = useHistory();
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -43,20 +42,8 @@ export const NavBar = ({ isMain = false }) => {
   };
 
   return (
-    <>
-      {isMain ? (
-        <S.NavBarContainer>{renderNavBar()}</S.NavBarContainer>
-      ) : (
-        <S.NavBarBackground>
-          <S.NavBarContainer className='out-shadow-strong border-radius-bottom'>
-            {renderNavBar()}
-          </S.NavBarContainer>
-        </S.NavBarBackground>
-      )}
-    </>
+    <NavBarContainer className='border-radius-bottom'>
+      {renderNavBar()}
+    </NavBarContainer>
   );
-};
-
-NavBar.propTypes = {
-  isMain: PropTypes.bool,
 };

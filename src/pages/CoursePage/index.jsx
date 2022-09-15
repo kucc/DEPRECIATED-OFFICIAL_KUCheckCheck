@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 
-import { CourseApplication, FullWidthButton, NavBar } from '@components';
+import { CourseApplication, FullWidthButton } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { FAILED_TO_LOAD_DATA, MAIN_COLOR, StyledBackground } from '@utility';
+import { FAILED_TO_LOAD_DATA, RED, StyledBackground } from '@utility';
 
 import CourseBottom from './CourseBottom';
 import CourseTop from './CourseTop';
@@ -47,7 +47,6 @@ export const CoursePage = ({ courseData }) => {
 
   return (
     <StyledBackground>
-      <NavBar />
       <StyledCoursePageContainer>
         {leaderData && <CourseTop leaderData={leaderData} />}
         {/* 세션 소개 | 커리큘럼 선택버튼 */}
@@ -62,7 +61,7 @@ export const CoursePage = ({ courseData }) => {
               text='출결보기'
               style={{
                 height: isMobile ? '48px' : '56px',
-                backgroundColor: MAIN_COLOR,
+                backgroundColor: RED,
                 cursor: 'pointer',
               }}
             />

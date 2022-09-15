@@ -11,7 +11,7 @@ export const StyledRulesBox = styled(StyledSideMargin)`
 export const StyledRulesTitle = styled.div`
   font-size: 26px;
   margin-left: 5%;
-  font-family: 'NexonBo';
+  font-family: "sdBo";
   margin-top: 50px;
 `;
 

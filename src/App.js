@@ -1,40 +1,70 @@
 import React, { useEffect } from 'react';
+import 'moment/locale/ko';
 
 import 'antd/dist/antd.less';
-import { useDispatch } from 'react-redux';
-import { Route, Switch, useHistory } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
+import GlobalStyle from './GlobalStyle';
 
-import { clearUser, setUser } from '@redux/actions/user_action';
+import { clearUser, setUser } from '@redux/actions/auth_action';
+import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
 
-import { Footer } from '@components';
+import { NavBar, Footer } from '@components';
+import { getMember } from '@/api/TokenAction';
 import {
   AttendacePage,
   CoursePage,
   CourseRegisterPage,
   GetCSVPage,
-  JoinPage,
   LoginPage,
+  JoinPage,
+  RenewalJoinPage,
+  RenewalLoginPage,
   MainPage,
   NotFoundPage,
   NoticePage,
   TimeTablePage,
+  RenewalMainPage,
+  RenewalNoticePage,
+  RenewalAttendancePage,
+  RenewalAdminPage,
+  RenewalCourseCreatePage,
+  RenewalTimeTablePage,
+  RenewalCourseDetailPage,
+  RenewalProfilePage
 } from '@pages';
+import { RenewalHeader, RenewalTopHeader, RenewalFooter, LeftBackButton } from '@components';
 
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
+import { SINGLE_PATHNAMES_LIST, INCLUDE_HEADER_PATH_LIST, RENEWAL_PATH, StyledMainContainer, StyledOldMain, StyledIncludeHeaderMain, StyledUnIncludeHeaderMain } from './utility';
 
 import './App.less';
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { pathname } = useLocation();
+
+  const member = useSelector(state => state.member.currentMember);
+
+  useEffect(() => { // Link로 이동 시 스크롤 top
+    window.scrollTo(0, 0);
+
+    const member = getMember();
+    if (!member) return false
+
+    if (member.isLoggedIn) {
+      dispatch(setMember(member));
+    } else {
+      dispatch(logoutMember());
+    }
+  }, [dispatch, pathname]);
 
   useEffect(() => {
-    const path = document.location.pathname;
     authService.onAuthStateChanged(user => {
       if (user) {
-        if (path === '/login' || path === '/signup') {
+        if (pathname === RENEWAL_PATH.login || pathname === RENEWAL_PATH.signUp) {
           history.push('/');
         }
         dispatch(setUser(user));
@@ -44,12 +74,11 @@ function App() {
     });
   }, [dispatch, history]);
 
-  return (
-    // TODO
+  // 기존 페이지들
+  const NavFooterPageRouter = () => {    // TODO
     // 자신의 정보를 볼 수 있는 페이지는 profile 혹은 mypage가 더 적절하므로 userpage 이름 변경 필요
     // firebase의 authService에서 currentUser의 정보를 불러올 수 있기 때문에 id 파라미터는 삭제해야함
-    <>
-      <GlobalStyle />
+    return (
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route path='/login' component={LoginPage} />
@@ -79,58 +108,79 @@ function App() {
         <Route exact path='/getCSV' component={GetCSVPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <Footer />
+    )
+  }
+
+  // 리뉴얼 페이지들
+  const RenewalPageRouter = () => {
+    return (
+      <Switch>
+        <NotForMemberRoute path={RENEWAL_PATH.login} component={RenewalLoginPage} />
+        <NotForMemberRoute path={RENEWAL_PATH.signUp} component={RenewalJoinPage} />
+        <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
+        <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
+        <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
+        <Route path={RENEWAL_PATH.attendance} component={RenewalAttendancePage} />
+        <Route path={RENEWAL_PATH.timeTable} component={RenewalTimeTablePage} />
+        <Route path={RENEWAL_PATH.profile} component={RenewalProfilePage} />
+        <Route path={RENEWAL_PATH.notice} component={RenewalNoticePage} />
+        <Route path={RENEWAL_PATH.admin} component={RenewalAdminPage} />
+      </Switch>
+    )
+  }
+
+  // eslint-disable-next-line react/prop-types
+  const NotForMemberRoute = ({ component: Component, ...res }) => {
+    return (
+      <Route
+        {...res}
+        render={(props) => member
+          ? <Redirect to={RENEWAL_PATH.main} /> : <Component {...props} />}
+      />
+    )
+  }
+
+  const pathSliced = pathname.split('/');
+  const path = pathSliced.length > 3 ? '/course/detail/:id' : pathname // 세션 소개 url 구분
+  return (
+    <>
+      <GlobalStyle />
+      {SINGLE_PATHNAMES_LIST.includes(pathname) ? // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
+        (
+          RenewalPageRouter()
+        ) : Object.values(RENEWAL_PATH).includes(path) ? ( // 리뉴얼 페이지
+          <>
+            <RenewalTopHeader />
+            <StyledMainContainer>
+              {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
+                <>
+                  <RenewalHeader pathname={pathname} />
+                  <StyledIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledIncludeHeaderMain>
+                </>
+              ) : (
+                <>
+                  <LeftBackButton />
+                  <StyledUnIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledUnIncludeHeaderMain>
+                </>
+              )}
+            </StyledMainContainer>
+            <RenewalFooter />
+          </>
+        ) : ( // 기존 페이지
+          <>
+            <NavBar />
+            <StyledOldMain className='main-background-color'>
+              {NavFooterPageRouter()}
+            </StyledOldMain>
+            <Footer />
+          </>
+        )}
     </>
   );
 }
 
 export default App;
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    padding: 0px;
-    margin: 0px;
-    font-family: "NexonRe", "Apple SD Gothic Neo", "Malgun Gothic", "arial sans-serif";
-  }
-  .out-shadow-extra-strong{
-    box-shadow: 0 15px 14px 3px lightgrey !important;
-    transition: all 0.15s;
-  }
-  .out-shadow-strong{
-    box-shadow: 0 11px 10px 2px lightgrey !important;
-    transition: all 0.15s;
-  }
-  .out-shadow-middle{
-    box-shadow: 0 6px 5px 2px lightgrey !important; 
-    transition: all 0.15s;
-  }
-  .out-shadow-weak{
-    box-shadow: 0px 3px 1.5px lightgrey !important;
-  }
-  .in-shadow-middle{
-    box-shadow: inset 0 6px 5px 2px lightgrey !important; 
-    background-color: white;
-    transition: all 0.1s;
-  }
-  .in-shadow-weak{
-    box-shadow: inset 0px 3px 1.5px lightgrey !important;
-    background-color: white;
-    transition: all 0.1s;
-  }
-  // bottom에만 border radius
-  .border-radius-bottom-strong{
-    border-bottom-right-radius: 67px;
-  border-bottom-left-radius: 67px;
-  }
-  .border-radius-bottom{
-    border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  }
-  // 각 모서리 전부 border radius
-  .border-radius-all-half{
-    border-radius : 50%
-  }
-  .border-radius-all{
-    border-radius : 30px
-  }
-`;

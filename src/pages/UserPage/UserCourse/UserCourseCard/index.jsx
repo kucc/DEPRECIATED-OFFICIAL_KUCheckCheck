@@ -3,7 +3,7 @@ import React from 'react';
 import { Timeline } from 'antd';
 import PropTypes from 'prop-types';
 
-import { CourseContainer, EmptyBox } from '@components';
+import { CourseContainer, RenewalEmptyBox } from '@components';
 
 import {
   StyledCourseCardContainer,
@@ -38,7 +38,7 @@ function UserCourseCard({ courses, option }) {
         })
       ) : (
         // 없으면 Empty Box를 출력
-        <EmptyBox />
+        <RenewalEmptyBox />
       )}
     </StyledCourseCardContainer>
   );

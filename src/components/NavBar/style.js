@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR, StyledSidePadding } from '@utility';
-
-export const NavBarBackground = styled.div`
-  background-color: rgb(245, 245, 245);
-`;
+import { RED, StyledSidePadding } from '@utility';
 
 export const NavBarContainer = styled(StyledSidePadding)`
+  position: fixed;
+  width: 100%;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -29,9 +28,9 @@ export const NavBarTextContainer = styled.div`
 export const NavBarText = styled.div`
   cursor: pointer;
   color: ${props =>
-    props.hoverState && props.hoverState === props.text ? MAIN_COLOR : 'black'};
+    props.hoverState && props.hoverState === props.text ? RED : 'black'};
   font-size: 15px;
-  font-family: 'NexonBo';
+  font-family: "sdBo";
   padding: 20px;
   padding-top: 25px;
   @media (max-width: 1224px) {

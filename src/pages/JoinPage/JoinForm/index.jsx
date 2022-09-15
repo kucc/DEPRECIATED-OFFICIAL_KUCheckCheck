@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton, InputBoxWithLabel } from '@components';
+import { FullWidthButton, AuthInputWithLabel } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
 import {
@@ -90,28 +90,28 @@ function JoinForm() {
   return (
     <StyledForm onSubmit={submitHandler}>
       <Space direction='vertical' size='large'>
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='이메일'
           inputName='email'
           inputType='email'
           value={email}
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='비밀번호'
           inputName='password'
           inputType='password'
           value={password}
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='비밀번호 확인'
           inputName='passwordConfirm'
           inputType='password'
           value={passwordConfirm}
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='이름'
           inputName='name'
           inputType='text'
@@ -119,7 +119,7 @@ function JoinForm() {
           value={name}
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='링크 (https://까지 포함)'
           inputName='link'
           inputType='text'
@@ -128,7 +128,7 @@ function JoinForm() {
           onChange={onChange}
         />
 
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='소개(간단한 소개)'
           inputName='comment'
           inputType='text'
@@ -136,7 +136,7 @@ function JoinForm() {
           value={comment}
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           labelTitle='세부 코멘트(자세한 소개)'
           inputName='detailComment'
           inputType='text'

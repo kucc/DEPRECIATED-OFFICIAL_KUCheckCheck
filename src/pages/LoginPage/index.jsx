@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import { DefaultLogo, Description } from '@components';
+import { DefaultLogo } from '@components';
 
 import LoginForm from './LoginForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
@@ -13,7 +13,6 @@ export const LoginPage = () => {
     <StyledRow>
       <StyledCol>
         <Wrapper>
-          <Description />
           <LoginForm />
           <a
             href='/signup'

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { BiSearch } from 'react-icons/bi';
 import { FaHashtag } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { setCategory, setSearch } from '@redux/actions/search_action';
+import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_main_action';
 
 import { BlackIcon } from '@components';
 
@@ -21,11 +21,19 @@ import {
 } from './style';
 
 function MainSearch() {
-  const [selectedCategory, setselectedCategory] = useState('');
-  const [randomCategory, setrandomCategory] = useState([]);
   const dispatch = useDispatch();
+
+  const selectedCategory = useSelector(state => state.main.language);
+  const searchTerm = useSelector(state => state.main.stringInput);
+  
+  const [randomCategory, setrandomCategory] = useState([]);
   const { width } = useWindowDimensions();
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  const searchValueClear = () => {
+    dispatch(setSearchStringInput(''));
+    dispatch(setSearchLanguage(''));
+  };
 
   useEffect(() => {
     // random인 요소를 4개 가진 배열을 생성
@@ -50,22 +58,23 @@ function MainSearch() {
     }
     setrandomCategory(newArray);
     // redux 값을 초기화
-    dispatch(setSearch(''));
-    dispatch(setCategory(''));
+    searchValueClear();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeSearch = e => {
-    dispatch(setSearch(e.target.value));
+    dispatch(setSearchLanguage(''));
+
+    dispatch(setSearchStringInput(e.target.value));
   };
 
   const handleCategory = tag => {
-    if (tag === selectedCategory) {
-      setselectedCategory('');
-      dispatch(setCategory(''));
-    } else {
-      setselectedCategory(tag);
-      dispatch(setCategory(tag));
+    if (tag !== selectedCategory) { // isChecked
+      dispatch(setSearchStringInput(''));
+
+      dispatch(setSearchLanguage(tag));
+    } else {                        // unChecked
+      searchValueClear();
     }
   };
 
@@ -76,6 +85,7 @@ function MainSearch() {
           <BiSearch />
         </StyledSearchBtn>
         <StyledSearchBar
+          value={searchTerm}
           screenWidth={width}
           className='out-shadow-middle border-radius-all'
           onChange={changeSearch}

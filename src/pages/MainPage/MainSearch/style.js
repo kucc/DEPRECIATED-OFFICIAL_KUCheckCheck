@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR, MAIN_COLOR } from '@utility';
+import { BASE_COLOR, RED, BACKGROUND_GRAY } from '@utility';
 
 export const StyledTag = styled.div`
   -webkit-touch-callout: none;
@@ -14,7 +14,7 @@ export const StyledTag = styled.div`
   height: 30px;
   margin-left: 10px;
   margin-top: 10px;
-  background-color: #f5f5f5;
+  background-color: ${BACKGROUND_GRAY};
   border: none;
   padding: 8px 14px;
   font-size: 12px;
@@ -25,7 +25,7 @@ export const StyledTag = styled.div`
   }
   transition: all 0.3s ease;
   ${({ checked }) =>
-    checked && `background-color: #000000; color: #fff;pointer-events: none;`}
+    checked && `background-color: #000000; color: #fff;`}
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;
@@ -80,7 +80,7 @@ export const StyledSearchBtn = styled.div`
   height: 3em;
   display: flex;
   align-items: center;
-  background: ${MAIN_COLOR};
+  background: ${RED};
   width: 7em;
   cursor: pointer;
   & > svg {
@@ -112,7 +112,7 @@ export const StyledQuickSearchText = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-  font-family: 'NexonBo';
+  font-family: "sdBo";
   margin-top: 10px;
   @media (max-width: 1224px) {
     justify-content: center;

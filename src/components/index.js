@@ -5,11 +5,18 @@ export * from './CourseApplication';
 export * from './CourseContainer';
 export * from './CourseDifficulty';
 export * from './DefaultLogo';
-export * from './Description';
-export * from './EmptyBox';
 export * from './Footer';
 export * from './ImageContainer';
-export * from './InputBoxWithLabel';
 export * from './NavBar';
 export * from './TimeTable';
 export * from './UserCard';
+
+
+export * from './RenewalHeader';
+export * from './RenewalTopHeader';
+export * from './RenewalFooter';
+export * from './RenewalAuthDescription';
+export * from './RenewalButtons';
+export * from './RenewalMainCourse';
+export * from './RenewalEmptyBox';
+export * from './RenewalInputs';

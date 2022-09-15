@@ -2,8 +2,6 @@ import React from 'react';
 
 import { useMediaQuery } from 'react-responsive';
 
-import { NavBar } from '@components';
-
 import { StyledBackground } from '../NoticePage/style';
 import {
   MMainBottomContainer,
@@ -17,7 +15,6 @@ export const MainPage = () => {
 
   return (
     <StyledBackground>
-      <NavBar isMain={true} />
       {isMobile ? (
         <>
           <MMainTopContainer />

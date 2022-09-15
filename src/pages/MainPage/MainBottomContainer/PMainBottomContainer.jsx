@@ -4,10 +4,10 @@ import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { CourseContainer, EmptyBox, WhiteShadowButton } from '@components';
+import { CourseContainer, RenewalEmptyBox, WhiteShadowButton } from '@components';
 
 import { firestoreService } from '@/firebase';
-import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
+import { RED, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,
@@ -30,8 +30,8 @@ export const PMainBottomContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   // user, searchTerm, searchCategory : from redux
   const user = useSelector(state => state.user);
-  const searchTerm = useSelector(state => state.search.searchTerm);
-  const searchCategory = useSelector(state => state.search.category);
+  const searchTerm = useSelector(state => state.main.stringInput);
+  const searchCategory = useSelector(state => state.main.language);
   const history = useHistory();
   const today = new Date();
 
@@ -234,7 +234,7 @@ export const PMainBottomContainer = () => {
     // if filetring is On
     if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filteredCourseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return filteredCourseArray.map(course => {
           return (
@@ -248,7 +248,7 @@ export const PMainBottomContainer = () => {
       }
     } else {
       if (courseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return courseArray.map(course => {
           return (
@@ -275,8 +275,8 @@ export const PMainBottomContainer = () => {
                   width: '100%',
                   height: '40px',
                   borderRadius: '25px',
-                  backgroundColor: MAIN_COLOR,
-                  borderColor: MAIN_COLOR,
+                  backgroundColor: RED,
+                  borderColor: RED,
                   fontSize: '13px',
                 }}>
                 {currentSemester} 학기

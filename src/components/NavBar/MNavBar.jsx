@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { DefaultLogo } from '@components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED } from '@utility';
 
 import * as S from './style';
 
@@ -46,7 +46,7 @@ const MNavBar = ({ user, logout, myPage }) => {
         ) : (
           <>
             <Link to='/login'>
-              <S.NavBarText style={{ color: MAIN_COLOR }} text='로그인'>
+              <S.NavBarText style={{ color: RED }} text='로그인'>
                 LOGIN
               </S.NavBarText>
             </Link>

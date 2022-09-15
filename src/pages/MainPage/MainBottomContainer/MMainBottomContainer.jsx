@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 
-import { CourseContainer, EmptyBox } from '@components';
+import { CourseContainer, RenewalEmptyBox } from '@components';
 
 import { firestoreService } from '@/firebase';
 import useWindowDimensions from '@hooks/useWindowDimensions';
-import { MAIN_COLOR, StyledSelectItem, StyledVerticalLine } from '@utility';
+import { RED, StyledSelectItem, StyledVerticalLine } from '@utility';
 
 import {
   StyledMainBottomBtnCont,
@@ -24,8 +24,8 @@ export const MMainBottomContainer = () => {
   // past Semester : 지난 학기들의 목록 => Array
   const [pastSemester, setpastSemester] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const searchTerm = useSelector(state => state.search.searchTerm);
-  const searchCategory = useSelector(state => state.search.category);
+  const searchTerm = useSelector(state => state.main.stringInput);
+  const searchCategory = useSelector(state => state.main.language);
   const { width } = useWindowDimensions();
 
   // regexp에 포함되는 특수문자를 사용할 경우 발생하는 에러 제거, ex) c++
@@ -223,7 +223,7 @@ export const MMainBottomContainer = () => {
     // if filetring is On
     if (searchTerm || courseSelect !== 0 || searchCategory) {
       if (filteredCourseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return filteredCourseArray.map(course => {
           return (
@@ -237,7 +237,7 @@ export const MMainBottomContainer = () => {
       }
     } else {
       if (courseArray.length === 0) {
-        return <EmptyBox />;
+        return <RenewalEmptyBox />;
       } else {
         return courseArray.map(course => {
           return (
@@ -263,8 +263,8 @@ export const MMainBottomContainer = () => {
                 fontSize: `10px`,
                 height: '40px',
                 borderRadius: '25px',
-                backgroundColor: MAIN_COLOR,
-                borderColor: MAIN_COLOR,
+                backgroundColor: RED,
+                borderColor: RED,
               }}>
               {currentSemester} 학기
             </Button>

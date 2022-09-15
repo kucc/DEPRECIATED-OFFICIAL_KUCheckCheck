@@ -4,12 +4,10 @@ import { Button, Select, Tooltip } from 'antd';
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
 
-import { NavBar } from '@components';
-
 import {
   CHECK_TOP_SESSION_OR_STUDY,
   FORM_IS_NOT_FULL,
-  MAIN_COLOR,
+  RED,
   StyledInputNumber,
   StyledLaguageImg,
   StyledSelect,
@@ -111,7 +109,6 @@ function CourseRegisterBox({ enrollHandler }) {
 
   return (
     <StyledBackground>
-      <NavBar />
       <StyledCourseRegisterText>등록하기</StyledCourseRegisterText>
       <StyledBottomContainer className='border-radius-all'>
         <div>
@@ -240,7 +237,6 @@ function CourseRegisterBox({ enrollHandler }) {
           <StyledInputBox>
             <StyledText style={{ marginTop: '30px' }}>활동 제목</StyledText>
             <StyledTextArea
-              allowClear={true}
               maxLength={50}
               onChange={onChangeTitle}
               placeholder='50자 이내'
@@ -356,7 +352,7 @@ function CourseRegisterBox({ enrollHandler }) {
           shape='round'
           size={'large'}
           style={{
-            backgroundColor: MAIN_COLOR,
+            backgroundColor: RED,
             border: '0px',
             height: '50px',
           }}

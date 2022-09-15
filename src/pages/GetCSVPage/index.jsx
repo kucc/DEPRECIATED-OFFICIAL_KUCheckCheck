@@ -5,7 +5,6 @@ import { saveAs } from 'file-saver';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { NavBar } from '@components';
 import AddUser from '@components/AddUser';
 
 import { authService, firestoreService } from '@/firebase';
@@ -166,7 +165,6 @@ export const GetCSVPage = () => {
 
   return (
     <div>
-      <NavBar />
       {authService.currentUser && (
         <>
           <Button

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton, InputBoxWithLabel } from '@components';
+import { FullWidthButton, AuthInputWithLabel } from '@components';
 
 import { authService } from '@/firebase';
 
@@ -57,14 +57,14 @@ function LoginForm() {
   return (
     <StyledForm onSubmit={submitHandler}>
       <Space direction='vertical' size='large'>
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           inputName='email'
           inputType='email'
           value={email}
           placeholder='Email'
           onChange={onChange}
         />
-        <InputBoxWithLabel
+        <AuthInputWithLabel
           inputName='password'
           inputType='password'
           value={password}

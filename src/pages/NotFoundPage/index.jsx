@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DefaultLogo, NavBar } from '@components';
+import { DefaultLogo } from '@components';
 
 import { StyledBackground } from '@utility';
 
@@ -16,7 +16,6 @@ export const NotFoundPage = () => {
   };
   return (
     <StyledBackground>
-      <NavBar />
       <StyledNotFound>
         <DefaultLogo width={200} height={200} logoName='type-3-4' />
         <h2>찾으시는 {renderWord()} 존재하지 않습니다.</h2>

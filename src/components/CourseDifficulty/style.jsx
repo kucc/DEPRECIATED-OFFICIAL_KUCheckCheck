@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED } from '@utility';
 
 export const StyledCourseDifficulty = styled.div`
   height: 56px;
@@ -45,10 +45,10 @@ export const StyledCourseLevel = styled.div`
 `;
 
 export const StyledRedText = styled.div`
-  color: ${MAIN_COLOR};
-  font-family: 'NexonBo';
+  color: ${RED};
+  font-family: 'sdBo';
 `;
 
 export const StyledGradeText = styled.div`
-  font-family: 'NexonBo';
+  font-family: 'sdBo';
 `;

@@ -79,8 +79,8 @@ export const StyledCourseText = styled.div`
 `;
 
 export const StyledCourseTitle = styled.div`
-  font-family: 'NexonBo';
   font-size: 20px;
+  font-family: "sdBo";
   margin-bottom: 8px;
   @media (max-width: 1224px) {
     margin-top: 5px;
@@ -90,7 +90,6 @@ export const StyledCourseTitle = styled.div`
 
 export const StyledCourseExplain = styled.div`
   & > p {
-    font-family: 'NexonRe';
     margin-bottom: 0px;
   }
   font-size: 13.3px;

@@ -1,5 +1,6 @@
 import { BiRightArrowAlt } from 'react-icons/bi';
 import styled from 'styled-components';
+import { BACKGROUND_GRAY } from '@utility/COLORS';
 
 export const StyledInfoCardContainer = styled.div`
   display: grid;
@@ -49,7 +50,7 @@ export const StyledInfoDetailContainer = styled.div`
 
 export const StyledInfoDetailName = styled.div`
   font-size: 32px;
-  font-family: 'NexonBo';
+  font-family: "sdBo";
   @media (max-width: 1224px) {
     margin-top: 20px;
     font-size: 22px;
@@ -94,7 +95,7 @@ export const StyledInfoEmail = styled.div`
 `;
 
 export const StyledDetailCommentBox = styled.div`
-  background-color: #f5f5f5;
+  background-color: ${BACKGROUND_GRAY};
   border-radius: 24px;
   padding: 23px;
   overflow: hidden;

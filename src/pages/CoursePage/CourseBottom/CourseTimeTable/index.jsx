@@ -6,7 +6,7 @@ import { CirclePicker } from 'react-color';
 
 import { TimeTable } from '@components';
 
-import { MAIN_COLOR } from '@utility';
+import { RED } from '@utility';
 
 import {
   StyledColorContainer,
@@ -18,7 +18,7 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
   const [selectedData, setselectedData] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [cellData, setcellData] = useState([]);
-  const [selectedColor, setSelectedColor] = useState(MAIN_COLOR);
+  const [selectedColor, setSelectedColor] = useState(RED);
 
   const renderselectedData = (index, selectColor, timeHour, timeMin) => {
     return selectedData[index].slice(1).map((data, key) => {
@@ -83,7 +83,7 @@ function CourseTimeTable({ courseData, courseId, newCourseDataTime }) {
             jjs01hwang@gmail(이희준)으로 메일이나 갠톡 주시면
             해결해드리겠습니다!
           </li>
-          <li style={{ fontFamily: 'NexonBo' }}>
+          <li style={{ fontWeight: '700' }}>
             저장 버튼을 누르셔야 저장이 됩니다.
           </li>
         </ul>

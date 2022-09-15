@@ -1,8 +1,80 @@
 import { InputNumber, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { BASE_COLOR } from './COLORS';
+import { BASE_COLOR, BLACK, LINE_GRAY, GRAY } from './COLORS';
+
+export const StyledMainContainer = styled.div`
+  width: 1280px;
+  padding-top: 128px;
+  margin: 0 auto;
+  @media (max-width: 1279px) {
+    width: 100%;
+    padding-top: 76px;
+  }
+`;
+
+export const StyledIncludeHeaderMain = styled.main`
+  min-height: 500px;
+  margin-left: 136px;
+  border-left: 1.5px solid ${LINE_GRAY};
+  @media (max-width: 1279px) {
+    margin: 0;
+  }
+`;
+
+export const StyledUnIncludeHeaderMain = styled.main`
+  width: 100%;
+  padding-left: 76px;
+  @media (max-width: 1279px) {
+    padding: 0 18px;
+  }
+`;
+
+export const StyledCourseTab = styled.div`
+  padding: 12px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid ${LINE_GRAY};
+  @media (max-width: 1279px) {
+    padding: 8px 0;
+    margin-bottom: 12px;
+  }
+`;
+
+export const StyledTab = styled.button`
+  padding: 0 36px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-right: 1px solid ${LINE_GRAY};
+  &:last-child {
+    border: none;
+  }
+  @media (max-width: 1279px) {
+    padding: 0 20px;
+  }
+`;
+
+export const StyledTabText = styled.span`
+  color: ${GRAY};
+  font-size: 18px;
+  font-family: "sdBo";
+  padding: 14px 12px;
+  ${props => props.active && css`
+    color: ${BLACK};
+    border-bottom: 3px solid ${BLACK};
+  `}
+  @media (max-width: 1279px) {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+`;
+export const StyledOldMain = styled.div`
+  padding-top: 80px;
+  @media (max-width: 1224px) {
+    padding-top: 65px;
+  }
+`;
 
 export const StyledBackground = styled.div`
   background-color: rgb(245, 245, 245);
@@ -44,9 +116,36 @@ export const StyledSelectItem = styled.div`
   @media (max-width: 1224px) {
     margin: 0px 7%;
     font-size: 9px;
-    font-family: 'NexonBo';
+    font-family: "sdBo";
     padding: 0px 5px;
   }
+`;
+
+export const StyledArrow = styled.i`
+  display: inline-block;
+  border: solid ${BLACK};
+  border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
+  margin-bottom: 2px;
+  padding: ${props => (props.width ? `${props.width}px` : '3px')};
+  @media (max-width: 1279px) {
+    border-width: ${props => (props.thin ? `0px ${props.thin / 2}px ${props.thin / 2}px 0px` : '0 1.5px 1.5px 0')};
+    padding: ${props => (props.width ? `${props.width / 2}px` : '1.5px')};
+  }
+`;
+
+export const StyledRightArrow = styled(StyledArrow)`
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+`;
+
+export const StyledLeftArrow = styled(StyledArrow)`
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+`;
+
+export const StyledDownArrow = styled(StyledArrow)`
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 `;
 
 export const StyledTextArea = styled(TextArea)`
@@ -125,4 +224,11 @@ export const StyledLaguageImg = styled.img`
   border-radius: 50%;
   margin-right: 20px;
   object-fit: contain;
+`;
+
+export const StyledCommonTitle = styled.div`
+  font-size: 26px;
+  font-family: 'tmoneyBo';
+  color: ${BLACK};
+  padding-left: 49px;
 `;
