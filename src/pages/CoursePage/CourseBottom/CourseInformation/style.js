@@ -76,5 +76,6 @@ export const StyledInfoDesc = styled.div`
   font-size: 16px;
   @media (max-width: 1224px) {
     font-size: 12px;
+    word-break: break-word;
   }
 `;
