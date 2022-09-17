@@ -337,7 +337,7 @@ export const CourseApplication = ({
       {renderApplcationButton()} {/* Enter로 Modal 확인버튼 클릭? */}
       <Modal
         title='취소하기'
-        open={isModalVisible}
+        visible={isModalVisible}
         onOk={handleRemoveCourse}
         onCancel={handleCancel}>
         <p>
