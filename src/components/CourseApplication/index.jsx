@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { message } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
+import { Modal, message } from 'antd';
 import PropTypes from 'prop-types';
 import { AiFillLock, AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
@@ -338,7 +337,7 @@ export const CourseApplication = ({
       {renderApplcationButton()} {/* Enter로 Modal 확인버튼 클릭? */}
       <Modal
         title='취소하기'
-        visible={isModalVisible}
+        open={isModalVisible}
         onOk={handleRemoveCourse}
         onCancel={handleCancel}>
         <p>
