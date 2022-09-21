@@ -33,6 +33,12 @@ export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];
 };
 
+export const isMember = (user, course) => {
+  if(user.id === course.courseLeader.id) return "팀장"
+  else if (course.courseMember.find(user.id)) return "팀원"
+  return 0
+}
+
 export const renderWord = courseType => {
   if (courseType === 1) {
     return '세션';
