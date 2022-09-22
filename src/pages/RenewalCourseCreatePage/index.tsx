@@ -25,7 +25,7 @@ export const RenewalCourseCreatePage = () => {
           </StyledContainerSubTitle>
         </StyledContainerHeader>
         <StyledContainerBody>
-          <AuthInputWithLabel labelTitle='활동 제목' placeholder={'30자 이내로 작성해주세요.'} isRequired></AuthInputWithLabel>
+          <AuthInputWithLabel labelTitle='활동 제목' placeholder={'30자 이내로 작성해주세요.'}></AuthInputWithLabel>
           <AuthInputWithLabel labelTitle='주요 기술 스택 & 사용 언어' placeholder={'옵션을 선택해주세요.'}></AuthInputWithLabel>
         </StyledContainerBody>
       </StyledContainer>
