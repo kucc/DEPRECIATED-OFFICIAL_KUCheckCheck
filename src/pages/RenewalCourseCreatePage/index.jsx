@@ -5,6 +5,10 @@ import { StyledBody, StyledContainer, StyledButton, StyledContainerHeader, Style
 
 export const RenewalCourseCreatePage = () => {
 
+  const curriculumTextAreas = [...Array(8).keys()].map((key) =>
+  (<AuthTextAreaWithLabel labelTitle={`${key+1}주차`} placeholder={'200자 이내로 작성해주세요.'} key={key}></AuthTextAreaWithLabel>)
+  );
+
   return (
     <StyledBody>
       <StyledHeader>
@@ -47,14 +51,7 @@ export const RenewalCourseCreatePage = () => {
           </StyledContainerTitle>
         </StyledContainerHeader>
         <StyledContainerBody>
-          <AuthTextAreaWithLabel labelTitle='1주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='2주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='3주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='4주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='5주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='6주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='7주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='8주차' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
+          {curriculumTextAreas}
         </StyledContainerBody>
       </StyledContainer>
     </StyledBody>
