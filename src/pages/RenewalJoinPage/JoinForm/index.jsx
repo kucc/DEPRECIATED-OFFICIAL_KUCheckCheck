@@ -164,7 +164,7 @@ function JoinForm() {
         placeholder='최대 200자 이내로 작성해주세요.'
         value={detail_comment}
         onChange={onChange}
-        isRequired={true}
+        isRequired={false}
       />
 
       <AuthInputWithLabel
@@ -174,7 +174,7 @@ function JoinForm() {
         placeholder='깃헙 주소 ex) https://github.com/'
         value={github_id}
         onChange={onChange}
-        isRequired={true}
+        isRequired={false}
       />
 
       <AuthInputWithLabel
