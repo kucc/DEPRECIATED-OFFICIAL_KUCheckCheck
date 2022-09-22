@@ -11,14 +11,14 @@ export const AuthTextAreaWithLabel = ({
   placeholder,
   value,
   onChange,
-  isRequired = false
+  isRequired = true
 }) => {
   return (
     <Wrapper isLabelTitle={labelTitle}>
       {labelTitle && (
         <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
       )}
-      {isRequired && (
+      {!isRequired && (
         <StyledRequiredText>(선택)</StyledRequiredText>
       )}
       <StyledTextArea
