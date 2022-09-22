@@ -11,14 +11,14 @@ export const AuthInputWithLabel = ({
   placeholder,
   value,
   onChange,
-  isRequired = false,
+  isRequired = true,
 }) => {
   return (
       <Wrapper isLabelTitle={labelTitle}>
         {labelTitle && (
           <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>
         )}
-        {isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
+        {!isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
         <StyledInput
           name={inputName}
           type={inputType}
