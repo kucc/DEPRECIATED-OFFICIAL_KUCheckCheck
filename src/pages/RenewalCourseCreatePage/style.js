@@ -56,7 +56,6 @@ export const StyledContainer = styled.div`
 `
 export const StyledContainerHeader = styled.div`
   width: 100%;
-  height: 80px;
   display: flex;
   padding: 20px 50px 5px 50px;
   gap: 20px;
@@ -64,7 +63,8 @@ export const StyledContainerHeader = styled.div`
 `
 
 export const StyledContainerTitle = styled.span`
-  font-size: 16px;
+  color: black;
+  font-size: 18px;
   font-weight: bold;
   padding: 15px 10px;
   border-bottom: 3px solid black;
@@ -76,7 +76,7 @@ export const StyledContainerTitle = styled.span`
 
 export const StyledContainerSubTitle = styled.span`
   font-family: 'Apple SD Gothic Neo';
-  line-height: 58px;
+  line-height: 60px;
   text-align: center;
   .warning {
     color: ${RED};
@@ -84,8 +84,8 @@ export const StyledContainerSubTitle = styled.span`
 `
 
 export const StyledContainerBody = styled.div`
-  width: 100%;
-  padding: 20px 50px 5px 50px;
-  gap: 20px;
-  border-bottom: 1.5px solid ${LINE_GRAY};
+  padding: 20px 40px 80px;
+  @media (max-width: 1279px) {
+    padding-inline: 15px;
+  }
 `
