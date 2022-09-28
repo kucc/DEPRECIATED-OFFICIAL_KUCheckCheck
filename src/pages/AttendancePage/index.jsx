@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { useMediaQuery } from 'react-responsive';
-
 
 import { BASE_COLOR, StyledBackground, StyledSidePadding } from '@utility';
 

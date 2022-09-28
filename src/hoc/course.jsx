@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // TODO: hoc의 prop-types는 어떻게 설정해줘야될까 생각해보기
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 

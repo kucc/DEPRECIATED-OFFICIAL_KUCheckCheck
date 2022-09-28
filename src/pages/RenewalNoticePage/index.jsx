@@ -1,20 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-
-import { itemClassName } from 'react-horizontal-scrolling-menu';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 import {
-  CollapseBox,
   StyledBar,
   StyledBarMenu1,
   StyledBarMenu3,
   StyledBody,
-  StyledBoxDate,
   StyledCommonTitle,
   StyledContentBox,
-  StyledSubBar,
   StyledSubTitle,
 } from './style';
 

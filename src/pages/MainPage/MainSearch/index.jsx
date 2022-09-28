@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { BiSearch } from 'react-icons/bi';
 import { FaHashtag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { setSearchLanguage, setSearchStringInput } from '@redux/actions/renewal_main_action';
+import {
+  setSearchLanguage,
+  setSearchStringInput,
+} from '@redux/actions/renewal_main_action';
 
 import { BlackIcon } from '@components';
 
@@ -25,7 +28,7 @@ function MainSearch() {
 
   const selectedCategory = useSelector(state => state.main.language);
   const searchTerm = useSelector(state => state.main.stringInput);
-  
+
   const [randomCategory, setrandomCategory] = useState([]);
   const { width } = useWindowDimensions();
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -69,11 +72,13 @@ function MainSearch() {
   };
 
   const handleCategory = tag => {
-    if (tag !== selectedCategory) { // isChecked
+    if (tag !== selectedCategory) {
+      // isChecked
       dispatch(setSearchStringInput(''));
 
       dispatch(setSearchLanguage(tag));
-    } else {                        // unChecked
+    } else {
+      // unChecked
       searchValueClear();
     }
   };

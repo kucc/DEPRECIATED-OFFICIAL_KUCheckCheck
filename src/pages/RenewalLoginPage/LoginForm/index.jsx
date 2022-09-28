@@ -49,7 +49,7 @@ function LoginForm() {
     }
     if (status === FAILURE) {
       setIsSubmitted(false);
-      
+
       if (error === 'user_not_found') {
         alert(USER_NOT_FOUND);
         window.location.href = RENEWAL_PATH.signUp;

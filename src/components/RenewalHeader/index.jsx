@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -14,8 +12,7 @@ import {
   NoticeIcon,
 } from '@/svg/header';
 import { BLACK, RED } from '@utility/COLORS';
-import { MEMBER_ROLE } from '@utility/COMMON_FUNCTION';
-import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
+import { MEMBER_ROLE, RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 import { DefaultLogo } from '..';
 import {

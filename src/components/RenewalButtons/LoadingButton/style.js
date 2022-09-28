@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-import { RED, BLACK, BACKGROUND_GRAY } from '@utility';
+import { BACKGROUND_GRAY, BLACK, RED } from '@utility';
 
 export const StyledButton = styled.button`
   color: ${BLACK};
@@ -18,21 +18,21 @@ export const StyledButton = styled.button`
     border-color: white;
     background: ${RED};
   }
-  opacity: ${(props) => props.isLoading && '0.6'};
+  opacity: ${props => props.isLoading && '0.6'};
 `;
 
 export const StyledLoadingSpinnerContainer = styled.span`
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 10px;
 `;
 
 const spinnerFrames = keyframes`
   to {transform: rotate(360deg);}
-`
+`;
 export const StyledLoadingSpinner = styled.span`
   &:before {
     content: '';
@@ -45,6 +45,6 @@ export const StyledLoadingSpinner = styled.span`
     border-radius: 50%;
     border: 2px solid #ccc;
     border-top-color: #000;
-    animation: ${spinnerFrames} .6s linear infinite;
+    animation: ${spinnerFrames} 0.6s linear infinite;
   }
 `;

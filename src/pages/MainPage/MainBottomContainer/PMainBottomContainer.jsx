@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { CourseContainer, RenewalEmptyBox, WhiteShadowButton } from '@components';
+import {
+  CourseContainer,
+  RenewalEmptyBox,
+  WhiteShadowButton,
+} from '@components';
 
 import { firestoreService } from '@/firebase';
 import { RED, StyledSelectItem, StyledVerticalLine } from '@utility';

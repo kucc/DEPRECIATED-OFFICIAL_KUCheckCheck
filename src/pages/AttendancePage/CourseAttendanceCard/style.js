@@ -59,7 +59,7 @@ export const StyledAttendanceBox = styled.div`
 `;
 
 export const StyledTextBase = styled.div`
-  font-family: "sdBo";
+  font-family: 'sdBo';
   width: 80px;
   text-align: center;
   @media (max-width: 1224px) {

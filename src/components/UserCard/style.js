@@ -1,5 +1,6 @@
 import { BiRightArrowAlt } from 'react-icons/bi';
 import styled from 'styled-components';
+
 import { BACKGROUND_GRAY } from '@utility/COLORS';
 
 export const StyledInfoCardContainer = styled.div`
@@ -50,7 +51,7 @@ export const StyledInfoDetailContainer = styled.div`
 
 export const StyledInfoDetailName = styled.div`
   font-size: 32px;
-  font-family: "sdBo";
+  font-family: 'sdBo';
   @media (max-width: 1224px) {
     margin-top: 20px;
     font-size: 22px;

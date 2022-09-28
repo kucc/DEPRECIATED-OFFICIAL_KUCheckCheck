@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
