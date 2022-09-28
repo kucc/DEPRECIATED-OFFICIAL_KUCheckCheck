@@ -1,12 +1,26 @@
-import { AuthInputWithLabel, AuthTextAreaWithLabel } from '@components/RenewalInputs';
+import { AuthInputWithLabel as Input, AuthTextAreaWithLabel as TextArea } from '@components/RenewalInputs';
 import React from 'react';
-import { StyledBody, StyledContainer, StyledButton, StyledContainerHeader, StyledContainerSubTitle, StyledContainerTitle, StyledHeader, StyledTitle, StyledContainerBody } from './style';
-// import { StyledDownArrow } from '@utility/COMMON_STYLE';
+import { StyledBody, StyledContainer, StyledButton, StyledContainerHeader, StyledContainerSubTitle, StyledContainerTitle, StyledHeader, StyledTitle, StyledContainerBody, StyledLabel } from './style';
+import { RenewalSelect } from '@components/RenewalSelect';
 
 export const RenewalCourseCreatePage = () => {
 
+  const activityList = ['세션', '스터디', '프로젝트'];
+  const difficultyList = ['easy', 'medium', 'hard'];
+  const requireTimeList = ['1학점', '2학점', '3학점'];
+
+  const handleActivity = (activity : string) => {
+    console.log(activity)
+  };
+  const handleDifficulty = (difficulty : string) => {
+    console.log(difficulty)
+  };
+  const handleInputTime = (inputTime : string) => {
+    console.log(inputTime)
+  };
+
   const curriculumTextAreas = [...Array(8).keys()].map((key) =>
-  (<AuthTextAreaWithLabel labelTitle={`${key+1}주차`} placeholder={'200자 이내로 작성해주세요.'} key={key}></AuthTextAreaWithLabel>)
+    (<TextArea labelTitle={`${key+1}주차`} placeholder={'200자 이내로 작성해주세요.'} key={key}></TextArea>)
   );
 
   return (
@@ -25,8 +39,14 @@ export const RenewalCourseCreatePage = () => {
           </StyledContainerSubTitle>
         </StyledContainerHeader>
         <StyledContainerBody>
-          <AuthInputWithLabel labelTitle='활동 제목' placeholder={'30자 이내로 작성해주세요.'}></AuthInputWithLabel>
-          <AuthInputWithLabel labelTitle='주요 기술 스택 & 사용 언어' placeholder={'옵션을 선택해주세요.'}></AuthInputWithLabel>
+          <StyledLabel>활동 카테고리</StyledLabel>
+          <div style={{ display: 'flex', gap: 12}}>
+            <RenewalSelect itemList={activityList} handleItem={handleActivity} label='세션 / 스터디 / 프로젝트' />
+            <RenewalSelect itemList={difficultyList} handleItem={handleDifficulty} label='난이도' />
+            <RenewalSelect itemList={requireTimeList} handleItem={handleInputTime} label='투자 시간' />
+          </div>
+          <Input labelTitle='활동 제목' placeholder={'30자 이내로 작성해주세요.'}></Input>
+          <Input labelTitle='주요 기술 스택 & 사용 언어' placeholder={'옵션을 선택해주세요.'}></Input>
         </StyledContainerBody>
       </StyledContainer>
       <StyledContainer>
@@ -36,12 +56,12 @@ export const RenewalCourseCreatePage = () => {
           </StyledContainerTitle>
         </StyledContainerHeader>
         <StyledContainerBody>
-          <AuthInputWithLabel labelTitle='세부 기술 스택' placeholder={'옵션을 선택해주세요.'}></AuthInputWithLabel>
-          <AuthTextAreaWithLabel labelTitle='활동 소개' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='활동 목표' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthInputWithLabel labelTitle='진행 요일' placeholder={'100자 이내로 작성해주세요.'}></AuthInputWithLabel>
-          <AuthTextAreaWithLabel labelTitle='진행 장소 및 방법' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
-          <AuthTextAreaWithLabel labelTitle='유의 사항' placeholder={'200자 이내로 작성해주세요.'}></AuthTextAreaWithLabel>
+          <Input labelTitle='세부 기술 스택' placeholder={'옵션을 선택해주세요.'}></Input>
+          <TextArea labelTitle='활동 소개' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
+          <TextArea labelTitle='활동 목표' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
+          <Input labelTitle='진행 요일' placeholder={'100자 이내로 작성해주세요.'}></Input>
+          <TextArea labelTitle='진행 장소 및 방법' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
+          <TextArea labelTitle='유의 사항' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
         </StyledContainerBody>
       </StyledContainer>
       <StyledContainer>

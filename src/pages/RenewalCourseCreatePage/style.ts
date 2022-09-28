@@ -89,3 +89,14 @@ export const StyledContainerBody = styled.div`
     padding-inline: 15px;
   }
 `
+
+export const StyledLabel = styled.label`
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'sdBo';
+  color: ${BLACK};
+  margin: 0 6px 8px 30px;
+  @media (max-width: 1224px) {
+    font-size: 12px;
+  }
+`;
