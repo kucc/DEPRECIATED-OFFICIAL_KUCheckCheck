@@ -11,6 +11,7 @@
       "@redux/*": ["./src/redux/*"],
       "@actions/*": ["./src/redux/actions/*"],
       "@reducer/*": ["./src/redux/reducer/*"],
+      "@recoilState/*": ["./src/recoilState/*"],
       "@font/*": ["./src/font/*"],
       "@utility/*": ["./src/utility/*"],
       "@utility": ["./src/utility"],

@@ -11,6 +11,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 import { clearUser, setUser } from '@redux/actions/auth_action';
 import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
@@ -204,41 +205,43 @@ function App() {
   const path = pathSliced.length > 3 ? '/course/detail/:id' : pathname; // 세션 소개 url 구분
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalStyle />
-      {SINGLE_PATHNAMES_LIST.includes(pathname) ? ( // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
-        RenewalPageRouter()
-      ) : Object.values(RENEWAL_PATH).includes(path) ? ( // 리뉴얼 페이지
-        <>
-          <RenewalTopHeader />
-          <StyledMainContainer>
-            {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
-              <>
-                <RenewalHeader pathname={pathname} />
-                <StyledIncludeHeaderMain>
-                  {RenewalPageRouter()}
-                </StyledIncludeHeaderMain>
-              </>
-            ) : (
-              <>
-                <LeftBackButton />
-                <StyledUnIncludeHeaderMain>
-                  {RenewalPageRouter()}
-                </StyledUnIncludeHeaderMain>
-              </>
-            )}
-          </StyledMainContainer>
-          <RenewalFooter />
-        </>
-      ) : (
-        // 기존 페이지
-        <>
-          <NavBar />
-          <StyledOldMain className='main-background-color'>
-            {NavFooterPageRouter()}
-          </StyledOldMain>
-          <Footer />
-        </>
-      )}
+      <RecoilRoot>
+        <GlobalStyle />
+        {SINGLE_PATHNAMES_LIST.includes(pathname) ? ( // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
+          RenewalPageRouter()
+        ) : Object.values(RENEWAL_PATH).includes(path) ? ( // 리뉴얼 페이지
+          <>
+            <RenewalTopHeader />
+            <StyledMainContainer>
+              {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
+                <>
+                  <RenewalHeader pathname={pathname} />
+                  <StyledIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledIncludeHeaderMain>
+                </>
+              ) : (
+                <>
+                  <LeftBackButton />
+                  <StyledUnIncludeHeaderMain>
+                    {RenewalPageRouter()}
+                  </StyledUnIncludeHeaderMain>
+                </>
+              )}
+            </StyledMainContainer>
+            <RenewalFooter />
+          </>
+        ) : (
+          // 기존 페이지
+          <>
+            <NavBar />
+            <StyledOldMain className='main-background-color'>
+              {NavFooterPageRouter()}
+            </StyledOldMain>
+            <Footer />
+          </>
+        )}
+      </RecoilRoot>
     </QueryClientProvider>
   );
 }
