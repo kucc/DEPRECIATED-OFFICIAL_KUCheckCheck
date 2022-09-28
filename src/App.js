@@ -66,8 +66,8 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 5000,
-        cacheTime: 5000,
+        staleTime: 500000,
+        cacheTime: 500000,
         retry: 0,
         useErrorBoundary: true,
       },
