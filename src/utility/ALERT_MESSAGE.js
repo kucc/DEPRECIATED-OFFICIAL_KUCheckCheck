@@ -25,9 +25,10 @@ export const COURSE_CHECK_ADMIN_ONLY =
   '출석체크 담당자만이 접근할 수 있습니다.';
 export const FAILED_TO_LOAD_DATA = '정보를 가져오는데 실패했습니다.';
 
-
-export const USER_NOT_FOUND = '가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.';
+export const USER_NOT_FOUND =
+  '가입되지 않은 사용자입니다.\n회원가입 페이지로 이동합니다.';
 export const LOGIN_FAILURE = '로그인에 실패했습니다.';
-export const EXISTING_EMAIL = '이미 가입된 이메일입니다.\n로그인 페이지로 이동합니다.';
-export const SIGNUP_FAILURE = '회원가입에 실패했습니다.'
+export const EXISTING_EMAIL =
+  '이미 가입된 이메일입니다.\n로그인 페이지로 이동합니다.';
+export const SIGNUP_FAILURE = '회원가입에 실패했습니다.';
 export const SIGNUP_SUCCESS = '회원가입을 완료하였습니다.';

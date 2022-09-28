@@ -1,5 +1,5 @@
-
 import styled from 'styled-components';
+
 import { BASE_COLOR } from '@utility/COLORS';
 
 export const StyledCenterContainer = styled.div`
@@ -11,7 +11,7 @@ export const StyledCenterContainer = styled.div`
 
 export const StyledAuthContainer = styled.div`
   width: 660px;
-  height: ${(props) => props.isLogin && '100vh'};
+  height: ${props => props.isLogin && '100vh'};
   padding: 0 104px 100px 104px;
   background-color: white;
   @media (max-width: 1224px) {
@@ -19,7 +19,7 @@ export const StyledAuthContainer = styled.div`
     padding: 10%;
   }
   @media (min-height: 1200px) {
-    height: ${(props) => !props.isLogin && '100vh'};
+    height: ${props => !props.isLogin && '100vh'};
   }
 `;
 

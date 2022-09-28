@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, Input, Modal } from 'antd';
 import PropTypes from 'prop-types';

@@ -21,4 +21,3 @@ export const StyledButton = styled(Button)`
     background: ${RED} !important;
   }
 `;
-

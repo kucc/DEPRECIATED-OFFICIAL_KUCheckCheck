@@ -1,13 +1,11 @@
-import React from 'react';
-
 import { useHistory } from 'react-router-dom';
 
 import { StyledLeftArrow } from '@utility/COMMON_STYLE';
 
-import { StyledLeftBackButton, StyledArrowContainer } from './style';
+import { StyledArrowContainer, StyledLeftBackButton } from './style';
 
 export const LeftBackButton = () => {
-    const history = useHistory();
+  const history = useHistory();
 
   return (
     <StyledLeftBackButton onClick={() => history.goBack()}>

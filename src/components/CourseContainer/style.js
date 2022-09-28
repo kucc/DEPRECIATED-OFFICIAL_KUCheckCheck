@@ -80,7 +80,7 @@ export const StyledCourseText = styled.div`
 
 export const StyledCourseTitle = styled.div`
   font-size: 20px;
-  font-family: "sdBo";
+  font-family: 'sdBo';
   margin-bottom: 8px;
   @media (max-width: 1224px) {
     margin-top: 5px;

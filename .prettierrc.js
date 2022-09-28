@@ -15,7 +15,7 @@ var tsOption = {
     '<THIRD_PARTY_MODULES>',
     '^@(?:redux|actions|reducer)',
     '^@(?:components|pages)(.*)$',
-    '^@(?:hoc|hooks|utility|/)(.*)$',
+    '^@(?:api|constants|hoc|hooks|utility|/)(.*)$',
     '^[./]',
   ],
   plugins: [require.resolve('@trivago/prettier-plugin-sort-imports')],

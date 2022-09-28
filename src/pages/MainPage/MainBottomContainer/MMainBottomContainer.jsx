@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, Dropdown, Menu, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
