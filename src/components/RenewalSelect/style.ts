@@ -1,6 +1,7 @@
-import styled from 'styled-components';
 import { Button } from 'antd';
-import { BLACK, RED, LINE_GRAY } from '@utility/COLORS';
+import styled from 'styled-components';
+
+import { BLACK, LINE_GRAY, RED } from '@utility/COLORS';
 
 export const StyledDropDown = styled.div`
   display: inline-block;
