@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Select, Tooltip } from 'antd';
 import 'antd/dist/antd.css';

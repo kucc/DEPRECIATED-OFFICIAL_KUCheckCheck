@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 import { FiPaperclip } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';

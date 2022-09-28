@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { GRAY } from '@utility/COLORS';
+
 export const StyledInfoContainer = styled.div`
   display: grid;
   grid-template-columns: ${props => (props.isEdit ? 'auto' : 'auto 30%')};
@@ -67,7 +68,7 @@ export const StyledInfoText = styled.div`
 `;
 
 export const StyledInfoTitle = styled.div`
-  font-family: "sdBo";
+  font-family: 'sdBo';
   font-size: 20px;
   @media (max-width: 1224px) {
     font-size: 12px;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledCommonTitle } from '@utility/COMMON_STYLE';
 
 export const RenewalTimeTablePage = () => {

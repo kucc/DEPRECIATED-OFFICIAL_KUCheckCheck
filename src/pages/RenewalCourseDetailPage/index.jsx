@@ -1,12 +1,10 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import { StyledCommonTitle } from '@utility/COMMON_STYLE';
 
 export const RenewalCourseDetailPage = props => {
   const courseId = props.match.params.id;
-  
+
   console.log(courseId);
   return (
     <div>

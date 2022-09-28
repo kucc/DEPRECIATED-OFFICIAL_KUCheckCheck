@@ -1,10 +1,15 @@
-import { GET_COMMON_INFO, GET_COMMON_INFO_SUCCESS, GET_COMMON_INFO_FAILURE } from "@redux/actions/types";
-import { INIT, SUCCESS, FAILURE } from "@utility/ALERT_MESSAGE";
+import {
+  GET_COMMON_INFO,
+  GET_COMMON_INFO_FAILURE,
+  GET_COMMON_INFO_SUCCESS,
+} from '@redux/actions/types';
+
+import { FAILURE, INIT, SUCCESS } from '@utility/ALERT_MESSAGE';
 
 const initialSearchState = {
   commonInfo: {
     status: INIT,
-    data: {}
+    data: {},
   },
 };
 
@@ -15,24 +20,24 @@ export default function (state = initialSearchState, action) {
         ...state,
         commonInfo: {
           status: INIT,
-          data: {}
-        }
+          data: {},
+        },
       };
     case GET_COMMON_INFO_SUCCESS:
       return {
         ...state,
         commonInfo: {
           status: SUCCESS,
-          data: action.data
-        }
-      }
+          data: action.data,
+        },
+      };
     case GET_COMMON_INFO_FAILURE:
       return {
         ...state,
         commonInfo: {
           status: FAILURE,
-          data: {}
-        }
+          data: {},
+        },
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +12,9 @@ import { MainCourseTab } from './MainCourseTab';
 import { MainSearch } from './MainSearch';
 import { MainTopContainer } from './MainTopContainer';
 import {
-  StyledUserContainer,
   MainBottomContainer,
-  StyledMainCourse
+  StyledMainCourse,
+  StyledUserContainer,
 } from './style';
 
 export const RenewalMainPage = () => {

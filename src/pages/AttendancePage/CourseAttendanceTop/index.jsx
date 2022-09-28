@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Dropdown, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
