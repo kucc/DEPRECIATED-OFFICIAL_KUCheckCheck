@@ -1,0 +1,1 @@
+export const GET_USER_QUERY_ID = 'GET_USER_QUERY';

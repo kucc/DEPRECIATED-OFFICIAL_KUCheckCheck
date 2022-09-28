@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { getProfileRequest } from '@redux/actions/renewal_member_action';
 
 import { RenewalEmptyBox, RenewalMainCourse } from '@components';
 
-import { getToken } from '@/api/TokenAction';
+import { getToken } from '@/api';
 import { MEMBER_ROLE, RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 import {
   StyledCourseTab,
