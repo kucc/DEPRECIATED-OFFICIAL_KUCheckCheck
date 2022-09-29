@@ -1,5 +1,3 @@
-import React from 'react';
-
 import JoinForm from './JoinForm';
 import { StyledCol, StyledRow, Wrapper } from './style';
 

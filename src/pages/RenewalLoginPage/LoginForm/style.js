@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { BLACK } from '@utility/COLORS';
 
@@ -7,7 +7,8 @@ export const StyledForm = styled.form`
   width: 100%;
   margin: 0 auto;
 
-  a, button {
+  a,
+  button {
     display: block;
     margin: 0 auto;
   }

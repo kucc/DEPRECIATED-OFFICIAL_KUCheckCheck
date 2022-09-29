@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DefaultLogo } from '../DefaultLogo';
 import { StyledEmptyBoxContainer, StyledEmptyBoxText } from './style';
 

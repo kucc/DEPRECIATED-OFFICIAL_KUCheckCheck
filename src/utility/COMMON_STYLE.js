@@ -2,7 +2,7 @@ import { InputNumber, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import styled, { css } from 'styled-components';
 
-import { BASE_COLOR, BLACK, LINE_GRAY, GRAY } from './COLORS';
+import { BASE_COLOR, BLACK, GRAY, LINE_GRAY } from './COLORS';
 
 export const StyledMainContainer = styled.div`
   width: 1280px;
@@ -58,12 +58,14 @@ export const StyledTab = styled.button`
 export const StyledTabText = styled.span`
   color: ${GRAY};
   font-size: 18px;
-  font-family: "sdBo";
+  font-family: 'sdBo';
   padding: 14px 12px;
-  ${props => props.active && css`
-    color: ${BLACK};
-    border-bottom: 3px solid ${BLACK};
-  `}
+  ${props =>
+    props.active &&
+    css`
+      color: ${BLACK};
+      border-bottom: 3px solid ${BLACK};
+    `}
   @media (max-width: 1279px) {
     font-size: 12px;
     padding: 8px 0;
@@ -116,7 +118,7 @@ export const StyledSelectItem = styled.div`
   @media (max-width: 1224px) {
     margin: 0px 7%;
     font-size: 9px;
-    font-family: "sdBo";
+    font-family: 'sdBo';
     padding: 0px 5px;
   }
 `;
@@ -124,11 +126,15 @@ export const StyledSelectItem = styled.div`
 export const StyledArrow = styled.i`
   display: inline-block;
   border: solid ${BLACK};
-  border-width: ${props => (props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0')};
+  border-width: ${props =>
+    props.thin ? `0px ${props.thin}px ${props.thin}px 0px` : '0 3px 3px 0'};
   margin-bottom: 2px;
   padding: ${props => (props.width ? `${props.width}px` : '3px')};
   @media (max-width: 1279px) {
-    border-width: ${props => (props.thin ? `0px ${props.thin / 2}px ${props.thin / 2}px 0px` : '0 1.5px 1.5px 0')};
+    border-width: ${props =>
+      props.thin
+        ? `0px ${props.thin / 2}px ${props.thin / 2}px 0px`
+        : '0 1.5px 1.5px 0'};
     padding: ${props => (props.width ? `${props.width / 2}px` : '1.5px')};
   }
 `;

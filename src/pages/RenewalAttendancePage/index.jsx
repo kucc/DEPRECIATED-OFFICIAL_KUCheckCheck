@@ -1,6 +1,3 @@
-import { isLeader, isMember } from '@utility/COMMON_FUNCTION';
-import React from 'react';
-
 export const RenewalAttendancePage = () => {
   const attendance_constant = { 0: "출석", 1: "결석", 2: "지각", 3: "-" }
   const user = { id: "eFEMHeraiZSJKWs1bESwBkmwkEE2", emoji: "👨‍🍳", name: "김채린" }

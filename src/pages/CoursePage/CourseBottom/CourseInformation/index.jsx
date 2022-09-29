@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Select } from 'antd';
 import PropTypes from 'prop-types';

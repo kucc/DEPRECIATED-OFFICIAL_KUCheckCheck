@@ -46,12 +46,12 @@ import {
   TimeTablePage,
 } from '@pages';
 
-import { getMember } from '@/api/TokenAction';
 import { authService } from '@/firebase';
 import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
 
 import './App.less';
 import GlobalStyle from './GlobalStyle';
+import { getMember } from './api';
 import {
   INCLUDE_HEADER_PATH_LIST,
   RENEWAL_PATH,
@@ -63,7 +63,19 @@ import {
 } from './utility';
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 500000,
+        cacheTime: 500000,
+        retry: 0,
+        useErrorBoundary: true,
+      },
+      mutations: {
+        useErrorBoundary: true,
+      },
+    },
+  });
 
   const dispatch = useDispatch();
   const history = useHistory();

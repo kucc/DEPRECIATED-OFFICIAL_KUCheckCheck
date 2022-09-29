@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { RED, BACKGROUND_GRAY } from '@utility';
+import { BACKGROUND_GRAY, RED } from '@utility';
 
 export const StyledCourseApply = styled.button`
   margin-right: 25px;
@@ -94,7 +94,7 @@ export const StyledCourseLockText = styled.div`
 export const StyledCourseApplyCancel = styled(StyledCourseApply)`
   background-color: ${BACKGROUND_GRAY};
   color: black;
-  font-family: "sdBo";
+  font-family: 'sdBo';
   ${({ $isMobile, $isMainScreen }) =>
     mainScreenStyle($isMobile, $isMainScreen)};
   &:hover {

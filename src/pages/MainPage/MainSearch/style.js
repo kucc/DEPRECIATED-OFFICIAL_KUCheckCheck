@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BASE_COLOR, RED, BACKGROUND_GRAY } from '@utility';
+import { BACKGROUND_GRAY, BASE_COLOR, RED } from '@utility';
 
 export const StyledTag = styled.div`
   -webkit-touch-callout: none;
@@ -24,8 +24,7 @@ export const StyledTag = styled.div`
     color: white;
   }
   transition: all 0.3s ease;
-  ${({ checked }) =>
-    checked && `background-color: #000000; color: #fff;`}
+  ${({ checked }) => checked && `background-color: #000000; color: #fff;`}
   @media (max-width: 1224px) {
     white-space: nowrap;
     overflow: hidden;
@@ -112,7 +111,7 @@ export const StyledQuickSearchText = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-  font-family: "sdBo";
+  font-family: 'sdBo';
   margin-top: 10px;
   @media (max-width: 1224px) {
     justify-content: center;

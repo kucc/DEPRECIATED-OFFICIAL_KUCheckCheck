@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DefaultLogo } from '@components';
 
 import MainSearch from '../MainSearch';

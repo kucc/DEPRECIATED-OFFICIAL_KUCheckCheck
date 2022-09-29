@@ -3,18 +3,17 @@
 export const SET_USER = 'set_user';
 export const CLEAR_USER = 'clear_user';
 
-
 // 아래로 리뉴얼
-export const generateKeys = (key) => ({
-    request: key,
-    success: `${key}_SUCCESS`,
-    failure: `${key}_FAILURE`,
+export const generateKeys = key => ({
+  request: key,
+  success: `${key}_SUCCESS`,
+  failure: `${key}_FAILURE`,
 });
 
-export const generateActions = (generatedKeys) => ({
-    request: () => ({ type: generatedKeys.request }),
-    success: (data) => ({ type: generatedKeys.success, data }),
-    failure: (data) => ({ type: generatedKeys.failure, data }),
+export const generateActions = generatedKeys => ({
+  request: () => ({ type: generatedKeys.request }),
+  success: data => ({ type: generatedKeys.success, data }),
+  failure: data => ({ type: generatedKeys.failure, data }),
 });
 
 /**

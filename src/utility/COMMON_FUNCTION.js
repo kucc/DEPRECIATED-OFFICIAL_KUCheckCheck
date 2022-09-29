@@ -1,4 +1,5 @@
-export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
+export const RENEWAL_PATH = {
+  // 리뉴얼 페이지 PATH
   login: '/new/login', // 로그인
   signUp: '/new/signup', // 회원가입
   main: '/main', // 메인
@@ -11,23 +12,20 @@ export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
   admin: '/admin', // 관리자
 };
 
-export const SINGLE_PATHNAMES_LIST = [
-  RENEWAL_PATH.login,
-  RENEWAL_PATH.signUp
-];
+export const SINGLE_PATHNAMES_LIST = [RENEWAL_PATH.login, RENEWAL_PATH.signUp];
 
 export const INCLUDE_HEADER_PATH_LIST = [
   RENEWAL_PATH.main,
   RENEWAL_PATH.courseCreate,
   RENEWAL_PATH.attendance,
   RENEWAL_PATH.notice,
-  RENEWAL_PATH.admin
+  RENEWAL_PATH.admin,
 ];
 
 export const MEMBER_ROLE = {
   MEMBER: 'MEMBER',
-  MANAGER: 'MANAGER'
-}
+  MANAGER: 'MANAGER',
+};
 
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import { RED, BLACK } from '@utility/COLORS';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import { BLACK, RED } from '@utility/COLORS';
 
 export const StyledTopHeaderContainer = styled.div`
   width: 100%;
@@ -8,12 +9,12 @@ export const StyledTopHeaderContainer = styled.div`
   position: fixed;
   border-top: 8px solid ${RED};
   background-color: white;
-  box-shadow: 0px 0px 10px #EBEBEB;
+  box-shadow: 0px 0px 10px #ebebeb;
   z-index: 2;
   @media (max-width: 1279px) {
     height: 54px;
     border-top: 3px solid ${RED};
-    box-shadow: 0px 0px 8px #EBEBEB;
+    box-shadow: 0px 0px 8px #ebebeb;
   }
 `;
 
@@ -41,7 +42,7 @@ export const StyledMainLogo = styled.img`
 export const StyledMobileHamburgerButton = styled.img`
   display: none;
   cursor: pointer;
-   @media (max-width: 1279px) {
+  @media (max-width: 1279px) {
     display: inline;
   }
 `;
@@ -49,7 +50,7 @@ export const StyledMobileHamburgerButton = styled.img`
 export const StyledLeftContainer = styled.div`
   margin-left: auto;
   a {
-    font-family: "tmoneyBo";
+    font-family: 'tmoneyBo';
   }
   font-size: 18px;
   @media (max-width: 1279px) {
@@ -57,7 +58,7 @@ export const StyledLeftContainer = styled.div`
     align-items: center;
     font-size: 12px;
   }
-`
+`;
 
 export const StyledTimeTableLink = styled(Link)`
   color: ${BLACK};
@@ -70,7 +71,7 @@ export const StyledTimeTableLink = styled(Link)`
 
 export const StyledLoginLink = styled(Link)`
   color: ${RED};
-`
+`;
 
 export const StyledUserContainer = styled.span`
   font-family: 'tmoneyRe';
@@ -94,6 +95,6 @@ export const StyledDropContent = styled.div`
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;

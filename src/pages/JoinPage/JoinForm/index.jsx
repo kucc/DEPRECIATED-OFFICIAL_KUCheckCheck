@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { FullWidthButton, AuthInputWithLabel } from '@components';
+import { AuthInputWithLabel, FullWidthButton } from '@components';
 
 import { authService, firestoreService } from '@/firebase';
 import {
