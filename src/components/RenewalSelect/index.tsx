@@ -18,7 +18,6 @@ type Props<T> = {
 // 1. antd 제거하고 ui 구현하기
 // 2. div -> select element 로 변경 후 react-hook-form 적용하기
 export const RenewalSelect = <T extends string | number>({
-  value,
   items,
   handleItem,
   placeholder,
@@ -46,10 +45,6 @@ export const RenewalSelect = <T extends string | number>({
         })}
     </Menu>
   );
-
-  useEffect(() => {
-    setInnerValue(value);
-  }, [value]);
 
   return (
     <StyledDropDown>

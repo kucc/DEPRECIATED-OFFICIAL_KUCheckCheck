@@ -26,7 +26,15 @@ interface IFormInput {
   difficulty: string;
   requireTime: number;
   title: string;
-  language: string;
+  language: string[];
+  introduction: string;
+  goal: string;
+  progressDate: string;
+  maxNumber: number;
+  place: string;
+  notice: string;
+  detailStack: string[];
+  curriculum: string[];
 }
 
 interface ActivityCategoryType {
@@ -37,7 +45,11 @@ interface ActivityCategoryType {
 
 export const RenewalCourseCreatePage = () => {
   const { register, handleSubmit } = useForm<IFormInput>();
-  const [category, setCategory] = useState<ActivityCategoryType>();
+  const [category, setCategory] = useState<ActivityCategoryType>({
+    type: undefined,
+    difficulty: undefined,
+    requireTime: undefined,
+  });
   const onSubmit: SubmitHandler<IFormInput> = inputData =>
     //TODO: 활동 개설 api 연동
     console.log({ ...inputData, ...category });
@@ -107,7 +119,6 @@ export const RenewalCourseCreatePage = () => {
               placeholder='세션 / 스터디 / 프로젝트'
             />
             <RenewalSelect
-              value={category?.difficulty}
               items={difficulties}
               handleItem={handleDifficulty}
               placeholder='난이도'
@@ -156,7 +167,7 @@ export const RenewalCourseCreatePage = () => {
             register={register}
           />
           <Input
-            inputName='meetingDay'
+            inputName='progressDate'
             labelTitle='진행 요일'
             placeholder={'100자 이내로 작성해주세요.'}
             register={register}
@@ -168,7 +179,7 @@ export const RenewalCourseCreatePage = () => {
             register={register}
           />
           <TextArea
-            inputName='caution'
+            inputName='notice'
             labelTitle='유의 사항'
             placeholder={'200자 이내로 작성해주세요.'}
             register={register}
