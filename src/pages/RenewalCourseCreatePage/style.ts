@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { BLACK, LINE_GRAY, RED } from '@utility/COLORS';
 
-export const StyledBody = styled.div`
+export const StyledForm = styled.form`
   padding-inline: 20px;
   padding-bottom: 40px;
 `;

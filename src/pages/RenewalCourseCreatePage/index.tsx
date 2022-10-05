@@ -1,4 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
+
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import {
   AuthInputWithLabel as Input,
@@ -7,42 +9,83 @@ import {
 import { RenewalSelect } from '@components/RenewalSelect';
 
 import {
-  StyledBody,
   StyledButton,
   StyledContainer,
   StyledContainerBody,
   StyledContainerHeader,
   StyledContainerSubTitle,
   StyledContainerTitle,
+  StyledForm,
   StyledHeader,
   StyledLabel,
   StyledTitle,
 } from './style';
 
-export const RenewalCourseCreatePage = () => {
-  const activityList = ['세션', '스터디', '프로젝트'];
-  const difficultyList = ['easy', 'medium', 'hard'];
-  const requireTimeList = ['1학점', '2학점', '3학점'];
+interface IFormInput {
+  type: number;
+  difficulty: string;
+  requireTime: number;
+  title: string;
+  language: string;
+}
 
-  const handleActivity = (activity: string) => {
-    console.log(activity);
+interface ActivityCategoryType {
+  type?: number;
+  difficulty?: string;
+  requireTime?: number;
+}
+
+export const RenewalCourseCreatePage = () => {
+  const { register, handleSubmit } = useForm<IFormInput>();
+  const [category, setCategory] = useState<ActivityCategoryType>();
+  const onSubmit: SubmitHandler<IFormInput> = inputData =>
+    console.log({ ...inputData, ...category });
+
+  const activities = ['세션', '스터디', '프로젝트'];
+  const difficulties = ['easy', 'medium', 'hard'];
+  const requireTimes = ['1학점', '2학점', '3학점'];
+  const activityType: Record<string, number> = {
+    세션: 1,
+    스터디: 2,
+    프로젝트: 3,
+  };
+  const requireTimeType: Record<string, number> = {
+    '1학점': 1,
+    '2학점': 2,
+    '3학점': 3,
+  };
+
+  const handleActivity = (activity: typeof activities[number]) => {
+    setCategory({
+      ...category,
+      type: activityType[activity],
+    });
   };
   const handleDifficulty = (difficulty: string) => {
-    console.log(difficulty);
+    setCategory({
+      ...category,
+      difficulty: difficulty,
+    });
   };
-  const handleInputTime = (inputTime: string) => {
-    console.log(inputTime);
+  const handleRequireTime = (requireTime: typeof requireTimes[number]) => {
+    setCategory({
+      ...category,
+      requireTime: requireTimeType[requireTime],
+    });
   };
 
   const curriculumTextAreas = [...Array(8).keys()].map(key => (
     <TextArea
+      inputName={`curriculum-${key + 1}`}
       labelTitle={`${key + 1}주차`}
       placeholder={'200자 이내로 작성해주세요.'}
-      key={key}></TextArea>
+      register={register}
+      key={key}
+    />
   ));
 
   return (
-    <StyledBody>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledHeader>
         <StyledTitle>활동 개설</StyledTitle>
         <StyledButton>등록하기</StyledButton>
@@ -58,21 +101,34 @@ export const RenewalCourseCreatePage = () => {
           <StyledLabel>활동 카테고리</StyledLabel>
           <div style={{ display: 'flex', gap: 12 }}>
             <RenewalSelect
-              itemList={activityList}
+              items={activities}
               handleItem={handleActivity}
-              label='세션 / 스터디 / 프로젝트'
+              placeholder='세션 / 스터디 / 프로젝트'
             />
-            <RenewalSelect itemList={difficultyList} handleItem={handleDifficulty} label='난이도' />
             <RenewalSelect
-              itemList={requireTimeList}
-              handleItem={handleInputTime}
-              label='투자 시간'
+              value={category?.difficulty}
+              items={difficulties}
+              handleItem={handleDifficulty}
+              placeholder='난이도'
+            />
+            <RenewalSelect
+              items={requireTimes}
+              handleItem={handleRequireTime}
+              placeholder='투자 시간'
             />
           </div>
-          <Input labelTitle='활동 제목' placeholder={'30자 이내로 작성해주세요.'}></Input>
           <Input
+            inputName='title'
+            labelTitle='활동 제목'
+            placeholder={'30자 이내로 작성해주세요.'}
+            register={register}
+          />
+          <Input
+            inputName='language'
             labelTitle='주요 기술 스택 & 사용 언어'
-            placeholder={'옵션을 선택해주세요.'}></Input>
+            placeholder={'옵션을 선택해주세요.'}
+            register={register}
+          />
         </StyledContainerBody>
       </StyledContainer>
       <StyledContainer>
@@ -80,14 +136,42 @@ export const RenewalCourseCreatePage = () => {
           <StyledContainerTitle>세부 정보</StyledContainerTitle>
         </StyledContainerHeader>
         <StyledContainerBody>
-          <Input labelTitle='세부 기술 스택' placeholder={'옵션을 선택해주세요.'}></Input>
-          <TextArea labelTitle='활동 소개' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
-          <TextArea labelTitle='활동 목표' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
-          <Input labelTitle='진행 요일' placeholder={'100자 이내로 작성해주세요.'}></Input>
+          <Input
+            inputName='detailStack'
+            labelTitle='세부 기술 스택'
+            placeholder={'옵션을 선택해주세요.'}
+            register={register}
+          />
           <TextArea
+            inputName='introduction'
+            labelTitle='활동 소개'
+            placeholder={'200자 이내로 작성해주세요.'}
+            register={register}
+          />
+          <TextArea
+            inputName='goal'
+            labelTitle='활동 목표'
+            placeholder={'200자 이내로 작성해주세요.'}
+            register={register}
+          />
+          <Input
+            inputName='meetingDay'
+            labelTitle='진행 요일'
+            placeholder={'100자 이내로 작성해주세요.'}
+            register={register}
+          />
+          <TextArea
+            inputName='place'
             labelTitle='진행 장소 및 방법'
-            placeholder={'200자 이내로 작성해주세요.'}></TextArea>
-          <TextArea labelTitle='유의 사항' placeholder={'200자 이내로 작성해주세요.'}></TextArea>
+            placeholder={'200자 이내로 작성해주세요.'}
+            register={register}
+          />
+          <TextArea
+            inputName='caution'
+            labelTitle='유의 사항'
+            placeholder={'200자 이내로 작성해주세요.'}
+            register={register}
+          />
         </StyledContainerBody>
       </StyledContainer>
       <StyledContainer>
@@ -96,6 +180,6 @@ export const RenewalCourseCreatePage = () => {
         </StyledContainerHeader>
         <StyledContainerBody>{curriculumTextAreas}</StyledContainerBody>
       </StyledContainer>
-    </StyledBody>
+    </StyledForm>
   );
 };
