@@ -39,6 +39,7 @@ export const RenewalCourseCreatePage = () => {
   const { register, handleSubmit } = useForm<IFormInput>();
   const [category, setCategory] = useState<ActivityCategoryType>();
   const onSubmit: SubmitHandler<IFormInput> = inputData =>
+    //TODO: 활동 개설 api 연동
     console.log({ ...inputData, ...category });
 
   const activities = ['세션', '스터디', '프로젝트'];
