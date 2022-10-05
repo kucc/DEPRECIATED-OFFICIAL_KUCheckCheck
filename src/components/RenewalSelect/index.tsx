@@ -1,29 +1,55 @@
+import { useCallback, useEffect, useState } from 'react';
+
 import { Dropdown, Menu } from 'antd';
 
 import { StyledDownArrow } from '@utility/COMMON_STYLE';
 
 import { StyledDropDown, StyledSearchButton } from './style';
 
-type Props = {
-  itemList: string[];
-  handleItem: (item: string) => void;
-  label: string;
+type Props<T> = {
+  value?: T;
+  items: T[];
+  handleItem: (item: T) => void;
+  placeholder: string;
   hasArrow?: boolean;
 };
-// TODO: antd 제거하고 ui 구현하기
-export const RenewalSelect = ({ itemList, handleItem, label, hasArrow = true }: Props) => {
+
+// TODO:
+// 1. antd 제거하고 ui 구현하기
+// 2. div -> select element 로 변경 후 react-hook-form 적용하기
+export const RenewalSelect = <T extends string | number>({
+  value,
+  items,
+  handleItem,
+  placeholder,
+  hasArrow = true,
+}: Props<T>) => {
+  const [innerValue, setInnerValue] = useState<T | undefined>();
+
+  const handleClick = useCallback(
+    (item: T) => {
+      handleItem(item);
+      setInnerValue(item);
+    },
+    [handleItem],
+  );
+
   const menu = (
     <Menu>
-      {itemList &&
-        itemList.map((item, key) => {
+      {items &&
+        items.map((item, key) => {
           return (
             <Menu.Item key={key}>
-              <a onClick={() => handleItem(item)}>{item}</a>
+              <a onClick={() => handleClick(item)}>{item}</a>
             </Menu.Item>
           );
         })}
     </Menu>
   );
+
+  useEffect(() => {
+    setInnerValue(value);
+  }, [value]);
 
   return (
     <StyledDropDown>
@@ -31,7 +57,7 @@ export const RenewalSelect = ({ itemList, handleItem, label, hasArrow = true }: 
         <StyledSearchButton>
           <>
             {hasArrow ? <StyledDownArrow style={{ width: 5 }} /> : {}}
-            {label}
+            {innerValue ?? placeholder}
           </>
         </StyledSearchButton>
       </Dropdown>
