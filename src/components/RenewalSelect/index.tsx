@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Dropdown, Menu } from 'antd';
 
@@ -7,7 +7,6 @@ import { StyledDownArrow } from '@utility/COMMON_STYLE';
 import { StyledDropDown, StyledSearchButton } from './style';
 
 type Props<T> = {
-  value?: T;
   items: T[];
   handleItem: (item: T) => void;
   placeholder: string;

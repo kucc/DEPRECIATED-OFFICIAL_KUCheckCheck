@@ -68,7 +68,7 @@ export const RenewalCourseCreatePage = () => {
     '3학점': 3,
   };
 
-  const handleActivity = (activity: typeof activities[number]) => {
+  const handleActivity = (activity: string) => {
     setCategory({
       ...category,
       type: activityType[activity],
@@ -80,7 +80,7 @@ export const RenewalCourseCreatePage = () => {
       difficulty: difficulty,
     });
   };
-  const handleRequireTime = (requireTime: typeof requireTimes[number]) => {
+  const handleRequireTime = (requireTime: string) => {
     setCategory({
       ...category,
       requireTime: requireTimeType[requireTime],
