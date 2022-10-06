@@ -4,7 +4,7 @@ import { StyledInput, StyledLabel, StyledRequiredText, Wrapper } from './style';
 
 interface Props {
   inputName: string;
-  register: UseFormRegister<any>;
+  register?: UseFormRegister<any>;
   labelTitle?: string;
   inputType?: string;
   placeholder?: string;
@@ -28,7 +28,7 @@ export const AuthInputWithLabel = ({
       {labelTitle && <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>}
       {!isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
       <StyledInput
-        {...register(inputName)}
+        {...(register ? { ...register(inputName) } : {})}
         name={inputName}
         type={inputType}
         placeholder={placeholder}
