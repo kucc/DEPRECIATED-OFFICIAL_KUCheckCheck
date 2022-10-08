@@ -1,4 +1,5 @@
-export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
+export const RENEWAL_PATH = {
+  // 리뉴얼 페이지 PATH
   login: '/new/login', // 로그인
   signUp: '/new/signup', // 회원가입
   main: '/main', // 메인
@@ -11,33 +12,31 @@ export const RENEWAL_PATH = { // 리뉴얼 페이지 PATH
   admin: '/admin', // 관리자
 };
 
-export const SINGLE_PATHNAMES_LIST = [
-  RENEWAL_PATH.login,
-  RENEWAL_PATH.signUp
-];
+export const SINGLE_PATHNAMES_LIST = [RENEWAL_PATH.login, RENEWAL_PATH.signUp];
 
 export const INCLUDE_HEADER_PATH_LIST = [
   RENEWAL_PATH.main,
   RENEWAL_PATH.courseCreate,
   RENEWAL_PATH.attendance,
   RENEWAL_PATH.notice,
-  RENEWAL_PATH.admin
+  RENEWAL_PATH.admin,
 ];
 
 export const MEMBER_ROLE = {
   MEMBER: 'MEMBER',
-  MANAGER: 'MANAGER'
-}
+  MANAGER: 'MANAGER',
+};
 
 export const RandomEmoji = () => {
   return emojis[Math.floor(Math.random() * emojis.length)];
 };
 
 export const isMember = (user, course) => {
-  if(user.id === course.courseLeader.id) return "팀장"
-  else if (course.courseMember.find(user.id)) return "팀원"
-  return 0
-}
+  if (user.id === course.member_id) return '팀장';
+  else if (user.id !== 23) return '팀원';
+  //else if (api) return "팀원" //attendance table에서 member_id가 user.id인 것이 있으면 true 반환 api @규원
+  return 0;
+};
 
 export const renderWord = courseType => {
   if (courseType === 1) {
