@@ -1,22 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { isLoggedInState } from '@recoilState';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
 import { loginRequest } from '@redux/actions/renewal_member_action';
 
 import { AuthInputWithLabel, LoadingButton } from '@components';
 
 import { FORM_IS_NOT_FULL, LOGIN_FAILURE, USER_NOT_FOUND } from '@utility';
-import { FAILURE, SUCCESS } from '@utility/ALERT_MESSAGE';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 import { StyledForm, StyledSignUpButton } from './style';
 
 function LoginForm() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,20 +45,21 @@ function LoginForm() {
     return true;
   };
 
+  // TODO: 수정해야됨
   useEffect(() => {
-    if (status === SUCCESS) {
+    if (isLoggedIn) {
       history.push(RENEWAL_PATH.main);
-    }
-    if (status === FAILURE) {
+    } else {
       setIsSubmitted(false);
-
-      if (error === 'user_not_found') {
-        alert(USER_NOT_FOUND);
-        window.location.href = RENEWAL_PATH.signUp;
-      } else alert(LOGIN_FAILURE);
     }
+
+    if (error === 'user_not_found') {
+      alert(USER_NOT_FOUND);
+      window.location.href = RENEWAL_PATH.signUp;
+    } else alert(LOGIN_FAILURE);
   }, [status, error, history]);
 
+  // TODO: 수정해야됨
   const handleLogin = e => {
     e.preventDefault();
 
@@ -66,7 +69,17 @@ function LoginForm() {
     }
 
     setIsSubmitted(true);
-    dispatch(loginRequest(inputs));
+    loginRequest(inputs).then(res => {
+      if (res) {
+        if (localStorage.getItem('accessToken')) {
+          history.push(RENEWAL_PATH.main);
+          setIsLoggedIn(true);
+        } else {
+          alert(LOGIN_FAILURE);
+          setIsLoggedIn(false);
+        }
+      }
+    });
   };
 
   return (

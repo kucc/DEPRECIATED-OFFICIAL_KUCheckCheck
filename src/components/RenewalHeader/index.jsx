@@ -1,8 +1,7 @@
+import { hamburgerState, userState } from '@recoilState';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-import { setHamburgerRequest } from '@redux/actions/renewal_main_action';
+import { useRecoilState } from 'recoil';
 
 import {
   CheckCircleIcon,
@@ -27,10 +26,9 @@ import {
 
 export const RenewalHeader = ({ pathname }) => {
   const history = useHistory();
-  const dispatch = useDispatch();
 
-  const isHamburger = useSelector(state => state.main.isHamburger);
-  const member = useSelector(state => state.member.currentMember);
+  const [isHamburger, setIsHamburger] = useRecoilState(hamburgerState);
+  const [member] = useRecoilState(userState);
 
   const handleLink = path => {
     closeOverlay();
@@ -40,7 +38,7 @@ export const RenewalHeader = ({ pathname }) => {
 
   const closeOverlay = () => {
     document.body.classList.remove('open-modal');
-    dispatch(setHamburgerRequest(false));
+    setIsHamburger(false);
   };
 
   return (

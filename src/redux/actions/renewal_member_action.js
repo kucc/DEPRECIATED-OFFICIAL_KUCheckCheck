@@ -5,31 +5,27 @@ import { removeToken } from '@/api';
 import {
   GET_PROFILE,
   LOGIN,
-  REMOVE_MEMBER,
   SET_MEMBER,
   SET_PROFILE_ID,
   SIGNUP,
-  generateActions,
   generateKeys,
 } from './types';
 
 export const getLoginKeys = generateKeys(LOGIN);
-const getLoginActions = generateActions(getLoginKeys);
 
-export function loginRequest(data) {
-  return dispatch => {
-    dispatch(getLoginActions.request());
-    return axios
-      .post('/auth/signin', data)
-      .then(response => {
-        localStorage.setItem('accessToken', response.data.accessToken);
-        dispatch(getLoginActions.success());
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch(getLoginActions.failure(error));
-      });
-  };
+export async function loginRequest(data) {
+  return await axios
+    .post('/auth/signin', data)
+    .then(response => {
+      localStorage.setItem('accessToken', response.data.accessToken);
+
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+
+      return error;
+    });
 }
 
 export function setMember(data) {
@@ -41,28 +37,20 @@ export function setMember(data) {
 
 export function logoutMember() {
   removeToken();
-
-  return {
-    type: REMOVE_MEMBER,
-  };
 }
 
 export const getSignupKeys = generateKeys(SIGNUP);
-const getSignupActions = generateActions(getSignupKeys);
 
-export function signUpRequest(data) {
-  return dispatch => {
-    dispatch(getSignupActions.request());
-    return axios
-      .post('/auth/signup', data)
-      .then(() => {
-        dispatch(getSignupActions.success());
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch(getSignupActions.failure(error));
-      });
-  };
+export async function signUpRequest(data) {
+  return await axios
+    .post('/auth/signup', data)
+    .then(res => {
+      return res;
+    })
+    .catch(error => {
+      console.log(error);
+      return error;
+    });
 }
 
 export function setProfileId(user_id) {
@@ -73,20 +61,16 @@ export function setProfileId(user_id) {
 }
 
 export const getProfileKeys = generateKeys(GET_PROFILE);
-const getProfileActions = generateActions(getProfileKeys);
 
-export function getProfileRequest(user_id) {
-  return dispatch => {
-    dispatch(getProfileActions.request());
-    return axios
-      .get(`/auth/user/${user_id}`)
-      .then(response => {
-        dispatch(getProfileActions.success(response.data));
-      })
-      .catch(error => {
-        console.log(error);
-        alert('유저를 찾을 수 없습니다.');
-        dispatch(getProfileActions.failure(error));
-      });
-  };
+export async function getProfileRequest(user_id) {
+  return await axios
+    .get(`/auth/user/${user_id}`)
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+      alert('유저를 찾을 수 없습니다.');
+      return error;
+    });
 }

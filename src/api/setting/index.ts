@@ -1,2 +1,2 @@
 export * from './apiBase';
-export * from './TokenAction';
+export * from './useTokenAction';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getToken } from './TokenAction';
+import { getToken } from './useTokenAction';
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_HOST_URL,
