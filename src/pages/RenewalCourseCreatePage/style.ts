@@ -75,7 +75,6 @@ export const StyledContainerTitle = styled.span`
 `;
 
 export const StyledContainerSubTitle = styled.span`
-  font-family: 'Apple SD Gothic Neo';
   line-height: 60px;
   text-align: center;
   .warning {

@@ -50,7 +50,7 @@ export const RenewalSelect = <T extends string | number>({
       <Dropdown overlay={menu} placement='bottomLeft'>
         <StyledSearchButton>
           <>
-            {hasArrow ? <StyledDownArrow style={{ width: 5 }} /> : {}}
+            {hasArrow && <StyledDownArrow style={{ width: 5 }} />}
             {innerValue ?? placeholder}
           </>
         </StyledSearchButton>

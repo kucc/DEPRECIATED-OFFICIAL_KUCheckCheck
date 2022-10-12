@@ -43,6 +43,20 @@ interface ActivityCategoryType {
   requireTime?: number;
 }
 
+const activities = ['세션', '스터디', '프로젝트'];
+const difficulties = ['easy', 'medium', 'hard'];
+const requireTimes = ['1학점', '2학점', '3학점'];
+const activityType: Record<string, number> = {
+  세션: 1,
+  스터디: 2,
+  프로젝트: 3,
+};
+const requireTimeType: Record<string, number> = {
+  '1학점': 1,
+  '2학점': 2,
+  '3학점': 3,
+};
+
 export const RenewalCourseCreatePage = () => {
   const { register, handleSubmit } = useForm<IFormInput>();
   const [category, setCategory] = useState<ActivityCategoryType>({
@@ -53,20 +67,6 @@ export const RenewalCourseCreatePage = () => {
   const onSubmit: SubmitHandler<IFormInput> = inputData =>
     //TODO: 활동 개설 api 연동
     console.log({ ...inputData, ...category });
-
-  const activities = ['세션', '스터디', '프로젝트'];
-  const difficulties = ['easy', 'medium', 'hard'];
-  const requireTimes = ['1학점', '2학점', '3학점'];
-  const activityType: Record<string, number> = {
-    세션: 1,
-    스터디: 2,
-    프로젝트: 3,
-  };
-  const requireTimeType: Record<string, number> = {
-    '1학점': 1,
-    '2학점': 2,
-    '3학점': 3,
-  };
 
   const handleActivity = (activity: string) => {
     setCategory({

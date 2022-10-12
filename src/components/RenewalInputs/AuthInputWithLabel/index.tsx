@@ -24,7 +24,7 @@ export const AuthInputWithLabel = ({
   register,
 }: Props) => {
   return (
-    <Wrapper hasLabelTitle={labelTitle !== ''}>
+    <Wrapper hasLabelTitle={labelTitle.length !== 0}>
       {labelTitle && <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>}
       {!isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
       <StyledInput
