@@ -151,7 +151,6 @@ function JoinForm() {
       <AuthTextAreaWithLabel
         labelTitle='한줄 소개'
         inputName='comment'
-        inputType='text'
         placeholder='최대 100자 이내로 작성해주세요.'
         value={comment}
         onChange={onChange}
@@ -160,7 +159,6 @@ function JoinForm() {
       <AuthTextAreaWithLabel
         labelTitle='상세 소개'
         inputName='detail_comment'
-        inputType='text'
         placeholder='최대 200자 이내로 작성해주세요.'
         value={detail_comment}
         onChange={onChange}

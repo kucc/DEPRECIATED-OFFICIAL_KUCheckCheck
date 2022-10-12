@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import { BACKGROUND_GRAY, BLACK, GRAY, LINE_GRAY } from '@utility';
 
-export const Wrapper = styled.div`
-  margin-top: ${props => (props.isLabelTitle ? '38px' : '20px')};
+export const Wrapper = styled.div<{ hasLabelTitle: boolean }>`
+  margin-top: ${props => (props.hasLabelTitle ? '38px' : '20px')};
   &:first-child {
     margin: 0;
   }
