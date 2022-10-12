@@ -30,7 +30,7 @@ export const AuthTextAreaWithLabel = ({
       {labelTitle && <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>}
       {!isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
       <StyledTextArea
-        {...(register ? { ...register(inputName) } : {})}
+        {...(register && { ...register(inputName) })}
         name={inputName}
         placeholder={placeholder}
         value={value}

@@ -28,7 +28,7 @@ export const AuthInputWithLabel = ({
       {labelTitle && <StyledLabel htmlFor={inputName}>{labelTitle}</StyledLabel>}
       {!isRequired && <StyledRequiredText>(선택)</StyledRequiredText>}
       <StyledInput
-        {...(register ? { ...register(inputName) } : {})}
+        {...(register && { ...register(inputName) })}
         name={inputName}
         type={inputType}
         placeholder={placeholder}
