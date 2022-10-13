@@ -2,18 +2,8 @@ import { useEffect } from 'react';
 
 import 'antd/dist/antd.less';
 import 'moment/locale/ko';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
-
-import { clearUser, setUser } from '@redux/actions/auth_action';
-import { logoutMember, setMember } from '@redux/actions/renewal_member_action';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import {
   Footer,
@@ -46,12 +36,11 @@ import {
   TimeTablePage,
 } from '@pages';
 
-import { authService } from '@/firebase';
-import { CourseHoc, CourseRegisterHoc, UserPageHoc } from '@hoc';
-
 import './App.less';
 import GlobalStyle from './GlobalStyle';
 import { getMember } from './api';
+import { CourseHoc, CourseRegisterHoc, UserPageHoc } from './hoc';
+import { isLoggedInState, userState } from './recoilState';
 import {
   INCLUDE_HEADER_PATH_LIST,
   RENEWAL_PATH,
@@ -62,56 +51,24 @@ import {
   StyledUnIncludeHeaderMain,
 } from './utility';
 
-function App() {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 500000,
-        cacheTime: 500000,
-        retry: 0,
-        useErrorBoundary: true,
-      },
-      mutations: {
-        useErrorBoundary: true,
-      },
-    },
-  });
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const { pathname } = useLocation();
-
-  const member = useSelector(state => state.member.currentMember);
+export const AppAuth = () => {
+  const [member, setMember] = useRecoilState(userState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
   useEffect(() => {
     // Link로 이동 시 스크롤 top
     window.scrollTo(0, 0);
 
-    const member = getMember();
-    if (!member) return false;
+    const getMemberInfo = getMember() as User & { isLoggedIn: boolean };
 
-    if (member.isLoggedIn) {
-      dispatch(setMember(member));
+    if (getMemberInfo.isLoggedIn) {
+      setMember(getMemberInfo);
+      setIsLoggedIn(true);
     } else {
-      dispatch(logoutMember());
+      setMember(undefined);
+      setIsLoggedIn(false);
     }
-  }, [dispatch, pathname]);
-
-  useEffect(() => {
-    authService.onAuthStateChanged(user => {
-      if (user) {
-        if (
-          pathname === RENEWAL_PATH.login ||
-          pathname === RENEWAL_PATH.signUp
-        ) {
-          history.push('/');
-        }
-        dispatch(setUser(user));
-      } else {
-        dispatch(clearUser());
-      }
-    });
-  }, [dispatch, history]);
+  }, []);
 
   // 기존 페이지들
   const NavFooterPageRouter = () => {
@@ -130,21 +87,13 @@ function App() {
         <Route path='/userpage/:id' component={UserPageHoc()} />
         {/* coursePage */}
         <Route exact path='/course/not-found' component={NotFoundPage} />
-        <Route
-          exact
-          path='/course/register'
-          component={CourseRegisterHoc(CourseRegisterPage)}
-        />
+        <Route exact path='/course/register' component={CourseRegisterHoc(CourseRegisterPage)} />
         {/* 
           option : 0 => 모든 사람이 출입할 수 있음
           option : 1 => 로그인된 사람만이 출입할 수 있음
         */}
         <Route exact path='/course/:id' component={CourseHoc(CoursePage, 0)} />
-        <Route
-          exact
-          path='/course/:id/attendance'
-          component={CourseHoc(AttendacePage, 1)}
-        />
+        <Route exact path='/course/:id/attendance' component={CourseHoc(AttendacePage, 1)} />
         <Route exact path='/getCSV' component={GetCSVPage} />
         <Route component={NotFoundPage} />
       </Switch>
@@ -155,27 +104,12 @@ function App() {
   const RenewalPageRouter = () => {
     return (
       <Switch>
-        <NotForMemberRoute
-          path={RENEWAL_PATH.login}
-          component={RenewalLoginPage}
-        />
-        <NotForMemberRoute
-          path={RENEWAL_PATH.signUp}
-          component={RenewalJoinPage}
-        />
+        <NotForMemberRoute path={RENEWAL_PATH.login} component={RenewalLoginPage} />
+        <NotForMemberRoute path={RENEWAL_PATH.signUp} component={RenewalJoinPage} />
         <Route exact path={RENEWAL_PATH.main} component={RenewalMainPage} />
-        <Route
-          path={RENEWAL_PATH.courseCreate}
-          component={RenewalCourseCreatePage}
-        />
-        <Route
-          path={RENEWAL_PATH.courseDetail}
-          component={RenewalCourseDetailPage}
-        />
-        <Route
-          path={RENEWAL_PATH.attendance}
-          component={RenewalAttendancePage}
-        />
+        <Route path={RENEWAL_PATH.courseCreate} component={RenewalCourseCreatePage} />
+        <Route path={RENEWAL_PATH.courseDetail} component={RenewalCourseDetailPage} />
+        <Route path={RENEWAL_PATH.attendance} component={RenewalAttendancePage} />
         <Route path={RENEWAL_PATH.timeTable} component={RenewalTimeTablePage} />
         <Route path={RENEWAL_PATH.profile} component={RenewalProfilePage} />
         <Route path={RENEWAL_PATH.notice} component={RenewalNoticePage} />
@@ -184,26 +118,22 @@ function App() {
     );
   };
 
-  // eslint-disable-next-line react/prop-types
-  const NotForMemberRoute = ({ component: Component, ...res }) => {
+  const { pathname } = useLocation();
+
+  const pathSliced = pathname.split('/');
+  const path = pathSliced.length > 3 ? '/course/detail/:id' : pathname; // 세션 소개 url 구분
+
+  const NotForMemberRoute = ({ component: Component, ...res }: any) => {
     return (
       <Route
         {...res}
-        render={props =>
-          member ? (
-            <Redirect to={RENEWAL_PATH.main} />
-          ) : (
-            <Component {...props} />
-          )
-        }
+        render={props => (member ? <Redirect to={RENEWAL_PATH.main} /> : <Component {...props} />)}
       />
     );
   };
 
-  const pathSliced = pathname.split('/');
-  const path = pathSliced.length > 3 ? '/course/detail/:id' : pathname; // 세션 소개 url 구분
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <GlobalStyle />
       {SINGLE_PATHNAMES_LIST.includes(pathname) ? ( // 로그인, 회원가입 처럼 헤더, 푸터 없는 경우
         RenewalPageRouter()
@@ -214,16 +144,12 @@ function App() {
             {INCLUDE_HEADER_PATH_LIST.includes(path) ? (
               <>
                 <RenewalHeader pathname={pathname} />
-                <StyledIncludeHeaderMain>
-                  {RenewalPageRouter()}
-                </StyledIncludeHeaderMain>
+                <StyledIncludeHeaderMain>{RenewalPageRouter()}</StyledIncludeHeaderMain>
               </>
             ) : (
               <>
                 <LeftBackButton />
-                <StyledUnIncludeHeaderMain>
-                  {RenewalPageRouter()}
-                </StyledUnIncludeHeaderMain>
+                <StyledUnIncludeHeaderMain>{RenewalPageRouter()}</StyledUnIncludeHeaderMain>
               </>
             )}
           </StyledMainContainer>
@@ -233,14 +159,10 @@ function App() {
         // 기존 페이지
         <>
           <NavBar />
-          <StyledOldMain className='main-background-color'>
-            {NavFooterPageRouter()}
-          </StyledOldMain>
+          <StyledOldMain className='main-background-color'>{NavFooterPageRouter()}</StyledOldMain>
           <Footer />
         </>
       )}
-    </QueryClientProvider>
+    </>
   );
-}
-
-export default App;
+};

@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { isLoggedInState, userState } from '@recoilState';
 import { useMediaQuery } from 'react-responsive';
+import { useSetRecoilState } from 'recoil';
 
 import { signUpRequest } from '@redux/actions/renewal_member_action';
 
-import {
-  AuthInputWithLabel,
-  AuthTextAreaWithLabel,
-  LoadingButton,
-} from '@components';
+import { AuthInputWithLabel, AuthTextAreaWithLabel, LoadingButton } from '@components';
 import { StyledForm } from '@pages/RenewalLoginPage/LoginForm/style';
 
 import {
@@ -20,12 +17,13 @@ import {
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
 } from '@utility';
-import { FAILURE, SUCCESS } from '@utility/ALERT_MESSAGE';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
 
 function JoinForm() {
+  const setMember = useSetRecoilState(userState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState({
     email: '',
@@ -38,8 +36,6 @@ function JoinForm() {
     instagram_id: '',
     emoji: RandomEmoji(),
   });
-
-  const { status, error } = useSelector(state => state.member.signUp);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -76,21 +72,6 @@ function JoinForm() {
     return true;
   };
 
-  useEffect(() => {
-    if (status === SUCCESS) {
-      alert(SIGNUP_SUCCESS);
-      window.location.href = RENEWAL_PATH.login;
-    }
-    if (status === FAILURE) {
-      setIsSubmitted(false);
-
-      if (error === 'existing_email') {
-        alert(EXISTING_EMAIL);
-        window.location.href = RENEWAL_PATH.login;
-      } else alert(SIGNUP_FAILURE);
-    }
-  }, [status, error]);
-
   const handleSignUp = e => {
     e.preventDefault();
 
@@ -105,13 +86,30 @@ function JoinForm() {
       name,
       comment,
       emoji,
-      detail_comment: detail_comment ? detail_comment : null,
-      github_id: github_id ? github_id : null,
-      instagram_id: instagram_id ? instagram_id : null,
+      detailComment: detail_comment ? detail_comment : null,
+      githubId: github_id ? github_id : null,
+      instagramId: instagram_id ? instagram_id : null,
     };
 
     setIsSubmitted(true);
-    dispatch(signUpRequest(signUpData));
+
+    // 이메일에 대한 처리 (백엔드로부터의 return 값을 봐야됨)
+    // TODO: 수정해야됨
+    signUpRequest(signUpData)
+      .then(v => {
+        if (v) {
+          setMember(v);
+          setIsLoggedIn(true);
+          alert(SIGNUP_SUCCESS);
+          window.location.href = RENEWAL_PATH.login;
+        } else {
+          alert(EXISTING_EMAIL);
+          window.location.href = RENEWAL_PATH.login;
+        }
+      })
+      .catch(() => {
+        alert(SIGNUP_FAILURE);
+      });
   };
 
   return (

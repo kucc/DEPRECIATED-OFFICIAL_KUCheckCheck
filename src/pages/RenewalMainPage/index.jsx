@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 
+import { courseState } from '@recoilState/course';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useRecoilState } from 'recoil';
 
 import { getCommonInfoRequest } from '@redux/actions/renewal_common_action';
 import { getMainCourseRequest } from '@redux/actions/renewal_course_action';
-
-import { SUCCESS } from '@utility/ALERT_MESSAGE';
 
 import { MainCourseTab } from './MainCourseTab';
 import { MainSearch } from './MainSearch';
@@ -18,33 +17,32 @@ import {
 } from './style';
 
 export const RenewalMainPage = () => {
-  const dispatch = useDispatch();
+  const [commonInfo, setCommonInfo] = useRecoilState(commonInfoState);
+  const setCourse = useRecoilState(courseState);
 
-  const { status: commonInfoStatus, data: commonInfoData } = useSelector(
-    state => ({
-      status: state.common.commonInfo.status,
-      data: state.common.commonInfo.data,
-    }),
-  );
   // current Semester : 현재 무슨 학기인지 => string
   const [currentSemester, setCurrentSemester] = useState('');
 
   // 학기 정보 불러오기
   useEffect(() => {
-    dispatch(getCommonInfoRequest());
+    getCommonInfoRequest().then(v => {
+      setCommonInfo(v);
+    });
   }, []);
 
   // // 학기에 맞춰 코스 불러오기
   useEffect(() => {
-    if (commonInfoStatus === SUCCESS) {
-      handleCurrentSemester(commonInfoData.currentSemester);
+    if (commonInfo) {
+      handleCurrentSemester(commonInfo.currentSemester);
     }
-  }, [commonInfoData, commonInfoStatus]);
+  }, [commonInfo]);
 
   const handleCurrentSemester = semester => {
     setCurrentSemester(semester);
 
-    dispatch(getMainCourseRequest(semester));
+    getMainCourseRequest(semester).then(v => {
+      setCourse(v);
+    });
   };
 
   return (

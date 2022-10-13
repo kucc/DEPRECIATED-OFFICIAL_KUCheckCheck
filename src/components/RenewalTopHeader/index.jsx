@@ -1,13 +1,10 @@
 import { useRef } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { hamburgerState, isLoggedInState, userState } from '@recoilState';
 import { useHistory } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
-import { setHamburgerRequest } from '@redux/actions/renewal_main_action';
-import {
-  logoutMember,
-  setProfileId,
-} from '@redux/actions/renewal_member_action';
+import { logoutMember } from '@redux/actions/renewal_member_action';
 
 import useDetectClose from '@hooks/useDetectClose';
 import { RENEWAL_PATH } from '@utility/COMMON_FUNCTION';
@@ -29,11 +26,13 @@ import {
 } from './style';
 
 export const RenewalTopHeader = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const setMember = useSetRecoilState(userState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
-  const member = useSelector(state => state.member.currentMember);
-  const isHamburger = useSelector(state => state.main.isHamburger);
+  const history = useHistory();
+
+  const [member] = useRecoilState(userState);
+  const [isHamburger, setIsHamburger] = useRecoilState(hamburgerState);
 
   const dropDownRef = useRef(null);
   const [isLoginOpen, setIsLoginOpen] = useDetectClose(dropDownRef, false);
@@ -44,20 +43,23 @@ export const RenewalTopHeader = () => {
     } else {
       document.body.classList.remove('open-modal');
     }
-    dispatch(setHamburgerRequest(!isHamburger));
+    setIsHamburger(!isHamburger);
   };
 
   const handleLogout = () => {
-    dispatch(logoutMember());
+    setMember(undefined);
+    setIsLoggedIn(false);
+    logoutMember();
 
     window.alert('로그아웃이 되었습니다!');
     window.location.href = RENEWAL_PATH.main;
   };
 
   const handleGoProfile = () => {
-    dispatch(setProfileId(member.id));
-
-    history.push(RENEWAL_PATH.profile);
+    history.push({
+      pathname: RENEWAL_PATH.profile,
+      state: { selectedId: member?.id },
+    });
   };
 
   return (
