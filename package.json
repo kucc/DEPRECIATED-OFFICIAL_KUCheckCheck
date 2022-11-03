@@ -35,12 +35,6 @@
     "styled-components": "^5.3.0",
     "web-vitals": "^1.0.1"
   },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
@@ -74,6 +68,7 @@
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
     "@types/node": "^18.7.23",
     "@types/react": "^18.0.15",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -89,8 +84,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^12.1.7",
     "mini-css-extract-plugin": "2.4.5",
     "prettier": "^2.4.1",
     "react-error-overlay": "^6.0.9",
