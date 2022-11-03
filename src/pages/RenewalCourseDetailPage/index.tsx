@@ -1,23 +1,36 @@
-import PropTypes from 'prop-types';
-
-import { StyledCommonTitle } from '@utility/COMMON_STYLE';
+import { RED } from '@utility/COLORS';
+import { } from '@utility/COMMON_STYLE';
+import { stringify } from 'querystring';
 
 import {
   CourseDescription,
+  CourseDetailComponent,
+  ComponentTitle,
   CourseDetailCard,
   CourseDetailCardTitle,
   CourseDetailContainer,
   CourseDetailTable,
-  CourseDetailTableBody,
   CourseDetailTableHeaderData,
   CourseDetailTableRow,
-  CourseTitle,
+  CourseDetailTableData,
+  StyledCaseSlash,
+  StyledCourseTop,
+  StyledCourseTitle,
+  StyledCourseLanguageImage,
+  StyledUserInfoContainer,
+  StyledUserEmoji,
+  StyledUserContainer,
+  StyledName,
+  StyledComment,
+  StyledLink,
+  LongTableHeaderData,
+  CourseStack,
 } from './style';
 
-export const RenewalCourseDetailPage = props => {
-  const courseId = props.match.params.id;
+export const RenewalCourseDetailPage = () => {
+  // const courseId = props.match.params.id;
   //코스
-  const course = {
+  const course: InfoType = {
     id: 13,
     member_id: 23,
     semester_id: 3,
@@ -41,6 +54,13 @@ export const RenewalCourseDetailPage = props => {
     ],
   };
 
+  type InfoType = {
+    [index: string]: any
+  }
+
+
+  const infoConstant: InfoType =
+    { introduction: "활동 소개", goal: "활동 목표", max_number: "활동 인원", progress_date: "진행요일", place: "진행 장소 및 방법", notice: "유의 사항" };
   //유저
   const user = {
     id: 23,
@@ -61,111 +81,110 @@ export const RenewalCourseDetailPage = props => {
     is_master: 1,
     attendance: [0, 0, 0, 1, 0, 0, 2, 0, 3],
   };
-  console.log(courseId);
   return (
     <CourseDetailContainer>
-      <CourseDetailCard>
-        <StyledCommonTitle>세션 소개</StyledCommonTitle>
+      <CourseDetailComponent width="35%">
+        <ComponentTitle>팀장</ComponentTitle>
+        <CourseDetailCard>
+          <StyledUserInfoContainer>
+            <StyledUserEmoji>{user.emoji}</StyledUserEmoji>
+            <StyledUserContainer>
+              <StyledName>
+                {user.name} <span>님</span>
+              </StyledName>
+              <StyledComment>{user.comment}</StyledComment>
+            </StyledUserContainer>
+            <StyledLink>&#8594;</StyledLink>
+          </StyledUserInfoContainer>
+          <a href={`/profile/${user.id}`}></a>
+        </CourseDetailCard>
+        <ComponentTitle>사용 언어 및 기술 스택</ComponentTitle>
+        <CourseDetailCard>
+          <CourseDetailTable>
+            <tbody>
+              <CourseDetailTableRow>
+                <LongTableHeaderData>주요 기술 스택</LongTableHeaderData>
+                <CourseDetailTableData>
+                  {course.language.map((item: string, i: number) => {
+                    return <CourseStack key={'language' + i}>- {item}</CourseStack>;
+                  })}
+                </CourseDetailTableData>
+              </CourseDetailTableRow>
+              <CourseDetailTableRow>
+                <LongTableHeaderData>세부 기술 스택</LongTableHeaderData>
+                <CourseDetailTableData>
+                  {course.detail_stack.map((item: string, i: number) => {
+                    return <CourseStack key={'detail_stack' + i}>- {item}</CourseStack>;
+                  })}
+                </CourseDetailTableData>
+              </CourseDetailTableRow>
+            </tbody>
+          </CourseDetailTable>
+        </CourseDetailCard>
+      </CourseDetailComponent>
+      <CourseDetailComponent width="60%">
+        <ComponentTitle>세션 소개</ComponentTitle>
         <CourseDetailCard>
           <CourseDetailCardTitle>
-            <CourseTitle>{course.title}</CourseTitle>
+            <StyledCourseTop>
+              <StyledCourseTitle isEllipsis={course.title.length > 14}>
+                {course.title}
+              </StyledCourseTitle>
+              {/* {course.language.slice(0, 3).map((res: any, index: number) => {
+                return (
+                  <StyledCourseLanguageImage
+                    key={index}
+                    src={`/img/icon/${res}.svg`}
+                    alt='언어 이미지'
+                  />
+                );
+              })} */}
+            </StyledCourseTop>
             <CourseDescription>
-              난이도: {course.difficulty} / 투자시간: {course.require_time}학점
+              난이도:&nbsp; <span className='point'>{course.difficulty}</span>
+              <StyledCaseSlash>/</StyledCaseSlash>
+              투자시간:&nbsp; <span className='point'>{course.require_time}학점</span>
             </CourseDescription>
           </CourseDetailCardTitle>
           <CourseDetailTable>
-            <CourseDetailTableBody>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>활동 소개</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.introduction}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>활동 목표</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.goal}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>활동 인원</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.max_number}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>진행요일</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.progress_date}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>진행 장소 및 방법</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.place}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>유의 사항</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>{course.notice}</CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-            </CourseDetailTableBody>
+            <tbody>
+              {Object.keys(infoConstant).map((item: string) => {
+                return (
+                  <CourseDetailTableRow key={item}>
+                    <CourseDetailTableHeaderData>{infoConstant[item]}</CourseDetailTableHeaderData>
+                    <CourseDetailTableData>{course[item]}</CourseDetailTableData>
+                  </CourseDetailTableRow>
+                )
+              })}
+            </tbody>
           </CourseDetailTable>
         </CourseDetailCard>
-      </CourseDetailCard>
-      <CourseDetailCard>
-        <StyledCommonTitle>커리큘럼</StyledCommonTitle>
+        <ComponentTitle>커리큘럼</ComponentTitle>
         <CourseDetailCard>
           <CourseDetailTable>
-            <CourseDetailTableBody>
-              {course.curriculum.map((item, i) => {
+            <tbody>
+              {course.curriculum.map((item: string, i: number) => {
                 return (
                   <CourseDetailTableRow key={'curriculum' + i}>
                     <CourseDetailTableHeaderData>
-                      <b>{i + 1}주차</b>
+                      {i + 1}주차
                     </CourseDetailTableHeaderData>
-                    <CourseDetailTableHeaderData>{item}</CourseDetailTableHeaderData>
+                    <CourseDetailTableData>{item}</CourseDetailTableData>
                   </CourseDetailTableRow>
                 );
               })}
-            </CourseDetailTableBody>
+            </tbody>
           </CourseDetailTable>
         </CourseDetailCard>
-      </CourseDetailCard>
-      <CourseDetailCard>
-        <StyledCommonTitle>팀장</StyledCommonTitle>
-        <CourseDetailCard>
-          <div className='emoji'>{user.emoji}</div>
-          <div className='info'>
-            <div className='name'>{user.name}님</div>
-            <div className='comment'>{user.comment}</div>
-          </div>
-          <a href={`/profile/${user.id}`}>화살표</a>
-        </CourseDetailCard>
-      </CourseDetailCard>
-      <CourseDetailCard>
-        <StyledCommonTitle>사용 언어 및 기술 스택</StyledCommonTitle>
-        <CourseDetailCard>
-          <CourseDetailTable>
-            <CourseDetailTableBody>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>주요 기술 스택</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>
-                  {course.language.map((item, i) => {
-                    return <div key={'language' + i}>- {item}</div>;
-                  })}
-                </CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-              <CourseDetailTableRow>
-                <CourseDetailTableHeaderData>세부 기술 스택</CourseDetailTableHeaderData>
-                <CourseDetailTableHeaderData>
-                  {course.detail_stack.map((item, i) => {
-                    return <div key={'detail_stack' + i}>- {item}</div>;
-                  })}
-                </CourseDetailTableHeaderData>
-              </CourseDetailTableRow>
-            </CourseDetailTableBody>
-          </CourseDetailTable>
-        </CourseDetailCard>
-      </CourseDetailCard>
+      </CourseDetailComponent>
     </CourseDetailContainer>
   );
 };
 
-RenewalCourseDetailPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
-  }),
-};
+// RenewalCourseDetailPage.propTypes = {
+//   match: PropTypes.shape({
+//     params: PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//     }),
+//   }),
+// };
